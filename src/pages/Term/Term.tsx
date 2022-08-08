@@ -1,50 +1,50 @@
 import React from "react";
 import {useSearchParams} from "react-router-dom";
-import {DescriptionWidget} from "../../components/Widget/DescriptionWidget/DescriptionWidget";
-import {IriWidget} from "../../components/Widget/IriWidget/IriWidget";
+import {DescriptionWidget} from "@km/widgets-semlookp";
+import {IriWidget} from "@km/widgets-semlookp";
+import {TermWidget} from '@km/widgets-semlookp';
+import {OntologyHierarchyWidget} from "@km/widgets-semlookp"
+import {AlternativeNameTabWidget} from "@km/widgets-semlookp";
+import {CrossRefTabWidget} from "@km/widgets-semlookp";
+import {MetadataWidget} from '@km/widgets-semlookp';
 import "./Term.css"
-import {TermWidget} from "../../components/Widget/TermWidget/TermWidget";
-import {OntologyHierarchyWidget} from "../../components/Widget/OntologyHierarchyWidget/OntologyHierarchyWidget";
-import {AlternativeNameTabWidget} from "../../components/Widget/AlternativeNameWidget/AlternativeNameWidget";
-import {CrossRefTabWidget} from "../../components/Widget/CrossRefWidget/CrossRefWidget";
-import {TabWidget} from "../../components/Widget/TabWidget/TabWidget";
-import {MetadataWidget} from "../../components/Widget/Metadata/MetaDataWidget";
-import {EuiPanel} from "@elastic/eui";
+
 
 export default function Term (){
     const [searchParam, setSearchParams] = useSearchParams()
 
     return(
-        <div>
-            OntologyTerm Page
-            <h2>Description:</h2>
-            <DescriptionWidget iri={searchParam.get("iri")} api={'https://semanticlookup.zbmed.de/ols/api/'}/>
+        <div className="pageDiv">
+            <div>
+                <div className="wrapperDiv">
+                    <div id="termDiv">
+                        <TermWidget iri={searchParam.get("iri")} api={'https://semanticlookup.zbmed.de/ols/api/'}/>
+                    </div>
+                </div>
 
-            <div className="iri">
-                <IriWidget iri={searchParam.get("iri")} api={'https://semanticlookup.zbmed.de/ols/api/'}/>
+                <div className="iri">
+                    <IriWidget iri={searchParam.get("iri")} api={'https://semanticlookup.zbmed.de/ols/api/'}/>
+                </div>
             </div>
-
-            <TermWidget iri={searchParam.get("iri")} api={'https://semanticlookup.zbmed.de/ols/api/'}/>
+            <div>
+                <DescriptionWidget iri={searchParam.get("iri")} api={'https://semanticlookup.zbmed.de/ols/api/'}/>
+            </div>
 
             <OntologyHierarchyWidget iri={searchParam.get("iri")} api={'https://semanticlookup.zbmed.de/ols/api/'}/>
 
-            <div style={{padding:10}}>
+            <div style={{margin:'10px', width:'fit-content'}}>
                 <h2>Alternative Names</h2>
-            <AlternativeNameTabWidget term={searchParam.get("iri")} api={'https://semanticlookup.zbmed.de/ols/api/'}/>
+            <AlternativeNameTabWidget iri={searchParam.get("iri")} api={'https://semanticlookup.zbmed.de/ols/api/'}/>
             </div>
 
-            <div>
-                <CrossRefTabWidget term={searchParam.get("iri")} api={'https://semanticlookup.zbmed.de/ols/api/'}/>
+            <div style={{margin:'10px', width:'fit-content'}}>
+                <h2>CrossRef</h2>
+                <CrossRefTabWidget iri={searchParam.get("iri")} api={'https://semanticlookup.zbmed.de/ols/api/'}/>
             </div>
-            <div>
-                <TabWidget iri={searchParam.get("iri")} api={'https://semanticlookup.zbmed.de/ols/api/'}/>
-            </div>
-            <div>
-                <EuiPanel>
+
+            <div style={{padding:'10px', borderStyle:"solid", borderRadius:'5px', width:'fit-content'}}>
                 <MetadataWidget iri={searchParam.get("iri")} api={'https://semanticlookup.zbmed.de/ols/api/'}/>
-                </EuiPanel>
-                </div>
-
+            </div>
             </div>
     )
 }
