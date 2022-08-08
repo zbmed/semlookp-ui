@@ -1,5 +1,5 @@
 import React from "react";
-import {EuiPanel, EuiFlexGroup, EuiFlexItem, EuiBadge, EuiText, EuiLink} from "@elastic/eui"
+import {EuiPanel, EuiBadge, EuiText, EuiLink} from "@elastic/eui"
 import "./SearchResult.css"
 
 interface ResultProps {
@@ -40,5 +40,4 @@ export default function SearchResultCard(props: ResultProps) {
                 {/*<EuiText>Also in: ...</EuiText>*/}
             </EuiPanel>
     )
-
 }
