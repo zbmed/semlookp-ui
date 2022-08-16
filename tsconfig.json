@@ -1,20 +1,9 @@
 {
-  "extends": "@tsconfig/recommended/tsconfig.json",
   "target": "ES5",
-  "lib": [
-    "DOM",
-    "ES5",
-    "DOM.Iterable",
-    "ScriptHost",
-    "ES2016.Array.Include"
-  ],
+  "lib": ["DOM", "ES5", "DOM.Iterable", "ScriptHost", "ES2016.Array.Include"],
   "compilerOptions": {
     "jsx": "react-jsx",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "noFallthroughCasesInSwitch": true,
@@ -25,7 +14,5 @@
     "noEmit": true,
     "esModuleInterop": true
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }

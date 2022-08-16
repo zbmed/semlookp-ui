@@ -1,14 +1,14 @@
 .treeView {
-    width: 60%;
+  width: 60%;
 }
 
 .termDiv {
-    padding: 20px;
-    float: left;
+  padding: 20px;
+  float: left;
 }
 
 .searchDiv {
-    padding: 20px;
-    float: right;
-    width: 20%;
+  padding: 20px;
+  float: right;
+  width: 20%;
 }
