@@ -10,7 +10,7 @@ import { MetadataWidget } from "@km/widgets-semlookp";
 import "./Term.css";
 
 export default function Term() {
-
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParam, setSearchParams] = useSearchParams();
 
   return (

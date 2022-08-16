@@ -17,7 +17,10 @@ export default function Home() {
             onChange={setSearchResults}
           />
           {searchResults.map((result) => (
-            <EuiPanel style={{ padding: "10px", margin: "10px" }}>
+            <EuiPanel
+              key={result.value}
+              style={{ padding: "10px", margin: "10px" }}
+            >
               <EuiText
                 onClick={() =>
                   navigate({
