@@ -7,6 +7,7 @@ import { OntologyHierarchyWidget } from "@km/widgets-semlookp";
 import { AlternativeNameTabWidget } from "@km/widgets-semlookp";
 import { CrossRefTabWidget } from "@km/widgets-semlookp";
 import { MetadataWidget } from "@km/widgets-semlookp";
+import { HierarchyTabWidget } from "@km/widgets-semlookp";
 import "./Term.css";
 
 export default function Term() {
@@ -51,6 +52,9 @@ export default function Term() {
           api={"https://semanticlookup.zbmed.de/ols/api/"}
         />
       </div>
+        <div>
+            <HierarchyTabWidget linkToSelf={"https://semanticlookup.zbmed.de/ols/api/ontologies/mesh/terms/"} iri={searchParam.get("iri")}/>
+        </div>
 
       <div style={{ margin: "10px", width: "fit-content" }}>
         <h2>CrossRef</h2>
@@ -71,6 +75,7 @@ export default function Term() {
         <MetadataWidget
           iri={searchParam.get("iri")}
           api={"https://semanticlookup.zbmed.de/ols/api/"}
+          linkToSelf={"https://semanticlookup.zbmed.de/ols/api/ontologies/mesh/terms/"}
         />
       </div>
     </div>
