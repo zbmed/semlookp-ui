@@ -16,11 +16,18 @@ This app was built to show and test the widgets of the [@km/widgets-semlookp](ht
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Before starting the application for the first time run the following command:
+```
+npm install
+```
+
 ## Available Scripts
 
-In the project directory, you can run:
+To start the application use the following command In the project directory:
 
-### `npm start`
+```
+npm start
+```
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
