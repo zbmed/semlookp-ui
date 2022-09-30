@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { EuiFlexItem, EuiPanel, EuiText } from "@elastic/eui";
 import "./Home.css";
-import { SearchWidget } from "@km/widgets-semlookp";
+import { AutocompleteWidget } from "@km/widgets-semlookp";
 import { useNavigate } from "react-router-dom";
 
 export default function Home() {
@@ -12,9 +12,10 @@ export default function Home() {
       <div className="searchbar">
         <h1>Welcome to the Terminology Service</h1>
         <EuiFlexItem className="searchBar">
-          <SearchWidget
+          <AutocompleteWidget
             api={"https://semanticlookup.zbmed.de/ols/api/"}
             onChange={setSearchResults}
+            parameter={"ontology=mesh,efo&type=class"}
           />
           {searchResults.map((result) => (
             <EuiPanel
