@@ -25,6 +25,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "build": "react-scripts build",
     "style:format": "npx prettier --write .",
     "style:check": "npx prettier --check .",
     "lint:check": "npx eslint ./src --ext js,jsx,ts,tsx",
