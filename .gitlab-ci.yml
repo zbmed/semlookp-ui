@@ -11,9 +11,7 @@ build-FE:
     CI: "false"
   before_script:
    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-
   script:
-    - cd frontend
     - docker pull $CI_REGISTRY_IMAGE/frontend:latest || true
     - docker build --cache-from $CI_REGISTRY_IMAGE/frontend:latest --tag $CI_REGISTRY_IMAGE/frontend:$CI_COMMIT_SHA --tag $CI_REGISTRY_IMAGE/frontend:latest --build-arg NPM_TOKEN=$CI_JOB_TOKEN .
     - docker push $CI_REGISTRY_IMAGE/frontend:$CI_COMMIT_SHA
