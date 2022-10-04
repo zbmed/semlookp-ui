@@ -1,0 +1,43 @@
+stages:
+  - build
+  - deploy
+
+build-FE:
+  tags:
+    - shell1
+  stage: build
+  image: alpine
+  variables:
+    CI: "false"
+  before_script:
+   - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+
+  script:
+    - cd frontend
+    - docker pull $CI_REGISTRY_IMAGE/frontend:latest || true
+    - docker build --cache-from $CI_REGISTRY_IMAGE/frontend:latest --tag $CI_REGISTRY_IMAGE/frontend:$CI_COMMIT_SHA --tag $CI_REGISTRY_IMAGE/frontend:latest --build-arg NPM_TOKEN=$CI_JOB_TOKEN .
+    - docker push $CI_REGISTRY_IMAGE/frontend:$CI_COMMIT_SHA
+    - docker push $CI_REGISTRY_IMAGE/frontend:latest
+
+deploy_staging:
+  tags:
+    - shell1
+  stage: deploy
+#  image: alpine
+  environment:
+        name: staging
+        url: http://$DEPLOYMENT_HOST_IP:$DEPLOYMENT_STAGING_HOST_PORT
+  before_script:
+#    - apk add openssh-client
+    - eval $(ssh-agent -s)
+    - ssh-add - <<< "${KEY_PROD}"
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+  script:
+    - ssh -o StrictHostKeyChecking=no  $DEPLOYMENT_ACCOUNT@$DEPLOYMENT_HOST_IP  "rm -rf semlookp_staging.env; echo VERSION=$CI_COMMIT_SHA >> semlookp_staging.env; echo PORT=$DEPLOYMENT_STAGING_HOST_PORT >> semlookp_staging.env;"
+    - scp docker-compose.yaml $DEPLOYMENT_ACCOUNT@$DEPLOYMENT_HOST_IP:semlookp_staging_docker-compose.yaml
+    - ssh -o StrictHostKeyChecking=no  $DEPLOYMENT_ACCOUNT@$DEPLOYMENT_HOST_IP "docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY"
+    - ssh -o StrictHostKeyChecking=no  $DEPLOYMENT_ACCOUNT@$DEPLOYMENT_HOST_IP "docker-compose --env-file semlookp_staging.env -p semlookp_staging -f semlookp_staging_docker-compose.yaml pull"
+    - ssh -o StrictHostKeyChecking=no  $DEPLOYMENT_ACCOUNT@$DEPLOYMENT_HOST_IP "docker-compose --env-file semlookp_staging.env -p semlookp_staging -f semlookp_staging_docker-compose.yaml up -d "
+  only:
+    - main
