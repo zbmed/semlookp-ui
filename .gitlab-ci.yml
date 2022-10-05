@@ -37,7 +37,6 @@ deploy_staging:
     - ssh -o StrictHostKeyChecking=no  $DEPLOYMENT_ACCOUNT@$DEPLOYMENT_HOST_IP "docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY"
     - ssh -o StrictHostKeyChecking=no  $DEPLOYMENT_ACCOUNT@$DEPLOYMENT_HOST_IP "docker-compose --env-file semlookp_staging.env -p semlookp_staging -f semlookp_staging_docker-compose.yaml pull"
     - ssh -o StrictHostKeyChecking=no  $DEPLOYMENT_ACCOUNT@$DEPLOYMENT_HOST_IP "docker-compose --env-file semlookp_staging.env -p semlookp_staging -f semlookp_staging_docker-compose.yaml up -d"
-  after_script:
     - ssh -o StrictHostKeyChecking=no  $DEPLOYMENT_ACCOUNT@$DEPLOYMENT_HOST_IP "docker network connect nginx_proxying semlookp_staging_frontend_1"
     - ssh -o StrictHostKeyChecking=no  $DEPLOYMENT_ACCOUNT@$DEPLOYMENT_HOST_IP "docker restart production_nginx"
   only:
