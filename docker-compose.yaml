@@ -6,4 +6,4 @@ services:
     restart: always
     image: gitlab.zbmed.de:5050/km/semlookp/semlookp-sampleapp/frontend:${VERSION}
     ports:
-      - ${PORT}:80
+      - ${PORT}:8080
