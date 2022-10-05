@@ -2,7 +2,7 @@ version: "2.2"
 services:
   frontend:
     # uncomment for local dev
-    build: ./
+#    build: ./
     restart: always
     image: gitlab.zbmed.de:5050/km/semlookp/widgets-semlookp:${VERSION}
     ports:
