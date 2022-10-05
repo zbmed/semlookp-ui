@@ -4,6 +4,6 @@ services:
     # uncomment for local dev
 #    build: ./
     restart: always
-    image: gitlab.zbmed.de:5050/km/semlookp/semlookp-sampleapp:${VERSION}
+    image: gitlab.zbmed.de:5050/km/semlookp/semlookp-sampleapp/frontend:${VERSION}
     ports:
       - ${PORT}:80
