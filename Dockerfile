@@ -17,4 +17,4 @@ COPY nginx.conf /etc/nginx/templates/default.conf.template
 COPY nginx-server.conf /etc/nginx/nginx.conf
 COPY setVariables.sh /docker-entrypoint.d/50-insert-runtime-variables.sh
 RUN chmod +x /docker-entrypoint.d/50-insert-runtime-variables.sh
-COPY --from=build-deps /usr/src/app/build /usr/share/nginx/html
+COPY --from=build-deps /usr/src/app/build /usr/share/nginx/html/dev

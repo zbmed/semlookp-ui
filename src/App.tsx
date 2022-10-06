@@ -25,7 +25,7 @@ function App() {
   return (
       <EuiProvider colorMode={"light"}>
         <QueryClientProvider client={queryClient}>
-          <Router>
+          <Router basename="/dev">
             <div>
               <div>
                 <EuiHeader>
