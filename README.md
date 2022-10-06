@@ -19,13 +19,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 #### Authenticate to the npm package registry
 For using the @km/widgets-semlookp you have to [authenticate](https://docs.gitlab.com/ee/user/packages/npm_registry/) with a [personal access token](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html) or deploy token.
+For local development specify a runtime variable NPM_TOKEN with your npm authentication token.
 
-Create a .npmrc file in the root directory with the following content:
-```
-@km:registry=https://gitlab.zbmed.de/api/v4/projects/550/packages/npm/
-//gitlab.zbmed.de/api/v4/projects/550/packages/npm/:_authToken=<your_token>
-```
-
+#### Local development
 For starting the application for the first time run the following command:
 ```
 npm install
@@ -38,3 +34,15 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
+
+### Production
+Create production build for all services:  
+Uncomment `build: ./` in `docker-compose.yaml`  
+Set an environment variable with your NPM_TOKEN.  
+Run the following to build the Docker image with the current NPM_TOKEN environment variable.
+
+```
+$ docker-compose --env-file dev.env build --build-arg NPM_TOKEN=${NPM_TOKEN}
+$ docker-compose --env-file dev.env up
+```
+[Docker and private modules](https://docs.npmjs.com/docker-and-private-modules)
