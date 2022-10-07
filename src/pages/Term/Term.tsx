@@ -3,7 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import { DescriptionWidget } from "@km/widgets-semlookp";
 import { IriWidget } from "@km/widgets-semlookp";
 import { TermWidget } from "@km/widgets-semlookp";
-import { OntologyHierarchyWidget } from "@km/widgets-semlookp";
+import { BreadcrumbWidget } from "@km/widgets-semlookp";
 import { AlternativeNameTabWidget } from "@km/widgets-semlookp";
 import { CrossRefTabWidget } from "@km/widgets-semlookp";
 import { MetadataWidget } from "@km/widgets-semlookp";
@@ -40,7 +40,7 @@ export default function Term() {
         />
       </div>
 
-      <OntologyHierarchyWidget
+      <BreadcrumbWidget
         iri={searchParam.get("iri")}
         api={"https://semanticlookup.zbmed.de/ols/api/"}
       />
