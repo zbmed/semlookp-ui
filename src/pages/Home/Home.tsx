@@ -1,13 +1,25 @@
 import React, { useState } from "react";
-import { EuiFlexGroup, EuiFlexItem, EuiPanel, EuiText, EuiSpacer, EuiTitle, EuiLink } from "@elastic/eui";
+import { EuiFlexGroup, EuiFlexItem, EuiPanel, EuiText, EuiSpacer, EuiTitle, EuiLink, EuiShowFor } from "@elastic/eui";
 import { AutocompleteWidget } from "@km/widgets-semlookp";
 import { useNavigate } from "react-router-dom";
+import { ReactComponent as SEMLOOKPLOGO } from "../../components/Logos/NFDI_SemLookP_Logo.svg";
 
 export default function Home() {
   const [searchResults, setSearchResults] = useState([]);
   const navigate = useNavigate();
   return (
     <div>
+      <EuiFlexGroup justifyContent="spaceAround">
+        <EuiFlexItem grow={false}>
+          <SEMLOOKPLOGO height="170px" width="auto" />
+        </EuiFlexItem>
+      </EuiFlexGroup>
+
+      <EuiSpacer size="xl" />
+      <EuiShowFor sizes={["xl"]}>
+        <EuiSpacer size="xl" />
+      </EuiShowFor>
+
       <EuiPanel id="searchBox" hasShadow={true}>
         <EuiFlexGroup direction="column">
           <EuiFlexItem>

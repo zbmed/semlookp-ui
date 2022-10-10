@@ -1,12 +1,12 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import "@elastic/eui/dist/eui_theme_light.css";
 import {
   EuiProvider,
   EuiHeader,
   EuiHeaderSection,
   EuiHeaderSectionItem,
-  EuiHeaderLogo,
+  EuiIcon,
   EuiHeaderLink,
   EuiHeaderLinks,
   EuiPage,
@@ -15,12 +15,9 @@ import {
   EuiPageContentBody,
   EuiSpacer,
   EuiShowFor,
-  EuiFlexGroup,
-  EuiFlexItem,
 } from "@elastic/eui";
 import {QueryClientProvider, QueryClient} from "react-query"
 import { ReactComponent as SEMLOOKPLOGO } from "./components/Logos/NFDI_SemLookP_Logo.svg";
-import { ReactComponent as NFDI4HEALTHICON } from "./components/Logos/NFDI4Health_Icon.svg";
 
 import Home from "./pages/Home/Home";
 import AboutPage from "./pages/About/AboutPage";
@@ -49,30 +46,22 @@ function App() {
                   <EuiHeader>
                     <EuiHeaderSection side="left">
                       <EuiHeaderSectionItem border="right">
-                        <EuiHeaderLogo iconType={NFDI4HEALTHICON} iconTitle="SemLookP" href="#" />
+                        <Link to="/">
+                          <EuiIcon type={SEMLOOKPLOGO} title="SemLookP" size="original" width="120px" />
+                        </Link>
                       </EuiHeaderSectionItem>
                       <EuiHeaderSectionItem>
                         <EuiHeaderLinks>
-                          <EuiHeaderLink href="/">Home</EuiHeaderLink>
-                          <EuiHeaderLink href="/resources">Resources</EuiHeaderLink>
-                          <EuiHeaderLink href="/about">About</EuiHeaderLink>
-                          <EuiHeaderLink href="/sample">Sample</EuiHeaderLink>
+                          {/* TODO Remove /dev for production */}
+                          <EuiHeaderLink href="/dev/">Home</EuiHeaderLink>
+                          <EuiHeaderLink href="/dev/resources">Resources</EuiHeaderLink>
+                          <EuiHeaderLink href="/dev/about">About</EuiHeaderLink>
+                          <EuiHeaderLink href="/dev/sample">Sample</EuiHeaderLink>
                         </EuiHeaderLinks>
                       </EuiHeaderSectionItem>
                     </EuiHeaderSection>
                   </EuiHeader>
                   <EuiPageContentBody restrictWidth>
-                    <EuiSpacer size="xl" />
-                    <EuiShowFor sizes={["xl"]}>
-                      <EuiSpacer size="xl" />
-                    </EuiShowFor>
-
-                    <EuiFlexGroup justifyContent="spaceAround">
-                      <EuiFlexItem grow={false}>
-                        <SEMLOOKPLOGO height="170px" width="auto" />
-                      </EuiFlexItem>
-                    </EuiFlexGroup>
-
                     <EuiSpacer size="xl" />
                     <EuiShowFor sizes={["xl"]}>
                       <EuiSpacer size="xl" />
