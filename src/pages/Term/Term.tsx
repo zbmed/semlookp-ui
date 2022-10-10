@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { DescriptionWidget } from "@km/widgets-semlookp";
+import { AutocompleteWidget, DescriptionWidget } from "@km/widgets-semlookp";
 import { IriWidget } from "@km/widgets-semlookp";
 import { TermWidget } from "@km/widgets-semlookp";
 import { OntologyHierarchyWidget } from "@km/widgets-semlookp";
@@ -25,6 +25,7 @@ const API = "https://semanticlookup.zbmed.de/ols/api/"
 export default function Term() {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [searchParam, setSearchParams] = useSearchParams();
+    const [ontology, setOntology] = useState<string>("");
 
     return (
         <div>
@@ -46,6 +47,15 @@ export default function Term() {
                             <DescriptionWidget
                                 iri={searchParam.get("iri")}
                                 api={API}
+                            />
+                        </EuiFlexItem>
+                        <EuiFlexItem>
+                            {/*TODO Add ontology*/}
+                            {/*TODO Add on click event*/}
+                            <AutocompleteWidget
+                                api={"https://semanticlookup.zbmed.de/ols/api/"}
+                                onChange={() => console.log("onClick")}
+                                parameter={"ontology=" + ontology}
                             />
                         </EuiFlexItem>
                     </EuiFlexGroup>
