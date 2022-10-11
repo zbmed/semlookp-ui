@@ -8,7 +8,7 @@ export default function Home() {
   const [searchResults, setSearchResults] = useState([]);
   const navigate = useNavigate();
   return (
-    <div>
+    <>
       <EuiFlexGroup justifyContent="spaceAround">
         <EuiFlexItem grow={false}>
           <SEMLOOKPLOGO height="170px" width="auto" />
@@ -77,6 +77,6 @@ export default function Home() {
           <p>It is part of the Semantic Lookup Platform, which is developed and maintained by ZB MED - Information Centre for Life Sciences.</p>
         </EuiText>
       </EuiPanel>
-    </div>
+    </>
   );
 }
