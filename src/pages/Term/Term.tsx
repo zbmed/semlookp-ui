@@ -1,31 +1,38 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSearchParams } from "react-router-dom";
-import { AutocompleteWidget, DescriptionWidget } from "@km/widgets-semlookp";
-import { IriWidget } from "@km/widgets-semlookp";
-import { TermWidget } from "@km/widgets-semlookp";
-import { OntologyHierarchyWidget } from "@km/widgets-semlookp";
-import { AlternativeNameTabWidget } from "@km/widgets-semlookp";
-import { CrossRefTabWidget } from "@km/widgets-semlookp";
-import { MetadataWidget } from "@km/widgets-semlookp";
-import { HierarchyTabWidget } from "@km/widgets-semlookp";
+import { AutocompleteWidget, DescriptionWidget, HierarchyTabWidget, IriWidget, TermWidget } from "@km/widgets-semlookp";
 import "./Term.css";
-import {
-    EuiFlexGroup,
-    EuiFlexItem,
-    EuiHeader,
-    EuiPageHeader,
-    EuiPanel,
-    EuiSpacer,
-    EuiText,
-    EuiCard
-} from '@elastic/eui'
+import { EuiFlexGroup, EuiFlexItem, EuiPanel, EuiSpacer, EuiText } from '@elastic/eui'
+import { useQuery } from 'react-query'
 
 const API = "https://semanticlookup.zbmed.de/ols/api/"
 
 export default function Term() {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [searchParam, setSearchParams] = useSearchParams();
-    const [ontology, setOntology] = useState<string>("");
+    const [searchParam, setSearchParams] = useSearchParams(); // read the query string in the URL for the current location
+
+    const {
+        data: ontology,
+        isSuccess
+    } = useQuery(
+        ["ontologiesData", API],
+        () => {
+            return fetch(`${API}terms?iri=${searchParam.get("iri")}`, {
+                method: "GET",
+                headers: {
+                    Accept: "application/json",
+                    Content_Type: "application/json",
+                },
+            }).then(response => response.json())
+                .then(response => {
+                    if (response._embedded.terms.ontology_name != null) {
+                        return response._embedded.terms.ontology_name;
+                    } else {
+                        return "Not available"
+                    }
+                });
+        }
+    )
 
     return (
         <div>
@@ -50,13 +57,12 @@ export default function Term() {
                             />
                         </EuiFlexItem>
                         <EuiFlexItem>
-                            {/*TODO Add ontology*/}
                             {/*TODO Add on click event*/}
-                            <AutocompleteWidget
-                                api={"https://semanticlookup.zbmed.de/ols/api/"}
+                            {isSuccess && <AutocompleteWidget
+                                api={API}
                                 onChange={() => console.log("onClick")}
                                 parameter={"ontology=" + ontology}
-                            />
+                            />}
                         </EuiFlexItem>
                     </EuiFlexGroup>
                 </EuiPanel>
@@ -66,9 +72,8 @@ export default function Term() {
                 <EuiPanel>
                     <EuiFlexGroup>
                         <EuiFlexItem>
-                            {/*TODO Fetch ontology for current term or imporve Hierarchy Widget*/}
                             <HierarchyTabWidget
-                                linkToSelf={"https://semanticlookup.zbmed.de/ols/api/ontologies/mesh/terms/"}
+                                linkToSelf={"https://semanticlookup.zbmed.de/ols/api/ontologies/" + ontology + "/terms/"}
                                 iri={searchParam.get("iri")}/>
                         </EuiFlexItem>
                         <EuiFlexGroup direction={"column"}>
