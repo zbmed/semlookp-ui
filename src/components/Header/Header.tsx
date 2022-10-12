@@ -21,11 +21,10 @@ export default function Header() {
         </EuiHeaderSectionItem>
         <EuiHeaderSectionItem>
           <EuiHeaderLinks>
-            {/* TODO Remove /dev for production */}
-            <EuiHeaderLink href="/dev/">Home</EuiHeaderLink>
-            <EuiHeaderLink href="/dev/resources">Resources</EuiHeaderLink>
-            <EuiHeaderLink href="/dev/about">About</EuiHeaderLink>
-            <EuiHeaderLink href="/dev/sample">Sample</EuiHeaderLink>
+            <Link to="/"><EuiHeaderLink>Home</EuiHeaderLink></Link>
+            <Link to="/resources"><EuiHeaderLink>Resources</EuiHeaderLink></Link>
+            <Link to="/about"><EuiHeaderLink>About</EuiHeaderLink></Link>
+            <Link to="/sample"><EuiHeaderLink>Sample</EuiHeaderLink></Link>
           </EuiHeaderLinks>
         </EuiHeaderSectionItem>
       </EuiHeaderSection>

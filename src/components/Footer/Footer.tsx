@@ -3,7 +3,7 @@ import { EuiFlexGroup, EuiFlexItem, EuiText, EuiLink, EuiSpacer, EuiHorizontalRu
 import { ReactComponent as DfgLogo } from "../Logos/dfg_logo_schriftzug_blau_foerderung_en.svg";
 import { ReactComponent as NfdiLogo } from "../Logos/NFDI4Health_Logo_cmyk_RZ.svg";
 import { ReactComponent as ZbmedLogo } from "../Logos/ZBMED_2017_DE.svg";
-
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -14,8 +14,8 @@ export default function Footer() {
           <EuiFlexItem grow={false}>
             <EuiText color="subdued" size="s">
               <EuiLink href="mailto:semlookp-support@zbmed.de">Contact</EuiLink> |{" "}
-              <EuiLink href="/imprint">Legal Notice</EuiLink> |{" "}
-              <EuiLink href="/privacy">Privacy Declaration</EuiLink>
+              <Link to="/imprint">Legal Notice</Link> |{" "}
+              <Link to="/privacy">Privacy Declaration</Link>
             </EuiText>
           </EuiFlexItem>
         </EuiFlexGroup>
