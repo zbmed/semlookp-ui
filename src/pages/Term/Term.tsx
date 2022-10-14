@@ -1,83 +1,95 @@
 import React from "react";
 import { useSearchParams } from "react-router-dom";
-import { DescriptionWidget } from "@km/widgets-semlookp";
-import { IriWidget } from "@km/widgets-semlookp";
-import { TermWidget } from "@km/widgets-semlookp";
-import { BreadcrumbWidget } from "@km/widgets-semlookp";
-import { AlternativeNameTabWidget } from "@km/widgets-semlookp";
-import { CrossRefTabWidget } from "@km/widgets-semlookp";
-import { MetadataWidget } from "@km/widgets-semlookp";
-import { HierarchyTabWidget } from "@km/widgets-semlookp";
+import { AutocompleteWidget, DescriptionWidget, HierarchyTabWidget, IriWidget, TermWidget } from "@km/widgets-semlookp";
 import "./Term.css";
+import { EuiFlexGroup, EuiFlexItem, EuiPanel, EuiSpacer, EuiText } from '@elastic/eui'
+import { useQuery } from 'react-query'
+
+const API = "https://semanticlookup.zbmed.de/ols/api/"
 
 export default function Term() {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [searchParam, setSearchParams] = useSearchParams();
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const [searchParam, setSearchParams] = useSearchParams(); // read the query string in the URL for the current location
 
-  return (
-    <div className="pageDiv">
-      <div>
-        <div className="wrapperDiv">
-          <div id="termDiv">
-            <TermWidget
-              iri={searchParam.get("iri")}
-              api={"https://semanticlookup.zbmed.de/ols/api/"}
-            />
-          </div>
-        </div>
+    const {
+        data: ontology,
+        isSuccess
+    } = useQuery(
+        ["ontologiesData", API],
+        () => {
+            return fetch(`${API}terms?iri=${searchParam.get("iri")}`, {
+                method: "GET",
+                headers: {
+                    Accept: "application/json",
+                    Content_Type: "application/json",
+                },
+            }).then(response => response.json())
+                .then(response => {
+                    if (response._embedded.terms.ontology_name != null) {
+                        return response._embedded.terms.ontology_name;
+                    } else {
+                        return "Not available"
+                    }
+                });
+        }
+    )
 
-        <div className="iri">
-          <IriWidget
-            iri={searchParam.get("iri")}
-            api={"https://semanticlookup.zbmed.de/ols/api/"}
-          />
-        </div>
-      </div>
-      <div>
-        <DescriptionWidget
-          iri={searchParam.get("iri")}
-          api={"https://semanticlookup.zbmed.de/ols/api/"}
-        />
-      </div>
-
-      <BreadcrumbWidget
-        iri={searchParam.get("iri")}
-        api={"https://semanticlookup.zbmed.de/ols/api/"}
-      />
-
-      <div style={{ margin: "10px", width: "fit-content" }}>
-        <h2>Alternative Names</h2>
-        <AlternativeNameTabWidget
-          iri={searchParam.get("iri")}
-          api={"https://semanticlookup.zbmed.de/ols/api/"}
-        />
-      </div>
+    return (
         <div>
-            <HierarchyTabWidget linkToSelf={"https://semanticlookup.zbmed.de/ols/api/ontologies/mesh/terms/"} iri={searchParam.get("iri")}/>
+            <EuiFlexGroup justifyContent={"spaceAround"} direction={"column"}>
+
+                <EuiPanel>
+                    <EuiFlexGroup>
+                        <EuiFlexItem>
+                            <TermWidget
+                                iri={searchParam.get("iri")}
+                                api={API}
+                            />
+
+                            <IriWidget
+                                iri={searchParam.get("iri")}
+                                api={API}
+                            />
+
+                            <DescriptionWidget
+                                iri={searchParam.get("iri")}
+                                api={API}
+                            />
+                        </EuiFlexItem>
+                        <EuiFlexItem>
+                            {/*TODO Add on click event*/}
+                            {isSuccess && <AutocompleteWidget
+                                api={API}
+                                onChange={() => console.log("onClick")}
+                                parameter={"ontology=" + ontology}
+                            />}
+                        </EuiFlexItem>
+                    </EuiFlexGroup>
+                </EuiPanel>
+
+                <EuiSpacer/>
+
+                <EuiPanel>
+                    <EuiFlexGroup>
+                        <EuiFlexItem>
+                            <HierarchyTabWidget
+                                linkToSelf={"https://semanticlookup.zbmed.de/ols/api/ontologies/" + ontology + "/terms/"}
+                                iri={searchParam.get("iri")}/>
+                        </EuiFlexItem>
+                        <EuiFlexGroup direction={"column"}>
+                            <EuiFlexItem>
+                                {/*TODO Create Term Info Widget?*/}
+                                <EuiText><h3>Term Info</h3></EuiText>
+                            </EuiFlexItem>
+                            <EuiFlexItem>
+                                {/*TODO Create Term Relations Widget?*/}
+                                <EuiText><h3>Term Relations</h3></EuiText>
+                            </EuiFlexItem>
+                        </EuiFlexGroup>
+                    </EuiFlexGroup>
+                </EuiPanel>
+
+            </EuiFlexGroup>
         </div>
-
-      <div style={{ margin: "10px", width: "fit-content" }}>
-        <h2>CrossRef</h2>
-        <CrossRefTabWidget
-          iri={searchParam.get("iri")}
-          api={"https://semanticlookup.zbmed.de/ols/api/"}
-        />
-      </div>
-
-      <div
-        style={{
-          padding: "10px",
-          borderStyle: "solid",
-          borderRadius: "5px",
-          width: "fit-content",
-        }}
-      >
-        <MetadataWidget
-          iri={searchParam.get("iri")}
-          api={"https://semanticlookup.zbmed.de/ols/api/"}
-          linkToSelf={"https://semanticlookup.zbmed.de/ols/api/ontologies/mesh/terms/"}
-        />
-      </div>
-    </div>
-  );
+    );
 }
