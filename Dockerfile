@@ -3,7 +3,7 @@ FROM node:16.13.1-alpine as build-deps
 WORKDIR /usr/src/app
 ARG NPM_TOKEN
 COPY .npmrc .npmrc
-COPY package.json package-lock.json ./
+COPY package.json ./
 RUN npm install
 COPY ./ ./
 RUN npm run build
