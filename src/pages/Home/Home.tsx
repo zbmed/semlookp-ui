@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { EuiFlexGroup, EuiFlexItem, EuiPanel, EuiText, EuiSpacer, EuiTitle, EuiLink, EuiShowFor } from "@elastic/eui";
 import { AutocompleteWidget, DataContentWidget } from "@km/widgets-semlookp";
 import { useNavigate } from "react-router-dom";
@@ -6,8 +6,19 @@ import { ReactComponent as SEMLOOKPLOGO } from "../../components/Logos/NFDI_SemL
 import EuiCustomLink from "../../router/EuiCustomLink";
 
 export default function Home() {
-  const [searchResults, setSearchResults] = useState({options:[], selectedOption:{}});
   const navigate = useNavigate();
+
+  function goToSearchResults(searchValue: string) {
+    navigate({
+      pathname: "/search",
+      search: `q=${searchValue}`,
+    });
+  }
+
+  function onAutocompleteSuggestionSelect(changeParams: any) {
+    goToSearchResults(changeParams.selectedOption.label);
+  }
+
   return (
     <>
       <EuiFlexGroup justifyContent="spaceAround">
@@ -31,29 +42,10 @@ export default function Home() {
               <EuiFlexItem>
                 <AutocompleteWidget
                   api={"https://semanticlookup.zbmed.de/ols/api/"}
-                  onChange={setSearchResults}
                   parameter={"type=class"}
+                  onChange={onAutocompleteSuggestionSelect}
+                  onSearchButtonClick={goToSearchResults}
                 />
-                {searchResults.options.map((result) => (
-                  <EuiPanel
-                    key={result.value}
-                    style={{ padding: "10px", margin: "10px" }}
-                  >
-                    <EuiText
-                      onClick={() =>
-                        navigate({
-                          pathname: "/terms",
-                          search: "?iri=" + result.value.iri.toString(),
-                        })
-                      }
-                    >
-                      {result.label}{" "}
-                      {result.value?.description
-                        ? " : " + result.value.description
-                        : ""}
-                    </EuiText>
-                  </EuiPanel>
-                ))}
               </EuiFlexItem>
               <EuiFlexItem>
                 <EuiFlexGroup>

@@ -8,7 +8,7 @@ import LinkScroller from "./components/LinkScroller";
 import Layout from "./components/Layout/Layout";
 import {
   Home, AboutPage, ApiPage, Error, ImprintPage, PrivacyPage, ProjectsPage,
-  Resources, Term
+  Resources, Term, SearchResults
 } from "./imports/PagesImport";
 
 function App() {
@@ -30,6 +30,7 @@ function App() {
                 <Route path="/projects" element={<ProjectsPage />} />
                 <Route path="/resources" element={<Resources />} />
                 <Route path="/terms" element={<Term />} />
+                <Route path="/search" element={<SearchResults />} />
               </Route>
             </Routes>
           </LinkScroller>

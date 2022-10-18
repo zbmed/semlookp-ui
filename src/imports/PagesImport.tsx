@@ -9,3 +9,4 @@ export { default as PrivacyPage} from '../pages/Privacy/PrivacyPage';
 export { default as ProjectsPage} from '../pages/Projects/ProjectsPage';
 export { default as Resources} from "../pages/Resources/Resources";
 export { default as Term} from "../pages/Term/Term";
+export { default as SearchResults } from "../pages/SearchResults/SearchResults";
