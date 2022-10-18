@@ -1,16 +1,16 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "@elastic/eui/dist/eui_theme_light.css";
 import { EuiProvider } from "@elastic/eui";
-import {QueryClientProvider, QueryClient} from "react-query";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 import Layout from "./components/Layout/Layout";
 import Home from "./pages/Home/Home";
 import AboutPage from "./pages/About/AboutPage";
 import Resources from "./pages/Resources/Resources";
 import Error from "./pages/Error/Error";
-import SamplePage from "./pages/SamplePage";
 import Term from "./pages/Term/Term";
+import ProjectsPage from './pages/Projects/ProjectsPage'
 
 function App() {
   const queryClient = new QueryClient();
@@ -24,7 +24,7 @@ function App() {
               <Route index element={<Home />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/resources" element={<Resources />} />
-              <Route path="/sample" element={<SamplePage />} />
+              <Route path="/projects" element={<ProjectsPage />} />
               <Route path="/terms" element={<Term />} />
               <Route path="*" element={<Error />} />
             </Route>

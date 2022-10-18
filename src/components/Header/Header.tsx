@@ -1,11 +1,11 @@
 import React from "react";
 import {
   EuiHeader,
+  EuiHeaderLink,
+  EuiHeaderLinks,
   EuiHeaderSection,
   EuiHeaderSectionItem,
   EuiIcon,
-  EuiHeaderLink,
-  EuiHeaderLinks,
 } from "@elastic/eui";
 import { Link } from "react-router-dom";
 import { ReactComponent as SEMLOOKPLOGO } from "../Logos/NFDI_SemLookP_Logo.svg";
@@ -24,7 +24,7 @@ export default function Header() {
             <Link to="/"><EuiHeaderLink>Home</EuiHeaderLink></Link>
             <Link to="/resources"><EuiHeaderLink>Resources</EuiHeaderLink></Link>
             <Link to="/about"><EuiHeaderLink>About</EuiHeaderLink></Link>
-            <Link to="/sample"><EuiHeaderLink>Sample</EuiHeaderLink></Link>
+            <Link to="/projects"><EuiHeaderLink>Projects</EuiHeaderLink></Link>
           </EuiHeaderLinks>
         </EuiHeaderSectionItem>
       </EuiHeaderSection>
