@@ -1,13 +1,13 @@
 import React from "react";
 import {
-  EuiHeader,
-  EuiHeaderLink,
-  EuiHeaderLinks,
-  EuiHeaderSection,
-  EuiHeaderSectionItem,
-  EuiIcon,
+    EuiHeader,
+    EuiHeaderLink,
+    EuiHeaderLinks,
+    EuiHeaderSection,
+    EuiHeaderSectionItem,
+    EuiIcon,
 } from "@elastic/eui";
-import { Link } from "react-router-dom";
+import EuiCustomLink from '../../router/EuiCustomLink';
 import { ReactComponent as SEMLOOKPLOGO } from "../Logos/NFDI_SemLookP_Logo.svg";
 
 export default function Header() {
@@ -15,16 +15,16 @@ export default function Header() {
     <EuiHeader>
       <EuiHeaderSection side="left">
         <EuiHeaderSectionItem border="right">
-          <Link to="/">
+          <EuiCustomLink to="/">
             <EuiIcon type={SEMLOOKPLOGO} title="SemLookP" size="original" width="120px" />
-          </Link>
+          </EuiCustomLink>
         </EuiHeaderSectionItem>
         <EuiHeaderSectionItem>
           <EuiHeaderLinks>
-            <Link to="/"><EuiHeaderLink>Home</EuiHeaderLink></Link>
-            <Link to="/resources"><EuiHeaderLink>Resources</EuiHeaderLink></Link>
-            <Link to="/about"><EuiHeaderLink>About</EuiHeaderLink></Link>
-            <Link to="/projects"><EuiHeaderLink>Projects</EuiHeaderLink></Link>
+            <EuiCustomLink to="/"><EuiHeaderLink>Home</EuiHeaderLink></EuiCustomLink>
+            <EuiCustomLink to="/resources"><EuiHeaderLink>Resources</EuiHeaderLink></EuiCustomLink>
+            <EuiCustomLink to="/about"><EuiHeaderLink>About</EuiHeaderLink></EuiCustomLink>
+            <EuiCustomLink to="/projects"><EuiHeaderLink>Projects</EuiHeaderLink></EuiCustomLink>
           </EuiHeaderLinks>
         </EuiHeaderSectionItem>
       </EuiHeaderSection>

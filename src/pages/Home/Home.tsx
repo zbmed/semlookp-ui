@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { EuiFlexGroup, EuiFlexItem, EuiPanel, EuiText, EuiSpacer, EuiTitle, EuiLink, EuiShowFor } from "@elastic/eui";
 import { AutocompleteWidget, DataContentWidget } from "@km/widgets-semlookp";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ReactComponent as SEMLOOKPLOGO } from "../../components/Logos/NFDI_SemLookP_Logo.svg";
+import EuiCustomLink from "../../router/EuiCustomLink";
 
 export default function Home() {
   const [searchResults, setSearchResults] = useState([]);
@@ -57,10 +58,10 @@ export default function Home() {
               <EuiFlexItem>
                 <EuiFlexGroup>
                   <EuiFlexItem>
-                    <EuiText size="s">Examples: <Link to="/search?q=diabetes">diabetes</Link>, <Link to="/search?q=GO:0098743">GO:0098743</Link></EuiText>
+                    <EuiText size="s">Examples: <EuiCustomLink to="/search?q=diabetes">diabetes</EuiCustomLink>, <EuiCustomLink to="/search?q=GO:0098743">GO:0098743</EuiCustomLink></EuiText>
                   </EuiFlexItem>
                   <EuiFlexItem>
-                    <EuiText size="s" textAlign="right"><Link to="/resources">Looking for a particular resource?</Link></EuiText>
+                    <EuiText size="s" textAlign="right"><EuiCustomLink to="/resources">Looking for a particular resource?</EuiCustomLink></EuiText>
                   </EuiFlexItem>
                 </EuiFlexGroup>
               </EuiFlexItem>
@@ -70,10 +71,10 @@ export default function Home() {
           <EuiSpacer size="xl" />
 
           <EuiPanel id="aboutSection" hasShadow={true}>
-            <EuiTitle><Link to="/docs/index">About the Terminology Service</Link></EuiTitle>
+            <EuiTitle><EuiCustomLink to="/docs/index">About the Terminology Service</EuiCustomLink></EuiTitle>
             <EuiSpacer size="xl" />
             <EuiText>
-              <p>The Terminology Service is a repository for biomedical resources that aims to provide a single point of access to the latest ontology and terminology versions. The preliminary health terminology set of the BMBF-funded project <Link to="/ols/projects#idsn">IDSN</Link> was extended by <Link to="/ols/projects#nfdi">NFDI4Health</Link> relevant resources.</p>
+              <p>The Terminology Service is a repository for biomedical resources that aims to provide a single point of access to the latest ontology and terminology versions. The preliminary health terminology set of the BMBF-funded project <EuiCustomLink to="/ols/projects#idsn">IDSN</EuiCustomLink> was extended by <EuiCustomLink to="/ols/projects#nfdi">NFDI4Health</EuiCustomLink> relevant resources.</p>
               <p>You can browse the resources through the website as well as programmatically via our API. The API of SemLookP is integrated into other web services for example the ZB MED preprint viewer <EuiLink href="https://preview.zbmed.de/" target="_blank">preVIEW</EuiLink>.</p>
               <p>It is part of the Semantic Lookup Platform, which is developed and maintained by ZB MED - Information Centre for Life Sciences.</p>
             </EuiText>
