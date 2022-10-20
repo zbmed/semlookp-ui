@@ -9,6 +9,7 @@ import Home from "./pages/Home/Home";
 import AboutPage from "./pages/About/AboutPage";
 import Resources from "./pages/Resources/Resources";
 import Error from "./pages/Error/Error";
+import Ontology from "./pages/Ontology/Ontology";
 import Term from "./pages/Term/Term";
 import ProjectsPage from './pages/Projects/ProjectsPage'
 
@@ -25,6 +26,7 @@ function App() {
               <Route path="/about" element={<AboutPage />} />
               <Route path="/resources" element={<Resources />} />
               <Route path="/projects" element={<ProjectsPage />} />
+              <Route path="/ontologies/:ontoId" element={<Ontology />} />
               <Route path="/terms" element={<Term />} />
               <Route path="*" element={<Error />} />
             </Route>
