@@ -4,6 +4,7 @@ import { AutocompleteWidget, DescriptionWidget, HierarchyTabWidget, IriWidget, T
 import "./Term.css";
 import { EuiFlexGroup, EuiFlexItem, EuiPanel, EuiSpacer, EuiText } from '@elastic/eui'
 import { useQuery } from 'react-query'
+import { Helmet } from "react-helmet";
 
 const API = "https://semanticlookup.zbmed.de/ols/api/"
 
@@ -90,6 +91,13 @@ export default function Term() {
                 </EuiPanel>
 
             </EuiFlexGroup>
+            <Helmet>
+                <title> Term overview &gt; SemLookP </title>
+                <meta
+                  name="description"
+                  content="Term overview for the semantic Lookup Service - SemLookP"
+                />
+            </Helmet>
         </div>
     );
 }

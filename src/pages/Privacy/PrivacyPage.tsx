@@ -1,5 +1,7 @@
 import React from "react";
-import { EuiFlexGroup, EuiFlexItem, EuiLink, EuiPanel, EuiText } from "@elastic/eui";
+import { EuiFlexGroup, EuiFlexItem, EuiLink, EuiPanel, EuiText }
+  from "@elastic/eui";
+import { Helmet } from "react-helmet";
 
 export default function PrivacyPage() {
   return (
@@ -128,7 +130,13 @@ export default function PrivacyPage() {
           </EuiFlexItem>
         </EuiFlexGroup>
       </EuiPanel>
+      <Helmet>
+        <title> Privacy Declaration &gt; SemLookP </title>
+        <meta
+          name="description"
+          content="Privacy Declaration of the semantic Lookup Service - SemLookP"
+        />
+      </Helmet>
     </div>
-
   );
 }

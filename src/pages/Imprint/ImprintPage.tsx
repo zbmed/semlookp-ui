@@ -1,5 +1,7 @@
 import React from "react";
-import { EuiFlexGroup, EuiFlexItem, EuiLink, EuiPanel, EuiText } from "@elastic/eui";
+import { EuiFlexGroup, EuiFlexItem, EuiLink, EuiPanel, EuiText}
+  from "@elastic/eui";
+import { Helmet } from "react-helmet";
 
 export default function ImprintPage() {
   return (
@@ -68,7 +70,13 @@ export default function ImprintPage() {
           </EuiFlexItem>
         </EuiFlexGroup>
       </EuiPanel>
+      <Helmet>
+        <title> Legal Notice &gt; SemLookP </title>
+        <meta
+          name="description"
+          content="Legal Notice of the semantic Lookup Service - SemLookP"
+        />
+      </Helmet>
     </div>
-
   );
 }

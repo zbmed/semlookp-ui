@@ -3,12 +3,12 @@ import {
   EuiFlexGroup, EuiFlexItem, EuiCode, EuiCodeBlock, EuiBasicTable, EuiPanel,
   EuiText, EuiSideNav, EuiLink
 } from "@elastic/eui";
+import { Helmet } from "react-helmet";
 
 export default function ApiPage() {
   return (
     <div>
-
-          <EuiFlexGroup>
+      <EuiFlexGroup>
             <EuiFlexItem grow={7}>
               <EuiPanel hasShadow={true}>
                 <EuiText>
@@ -297,19 +297,19 @@ Content-Length: 432
 {
 "_links" : {
 "ontologies" : {
-  "href" : "http://semanticlookup.zbmed.de/ols/api/ontologies"
+  "href" : "https://semanticlookup.zbmed.de/ols/api/ontologies"
 },
 "individuals" : {
-  "href" : "http://semanticlookup.zbmed.de/ols/api/individuals"
+  "href" : "https://semanticlookup.zbmed.de/ols/api/individuals"
 },
 "terms" : {
-  "href" : "http://semanticlookup.zbmed.de/ols/api/terms"
+  "href" : "https://semanticlookup.zbmed.de/ols/api/terms"
 },
 "properties" : {
-  "href" : "http://semanticlookup.zbmed.de/ols/api/properties"
+  "href" : "https://semanticlookup.zbmed.de/ols/api/properties"
 },
 "profile" : {
-  "href" : "http://semanticlookup.zbmed.de/ols/api/profile"
+  "href" : "https://semanticlookup.zbmed.de/ols/api/profile"
 }
 }
 }`
@@ -458,16 +458,16 @@ Content-Length: 5202
 },
 "_links" : {
 "self" : {
-  "href" : "http://semanticlookup.zbmed.de/ols/api/ontologies/efo"
+  "href" : "https://semanticlookup.zbmed.de/ols/api/ontologies/efo"
 },
 "terms" : {
-  "href" : "http://semanticlookup.zbmed.de/ols/api/ontologies/efo/terms"
+  "href" : "https://semanticlookup.zbmed.de/ols/api/ontologies/efo/terms"
 },
 "properties" : {
-  "href" : "http://semanticlookup.zbmed.de/ols/api/ontologies/efo/properties"
+  "href" : "https://semanticlookup.zbmed.de/ols/api/ontologies/efo/properties"
 },
 "individuals" : {
-  "href" : "http://semanticlookup.zbmed.de/ols/api/ontologies/efo/individuals"
+  "href" : "https://semanticlookup.zbmed.de/ols/api/ontologies/efo/individuals"
 }
 }
 }`
@@ -656,37 +656,37 @@ Content-Length: 3657
 "is_preferred_root" : false,
 "_links" : {
 "self" : {
-  "href" : "http://semanticlookup.zbmed.de/ols/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226"
+  "href" : "https://semanticlookup.zbmed.de/ols/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226"
 },
 "parents" : {
-  "href" : "http://semanticlookup.zbmed.de/ols/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/parents"
+  "href" : "https://semanticlookup.zbmed.de/ols/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/parents"
 },
 "ancestors" : {
-  "href" : "http://semanticlookup.zbmed.de/ols/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/ancestors"
+  "href" : "https://semanticlookup.zbmed.de/ols/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/ancestors"
 },
 "hierarchicalParents" : {
-  "href" : "http://semanticlookup.zbmed.de/ols/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/hierarchicalParents"
+  "href" : "https://semanticlookup.zbmed.de/ols/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/hierarchicalParents"
 },
 "hierarchicalAncestors" : {
-  "href" : "http://semanticlookup.zbmed.de/ols/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/hierarchicalAncestors"
+  "href" : "https://semanticlookup.zbmed.de/ols/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/hierarchicalAncestors"
 },
 "jstree" : {
-  "href" : "http://semanticlookup.zbmed.de/ols/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/jstree"
+  "href" : "https://semanticlookup.zbmed.de/ols/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/jstree"
 },
 "children" : {
-  "href" : "http://semanticlookup.zbmed.de/ols/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/children"
+  "href" : "https://semanticlookup.zbmed.de/ols/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/children"
 },
 "descendants" : {
-  "href" : "http://semanticlookup.zbmed.de/ols/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/descendants"
+  "href" : "https://semanticlookup.zbmed.de/ols/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/descendants"
 },
 "hierarchicalChildren" : {
-  "href" : "http://semanticlookup.zbmed.de/ols/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/hierarchicalChildren"
+  "href" : "https://semanticlookup.zbmed.de/ols/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/hierarchicalChildren"
 },
 "hierarchicalDescendants" : {
-  "href" : "http://semanticlookup.zbmed.de/ols/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/hierarchicalDescendants"
+  "href" : "https://semanticlookup.zbmed.de/ols/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/hierarchicalDescendants"
 },
 "graph" : {
-  "href" : "http://semanticlookup.zbmed.de/ols/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/graph"
+  "href" : "https://semanticlookup.zbmed.de/ols/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/graph"
 }
 }
 }`
@@ -1481,7 +1481,13 @@ Content-Length: 3657
               </EuiPanel>
             </EuiFlexItem>
           </EuiFlexGroup>
-      </div>
-
+      <Helmet>
+        <title> API Guide &gt; SemLookP </title>
+        <meta
+          name="description"
+          content="API Guide for the Terminology Service - SemLookP"
+        />
+      </Helmet>
+    </div>
   )
 }

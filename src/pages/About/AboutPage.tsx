@@ -1,6 +1,7 @@
 import React from "react";
 import { EuiFlexGroup, EuiFlexItem, EuiText, EuiPanel, EuiLink } from "@elastic/eui";
 import EuiCustomLink from "../../router/EuiCustomLink";
+import { Helmet } from "react-helmet";
 
 export default function AboutPage() {
   return (
@@ -59,6 +60,13 @@ export default function AboutPage() {
           </EuiText>
         </EuiFlexItem>
       </EuiPanel>
+      <Helmet>
+        <title> About &gt; SemLookP </title>
+        <meta
+          name="description"
+          content="About the Terminology Service - SemLookP"
+        />
+      </Helmet>
     </EuiFlexGroup>
   );
 }

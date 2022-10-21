@@ -7,6 +7,7 @@ import idsnlogo from "../../components/Logos/LogoIDSN.png";
 import scailogo from "../../components/Logos/scai.png";
 import dznelogo from "../../components/Logos/dzne_logo.png";
 import ukelogo from "../../components/Logos/uke_logo.jpg";
+import { Helmet } from "react-helmet";
 
 
 export default function ProjectsPage() {
@@ -221,7 +222,13 @@ export default function ProjectsPage() {
 
                 </EuiFlexGroup>
             </EuiPanel>
+            <Helmet>
+                <title> Projects &gt; SemLookP </title>
+                <meta
+                  name="description"
+                  content="Projects which integrates the Terminology Service - SemLookP"
+                />
+            </Helmet>
         </div>
-
     );
 }
