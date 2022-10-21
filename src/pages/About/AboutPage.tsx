@@ -1,5 +1,6 @@
 import React from "react";
-import { EuiFlexGroup, EuiFlexItem, EuiText, EuiPanel } from "@elastic/eui";
+import { EuiFlexGroup, EuiFlexItem, EuiText, EuiPanel, EuiLink } from "@elastic/eui";
+import EuiCustomLink from "../../router/EuiCustomLink";
 
 export default function AboutPage() {
   return (
@@ -23,21 +24,33 @@ export default function AboutPage() {
             <h3>API documentation:</h3>
             <p>
               {" "}
-              Documentation on how to use the Terminology Service’s REST API
+              <EuiCustomLink to="/about/api">
+                Documentation on how to use the Terminology Service’s REST API
+              </EuiCustomLink>
             </p>
             <h3>Source Code:</h3>
-            <p>Terminology Service on GitLab</p>
+            <p>
+              <EuiLink
+                href="https://gitlab.zbmed.de/semlookp/lookup-service"
+                target={"_blank"}>
+                Terminology Service on GitLab
+              </EuiLink>
+            </p>
             <h3>OLS documentation:</h3>
             <p>
-              {" "}
-              EMBL-EBI’s documentation of the Ontology Lookup Service, on which
-              the Terminology Service is based
+              <EuiLink
+                href="https://www.ebi.ac.uk/ols/docs/index"
+                target={"_blank"}>
+                EMBL-EBI’s documentation of the Ontology Lookup Service, on
+                which the Terminology Service is based
+              </EuiLink>
             </p>
 
             <h3>Publications:</h3>
-            <a href="https://swat4hcls.figshare.com/articles/A_Semantic_Data_Integration_Methodology_for_Translational_Neurodegenerative_Disease_Research/7339244">
+            <EuiLink href="https://swat4hcls.figshare.com/articles/A_Semantic_Data_Integration_Methodology_for_Translational_Neurodegenerative_Disease_Research/7339244"
+                     target="_blank">
               IDSN
-            </a>
+            </EuiLink>
             <p>
               {" "}
               A Semantic Data Integration Methodology for Translational
