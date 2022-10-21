@@ -8,7 +8,7 @@ import Layout from "./components/Layout/Layout";
 import {
   Home, AboutPage, ApiPage, Error, ImprintPage, PrivacyPage, ProjectsPage,
   Resources, Term
-} from "./PagesImport";
+} from "./imports/PagesImport";
 
 function App() {
   const queryClient = new QueryClient();
