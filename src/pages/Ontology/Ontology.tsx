@@ -1,9 +1,7 @@
 import React from "react";
 import { EuiFlexGroup, EuiFlexItem, EuiPanel } from "@elastic/eui";
 import { useParams, useNavigate } from "react-router-dom";
-import { AutocompleteWidget } from "@km/widgets-semlookp";
-import { HierarchyTabWidget } from "@km/widgets-semlookp";
-import { OntologyInfoWidget } from "@km/widgets-semlookp";
+import { AutocompleteWidget, HierarchyTabWidget, OntologyInfoWidget, JsonApiWidget } from "@km/widgets-semlookp";
 
 
 export default function Ontology() {
@@ -15,7 +13,7 @@ export default function Ontology() {
       <EuiFlexGroup justifyContent="spaceAround">
         <EuiFlexItem grow={7}>
           <EuiPanel id="titleBox" hasShadow={true}>
-            PLACEHOLDER! Will contain 4 widgets: Title+Description and JsonApi+Download buttons {/*TODO*/}
+            PLACEHOLDER! Will contain 2 widgets: Title and Description {/*TODO*/}
           </EuiPanel>
         </EuiFlexItem>
         <EuiFlexItem grow={3}>
@@ -28,6 +26,12 @@ export default function Ontology() {
               }}
               parameter={"ontology="+routeParams.ontoId}
             />
+            <JsonApiWidget
+              apiQuery={"https://semanticlookup.zbmed.de/ols/api/ontologies/"+routeParams.ontoId}
+              buttonText={"JSON"}
+              buttonSize={"s"}
+            />
+            {/*TODO add download widget*/}
           </EuiPanel>
         </EuiFlexItem>
       </EuiFlexGroup>
