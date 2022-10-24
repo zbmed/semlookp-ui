@@ -9,7 +9,339 @@ export default function ApiPage() {
   return (
     <div>
       <EuiFlexGroup>
-            <EuiFlexItem grow={7}>
+        <EuiFlexItem grow={3}>
+          <EuiPanel hasShadow={true}>
+            <EuiSideNav
+              items={[
+                {
+                  name: 'SemLookP - Terminology Service API',
+                  id: '1',
+                  items: [
+                    {
+                      name: 'Overview',
+                      id: '1',
+                      forceOpen: true,
+                      items: [
+                        {
+                          name: 'HTTP verbs',
+                          id: '1.1',
+                          href: '#http-verbs'
+                        },
+                        {
+                          name: 'HTTP status codes',
+                          id: '1.2',
+                          href: '#http-status-code'
+                        },
+                        {
+                          name: 'Errors',
+                          id: '1.3',
+                          href: '#errors'
+                        },
+                        {
+                          name: 'Hypermedia',
+                          id: '1.4',
+                          href: '#hypermedia'
+                        },
+                        {
+                          name: 'Listing resources',
+                          id: '1.5',
+                          forceOpen: true,
+                          href: '#listing-resources',
+                          items: [
+                            {
+                              name: 'Paging resources',
+                              id: '1.5.1',
+                              forceOpen: true,
+                              href: '#paging-resources',
+                              items: [
+                                {
+                                  name: 'Example request',
+                                  id: '1.5.1.1',
+                                  href: '#example-request',
+                                },
+                                {
+                                  name: 'Example response',
+                                  id: '1.5.1.2',
+                                  href: '#example-response',
+                                },
+                                {
+                                  name: 'Response structure',
+                                  id: '1.5.1.3',
+                                  href: '#response-structure',
+                                },
+                                {
+                                  name: 'Links',
+                                  id: '1.5.1.4',
+                                  href: '#links',
+                                },
+
+                              ]
+                            }
+                          ],
+                        },
+                      ],
+                      href: '#overview'
+                    },
+                    {
+                      name: 'Resources',
+                      id: '2',
+                      href: '#resources',
+                      forceOpen: true,
+                      items: [
+                        {
+                          name: 'API',
+                          id: '2.1',
+                          href: '#api',
+                          forceOpen: true,
+                          items: [
+                            {
+                              name: 'Accessing the API',
+                              id: '2.1.1',
+                              href: '#accessing-the-api',
+                              forceOpen: true,
+                              items: [
+                                {
+                                  name: 'Example request',
+                                  id: '2.1.1.1',
+                                  href: '#example-request-2',
+                                },
+                                {
+                                  name: 'Example response',
+                                  id: '2.1.1.2',
+                                  href: '#example-response-2',
+                                },
+                                {
+                                  name: 'Response structure',
+                                  id: '2.1.1.3',
+                                  href: '#response-structure-2',
+                                },
+                                {
+                                  name: 'Links',
+                                  id: '2.1.1.4',
+                                  href: '#links-2',
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          name: 'Ontologies',
+                          id: '2.2',
+                          href: '#ontologies',
+                          forceOpen: true,
+                          items: [
+                            {
+                              name: 'Listing ontologies',
+                              id: '2.2.1',
+                              href: '#listing-ontologies',
+                              forceOpen: true,
+                              items: [
+                                {
+                                  name: 'Example request',
+                                  id: '2.2.1.1',
+                                  href: '#example-request-3',
+                                },
+                                {
+                                  name: 'Response structure',
+                                  id: '2.2.1.2',
+                                  href: '#response-structure-3',
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          name: 'Ontology',
+                          id: '2.3',
+                          href: '#ontology',
+                          forceOpen: true,
+                          items: [
+                            {
+                              name: 'Retrieve an ontology',
+                              id: '2.3.1',
+                              href: '#retrieve-an-ontology',
+                              forceOpen: true,
+                              items: [
+                                {
+                                  name: 'Example request',
+                                  id: '2.3.1.1',
+                                  href: '#example-request-4',
+                                },
+                                {
+                                  name: 'Example response',
+                                  id: '2.3.1.2',
+                                  href: '#example-response-4',
+                                },
+                                {
+                                  name: 'Links',
+                                  id: '2.3.1.3',
+                                  href: '#links-4',
+                                },
+                                {
+                                  name: 'Root terms',
+                                  id: '2.3.1.4',
+                                  href: '#root-terms',
+                                },
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          name: 'Terms',
+                          id: '2.4',
+                          href: '#terms',
+                          forceOpen: true,
+                          items: [
+                            {
+                              name: 'Listing ontology terms',
+                              id: '2.4.1',
+                              href: '#listing-ontology-terms',
+                              forceOpen: true,
+                              items: [
+                                {
+                                  name: 'Optional parameters',
+                                  id: '2.4.1.1',
+                                  href: '#optional-parameters',
+                                },
+                                {
+                                  name: 'Example request',
+                                  id: '2.4.1.2',
+                                  href: '#example-request-5',
+                                },
+                                {
+                                  name: 'Response structure',
+                                  id: '2.4.1.3',
+                                  href: '#response-structure-5',
+                                },
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          name: 'Term',
+                          id: '2.5',
+                          href: '#term',
+                          forceOpen: true,
+                          items: [
+                            {
+                              name: 'Retrieve a term',
+                              id: '2.5.1',
+                              href: '#retrieve-a-term',
+                              forceOpen: true,
+                              items: [
+                                {
+                                  name: 'Example request',
+                                  id: '2.5.1.1',
+                                  href: '#example-request-6',
+                                },
+                                {
+                                  name: 'Example request',
+                                  id: '2.5.1.2',
+                                  href: '#example-request-7',
+                                },
+                                {
+                                  name: 'Example response',
+                                  id: '2.5.1.3',
+                                  href: '#example-response-7',
+                                },
+                                {
+                                  name: 'Links',
+                                  id: '2.5.1.4',
+                                  href: '#links-7',
+                                },
+                              ]
+                            },
+                            {
+                              name: 'Parent/Child relationships for terms',
+                              id: '2.5.2',
+                              href: '#parent-child-relationships-for-terms',
+                              forceOpen: true,
+                              items: [
+                                {
+                                  name: 'Example request',
+                                  id: '2.5.2.1',
+                                  href: '#example-request-8',
+                                },
+                                {
+                                  name: 'Example requests',
+                                  id: '2.5.2.2',
+                                  href: '#example-requests',
+                                },
+                              ]
+                            },
+                            {
+                              name: 'Other related terms',
+                              id: '2.5.3',
+                              href: '#other-related-terms',
+                              forceOpen: true,
+                              items: [
+                                {
+                                  name: 'Example request',
+                                  id: '2.5.3.1',
+                                  href: '#example-request-9',
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          name: 'Properties and individuals',
+                          id: '2.6',
+                          href: '#properties-and-individuals',
+                          forceOpen: true,
+                          items: [
+                            {
+                              name: 'Retrieve a property',
+                              id: '2.6.1',
+                              href: '#retrieve-a-property'
+                            },
+                            {
+                              name: 'Retrieve an individual',
+                              id: '2.6.2',
+                              href: '#retrieve-an-individual'
+                            }
+                          ]
+                        },
+                      ]
+                    },
+                    {
+                      name: 'Search',
+                      id: '3',
+                      href: '#search',
+                      forceOpen: true,
+                      items: [
+                        {
+                          name: 'Search terms',
+                          id: '3.1',
+                          href: '#search-terms',
+                          forceOpen: true,
+                          items: [
+                            {
+                              name: 'Search parameters',
+                              id: '3.1.1',
+                              href: '#search-parameters',
+                            }
+                          ]
+                        },
+                        {
+                          name: 'Select terms',
+                          id: '3.2',
+                          href: '#select-terms'
+                        },
+                        {
+                          name: 'Suggest terms',
+                          id: '3.3',
+                          href: '#suggest-terms'
+                        }
+                      ]
+                    }
+                  ],
+                },
+              ]}
+            />
+          </EuiPanel>
+        </EuiFlexItem>
+        <EuiFlexItem grow={7}>
               <EuiPanel hasShadow={true}>
                 <EuiText>
                   <h1>SemLookP - Terminology Service API Guide</h1>
@@ -1146,338 +1478,6 @@ Content-Length: 3657
 
                 </EuiText>
 
-              </EuiPanel>
-            </EuiFlexItem>
-            <EuiFlexItem grow={3}>
-              <EuiPanel hasShadow={true}>
-                <EuiSideNav
-                  items={[
-                    {
-                      name: 'SemLookP - Terminology Service API',
-                      id: '1',
-                      items: [
-                        {
-                          name: 'Overview',
-                          id: '1',
-                          forceOpen: true,
-                          items: [
-                            {
-                              name: 'HTTP verbs',
-                              id: '1.1',
-                              href: '#http-verbs'
-                            },
-                            {
-                              name: 'HTTP status codes',
-                              id: '1.2',
-                              href: '#http-status-code'
-                            },
-                            {
-                              name: 'Errors',
-                              id: '1.3',
-                              href: '#errors'
-                            },
-                            {
-                              name: 'Hypermedia',
-                              id: '1.4',
-                              href: '#hypermedia'
-                            },
-                            {
-                              name: 'Listing resources',
-                              id: '1.5',
-                              forceOpen: true,
-                              href: '#listing-resources',
-                              items: [
-                                {
-                                  name: 'Paging resources',
-                                  id: '1.5.1',
-                                  forceOpen: true,
-                                  href: '#paging-resources',
-                                  items: [
-                                    {
-                                      name: 'Example request',
-                                      id: '1.5.1.1',
-                                      href: '#example-request',
-                                    },
-                                    {
-                                      name: 'Example response',
-                                      id: '1.5.1.2',
-                                      href: '#example-response',
-                                    },
-                                    {
-                                      name: 'Response structure',
-                                      id: '1.5.1.3',
-                                      href: '#response-structure',
-                                    },
-                                    {
-                                      name: 'Links',
-                                      id: '1.5.1.4',
-                                      href: '#links',
-                                    },
-
-                                  ]
-                                }
-                              ],
-                            },
-                          ],
-                          href: '#overview'
-                        },
-                        {
-                          name: 'Resources',
-                          id: '2',
-                          href: '#resources',
-                          forceOpen: true,
-                          items: [
-                            {
-                              name: 'API',
-                              id: '2.1',
-                              href: '#api',
-                              forceOpen: true,
-                              items: [
-                                {
-                                  name: 'Accessing the API',
-                                  id: '2.1.1',
-                                  href: '#accessing-the-api',
-                                  forceOpen: true,
-                                  items: [
-                                    {
-                                      name: 'Example request',
-                                      id: '2.1.1.1',
-                                      href: '#example-request-2',
-                                    },
-                                    {
-                                      name: 'Example response',
-                                      id: '2.1.1.2',
-                                      href: '#example-response-2',
-                                    },
-                                    {
-                                      name: 'Response structure',
-                                      id: '2.1.1.3',
-                                      href: '#response-structure-2',
-                                    },
-                                    {
-                                      name: 'Links',
-                                      id: '2.1.1.4',
-                                      href: '#links-2',
-                                    }
-                                  ]
-                                }
-                              ]
-                            },
-                            {
-                              name: 'Ontologies',
-                              id: '2.2',
-                              href: '#ontologies',
-                              forceOpen: true,
-                              items: [
-                                {
-                                  name: 'Listing ontologies',
-                                  id: '2.2.1',
-                                  href: '#listing-ontologies',
-                                  forceOpen: true,
-                                  items: [
-                                    {
-                                      name: 'Example request',
-                                      id: '2.2.1.1',
-                                      href: '#example-request-3',
-                                    },
-                                    {
-                                      name: 'Response structure',
-                                      id: '2.2.1.2',
-                                      href: '#response-structure-3',
-                                    }
-                                  ]
-                                }
-                              ]
-                            },
-                            {
-                              name: 'Ontology',
-                              id: '2.3',
-                              href: '#ontology',
-                              forceOpen: true,
-                              items: [
-                                {
-                                  name: 'Retrieve an ontology',
-                                  id: '2.3.1',
-                                  href: '#retrieve-an-ontology',
-                                  forceOpen: true,
-                                  items: [
-                                    {
-                                      name: 'Example request',
-                                      id: '2.3.1.1',
-                                      href: '#example-request-4',
-                                    },
-                                    {
-                                      name: 'Example response',
-                                      id: '2.3.1.2',
-                                      href: '#example-response-4',
-                                    },
-                                    {
-                                      name: 'Links',
-                                      id: '2.3.1.3',
-                                      href: '#links-4',
-                                    },
-                                    {
-                                      name: 'Root terms',
-                                      id: '2.3.1.4',
-                                      href: '#root-terms',
-                                    },
-                                  ]
-                                }
-                              ]
-                            },
-                            {
-                              name: 'Terms',
-                              id: '2.4',
-                              href: '#terms',
-                              forceOpen: true,
-                              items: [
-                                {
-                                  name: 'Listing ontology terms',
-                                  id: '2.4.1',
-                                  href: '#listing-ontology-terms',
-                                  forceOpen: true,
-                                  items: [
-                                    {
-                                      name: 'Optional parameters',
-                                      id: '2.4.1.1',
-                                      href: '#optional-parameters',
-                                    },
-                                    {
-                                      name: 'Example request',
-                                      id: '2.4.1.2',
-                                      href: '#example-request-5',
-                                    },
-                                    {
-                                      name: 'Response structure',
-                                      id: '2.4.1.3',
-                                      href: '#response-structure-5',
-                                    },
-                                  ]
-                                }
-                              ]
-                            },
-                            {
-                              name: 'Term',
-                              id: '2.5',
-                              href: '#term',
-                              forceOpen: true,
-                              items: [
-                                {
-                                  name: 'Retrieve a term',
-                                  id: '2.5.1',
-                                  href: '#retrieve-a-term',
-                                  forceOpen: true,
-                                  items: [
-                                    {
-                                      name: 'Example request',
-                                      id: '2.5.1.1',
-                                      href: '#example-request-6',
-                                    },
-                                    {
-                                      name: 'Example request',
-                                      id: '2.5.1.2',
-                                      href: '#example-request-7',
-                                    },
-                                    {
-                                      name: 'Example response',
-                                      id: '2.5.1.3',
-                                      href: '#example-response-7',
-                                    },
-                                    {
-                                      name: 'Links',
-                                      id: '2.5.1.4',
-                                      href: '#links-7',
-                                    },
-                                  ]
-                                },
-                                {
-                                  name: 'Parent/Child relationships for terms',
-                                  id: '2.5.2',
-                                  href: '#parent-child-relationships-for-terms',
-                                  forceOpen: true,
-                                  items: [
-                                    {
-                                      name: 'Example request',
-                                      id: '2.5.2.1',
-                                      href: '#example-request-8',
-                                    },
-                                    {
-                                      name: 'Example requests',
-                                      id: '2.5.2.2',
-                                      href: '#example-requests',
-                                    },
-                                  ]
-                                },
-                                {
-                                  name: 'Other related terms',
-                                  id: '2.5.3',
-                                  href: '#other-related-terms',
-                                  forceOpen: true,
-                                  items: [
-                                    {
-                                      name: 'Example request',
-                                      id: '2.5.3.1',
-                                      href: '#example-request-9',
-                                    }
-                                  ]
-                                }
-                              ]
-                            },
-                            {
-                              name: 'Properties and individuals',
-                              id: '2.6',
-                              href: '#properties-and-individuals',
-                              forceOpen: true,
-                              items: [
-                                {
-                                  name: 'Retrieve a property',
-                                  id: '2.6.1',
-                                  href: '#retrieve-a-property'
-                                },
-                                {
-                                  name: 'Retrieve an individual',
-                                  id: '2.6.2',
-                                  href: '#retrieve-an-individual'
-                                }
-                              ]
-                            },
-                          ]
-                        },
-                        {
-                          name: 'Search',
-                          id: '3',
-                          href: '#search',
-                          forceOpen: true,
-                          items: [
-                            {
-                              name: 'Search terms',
-                              id: '3.1',
-                              href: '#search-terms',
-                              forceOpen: true,
-                              items: [
-                                {
-                                  name: 'Search parameters',
-                                  id: '3.1.1',
-                                  href: '#search-parameters',
-                                }
-                              ]
-                            },
-                            {
-                              name: 'Select terms',
-                              id: '3.2',
-                              href: '#select-terms'
-                            },
-                            {
-                              name: 'Suggest terms',
-                              id: '3.3',
-                              href: '#suggest-terms'
-                            }
-                          ]
-                        }
-                      ],
-                    },
-                  ]}
-                />
               </EuiPanel>
             </EuiFlexItem>
           </EuiFlexGroup>
