@@ -6,7 +6,7 @@ import { ReactComponent as SEMLOOKPLOGO } from "../../components/Logos/NFDI_SemL
 import EuiCustomLink from "../../router/EuiCustomLink";
 
 export default function Home() {
-  const [searchResults, setSearchResults] = useState([]);
+  const [searchResults, setSearchResults] = useState({options:[], selectedOption:{}});
   const navigate = useNavigate();
   return (
     <>
@@ -34,7 +34,7 @@ export default function Home() {
                   onChange={setSearchResults}
                   parameter={"ontology=mesh,efo&type=class"}
                 />
-                {searchResults.map((result) => (
+                {searchResults.options.map((result) => (
                   <EuiPanel
                     key={result.value}
                     style={{ padding: "10px", margin: "10px" }}
