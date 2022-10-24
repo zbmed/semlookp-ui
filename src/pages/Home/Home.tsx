@@ -6,7 +6,7 @@ import { ReactComponent as SEMLOOKPLOGO } from "../../components/Logos/NFDI_SemL
 import EuiCustomLink from "../../router/EuiCustomLink";
 
 export default function Home() {
-  const [searchResults, setSearchResults] = useState([]);
+  const [searchResults, setSearchResults] = useState({options:[], selectedOption:{}});
   const navigate = useNavigate();
   return (
     <>
@@ -34,7 +34,7 @@ export default function Home() {
                   onChange={setSearchResults}
                   parameter={"ontology=mesh,efo&type=class"}
                 />
-                {searchResults.map((result) => (
+                {searchResults.options.map((result) => (
                   <EuiPanel
                     key={result.value}
                     style={{ padding: "10px", margin: "10px" }}
@@ -74,7 +74,7 @@ export default function Home() {
             <EuiTitle><EuiCustomLink to="/docs/index">About the Terminology Service</EuiCustomLink></EuiTitle>
             <EuiSpacer size="xl" />
             <EuiText>
-              <p>The Terminology Service is a repository for biomedical resources that aims to provide a single point of access to the latest ontology and terminology versions. The preliminary health terminology set of the BMBF-funded project <EuiCustomLink to="/ols/projects#idsn">IDSN</EuiCustomLink> was extended by <EuiCustomLink to="/ols/projects#nfdi">NFDI4Health</EuiCustomLink> relevant resources.</p>
+              <p>The Terminology Service is a repository for biomedical resources that aims to provide a single point of access to the latest ontology and terminology versions. The preliminary health terminology set of the BMBF-funded project <EuiCustomLink to="/projects#idsn">IDSN</EuiCustomLink> was extended by <EuiCustomLink to="/projects#nfdi">NFDI4Health</EuiCustomLink> relevant resources.</p>
               <p>You can browse the resources through the website as well as programmatically via our API. The API of SemLookP is integrated into other web services for example the ZB MED preprint viewer <EuiLink href="https://preview.zbmed.de/" target="_blank">preVIEW</EuiLink>.</p>
               <p>It is part of the Semantic Lookup Platform, which is developed and maintained by ZB MED - Information Centre for Life Sciences.</p>
             </EuiText>

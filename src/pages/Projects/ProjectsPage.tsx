@@ -26,8 +26,8 @@ export default function ProjectsPage() {
                             <EuiFlexGroup>
                                 <EuiFlexItem grow={8}>
                                     <EuiText>
-                                        <h2>NFDI4Health - National Research Data Infrastructure for Personal Health
-                                            Data</h2>
+                                        <h2 id="nfdi">NFDI4Health - National Research Data Infrastructure for Personal
+                                            Health Data</h2>
                                     </EuiText>
                                 </EuiFlexItem>
                                 <EuiFlexItem grow={2}>
@@ -117,7 +117,7 @@ export default function ProjectsPage() {
                                 <EuiFlexGroup>
                                     <EuiFlexItem grow={8}>
                                         <EuiText>
-                                            <h2>
+                                            <h2 id="idsn">
                                                 IDSN - Integrative Data Semantics in Neurodegeneration Research
                                             </h2>
                                             <h3>Summary</h3>
