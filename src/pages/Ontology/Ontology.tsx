@@ -1,6 +1,6 @@
 import React from "react";
 import { EuiFlexGroup, EuiFlexItem, EuiPanel } from "@elastic/eui";
-import { useParams} from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { AutocompleteWidget } from "@km/widgets-semlookp";
 import { HierarchyTabWidget } from "@km/widgets-semlookp";
 import { OntologyInfoWidget } from "@km/widgets-semlookp";
@@ -8,6 +8,7 @@ import { OntologyInfoWidget } from "@km/widgets-semlookp";
 
 export default function Ontology() {
   const routeParams = useParams();
+  const navigate = useNavigate();
 
   return (
     <>
@@ -21,7 +22,10 @@ export default function Ontology() {
           <EuiPanel id="searchBox" hasShadow={true}>
             <AutocompleteWidget
               api={"https://semanticlookup.zbmed.de/ols/api/"}
-              onChange={() => console.log("clicked a search result")} /*TODO allow clicking results to navigate there*/
+              onChange={(result: {options:[], selectedOption}) => {
+                navigate("/ontologies/"+routeParams.ontoId +
+                  "/terms?iri="+encodeURI(result.selectedOption.value.iri))
+              }}
               parameter={"ontology="+routeParams.ontoId}
             />
           </EuiPanel>
