@@ -32,7 +32,7 @@ export default function Home() {
                 <AutocompleteWidget
                   api={"https://semanticlookup.zbmed.de/ols/api/"}
                   onChange={setSearchResults}
-                  parameter={"ontology=mesh,efo&type=class"}
+                  parameter={"type=class"}
                 />
                 {searchResults.options.map((result) => (
                   <EuiPanel
