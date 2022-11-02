@@ -7,15 +7,8 @@ import LinkScroller from "./components/LinkScroller";
 
 import Layout from "./components/Layout/Layout";
 import {
-  AboutPage,
-  ApiPage,
-  Error,
-  Home,
-  ImprintPage,
-  PrivacyPage,
-  ProjectsPage,
-  Resources,
-  Term
+  Home, AboutPage, ApiPage, Error, ImprintPage, PrivacyPage, ProjectsPage,
+  Resources, Term, SearchResults
 } from "./imports/PagesImport";
 
 function App() {
@@ -36,6 +29,8 @@ function App() {
                 <Route path="/privacy" element={<PrivacyPage />} />
                 <Route path="/projects" element={<ProjectsPage />} />
                 <Route path="/resources" element={<Resources />} />
+                <Route path="/terms" element={<Term />} />
+                <Route path="/search" element={<SearchResults />} />
                 <Route path="/ontologies/:ontologyId/:termType" element={<Term />} />
               </Route>
             </Routes>
