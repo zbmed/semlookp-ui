@@ -31,6 +31,7 @@ function App() {
                 <Route path="/resources" element={<Resources />} />
                 <Route path="/terms" element={<Term />} />
                 <Route path="/search" element={<SearchResults />} />
+                <Route path="/ontologies/:ontologyId/:termType" element={<Term />} />
               </Route>
             </Routes>
           </LinkScroller>
