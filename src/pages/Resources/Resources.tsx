@@ -10,7 +10,10 @@ export default function Resources() {
         <h2>List of All Resources in the Terminology Service</h2>
       </EuiText>
       <EuiSpacer />
-      <ResourcesWidget api="https://semanticlookup.zbmed.de/ols/api/" />
+      <ResourcesWidget
+        api="https://semanticlookup.zbmed.de/ols/api/"
+        targetLink="https://semanticlookup.zbmed.de/dev/"
+      />
       <Helmet>
         <title> Resources &gt; SemLookP </title>
         <meta

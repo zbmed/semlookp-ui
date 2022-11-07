@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams, useSearchParams } from "react-router-dom";
-import { AutocompleteWidget, DescriptionWidget, HierarchyTabWidget, IriWidget, TermWidget } from "@km/widgets-semlookp";
+import { AutocompleteWidget, DescriptionWidget, HierarchyTabWidget, IriWidget, TitleWidget } from "@km/widgets-semlookp";
 import "./Term.css";
 import { EuiFlexGroup, EuiFlexItem, EuiPanel, EuiSpacer, EuiText } from '@elastic/eui'
 import { Helmet } from "react-helmet";
@@ -17,8 +17,10 @@ export default function Term() {
             <EuiFlexGroup justifyContent={"spaceAround"} direction={"column"}>
                 <EuiPanel>
                     <EuiFlexItem>
-                        <TermWidget
+                        <TitleWidget
                             iri={searchParam.get("iri")}
+                            ontologyID={routeParams.ontologyID}
+                            objType={"term"}
                             api={API}
                         />
 
@@ -29,6 +31,8 @@ export default function Term() {
 
                         <DescriptionWidget
                             iri={searchParam.get("iri")}
+                            ontologyID={routeParams.ontologyID}
+                            objType={"term"}
                             api={API}
                         />
                     </EuiFlexItem>
@@ -36,7 +40,7 @@ export default function Term() {
                         {/*TODO Add on click event*/}
                         <AutocompleteWidget
                             api={API}
-                            onChange={() => console.log("onClick")}
+                            selectionChangedEvent={() => console.log("onClick")}
                             parameter={"ontology=" + routeParams.ontologyId}
                         />
                     </EuiFlexItem>
