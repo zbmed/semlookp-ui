@@ -26,7 +26,7 @@ function App() {
                 <Route path="/about/api" element={<ApiPage />} />
                 <Route path="*" element={<Error />} />
                 <Route path="/imprint" element={<ImprintPage />} />
-                <Route path="/ontologies/:ontoId" element={<Ontology />} />
+                <Route path="/ontologies/:ontologyId" element={<Ontology />} />
                 <Route path="/privacy" element={<PrivacyPage />} />
                 <Route path="/projects" element={<ProjectsPage />} />
                 <Route path="/resources" element={<Resources />} />
