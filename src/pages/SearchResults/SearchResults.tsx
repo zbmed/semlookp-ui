@@ -10,6 +10,7 @@ export default function SearchResults() {
     <SearchResultsListWidget
       api="https://semanticlookup.zbmed.de/ols/api/"
       query={query}
+      targetLink="https://semanticlookup.zbmed.de/dev/terms"
     />
   );
 }
