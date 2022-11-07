@@ -15,8 +15,8 @@ export default function Home() {
     });
   }
 
-  function onAutocompleteSuggestionSelect(changeParams: any) {
-    goToSearchResults(changeParams.selectedOption.label);
+  function onAutocompleteSuggestionSelect(selectedOption) {
+    goToSearchResults(selectedOption.label);
   }
 
   return (
@@ -43,8 +43,7 @@ export default function Home() {
                 <AutocompleteWidget
                   api={"https://semanticlookup.zbmed.de/ols/api/"}
                   parameter={"type=class"}
-                  onChange={onAutocompleteSuggestionSelect}
-                  onSearchButtonClick={goToSearchResults}
+                  selectionChangedEvent={onAutocompleteSuggestionSelect}
                 />
               </EuiFlexItem>
               <EuiFlexItem>
