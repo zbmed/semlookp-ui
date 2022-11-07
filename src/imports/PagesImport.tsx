@@ -5,6 +5,7 @@ export { default as AboutPage} from "../pages/About/AboutPage";
 export { default as ApiPage} from "../pages/About/Api/ApiPage";
 export { default as Error} from "../pages/Error/Error";
 export { default as ImprintPage} from "../pages/Imprint/ImprintPage";
+export { default as Ontology} from "../pages/Ontology/Ontology";
 export { default as PrivacyPage} from '../pages/Privacy/PrivacyPage';
 export { default as ProjectsPage} from '../pages/Projects/ProjectsPage';
 export { default as Resources} from "../pages/Resources/Resources";
