@@ -1,12 +1,14 @@
 import React from "react";
-import { EuiFlexGroup, EuiFlexItem, EuiImage, EuiLink, EuiPanel, EuiSpacer, EuiText } from "@elastic/eui";
-import { ReactComponent as DFGLOGO } from "../../components/Logos/dfg_logo_schriftzug_blau_foerderung_en.svg";
-import { ReactComponent as BMBFLOGO } from "../../components/Logos/BMBF_Logo.svg";
-import nfdi4health from "../../components/Logos/nfdi4health.png";
-import idsnlogo from "../../components/Logos/LogoIDSN.png";
-import scailogo from "../../components/Logos/scai.png";
-import dznelogo from "../../components/Logos/dzne_logo.png";
-import ukelogo from "../../components/Logos/uke_logo.jpg";
+import { EuiFlexGroup, EuiFlexItem, EuiImage, EuiLink, EuiPanel, EuiSpacer,
+    EuiText
+} from "@elastic/eui";
+import { ReactComponent as DFGLOGO
+} from "../../components/Logos/dfg_logo_schriftzug_blau_foerderung_en.svg";
+import { ReactComponent as BMBFLOGO
+} from "../../components/Logos/BMBF_Logo.svg";
+import { dznelogo, idsnlogo, nfdi4health, scailogo, ukelogo
+} from "../../imports/ImageImport";
+import { Helmet } from "react-helmet";
 
 
 export default function ProjectsPage() {
@@ -221,7 +223,13 @@ export default function ProjectsPage() {
 
                 </EuiFlexGroup>
             </EuiPanel>
+            <Helmet>
+                <title> Projects &gt; SemLookP </title>
+                <meta
+                  name="description"
+                  content="Projects which integrates the Terminology Service - SemLookP"
+                />
+            </Helmet>
         </div>
-
     );
 }
