@@ -8,15 +8,33 @@ import EuiCustomLink from "../../router/EuiCustomLink";
 export default function Home() {
   const navigate = useNavigate();
 
-  function goToSearchResults(searchValue: string) {
-    navigate({
-      pathname: "/search",
-      search: `q=${searchValue}`,
-    });
-  }
+  function goToEntityPage(selectedOption) {
 
-  function onAutocompleteSuggestionSelect(selectedOption) {
-    goToSearchResults(selectedOption.label);
+    if (selectedOption.type === "class") {
+      navigate({
+        pathname: "/ontologies/" +
+          selectedOption.ontology_name + "/terms",
+        search: "iri="+selectedOption.iri
+      });
+    } else if (selectedOption.type === "individual") {
+      navigate({
+        pathname: "/ontologies/" +
+          selectedOption.ontology_name + "/individuals",
+        search: "iri="+selectedOption.iri
+      });
+    } else if (selectedOption.type === "property") {
+      navigate({
+        pathname:
+          "/ontologies/" +
+          selectedOption.ontology_name + "/properties",
+        search: "iri="+selectedOption.iri
+      });
+    } else if (selectedOption.type === "ontology") {
+      navigate({
+        pathname: "/ontologies/" +
+          selectedOption.ontology_name + "/",
+      });
+    }
   }
 
   return (
@@ -43,7 +61,7 @@ export default function Home() {
                 <AutocompleteWidget
                   api={"https://semanticlookup.zbmed.de/ols/api/"}
                   parameter={"type=class"}
-                  selectionChangedEvent={onAutocompleteSuggestionSelect}
+                  selectionChangedEvent={goToEntityPage}
                 />
               </EuiFlexItem>
               <EuiFlexItem>
