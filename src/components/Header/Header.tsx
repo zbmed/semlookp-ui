@@ -22,6 +22,7 @@ export default function Header() {
         <EuiHeaderSectionItem>
           <EuiHeaderLinks>
             <EuiCustomLink to="/"><EuiHeaderLink>Home</EuiHeaderLink></EuiCustomLink>
+            <EuiCustomLink to="/search?q=*"><EuiHeaderLink>Search</EuiHeaderLink></EuiCustomLink>
             <EuiCustomLink to="/resources"><EuiHeaderLink>Resources</EuiHeaderLink></EuiCustomLink>
             <EuiCustomLink to="/about"><EuiHeaderLink>About</EuiHeaderLink></EuiCustomLink>
             <EuiCustomLink to="/projects"><EuiHeaderLink>Projects</EuiHeaderLink></EuiCustomLink>
