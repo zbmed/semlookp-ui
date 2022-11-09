@@ -56,7 +56,6 @@ export default function Home() {
               <EuiFlexItem>
                 <AutocompleteWidget
                   api={"https://semanticlookup.zbmed.de/ols/api/"}
-                  parameter={"type=class"}
                   placeholder={"Jump to a Term, Individual or property"}
                   selectionChangedEvent={goToEntityPage}
                 />
