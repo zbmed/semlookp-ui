@@ -52,7 +52,7 @@ export default function Term() {
                     <EuiFlexGroup>
                         <EuiFlexItem grow={3}>
                             <EuiFlexGroup direction={"column"}>
-                        <EuiFlexItem>
+                                <EuiFlexItem>
 
                             <TitleWidget
                               iri={searchParam.get("iri")}
@@ -72,23 +72,23 @@ export default function Term() {
                                 api={API}
                             />
                         </EuiFlexItem>
-                    </EuiFlexGroup>
+                            </EuiFlexGroup>
                         </EuiFlexItem>
                         <EuiFlexItem>
                             <EuiFlexGroup direction={"column"}>
-                        <EuiFlexItem style={{ maxWidth: 20, display: "inline-block",
-                            float:"right", }}>
-                            <JsonApiWidget apiQuery={API} buttonText="JSON"/>
-                        </EuiFlexItem>
-                        <EuiFlexItem>
-                            {/*TODO Add on click event*/}
-                            <AutocompleteWidget
-                                api={API}
-                                selectionChangedEvent={() => console.log("onClick")}
-                                parameter={"ontology=" + routeParams.ontologyId}
-                            />
-                        </EuiFlexItem>
-                    </EuiFlexGroup>
+                                <EuiFlexItem style={{ maxWidth: 20, display: "inline-block",
+                                    float:"right", }}>
+                                    <JsonApiWidget apiQuery={API} buttonText="JSON"/>
+                                </EuiFlexItem>
+                                <EuiFlexItem>
+                                    {/*TODO Add on click event*/}
+                                    <AutocompleteWidget
+                                        api={API}
+                                        selectionChangedEvent={() => console.log("onClick")}
+                                        parameter={"ontology=" + routeParams.ontologyId}
+                                    />
+                                </EuiFlexItem>
+                            </EuiFlexGroup>
                         </EuiFlexItem>
                     </EuiFlexGroup>
                 </EuiPanel>
@@ -103,19 +103,19 @@ export default function Term() {
                                 iri={searchParam.get("iri")}/>
                         </EuiFlexItem>
                         <EuiFlexItem>
-                        <EuiFlexGroup direction={"column"}>
-                            <EuiFlexItem>
-                                {/*TODO Create Term Info Widget?*/}
-                                <TermInfoWidget
-                                  api={API}
-                                  termIri={searchParam.get("iri")}
-                                />
-                            </EuiFlexItem>
-                            <EuiFlexItem>
-                                {/*TODO Create Term Relations Widget?*/}
-                                <EuiText><h3>Term Relations</h3></EuiText>
-                            </EuiFlexItem>
-                        </EuiFlexGroup>
+                            <EuiFlexGroup direction={"column"}>
+                                <EuiFlexItem>
+                                    {/*TODO Create Term Info Widget?*/}
+                                    <TermInfoWidget
+                                      api={API}
+                                      termIri={searchParam.get("iri")}
+                                    />
+                                </EuiFlexItem>
+                                <EuiFlexItem>
+                                    {/*TODO Create Term Relations Widget?*/}
+                                    <EuiText><h3>Term Relations</h3></EuiText>
+                                </EuiFlexItem>
+                            </EuiFlexGroup>
                         </EuiFlexItem>
                     </EuiFlexGroup>
                 </EuiPanel>
