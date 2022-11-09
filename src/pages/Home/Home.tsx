@@ -1,58 +1,78 @@
 import React from "react";
-import { EuiFlexGroup, EuiFlexItem, EuiPanel, EuiText, EuiSpacer, EuiTitle, EuiLink, EuiShowFor } from "@elastic/eui";
+import { EuiFlexGroup, EuiFlexItem, EuiPanel, EuiText, EuiSpacer, EuiTitle, EuiLink } from "@elastic/eui";
 import { AutocompleteWidget, DataContentWidget } from "@km/widgets-semlookp";
 import { useNavigate } from "react-router-dom";
-import { ReactComponent as SEMLOOKPLOGO } from "../../components/Logos/NFDI_SemLookP_Logo.svg";
 import EuiCustomLink from "../../router/EuiCustomLink";
 
 export default function Home() {
   const navigate = useNavigate();
 
-  function goToSearchResults(searchValue: string) {
-    navigate({
-      pathname: "/search",
-      search: `q=${searchValue}`,
-    });
-  }
+  function goToEntityPage(selectedOption) {
 
-  function onAutocompleteSuggestionSelect(selectedOption) {
-    goToSearchResults(selectedOption.label);
+    if (selectedOption.type === "class") {
+      navigate({
+        pathname: "/ontologies/" +
+          selectedOption.ontology_name + "/terms",
+        search: "iri="+selectedOption.iri
+      });
+    } else if (selectedOption.type === "individual") {
+      navigate({
+        pathname: "/ontologies/" +
+          selectedOption.ontology_name + "/individuals",
+        search: "iri="+selectedOption.iri
+      });
+    } else if (selectedOption.type === "property") {
+      navigate({
+        pathname:
+          "/ontologies/" +
+          selectedOption.ontology_name + "/properties",
+        search: "iri="+selectedOption.iri
+      });
+    } else if (selectedOption.type === "ontology") {
+      navigate({
+        pathname: "/ontologies/" +
+          selectedOption.ontology_name + "/",
+      });
+    }
   }
 
   return (
     <>
-      <EuiFlexGroup justifyContent="spaceAround">
-        <EuiFlexItem grow={false}>
-          <SEMLOOKPLOGO height="170px" width="auto" />
-        </EuiFlexItem>
-      </EuiFlexGroup>
-
-      <EuiSpacer size="xl" />
-      <EuiShowFor sizes={["xl"]}>
-        <EuiSpacer size="xl" />
-      </EuiShowFor>
-
       <EuiFlexGroup>
         <EuiFlexItem grow={7}>
           <EuiPanel id="searchBox" hasShadow={true}>
             <EuiFlexGroup direction="column">
               <EuiFlexItem>
-                <EuiTitle><h1>Welcome to the Terminology Service</h1></EuiTitle>
+                <EuiTitle><h1>Welcome to the Terminology Service SemLookP</h1></EuiTitle>
+              </EuiFlexItem>
+              <EuiFlexItem>
+                <EuiText size="s">The following input field provides an autocomplete functionality. It could handle for
+                  example a term (e.g. &quot;diabetes&quot;), a short form (e.g. &quot;GO:0098743&quot;) and even an
+                  IRI (e.g. http://snomed.info/id/423701002)<br/><br/>
+                  By selecting an option you will be forwarded to an overview page of the selected term, property or
+                  individual.
+                </EuiText>
               </EuiFlexItem>
               <EuiFlexItem>
                 <AutocompleteWidget
                   api={"https://semanticlookup.zbmed.de/ols/api/"}
-                  parameter={"type=class"}
-                  selectionChangedEvent={onAutocompleteSuggestionSelect}
+                  placeholder={"Jump to a Term, Individual or property"}
+                  selectionChangedEvent={goToEntityPage}
                 />
               </EuiFlexItem>
               <EuiFlexItem>
                 <EuiFlexGroup>
-                  <EuiFlexItem>
-                    <EuiText size="s">Examples: <EuiCustomLink to="/search?q=diabetes">diabetes</EuiCustomLink>, <EuiCustomLink to="/search?q=GO:0098743">GO:0098743</EuiCustomLink></EuiText>
+                  <EuiFlexItem grow={2}>
+                    <EuiText size="s">Next to this short cut via the autocomplete input field there is the possibility
+                      to use a search with filter functionality. To access this search you could click
+                      on <b>Search</b> in the menu bar.<br/><br/>
+
+                      You could also use one of our examples: <EuiCustomLink to="/search?q=diabetes">diabetes</EuiCustomLink>, <EuiCustomLink to="/search?q=GO:0098743">GO:0098743</EuiCustomLink></EuiText>
                   </EuiFlexItem>
                   <EuiFlexItem>
-                    <EuiText size="s" textAlign="right"><EuiCustomLink to="/resources">Looking for a particular resource?</EuiCustomLink></EuiText>
+                    <EuiText size="s" textAlign="right">Looking for a certain terminology?<br/><br/>
+                      <EuiCustomLink to="/resources">Please use our terminology overview</EuiCustomLink>
+                    </EuiText>
                   </EuiFlexItem>
                 </EuiFlexGroup>
               </EuiFlexItem>
