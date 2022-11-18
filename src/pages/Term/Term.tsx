@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import { AutocompleteWidget, BreadcrumbWidget, DescriptionWidget,
-    HierarchyTabWidget, IriWidget, JsonApiWidget, TermInfoWidget,
+    HierarchyWidget, IriWidget, JsonApiWidget, TermInfoWidget,
     TitleWidget } from "@km/widgets-semlookp";
 import "./Term.css";
 import { useNavigate } from "react-router-dom";
@@ -98,9 +98,8 @@ export default function Term() {
                 <EuiPanel>
                     <EuiFlexGroup>
                         <EuiFlexItem grow={3}>
-                            <HierarchyTabWidget
-                                linkToSelf={API + "ontologies/" + routeParams.ontologyId + "/" + routeParams.termType + "/"}
-                                iri={searchParam.get("iri")}/>
+                            <HierarchyWidget
+                                api={API} ontologyID={routeParams.ontologyId} iri={searchParam.get("iri")}/>
                         </EuiFlexItem>
                         <EuiFlexItem>
                             <EuiFlexGroup direction={"column"}>
