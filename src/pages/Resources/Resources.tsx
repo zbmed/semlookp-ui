@@ -13,7 +13,7 @@ export default function Resources() {
       <ResourcesWidget
         api="http://localhost:10009/api/"
         targetLink="https://semanticlookup.zbmed.de/safety/"
-        frontend="safety"
+         // frontend="safety"
       />
       <Helmet>
         <title> Resources &gt; SemLookP </title>
