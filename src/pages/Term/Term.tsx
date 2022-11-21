@@ -4,7 +4,7 @@ import {
     AutocompleteWidget,
     BreadcrumbWidget,
     DescriptionWidget,
-    HierarchyTabWidget,
+    HierarchyWidget,
     IriWidget,
     JsonApiWidget,
     TermInfoWidget,
