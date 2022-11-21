@@ -105,9 +105,8 @@ export default function Term() {
                 <EuiPanel>
                     <EuiFlexGroup>
                         <EuiFlexItem grow={3}>
-                            <HierarchyTabWidget
-                                linkToSelf={API + "ontologies/" + routeParams.ontologyId + "/" + routeParams.termType + "/"}
-                                iri={searchParam.get("iri")}/>
+                            <HierarchyWidget
+                                api={API} ontologyID={routeParams.ontologyId} iri={searchParam.get("iri")}/>
                         </EuiFlexItem>
                         <EuiFlexItem>
                             <EuiFlexGroup direction={"column"}>

@@ -1,7 +1,7 @@
 import React from "react";
 import { EuiFlexGroup, EuiFlexItem, EuiPanel } from "@elastic/eui";
 import { useParams, useNavigate } from "react-router-dom";
-import { AutocompleteWidget, DescriptionWidget, HierarchyTabWidget, JsonApiWidget, OntologyInfoWidget, TitleWidget } from "@km/widgets-semlookp";
+import { AutocompleteWidget, DescriptionWidget, HierarchyWidget, JsonApiWidget, OntologyInfoWidget, TitleWidget } from "@km/widgets-semlookp";
 
 
 export default function Ontology() {
@@ -40,8 +40,8 @@ export default function Ontology() {
 
       <EuiFlexGroup>
         <EuiFlexItem grow={7}>
-          <EuiPanel id="hierarchyBox" hasShadow={true}> {/*TODO initially open root element(s) instead of placeholder iri*/}
-            <HierarchyTabWidget linkToSelf={API+"ontologies/"+routeParams.ontologyId+"/terms/"} iri={"https://identifiers.org/atc:P02"}/>
+          <EuiPanel id="hierarchyBox" hasShadow={true}>
+            <HierarchyWidget api={API} ontologyID={routeParams.ontologyId}/>
           </EuiPanel>
         </EuiFlexItem>
         <EuiFlexItem grow={3}>
