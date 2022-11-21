@@ -23,34 +23,30 @@ export default function Term() {
     const navigate = useNavigate();
 
     function goToEntityPage(selectedOption) {
-        if (selectedOption.iri != routeParams.iri) {
-            if (selectedOption.type === "class") {
-                navigate({
-                    pathname: "/ontologies/" +
-                        selectedOption.ontology_name + "/terms",
-                    search: "iri=" + selectedOption.iri
-                });
-            } else if (selectedOption.type === "individual") {
-                navigate({
-                    pathname: "/ontologies/" +
-                        selectedOption.ontology_name + "/individuals",
-                    search: "iri=" + selectedOption.iri
-                });
-            } else if (selectedOption.type === "property") {
-                navigate({
-                    pathname:
-                        "/ontologies/" +
-                        selectedOption.ontology_name + "/properties",
-                    search: "iri=" + selectedOption.iri
-                });
-            } else if (selectedOption.type === "ontology") {
-                navigate({
-                    pathname: "/ontologies/" +
-                        selectedOption.ontology_name + "/",
-                });
-            }
-        } else {
-            return;
+        if (selectedOption.type === "class") {
+            navigate({
+                pathname: "/ontologies/" +
+                    selectedOption.ontology_name + "/terms",
+                search: "iri=" + selectedOption.iri
+            });
+        } else if (selectedOption.type === "individual") {
+            navigate({
+                pathname: "/ontologies/" +
+                    selectedOption.ontology_name + "/individuals",
+                search: "iri=" + selectedOption.iri
+            });
+        } else if (selectedOption.type === "property") {
+            navigate({
+                pathname:
+                    "/ontologies/" +
+                    selectedOption.ontology_name + "/properties",
+                search: "iri=" + selectedOption.iri
+            });
+        } else if (selectedOption.type === "ontology") {
+            navigate({
+                pathname: "/ontologies/" +
+                    selectedOption.ontology_name + "/",
+            });
         }
     }
 
