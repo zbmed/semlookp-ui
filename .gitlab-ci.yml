@@ -41,3 +41,26 @@ deploy_staging:
     - ssh -o StrictHostKeyChecking=no  $DEPLOYMENT_ACCOUNT@$DEPLOYMENT_HOST_IP "docker restart production_nginx"
   only:
     - main
+
+deploy_staging_safety:
+  tags:
+    - shell1
+  stage: deploy
+  environment:
+        name: staging_safety
+        url: http://$DEPLOYMENT_HOST_IP:$DEPLOYMENT_STAGING_SAFETY_HOST_PORT
+  before_script:
+    - eval $(ssh-agent -s)
+    - ssh-add - <<< "${KEY_PROD}"
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+  script:
+    - ssh -o StrictHostKeyChecking=no  $DEPLOYMENT_ACCOUNT@$DEPLOYMENT_HOST_IP  "rm -rf semlookp_staging_safety_safety.env; echo VERSION=$CI_COMMIT_SHA >> semlookp_staging_safety.env; echo PORT=$DEPLOYMENT_STAGING_SAFETY_HOST_PORT >> semlookp_staging_safety.env;"
+    - scp docker-compose.yaml $DEPLOYMENT_ACCOUNT@$DEPLOYMENT_HOST_IP:semlookp_staging_safety_docker-compose.yaml
+    - ssh -o StrictHostKeyChecking=no  $DEPLOYMENT_ACCOUNT@$DEPLOYMENT_HOST_IP "docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY"
+    - ssh -o StrictHostKeyChecking=no  $DEPLOYMENT_ACCOUNT@$DEPLOYMENT_HOST_IP "docker-compose --env-file semlookp_staging_safety.env -p semlookp_staging_safety -f semlookp_staging_safety_docker-compose.yaml pull"
+    - ssh -o StrictHostKeyChecking=no  $DEPLOYMENT_ACCOUNT@$DEPLOYMENT_HOST_IP "docker-compose --env-file semlookp_staging_safety.env -p semlookp_staging_safety -f semlookp_staging_safety_docker-compose.yaml up -d"
+    - ssh -o StrictHostKeyChecking=no  $DEPLOYMENT_ACCOUNT@$DEPLOYMENT_HOST_IP "docker network connect nginx_proxying semlookp_staging_safety_frontend_1"
+    - ssh -o StrictHostKeyChecking=no  $DEPLOYMENT_ACCOUNT@$DEPLOYMENT_HOST_IP "docker restart production_nginx"
+  only:
+    - safety
