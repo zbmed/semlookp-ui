@@ -55,7 +55,7 @@ export default function Home() {
               </EuiFlexItem>
               <EuiFlexItem>
                 <AutocompleteWidget
-                  api={"https://semanticlookup.zbmed.de/ols/api/"}
+                  api={"http://localhost:10009/api/"}
                   placeholder={"Jump to a Term, Individual or property"}
                   selectionChangedEvent={goToEntityPage}
                 />
@@ -92,7 +92,7 @@ export default function Home() {
           </EuiPanel>
         </EuiFlexItem>
         <EuiFlexItem grow={3}>
-          <DataContentWidget api="https://semanticlookup.zbmed.de/ols/api/" />
+          <DataContentWidget api="http://localhost:10009/api/" />
         </EuiFlexItem>
       </EuiFlexGroup>
     </>

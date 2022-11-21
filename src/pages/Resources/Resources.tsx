@@ -1,6 +1,6 @@
 import React from "react";
 import { ResourcesWidget } from "@km/widgets-semlookp";
-import { EuiPanel, EuiSpacer, EuiText } from "@elastic/eui";
+import { EuiButton, EuiButtonIcon, EuiPanel, EuiSpacer, EuiText } from "@elastic/eui";
 import { Helmet } from "react-helmet";
 
 export default function Resources() {
@@ -11,8 +11,9 @@ export default function Resources() {
       </EuiText>
       <EuiSpacer />
       <ResourcesWidget
-        api="https://semanticlookup.zbmed.de/ols/api/"
-        targetLink="https://semanticlookup.zbmed.de/dev/"
+        api="http://localhost:10009/api/"
+        targetLink="https://semanticlookup.zbmed.de/safety/"
+        frontend="safety"
       />
       <Helmet>
         <title> Resources &gt; SemLookP </title>

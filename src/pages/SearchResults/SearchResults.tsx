@@ -8,9 +8,9 @@ export default function SearchResults() {
 
   return (
     <SearchResultsListWidget
-      api="https://semanticlookup.zbmed.de/ols/api/"
+      api="http://localhost:10009/api/"
       query={query}
-      targetLink="https://semanticlookup.zbmed.de/dev"
+      targetLink="https://semanticlookup.zbmed.de/safety/"
     />
   );
 }

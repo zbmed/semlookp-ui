@@ -7,7 +7,7 @@ import { AutocompleteWidget, DescriptionWidget, HierarchyWidget, JsonApiWidget, 
 export default function Ontology() {
   const routeParams = useParams();
   const navigate = useNavigate();
-  const API = "https://semanticlookup.zbmed.de/ols/api/"
+  const API = "http://localhost:10009/api/"
 
   return (
     <>

@@ -17,7 +17,7 @@ function App() {
   return (
     <EuiProvider colorMode={"light"}>
       <QueryClientProvider client={queryClient}>
-        <Router basename="/dev">
+        <Router basename="/safety">
           <LinkScroller>
             <Routes>
               <Route path="/" element={<Layout />}>

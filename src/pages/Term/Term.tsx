@@ -14,7 +14,7 @@ import "./Term.css";
 import { EuiFlexGroup, EuiFlexItem, EuiPanel, EuiSpacer, EuiText } from '@elastic/eui'
 import { Helmet } from "react-helmet";
 
-const API = "https://semanticlookup.zbmed.de/ols/api/"
+const API = "http://localhost:10009/api/"
 
 export default function Term() {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
