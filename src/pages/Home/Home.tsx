@@ -55,9 +55,10 @@ export default function Home() {
               </EuiFlexItem>
               <EuiFlexItem>
                 <AutocompleteWidget
-                  api={"https://semanticlookup.zbmed.de/ols/api/"}
+                  api={"https://semanticlookup.zbmed.de/api/"}
                   placeholder={"Jump to a Term, Individual or property"}
                   selectionChangedEvent={goToEntityPage}
+                  frontend={"nfdi4health"}
                 />
               </EuiFlexItem>
               <EuiFlexItem>
@@ -92,7 +93,10 @@ export default function Home() {
           </EuiPanel>
         </EuiFlexItem>
         <EuiFlexItem grow={3}>
-          <DataContentWidget api="https://semanticlookup.zbmed.de/ols/api/" />
+          <DataContentWidget
+            api="https://semanticlookup.zbmed.de/api/"
+            frontend={"nfdi4health"}
+          />
         </EuiFlexItem>
       </EuiFlexGroup>
     </>

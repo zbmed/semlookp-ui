@@ -14,7 +14,8 @@ import "./Term.css";
 import { EuiFlexGroup, EuiFlexItem, EuiPanel, EuiSpacer, EuiText } from '@elastic/eui'
 import { Helmet } from "react-helmet";
 
-const API = "https://semanticlookup.zbmed.de/ols/api/"
+const API = "https://semanticlookup.zbmed.de/api/"
+const olsAPI = "https://semanticlookup.zbmed.de/ols/api/"
 
 export default function Term() {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -66,9 +67,12 @@ export default function Term() {
                                         api={API}
                                     />
 
-                                    <BreadcrumbWidget iri={searchParam.get("iri")} api={API}/>
+                                    <BreadcrumbWidget iri={searchParam.get("iri")} api={API}
+                                                      ontologyID={routeParams.ontologyId}
+                                                      objType={"term"}
+                                    />
 
-                                    <IriWidget iri={searchParam.get("iri")} api={API}/>
+                                    <IriWidget iri={searchParam.get("iri")}/>
 
                                     <DescriptionWidget
                                         iri={searchParam.get("iri")}
@@ -85,7 +89,7 @@ export default function Term() {
                                     maxWidth: 20, display: "inline-block",
                                     float: "right",
                                 }}>
-                                    <JsonApiWidget apiQuery={API} buttonText="JSON"/>
+                                    <JsonApiWidget apiQuery={API + "ontologies/" + routeParams.ontologyID + "/terms?iri=" + searchParam.get("iri")} buttonText="JSON"/>
                                 </EuiFlexItem>
                                 <EuiFlexItem>
                                     {/*TODO Add on click event*/}
@@ -93,6 +97,7 @@ export default function Term() {
                                         api={API}
                                         selectionChangedEvent={goToEntityPage}
                                         parameter={"ontology=" + routeParams.ontologyId}
+                                        frontend={"nfdi4health"}
                                     />
                                 </EuiFlexItem>
                             </EuiFlexGroup>
@@ -106,7 +111,7 @@ export default function Term() {
                     <EuiFlexGroup>
                         <EuiFlexItem grow={3}>
                             <HierarchyWidget
-                                api={API} ontologyID={routeParams.ontologyId} iri={searchParam.get("iri")}/>
+                                api={olsAPI} ontologyID={routeParams.ontologyId} iri={searchParam.get("iri")}/>
                         </EuiFlexItem>
                         <EuiFlexItem>
                             <EuiFlexGroup direction={"column"}>

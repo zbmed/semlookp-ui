@@ -30,7 +30,6 @@ function App() {
                 <Route path="/privacy" element={<PrivacyPage />} />
                 <Route path="/projects" element={<ProjectsPage />} />
                 <Route path="/resources" element={<Resources />} />
-                <Route path="/terms" element={<Term />} />
                 <Route path="/search" element={<SearchResults />} />
                 <Route path="/ontologies/:ontologyId/:termType" element={<Term />} />
               </Route>

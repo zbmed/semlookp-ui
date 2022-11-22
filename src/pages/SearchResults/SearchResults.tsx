@@ -8,9 +8,10 @@ export default function SearchResults() {
 
   return (
     <SearchResultsListWidget
-      api="https://semanticlookup.zbmed.de/ols/api/"
+      api="https://semanticlookup.zbmed.de/api/"
       query={query}
-      targetLink="https://semanticlookup.zbmed.de/dev"
+      targetLink="https://semanticlookup.zbmed.de/dev/"
+      frontend={"nfdi4health"}
     />
   );
 }

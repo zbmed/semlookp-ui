@@ -7,7 +7,7 @@ import { AutocompleteWidget, DescriptionWidget, HierarchyWidget, JsonApiWidget, 
 export default function Ontology() {
   const routeParams = useParams();
   const navigate = useNavigate();
-  const API = "https://semanticlookup.zbmed.de/ols/api/"
+  const API = "https://semanticlookup.zbmed.de/api/"
 
   return (
     <>
@@ -27,6 +27,7 @@ export default function Ontology() {
                   "/terms?iri="+encodeURI(selectedOption.iri))
               }}
               parameter={"ontology="+routeParams.ontologyId}
+              frontend={"nfdi4health"}
             />
             <JsonApiWidget
               apiQuery={API+"ontologies/"+routeParams.ontologyId}

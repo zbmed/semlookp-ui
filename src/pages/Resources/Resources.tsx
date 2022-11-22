@@ -11,8 +11,9 @@ export default function Resources() {
       </EuiText>
       <EuiSpacer />
       <ResourcesWidget
-        api="https://semanticlookup.zbmed.de/ols/api/"
+        api="https://semanticlookup.zbmed.de/api/"
         targetLink="https://semanticlookup.zbmed.de/dev/"
+        frontend={"nfdi4health"}
       />
       <Helmet>
         <title> Resources &gt; SemLookP </title>

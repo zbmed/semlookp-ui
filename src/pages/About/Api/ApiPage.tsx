@@ -491,7 +491,7 @@ Content-Length: 153
                   <EuiCodeBlock language="shellsession" fontSize="m"
                                 paddingSize="m" isCopyable={true}>
                     {
-                      `$ curl -L 'https://semanticlookup.zbmed.de/ols/api/ontologies?page=1&size=1' -i`
+                      `$ curl -L 'https://semanticlookup.zbmed.de/api/ontologies?page=1&size=1' -i`
                     }
                   </EuiCodeBlock>
                   <h5 id="example-response">Example response</h5>
@@ -504,19 +504,19 @@ Content-Type: application/json
 {
 "_links" : {
 "first" : {
-  "href" : "https://semanticlookup.zbmed.de/ols/api/ontologies?page=0&size=1"
+  "href" : "https://semanticlookup.zbmed.de/api/ontologies?page=0&size=1"
 },
 "prev" : {
-  "href" : "https://semanticlookup.zbmed.de/ols/api/ontologies?page=0&size=1"
+  "href" : "https://semanticlookup.zbmed.de/api/ontologies?page=0&size=1"
 },
 "self" : {
-  "href" : "https://semanticlookup.zbmed.de/ols/api/ontologies"
+  "href" : "https://semanticlookup.zbmed.de/api/ontologies"
 },
 "next" : {
-  "href" : "https://semanticlookup.zbmed.de/ols/api/ontologies?page=2&size=1"
+  "href" : "https://semanticlookup.zbmed.de/api/ontologies?page=2&size=1"
 },
 "last" : {
-  "href" : "https://semanticlookup.zbmed.de/ols/api/ontologies?page=140&size=1"
+  "href" : "https://semanticlookup.zbmed.de/api/ontologies?page=140&size=1"
 }
 },
 "_embedded" : {
@@ -629,19 +629,19 @@ Content-Length: 432
 {
 "_links" : {
 "ontologies" : {
-  "href" : "https://semanticlookup.zbmed.de/ols/api/ontologies"
+  "href" : "https://semanticlookup.zbmed.de/api/ontologies"
 },
 "individuals" : {
-  "href" : "https://semanticlookup.zbmed.de/ols/api/individuals"
+  "href" : "https://semanticlookup.zbmed.de/api/individuals"
 },
 "terms" : {
-  "href" : "https://semanticlookup.zbmed.de/ols/api/terms"
+  "href" : "https://semanticlookup.zbmed.de/api/terms"
 },
 "properties" : {
-  "href" : "https://semanticlookup.zbmed.de/ols/api/properties"
+  "href" : "https://semanticlookup.zbmed.de/api/properties"
 },
 "profile" : {
-  "href" : "https://semanticlookup.zbmed.de/ols/api/profile"
+  "href" : "https://semanticlookup.zbmed.de/api/profile"
 }
 }
 }`
@@ -702,7 +702,7 @@ Content-Length: 432
                   <EuiCodeBlock language="shellsession" fontSize="m"
                                 paddingSize="m" isCopyable={true}>
                     {
-                      `$ curl -L 'https://semanticlookup.zbmed.de/ols/api/ontologies' -i -H 'Accept: application/json'`
+                      `$ curl -L 'https://semanticlookup.zbmed.de/api/ontologies' -i -H 'Accept: application/json'`
                     }
                   </EuiCodeBlock>
                   <h5 id="response-structure-3">Response structure</h5>
@@ -736,7 +736,7 @@ Content-Length: 432
                   <EuiCodeBlock language="shellsession" fontSize="m"
                                 paddingSize="m" isCopyable={true}>
                     {
-                      `$ curl -L 'https://semanticlookup.zbmed.de/ols/api/ontologies/efo' -i -H 'Accept: application/json'`
+                      `$ curl -L 'https://semanticlookup.zbmed.de/api/ontologies/efo' -i -H 'Accept: application/json'`
                     }
                   </EuiCodeBlock>
                   <h5 id="example-response-4">Example response</h5>
@@ -790,16 +790,16 @@ Content-Length: 5202
 },
 "_links" : {
 "self" : {
-  "href" : "https://semanticlookup.zbmed.de/ols/api/ontologies/efo"
+  "href" : "https://semanticlookup.zbmed.de/api/ontologies/efo"
 },
 "terms" : {
-  "href" : "https://semanticlookup.zbmed.de/ols/api/ontologies/efo/terms"
+  "href" : "https://semanticlookup.zbmed.de/api/ontologies/efo/terms"
 },
 "properties" : {
-  "href" : "https://semanticlookup.zbmed.de/ols/api/ontologies/efo/properties"
+  "href" : "https://semanticlookup.zbmed.de/api/ontologies/efo/properties"
 },
 "individuals" : {
-  "href" : "https://semanticlookup.zbmed.de/ols/api/ontologies/efo/individuals"
+  "href" : "https://semanticlookup.zbmed.de/api/ontologies/efo/individuals"
 }
 }
 }`
@@ -905,7 +905,7 @@ Content-Length: 5202
                   <EuiCodeBlock language="shellsession" fontSize="m"
                                 paddingSize="m" isCopyable={true}>
                     {
-                      `$ curl -L 'https://semanticlookup.zbmed.de/ols/api/ontologies/efo/terms' -i -H 'Accept: application/json'`
+                      `$ curl -L 'https://semanticlookup.zbmed.de/api/ontologies/efo/terms' -i -H 'Accept: application/json'`
                     }
                   </EuiCodeBlock>
                   <h5 id="response-structure-5">Response structure</h5>
@@ -949,7 +949,7 @@ Content-Length: 5202
                   <EuiCodeBlock language="shellsession" fontSize="m"
                                 paddingSize="m" isCopyable={true}>
                     {
-                      `$ curl -L 'https://semanticlookup.zbmed.de/ols/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226' -i -H 'Accept: application/json'`
+                      `$ curl -L 'https://semanticlookup.zbmed.de/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226' -i -H 'Accept: application/json'`
                     }
                   </EuiCodeBlock>
                   <h5 id="example-response-7">Example response</h5>
@@ -988,37 +988,37 @@ Content-Length: 3657
 "is_preferred_root" : false,
 "_links" : {
 "self" : {
-  "href" : "https://semanticlookup.zbmed.de/ols/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226"
+  "href" : "https://semanticlookup.zbmed.de/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226"
 },
 "parents" : {
-  "href" : "https://semanticlookup.zbmed.de/ols/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/parents"
+  "href" : "https://semanticlookup.zbmed.de/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/parents"
 },
 "ancestors" : {
-  "href" : "https://semanticlookup.zbmed.de/ols/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/ancestors"
+  "href" : "https://semanticlookup.zbmed.de/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/ancestors"
 },
 "hierarchicalParents" : {
-  "href" : "https://semanticlookup.zbmed.de/ols/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/hierarchicalParents"
+  "href" : "https://semanticlookup.zbmed.de/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/hierarchicalParents"
 },
 "hierarchicalAncestors" : {
-  "href" : "https://semanticlookup.zbmed.de/ols/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/hierarchicalAncestors"
+  "href" : "https://semanticlookup.zbmed.de/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/hierarchicalAncestors"
 },
 "jstree" : {
-  "href" : "https://semanticlookup.zbmed.de/ols/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/jstree"
+  "href" : "https://semanticlookup.zbmed.de/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/jstree"
 },
 "children" : {
-  "href" : "https://semanticlookup.zbmed.de/ols/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/children"
+  "href" : "https://semanticlookup.zbmed.de/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/children"
 },
 "descendants" : {
-  "href" : "https://semanticlookup.zbmed.de/ols/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/descendants"
+  "href" : "https://semanticlookup.zbmed.de/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/descendants"
 },
 "hierarchicalChildren" : {
-  "href" : "https://semanticlookup.zbmed.de/ols/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/hierarchicalChildren"
+  "href" : "https://semanticlookup.zbmed.de/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/hierarchicalChildren"
 },
 "hierarchicalDescendants" : {
-  "href" : "https://semanticlookup.zbmed.de/ols/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/hierarchicalDescendants"
+  "href" : "https://semanticlookup.zbmed.de/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/hierarchicalDescendants"
 },
 "graph" : {
-  "href" : "https://semanticlookup.zbmed.de/ols/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/graph"
+  "href" : "https://semanticlookup.zbmed.de/api/ontologies/go/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FGO_0043226/graph"
 }
 }
 }`
@@ -1136,37 +1136,37 @@ Content-Length: 3657
                   <EuiCodeBlock language="shellsession" fontSize="m"
                                 paddingSize="m" isCopyable={true}>
                     {
-                      `$ curl -L 'https://semanticlookup.zbmed.de/ols/api/ontologies/go/parents?id=GO:0043226' -i -H 'Accept: application/json'`
+                      `$ curl -L 'https://semanticlookup.zbmed.de/api/ontologies/go/parents?id=GO:0043226' -i -H 'Accept: application/json'`
                     }
                   </EuiCodeBlock>
                   <EuiCodeBlock language="shellsession" fontSize="m"
                                 paddingSize="m" isCopyable={true}>
                     {
-                      `$ curl -L 'https://semanticlookup.zbmed.de/ols/api/ontologies/go/children?id=GO:0043226' -i -H 'Accept: application/json'`
+                      `$ curl -L 'https://semanticlookup.zbmed.de/api/ontologies/go/children?id=GO:0043226' -i -H 'Accept: application/json'`
                     }
                   </EuiCodeBlock>
                   <EuiCodeBlock language="shellsession" fontSize="m"
                                 paddingSize="m" isCopyable={true}>
                     {
-                      `$ curl -L 'https://semanticlookup.zbmed.de/ols/api/ontologies/go/ancestors?id=GO:0043226' -i -H 'Accept: application/json'`
+                      `$ curl -L 'https://semanticlookup.zbmed.de/api/ontologies/go/ancestors?id=GO:0043226' -i -H 'Accept: application/json'`
                     }
                   </EuiCodeBlock>
                   <EuiCodeBlock language="shellsession" fontSize="m"
                                 paddingSize="m" isCopyable={true}>
                     {
-                      `$ curl -L 'https://semanticlookup.zbmed.de/ols/api/ontologies/go/descendants?id=GO:0043226' -i -H 'Accept: application/json'`
+                      `$ curl -L 'https://semanticlookup.zbmed.de/api/ontologies/go/descendants?id=GO:0043226' -i -H 'Accept: application/json'`
                     }
                   </EuiCodeBlock>
                   <EuiCodeBlock language="shellsession" fontSize="m"
                                 paddingSize="m" isCopyable={true}>
                     {
-                      `$ curl -L 'https://semanticlookup.zbmed.de/ols/api/ontologies/go/hierarchicalDescendants?id=GO:0043226' -i -H 'Accept: application/json'`
+                      `$ curl -L 'https://semanticlookup.zbmed.de/api/ontologies/go/hierarchicalDescendants?id=GO:0043226' -i -H 'Accept: application/json'`
                     }
                   </EuiCodeBlock>
                   <EuiCodeBlock language="shellsession" fontSize="m"
                                 paddingSize="m" isCopyable={true}>
                     {
-                      `$ curl -L 'https://semanticlookup.zbmed.de/ols/api/ontologies/go/hierarchicalAncestors?id=GO:0043226' -i -H 'Accept: application/json'`
+                      `$ curl -L 'https://semanticlookup.zbmed.de/api/ontologies/go/hierarchicalAncestors?id=GO:0043226' -i -H 'Accept: application/json'`
                     }
                   </EuiCodeBlock>
                   <h4 id="other-related-terms">Other related terms</h4>
