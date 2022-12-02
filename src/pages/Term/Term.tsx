@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams, useLocation } from "react-router-dom";
 import {
     AutocompleteWidget,
     BreadcrumbWidget,
@@ -20,29 +20,32 @@ const olsAPI = "https://semanticlookup.zbmed.de/ols/api/"
 export default function Term() {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [searchParam, setSearchParams] = useSearchParams(); // read the query string in the URL for the current location
+    const location = useLocation();
+    const concatIri = searchParam.get("iri") + location.hash;
     const routeParams = useParams();
     const navigate = useNavigate();
     const entityType = routeParams.entityType == "terms" ? "term" : routeParams.entityType == "properties" ? "property" : "individual"
 
     function goToEntityPage(selectedOption) {
+        const targetIri = encodeURIComponent(selectedOption.iri)
         if (selectedOption.type === "class") {
             navigate({
                 pathname: "/ontologies/" +
                     selectedOption.ontology_name + "/terms",
-                search: "iri=" + selectedOption.iri
+                search: "iri=" + targetIri
             });
         } else if (selectedOption.type === "individual") {
             navigate({
                 pathname: "/ontologies/" +
                     selectedOption.ontology_name + "/individuals",
-                search: "iri=" + selectedOption.iri
+                search: "iri=" + targetIri
             });
         } else if (selectedOption.type === "property") {
             navigate({
                 pathname:
                     "/ontologies/" +
                     selectedOption.ontology_name + "/properties",
-                search: "iri=" + selectedOption.iri
+                search: "iri=" + targetIri
             });
         } else if (selectedOption.type === "ontology") {
             navigate({
@@ -62,21 +65,21 @@ export default function Term() {
                                 <EuiFlexItem>
 
                                     <TitleWidget
-                                      iri={searchParam.get("iri")}
+                                      iri={concatIri}
                                         ontologyID={routeParams.ontologyId}
                                         objType={entityType}
                                         api={API}
                                     />
 
-                                    <BreadcrumbWidget iri={searchParam.get("iri")} api={API}
+                                    <BreadcrumbWidget iri={concatIri} api={API}
                                                       ontologyID={routeParams.ontologyId}
                                                       objType={entityType}
                                     />
 
-                                    <IriWidget iri={searchParam.get("iri")}/>
+                                    <IriWidget iri={concatIri}/>
 
                                     <DescriptionWidget
-                                        iri={searchParam.get("iri")}
+                                        iri={concatIri}
                                         ontologyID={routeParams.ontologyId}
                                         objType={entityType}
                                         api={API}
@@ -90,7 +93,7 @@ export default function Term() {
                                     maxWidth: 20, display: "inline-block",
                                     float: "right",
                                 }}>
-                                    <JsonApiWidget apiQuery={API + "ontologies/" + routeParams.ontologyId + "/" + routeParams.entityType + "?iri=" + searchParam.get("iri")} buttonText="JSON"/>
+                                    <JsonApiWidget apiQuery={API + "ontologies/" + routeParams.ontologyId + "/" + routeParams.entityType + "?iri=" + encodeURIComponent(concatIri)} buttonText="JSON"/>
                                 </EuiFlexItem>
                                 <EuiFlexItem>
                                     {/*TODO Add on click event*/}
@@ -112,7 +115,7 @@ export default function Term() {
                     <EuiFlexGroup>
                         <EuiFlexItem grow={3}>
                             <HierarchyWidget
-                                api={olsAPI} ontologyID={routeParams.ontologyId} iri={searchParam.get("iri")}/>
+                                api={olsAPI} ontologyID={routeParams.ontologyId} iri={concatIri}/>
                         </EuiFlexItem>
                         <EuiFlexItem>
                             <EuiFlexGroup direction={"column"}>
@@ -120,7 +123,7 @@ export default function Term() {
                                     <EntityInfoWidget
                                         api={API}
                                         ontologyId={routeParams.ontologyId}
-                                        iri={searchParam.get("iri")}
+                                        iri={concatIri}
                                         hasTitle={true}
                                         entityType={entityType}
                                     />
