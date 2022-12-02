@@ -10,21 +10,21 @@ import {
     JsonApiWidget,
     TitleWidget
 } from "@km/widgets-semlookp";
-import "./Term.css";
+import "./Entity.css";
 import { EuiFlexGroup, EuiFlexItem, EuiPanel, EuiSpacer, EuiText } from '@elastic/eui'
 import { Helmet } from "react-helmet";
 
 const API = "https://semanticlookup.zbmed.de/api/"
 const olsAPI = "https://semanticlookup.zbmed.de/ols/api/"
 
-export default function Term() {
+export default function Entity() {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [searchParam, setSearchParams] = useSearchParams(); // read the query string in the URL for the current location
     const location = useLocation();
     const concatIri = searchParam.get("iri") + location.hash;
     const routeParams = useParams();
     const navigate = useNavigate();
-    const entityType = routeParams.entityType == "terms" ? "term" : routeParams.entityType == "properties" ? "property" : "individual"
+    const entityType = routeParams.entityType == "terms" ? "term" : routeParams.entityType == "properties" ? "property" : "individual";
 
     function goToEntityPage(selectedOption) {
         const targetIri = encodeURIComponent(selectedOption.iri)
@@ -55,6 +55,7 @@ export default function Term() {
         }
     }
 
+    const entityTitle = entityType[0].toUpperCase()+entityType.slice(1);
     return (
         <div>
             <EuiFlexGroup justifyContent={"spaceAround"} direction={"column"}>
@@ -139,10 +140,10 @@ export default function Term() {
             </EuiFlexGroup>
 
             <Helmet>
-                <title> Term overview &gt; SemLookP </title>
+                <title> {entityTitle} overview &gt; SemLookP </title>
                 <meta
                     name="description"
-                    content="Term overview for the semantic Lookup Service - SemLookP"
+                    content={entityTitle+" overview for the semantic Lookup Service - SemLookP"}
                 />
             </Helmet>
         </div>

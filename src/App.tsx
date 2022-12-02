@@ -7,8 +7,8 @@ import LinkScroller from "./components/LinkScroller";
 
 import Layout from "./components/Layout/Layout";
 import {
-  Home, AboutPage, ApiPage, Error, ImprintPage, Ontology, PrivacyPage, ProjectsPage,
-  Resources, Term, SearchResults
+  Home, AboutPage, ApiPage, Entity, Error, ImprintPage, Ontology, PrivacyPage, ProjectsPage,
+  Resources, SearchResults
 } from "./imports/PagesImport";
 
 function App() {
@@ -31,7 +31,7 @@ function App() {
                 <Route path="/projects" element={<ProjectsPage />} />
                 <Route path="/resources" element={<Resources />} />
                 <Route path="/search" element={<SearchResults />} />
-                <Route path="/ontologies/:ontologyId/:entityType" element={<Term />} />
+                <Route path="/ontologies/:ontologyId/:entityType" element={<Entity />} />
               </Route>
             </Routes>
           </LinkScroller>
