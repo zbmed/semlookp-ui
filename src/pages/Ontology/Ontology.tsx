@@ -1,7 +1,7 @@
 import React from "react";
 import { EuiFlexGroup, EuiFlexItem, EuiPanel } from "@elastic/eui";
 import { useParams, useNavigate } from "react-router-dom";
-import { AutocompleteWidget, DescriptionWidget, HierarchyWidget, JsonApiWidget, OntologyInfoWidget, TitleWidget } from "@km/widgets-semlookp";
+import { AutocompleteWidget, DescriptionWidget, EntityInfoWidget, HierarchyWidget, JsonApiWidget, TitleWidget } from "@km/widgets-semlookp";
 
 
 export default function Ontology() {
@@ -47,7 +47,12 @@ export default function Ontology() {
         </EuiFlexItem>
         <EuiFlexItem grow={3}>
           <EuiPanel id="ontoInfoBox" hasShadow={true}>
-            <OntologyInfoWidget api={API} ontologyID={routeParams.ontologyId}/>
+            <EntityInfoWidget
+              api={API}
+              ontologyId={routeParams.ontologyId}
+              hasTitle={true}
+              entityType={"ontology"}
+            />
           </EuiPanel>
         </EuiFlexItem>
       </EuiFlexGroup>
