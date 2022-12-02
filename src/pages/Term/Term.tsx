@@ -4,10 +4,10 @@ import {
     AutocompleteWidget,
     BreadcrumbWidget,
     DescriptionWidget,
+    EntityInfoWidget,
     HierarchyWidget,
     IriWidget,
     JsonApiWidget,
-    TermInfoWidget,
     TitleWidget
 } from "@km/widgets-semlookp";
 import "./Term.css";
@@ -22,6 +22,7 @@ export default function Term() {
     const [searchParam, setSearchParams] = useSearchParams(); // read the query string in the URL for the current location
     const routeParams = useParams();
     const navigate = useNavigate();
+    const entityType = routeParams.entityType == "terms" ? "term" : routeParams.entityType == "properties" ? "property" : "individual"
 
     function goToEntityPage(selectedOption) {
         if (selectedOption.type === "class") {
@@ -61,23 +62,23 @@ export default function Term() {
                                 <EuiFlexItem>
 
                                     <TitleWidget
-                                        iri={searchParam.get("iri")}
-                                        ontologyID={routeParams.ontologyID}
-                                        objType={"term"}
+                                      iri={searchParam.get("iri")}
+                                        ontologyID={routeParams.ontologyId}
+                                        objType={entityType}
                                         api={API}
                                     />
 
                                     <BreadcrumbWidget iri={searchParam.get("iri")} api={API}
                                                       ontologyID={routeParams.ontologyId}
-                                                      objType={"term"}
+                                                      objType={entityType}
                                     />
 
                                     <IriWidget iri={searchParam.get("iri")}/>
 
                                     <DescriptionWidget
                                         iri={searchParam.get("iri")}
-                                        ontologyID={routeParams.ontologyID}
-                                        objType={"term"}
+                                        ontologyID={routeParams.ontologyId}
+                                        objType={entityType}
                                         api={API}
                                     />
                                 </EuiFlexItem>
@@ -89,7 +90,7 @@ export default function Term() {
                                     maxWidth: 20, display: "inline-block",
                                     float: "right",
                                 }}>
-                                    <JsonApiWidget apiQuery={API + "ontologies/" + routeParams.ontologyID + "/terms?iri=" + searchParam.get("iri")} buttonText="JSON"/>
+                                    <JsonApiWidget apiQuery={API + "ontologies/" + routeParams.ontologyId + "/" + routeParams.entityType + "?iri=" + searchParam.get("iri")} buttonText="JSON"/>
                                 </EuiFlexItem>
                                 <EuiFlexItem>
                                     {/*TODO Add on click event*/}
@@ -116,10 +117,12 @@ export default function Term() {
                         <EuiFlexItem>
                             <EuiFlexGroup direction={"column"}>
                                 <EuiFlexItem>
-                                    {/*TODO Create Term Info Widget?*/}
-                                    <TermInfoWidget
+                                    <EntityInfoWidget
                                         api={API}
-                                        termIri={searchParam.get("iri")}
+                                        ontologyId={routeParams.ontologyId}
+                                        iri={searchParam.get("iri")}
+                                        hasTitle={true}
+                                        entityType={entityType}
                                     />
                                 </EuiFlexItem>
                                 <EuiFlexItem>

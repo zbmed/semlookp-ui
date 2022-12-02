@@ -31,7 +31,7 @@ function App() {
                 <Route path="/projects" element={<ProjectsPage />} />
                 <Route path="/resources" element={<Resources />} />
                 <Route path="/search" element={<SearchResults />} />
-                <Route path="/ontologies/:ontologyId/:termType" element={<Term />} />
+                <Route path="/ontologies/:ontologyId/:entityType" element={<Term />} />
               </Route>
             </Routes>
           </LinkScroller>
