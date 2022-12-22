@@ -7,9 +7,19 @@ import LinkScroller from "./components/LinkScroller";
 
 import Layout from "./components/Layout/Layout";
 import {
-  Home, AboutPage, ApiPage, Error, ImprintPage, Ontology, PrivacyPage, ProjectsPage,
-  Resources, Term, SearchResults
+  AboutPage,
+  ApiPage,
+  Error,
+  Home,
+  ImprintPage,
+  Ontology,
+  PrivacyPage,
+  ProjectsPage,
+  Resources,
+  SearchResults,
+  Term
 } from "./imports/PagesImport";
+import Entities from './pages/Entity/Entities'
 
 function App() {
   const queryClient = new QueryClient();
@@ -32,6 +42,7 @@ function App() {
                 <Route path="/resources" element={<Resources />} />
                 <Route path="/search" element={<SearchResults />} />
                 <Route path="/ontologies/:ontologyId/:termType" element={<Term />} />
+                <Route path="/ontologies/:ontologyId/:entitiesType/var" element={<Entities />} />
               </Route>
             </Routes>
           </LinkScroller>
