@@ -9,6 +9,35 @@ export default function Ontology() {
   const navigate = useNavigate();
   const API = "https://semanticlookup.zbmed.de/api/"
 
+  function goToEntityPage(selectedOption) {
+    const targetIri = encodeURIComponent(selectedOption.iri)
+    if (selectedOption.type === "class") {
+      navigate({
+        pathname: "/ontologies/" +
+          selectedOption.ontology_name + "/terms",
+        search: "iri=" + targetIri
+      });
+    } else if (selectedOption.type === "individual") {
+      navigate({
+        pathname: "/ontologies/" +
+          selectedOption.ontology_name + "/individuals",
+        search: "iri=" + targetIri
+      });
+    } else if (selectedOption.type === "property") {
+      navigate({
+        pathname:
+          "/ontologies/" +
+          selectedOption.ontology_name + "/properties",
+        search: "iri=" + targetIri
+      });
+    } else if (selectedOption.type === "ontology") {
+      navigate({
+        pathname: "/ontologies/" +
+          selectedOption.ontology_name + "/",
+      });
+    }
+  }
+
   return (
     <>
       <EuiFlexGroup justifyContent="spaceAround">
@@ -22,10 +51,7 @@ export default function Ontology() {
           <EuiPanel id="searchBox" hasShadow={true}>
             <AutocompleteWidget
               api={API}
-              selectionChangedEvent={(selectedOption) => {
-                navigate("/ontologies/"+routeParams.ontologyId +
-                  "/terms?iri="+encodeURI(selectedOption.iri))
-              }}
+              selectionChangedEvent={goToEntityPage}
               parameter={"ontology="+routeParams.ontologyId}
               frontend={"nfdi4health"}
             />
