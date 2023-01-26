@@ -51,7 +51,7 @@ export default function Ontology() {
           <EuiPanel id="searchBox" hasShadow={true}>
             <AutocompleteWidget
               api={API}
-              placeholder={"Jump to an entity in this ontology"}
+              placeholder={"Search in " + routeParams.ontologyId.toUpperCase()}
               selectionChangedEvent={goToEntityPage}
               parameter={"ontology="+routeParams.ontologyId}
               frontend={"nfdi4health"}

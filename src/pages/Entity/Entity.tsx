@@ -100,7 +100,7 @@ export default function Entity() {
                                     {/*TODO Add on click event*/}
                                     <AutocompleteWidget
                                         api={API}
-                                        placeholder={"Jump to an entity in this ontology"}
+                                        placeholder={"Search in " + routeParams.ontologyId.toUpperCase()}
                                         selectionChangedEvent={goToEntityPage}
                                         parameter={"ontology=" + routeParams.ontologyId}
                                         frontend={"nfdi4health"}
