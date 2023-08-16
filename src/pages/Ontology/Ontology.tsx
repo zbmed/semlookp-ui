@@ -1,7 +1,7 @@
 import React from "react";
 import { EuiFlexGroup, EuiFlexItem, EuiPanel } from "@elastic/eui";
 import { useParams, useNavigate } from "react-router-dom";
-import { AutocompleteWidget, DescriptionWidget, EntityInfoWidget, HierarchyWidget, JsonApiWidget, TitleWidget } from "@km/widgets-semlookp";
+import { AutocompleteWidget, DescriptionWidget, EntityInfoWidget, HierarchyWidget, JsonApiWidget, TitleWidget } from "@nfdi4health/semlookp-widgets";
 
 
 export default function Ontology() {
@@ -43,8 +43,8 @@ export default function Ontology() {
       <EuiFlexGroup justifyContent="spaceAround">
         <EuiFlexItem grow={7}>
           <EuiPanel id="titleBox" hasShadow={true}>
-            <TitleWidget api={API} objType={"ontology"} ontologyID={routeParams.ontologyId}></TitleWidget>
-            <DescriptionWidget api={API} objType={"ontology"} ontologyID={routeParams.ontologyId}></DescriptionWidget>
+            <TitleWidget api={API} entityType={"ontology"} ontologyId={routeParams.ontologyId}></TitleWidget>
+            <DescriptionWidget api={API} entityType={"ontology"} ontologyId={routeParams.ontologyId}></DescriptionWidget>
           </EuiPanel>
         </EuiFlexItem>
         <EuiFlexItem grow={3}>
@@ -53,8 +53,8 @@ export default function Ontology() {
               api={API}
               placeholder={"Search in " + routeParams.ontologyId.toUpperCase()}
               selectionChangedEvent={goToEntityPage}
-              parameter={"ontology="+routeParams.ontologyId}
-              frontend={"nfdi4health"}
+              parameter={"ontology="+routeParams.ontologyId+"collection=nfdi4health"}
+              allowCustomTerms={false}
             />
             <JsonApiWidget
               apiQuery={API+"ontologies/"+routeParams.ontologyId}
@@ -69,7 +69,7 @@ export default function Ontology() {
       <EuiFlexGroup>
         <EuiFlexItem grow={7}>
           <EuiPanel id="hierarchyBox" hasShadow={true}>
-            <HierarchyWidget api={API} ontologyID={routeParams.ontologyId}/>
+            <HierarchyWidget api={API} ontologyId={routeParams.ontologyId}/>
           </EuiPanel>
         </EuiFlexItem>
         <EuiFlexItem grow={3}>

@@ -1,5 +1,5 @@
 import React from "react";
-import { ResourcesWidget } from "@km/widgets-semlookp";
+import { ResourcesWidget } from "@nfdi4health/semlookp-widgets";
 import { EuiPanel, EuiSpacer, EuiText } from "@elastic/eui";
 import { Helmet } from "react-helmet";
 
@@ -13,7 +13,7 @@ export default function Resources() {
       <ResourcesWidget
         api="https://semanticlookup.zbmed.de/api/"
         targetLink="https://semanticlookup.zbmed.de/dev/"
-        frontend={"nfdi4health"}
+        parameter={"collection=nfdi4health"}
       />
       <Helmet>
         <title> Resources &gt; SemLookP </title>
