@@ -1,5 +1,5 @@
 import React from "react";
-import { ResourcesWidget } from "@nfdi4health/semlookp-widgets";
+import { ResourcesWidget } from "@km/widgets-semlookp";
 import { EuiPanel, EuiSpacer, EuiText } from "@elastic/eui";
 import { Helmet } from "react-helmet";
 

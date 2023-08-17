@@ -1,6 +1,6 @@
 import React from "react";
 import { EuiFlexGroup, EuiFlexItem, EuiPanel, EuiText, EuiSpacer, EuiTitle, EuiLink } from "@elastic/eui";
-import { AutocompleteWidget, DataContentWidget } from "@nfdi4health/semlookp-widgets";
+import { AutocompleteWidget, DataContentWidget } from "@km/widgets-semlookp";
 import { useNavigate } from "react-router-dom";
 import EuiCustomLink from "../../router/EuiCustomLink";
 

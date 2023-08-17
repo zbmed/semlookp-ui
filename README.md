@@ -9,7 +9,7 @@ This project will be the new frontend scheme of [SemLookP](https://semanticlooku
 - [ReactJS 17](https://reactjs.org/blog/2020/10/20/react-v17.html)
 - [TypeScript 4.5](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-5.html)
 - [Elastic UI](https://elastic.github.io/eui/#/)
-- [@nfdi4health/semlookp-widgets](https://github.com/nfdi4health/semlookp-widgets/pkgs/npm/semlookp-widgets)
+- [@km/widgets-semlookp](https://gitlab.zbmed.de/km/semlookp/widgets-semlookp/-/packages/)
 - [Create React App](https://create-react-app.dev/)
 
 ## Setup 
@@ -18,7 +18,7 @@ This project will be the new frontend scheme of [SemLookP](https://semanticlooku
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 #### Authenticate to the npm package registry
-For using the @nfdi4health/semlookp-widgets you have to authenticate with a [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens).
+For using the @km/widgets-semlookp you have to [authenticate](https://docs.gitlab.com/ee/user/packages/npm_registry/) with a [personal access token](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html) or deploy token.
 For local development specify a runtime variable NPM_TOKEN with your npm authentication token.
 
 #### Local development
