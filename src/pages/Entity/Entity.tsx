@@ -9,7 +9,7 @@ import {
     IriWidget,
     JsonApiWidget,
     TitleWidget
-} from "@nfdi4health/semlookp-widgets";
+} from "@km/widgets-semlookp";
 import "./Entity.css";
 import { EuiFlexGroup, EuiFlexItem, EuiPanel, EuiSpacer, EuiText } from '@elastic/eui'
 import { Helmet } from "react-helmet";
