@@ -67,22 +67,22 @@ export default function Entity() {
 
                                     <TitleWidget
                                       iri={concatIri}
-                                        ontologyID={routeParams.ontologyId}
-                                        objType={entityType}
+                                        ontologyId={routeParams.ontologyId}
+                                        entityType={entityType}
                                         api={API}
                                     />
 
                                     <BreadcrumbWidget iri={concatIri} api={API}
-                                                      ontologyID={routeParams.ontologyId}
-                                                      objType={entityType}
+                                                      ontologyId={routeParams.ontologyId}
+                                                      entityType={entityType}
                                     />
 
                                     <IriWidget iri={concatIri}/>
 
                                     <DescriptionWidget
                                         iri={concatIri}
-                                        ontologyID={routeParams.ontologyId}
-                                        objType={entityType}
+                                        ontologyId={routeParams.ontologyId}
+                                        entityType={entityType}
                                         api={API}
                                     />
                                 </EuiFlexItem>
@@ -102,8 +102,8 @@ export default function Entity() {
                                         api={API}
                                         placeholder={"Search in " + routeParams.ontologyId.toUpperCase()}
                                         selectionChangedEvent={goToEntityPage}
-                                        parameter={"ontology=" + routeParams.ontologyId}
-                                        frontend={"nfdi4health"}
+                                        parameter={"ontology=" + routeParams.ontologyId + "collection=nfdi4health"}
+                                        allowCustomTerms={false}
                                     />
                                 </EuiFlexItem>
                             </EuiFlexGroup>
@@ -117,7 +117,7 @@ export default function Entity() {
                     <EuiFlexGroup>
                         <EuiFlexItem grow={3}>
                             <HierarchyWidget
-                                api={olsAPI} ontologyID={routeParams.ontologyId} iri={concatIri}/>
+                                api={olsAPI} ontologyId={routeParams.ontologyId} iri={concatIri}/>
                         </EuiFlexItem>
                         <EuiFlexItem>
                             <EuiFlexGroup direction={"column"}>

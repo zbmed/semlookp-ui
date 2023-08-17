@@ -11,7 +11,7 @@ export default function SearchResults() {
       api="https://semanticlookup.zbmed.de/api/"
       query={query}
       targetLink="https://semanticlookup.zbmed.de/dev/"
-      frontend={"nfdi4health"}
+      parameter={"collection=nfdi4health"}
     />
   );
 }

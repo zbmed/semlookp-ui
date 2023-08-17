@@ -58,7 +58,8 @@ export default function Home() {
                   api={"https://semanticlookup.zbmed.de/api/"}
                   placeholder={"Jump to a Term, Individual or property"}
                   selectionChangedEvent={goToEntityPage}
-                  frontend={"nfdi4health"}
+                  parameter="collection=nfdi4health"
+                  allowCustomTerms={false}
                 />
               </EuiFlexItem>
               <EuiFlexItem>
@@ -95,7 +96,7 @@ export default function Home() {
         <EuiFlexItem grow={3}>
           <DataContentWidget
             api="https://semanticlookup.zbmed.de/api/"
-            frontend={"nfdi4health"}
+            parameter={"collection=nfdi4health"}
           />
         </EuiFlexItem>
       </EuiFlexGroup>

@@ -13,7 +13,7 @@ export default function Resources() {
       <ResourcesWidget
         api="https://semanticlookup.zbmed.de/api/"
         targetLink="https://semanticlookup.zbmed.de/dev/"
-        frontend={"nfdi4health"}
+        parameter={"collection=nfdi4health"}
       />
       <Helmet>
         <title> Resources &gt; SemLookP </title>
