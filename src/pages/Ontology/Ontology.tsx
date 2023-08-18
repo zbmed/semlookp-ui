@@ -2,41 +2,13 @@ import React from "react";
 import { EuiFlexGroup, EuiFlexItem, EuiPanel } from "@elastic/eui";
 import { useParams, useNavigate } from "react-router-dom";
 import { AutocompleteWidget, DescriptionWidget, EntityInfoWidget, HierarchyWidget, JsonApiWidget, TitleWidget } from "@km/widgets-semlookp";
+import {navigateToEntity} from "../../index";
 
 
 export default function Ontology() {
   const routeParams = useParams();
   const navigate = useNavigate();
   const API = "https://semanticlookup.zbmed.de/api/"
-
-  function goToEntityPage(selectedOption) {
-    const targetIri = encodeURIComponent(selectedOption.iri)
-    if (selectedOption.type === "class") {
-      navigate({
-        pathname: "/ontologies/" +
-          selectedOption.ontology_name + "/terms",
-        search: "iri=" + targetIri
-      });
-    } else if (selectedOption.type === "individual") {
-      navigate({
-        pathname: "/ontologies/" +
-          selectedOption.ontology_name + "/individuals",
-        search: "iri=" + targetIri
-      });
-    } else if (selectedOption.type === "property") {
-      navigate({
-        pathname:
-          "/ontologies/" +
-          selectedOption.ontology_name + "/properties",
-        search: "iri=" + targetIri
-      });
-    } else if (selectedOption.type === "ontology") {
-      navigate({
-        pathname: "/ontologies/" +
-          selectedOption.ontology_name + "/",
-      });
-    }
-  }
 
   return (
     <>
@@ -52,7 +24,7 @@ export default function Ontology() {
             <AutocompleteWidget
               api={API}
               placeholder={"Search in " + routeParams.ontologyId.toUpperCase()}
-              selectionChangedEvent={goToEntityPage}
+              selectionChangedEvent={(selectedOption) => { navigateToEntity(selectedOption, navigate);}}
               parameter={"ontology="+routeParams.ontologyId+"collection=nfdi4health"}
               allowCustomTerms={false}
             />
