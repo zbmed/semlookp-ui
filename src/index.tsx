@@ -9,7 +9,7 @@ import {NavigateFunction} from "react-router-dom";
  * @param navigate          a function argument to pass the hook useNavigate() to use it outside a function component
  */
 export function navigateToEntity(selectedOption: {label: string, iri?: string, ontology_name?: string, type?: string}, navigate: NavigateFunction) {
-    const targetIri = selectedOption.iri.replaceAll("#", "%23").replaceAll("&", "%26"); // '#' and '&' have to be URI-escaped because the iri gets passed as query search parameter in the URL
+    const targetIri = encodeURIComponent(encodeURIComponent(selectedOption.iri)); // '#' and '&' have to be URI-escaped because the iri gets passed as query search parameter in the URL
     if (selectedOption.type === "class") { // Not checking if "term" should be right here because the api only uses class. However, this comment might be useful if related bugs should be detected later
         navigate({
             pathname: "/ontologies/" +

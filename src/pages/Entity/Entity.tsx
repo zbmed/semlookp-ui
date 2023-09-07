@@ -21,7 +21,7 @@ const olsAPI = "https://semanticlookup.zbmed.de/ols/api/"
 export default function Entity() {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [searchParam, setSearchParams] = useSearchParams(); // read the query string in the URL for the current location
-    const concatIri = searchParam.get("iri");
+    const concatIri = decodeURIComponent(decodeURIComponent(searchParam.get("iri")));
     const routeParams = useParams();
     const navigate = useNavigate();
     const entityType = routeParams.entityType == "terms" ? "term" : routeParams.entityType == "properties" ? "property" : "individual";
