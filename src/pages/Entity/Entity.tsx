@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate, useParams, useSearchParams, useLocation } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import {
     AutocompleteWidget,
     BreadcrumbWidget,
@@ -13,6 +13,7 @@ import {
 import "./Entity.css";
 import { EuiFlexGroup, EuiFlexItem, EuiPanel, EuiSpacer, EuiText } from '@elastic/eui'
 import { Helmet } from "react-helmet";
+import {navigateToEntity} from "../../index";
 
 const API = "https://semanticlookup.zbmed.de/api/"
 const olsAPI = "https://semanticlookup.zbmed.de/ols/api/"
@@ -20,40 +21,10 @@ const olsAPI = "https://semanticlookup.zbmed.de/ols/api/"
 export default function Entity() {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [searchParam, setSearchParams] = useSearchParams(); // read the query string in the URL for the current location
-    const location = useLocation();
-    const concatIri = searchParam.get("iri") + location.hash;
+    const concatIri = decodeURIComponent(decodeURIComponent(searchParam.get("iri")));
     const routeParams = useParams();
     const navigate = useNavigate();
     const entityType = routeParams.entityType == "terms" ? "term" : routeParams.entityType == "properties" ? "property" : "individual";
-
-    function goToEntityPage(selectedOption) {
-        const targetIri = encodeURIComponent(selectedOption.iri)
-        if (selectedOption.type === "class") {
-            navigate({
-                pathname: "/ontologies/" +
-                    selectedOption.ontology_name + "/terms",
-                search: "iri=" + targetIri
-            });
-        } else if (selectedOption.type === "individual") {
-            navigate({
-                pathname: "/ontologies/" +
-                    selectedOption.ontology_name + "/individuals",
-                search: "iri=" + targetIri
-            });
-        } else if (selectedOption.type === "property") {
-            navigate({
-                pathname:
-                    "/ontologies/" +
-                    selectedOption.ontology_name + "/properties",
-                search: "iri=" + targetIri
-            });
-        } else if (selectedOption.type === "ontology") {
-            navigate({
-                pathname: "/ontologies/" +
-                    selectedOption.ontology_name + "/",
-            });
-        }
-    }
 
     const entityTitle = entityType[0].toUpperCase()+entityType.slice(1);
     return (
@@ -94,14 +65,14 @@ export default function Entity() {
                                     maxWidth: 20, display: "inline-block",
                                     float: "right",
                                 }}>
-                                    <JsonApiWidget apiQuery={API + "ontologies/" + routeParams.ontologyId + "/" + routeParams.entityType + "?iri=" + encodeURIComponent(concatIri)} buttonText="JSON"/>
+                                    <JsonApiWidget apiQuery={API + "ontologies/" + routeParams.ontologyId + "/" + routeParams.entityType + "?iri=" + concatIri.replaceAll("#", "%23").replaceAll("&", "%26")} buttonText="JSON"/>
                                 </EuiFlexItem>
                                 <EuiFlexItem>
                                     {/*TODO Add on click event*/}
                                     <AutocompleteWidget
                                         api={API}
                                         placeholder={"Search in " + routeParams.ontologyId.toUpperCase()}
-                                        selectionChangedEvent={goToEntityPage}
+                                        selectionChangedEvent={(selectedOption) => { navigateToEntity(selectedOption, navigate); }}
                                         parameter={"ontology=" + routeParams.ontologyId + "collection=nfdi4health"}
                                         allowCustomTerms={false}
                                     />

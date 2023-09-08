@@ -3,38 +3,10 @@ import { EuiFlexGroup, EuiFlexItem, EuiPanel, EuiText, EuiSpacer, EuiTitle, EuiL
 import { AutocompleteWidget, DataContentWidget } from "@km/widgets-semlookp";
 import { useNavigate } from "react-router-dom";
 import EuiCustomLink from "../../router/EuiCustomLink";
+import {navigateToEntity} from "../../index";
 
 export default function Home() {
   const navigate = useNavigate();
-
-  function goToEntityPage(selectedOption) {
-
-    if (selectedOption.type === "class") {
-      navigate({
-        pathname: "/ontologies/" +
-          selectedOption.ontology_name + "/terms",
-        search: "iri="+selectedOption.iri
-      });
-    } else if (selectedOption.type === "individual") {
-      navigate({
-        pathname: "/ontologies/" +
-          selectedOption.ontology_name + "/individuals",
-        search: "iri="+selectedOption.iri
-      });
-    } else if (selectedOption.type === "property") {
-      navigate({
-        pathname:
-          "/ontologies/" +
-          selectedOption.ontology_name + "/properties",
-        search: "iri="+selectedOption.iri
-      });
-    } else if (selectedOption.type === "ontology") {
-      navigate({
-        pathname: "/ontologies/" +
-          selectedOption.ontology_name + "/",
-      });
-    }
-  }
 
   return (
     <>
@@ -57,7 +29,7 @@ export default function Home() {
                 <AutocompleteWidget
                   api={"https://semanticlookup.zbmed.de/api/"}
                   placeholder={"Jump to a Term, Individual or property"}
-                  selectionChangedEvent={goToEntityPage}
+                  selectionChangedEvent={(selectedOption) => { navigateToEntity(selectedOption, navigate);}}
                   parameter="collection=nfdi4health"
                   allowCustomTerms={false}
                 />
