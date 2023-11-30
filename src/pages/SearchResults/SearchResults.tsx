@@ -1,5 +1,5 @@
 import React from "react";
-import { SearchResultsListWidget } from "@km/widgets-semlookp";
+import { SearchResultsListWidget } from "@nfdi4health/semlookp-widgets";
 import { useSearchParams } from "react-router-dom";
 
 export default function SearchResults() {

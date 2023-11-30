@@ -1,8 +1,15 @@
 import React from "react";
 import { EuiFlexGroup, EuiFlexItem, EuiPanel } from "@elastic/eui";
-import { useParams, useNavigate } from "react-router-dom";
-import { AutocompleteWidget, DescriptionWidget, EntityInfoWidget, HierarchyWidget, JsonApiWidget, TitleWidget } from "@km/widgets-semlookp";
-import {navigateToEntity} from "../../index";
+import { useNavigate, useParams } from "react-router-dom";
+import {
+  AutocompleteWidget,
+  DescriptionWidget,
+  EntityInfoWidget,
+  HierarchyWidget,
+  JsonApiWidget,
+  TitleWidget
+} from "@nfdi4health/semlookp-widgets";
+import { navigateToEntity } from "../../index";
 
 
 export default function Ontology() {

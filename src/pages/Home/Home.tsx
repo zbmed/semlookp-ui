@@ -1,9 +1,9 @@
 import React from "react";
-import { EuiFlexGroup, EuiFlexItem, EuiPanel, EuiText, EuiSpacer, EuiTitle, EuiLink } from "@elastic/eui";
-import { AutocompleteWidget, DataContentWidget } from "@km/widgets-semlookp";
+import { EuiFlexGroup, EuiFlexItem, EuiLink, EuiPanel, EuiSpacer, EuiText, EuiTitle } from "@elastic/eui";
+import { AutocompleteWidget, DataContentWidget } from "@nfdi4health/semlookp-widgets";
 import { useNavigate } from "react-router-dom";
 import EuiCustomLink from "../../router/EuiCustomLink";
-import {navigateToEntity} from "../../index";
+import { navigateToEntity } from "../../index";
 
 export default function Home() {
   const navigate = useNavigate();

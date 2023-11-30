@@ -9,11 +9,11 @@ import {
     IriWidget,
     JsonApiWidget,
     TitleWidget
-} from "@km/widgets-semlookp";
+} from "@nfdi4health/semlookp-widgets";
 import "./Entity.css";
 import { EuiFlexGroup, EuiFlexItem, EuiPanel, EuiSpacer, EuiText } from '@elastic/eui'
 import { Helmet } from "react-helmet";
-import {navigateToEntity} from "../../index";
+import { navigateToEntity } from "../../index";
 
 const API = "https://semanticlookup.zbmed.de/api/"
 const olsAPI = "https://semanticlookup.zbmed.de/ols/api/"
