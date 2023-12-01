@@ -7,8 +7,17 @@ import LinkScroller from "./components/LinkScroller";
 
 import Layout from "./components/Layout/Layout";
 import {
-  Home, AboutPage, ApiPage, Entity, Error, ImprintPage, Ontology, PrivacyPage, ProjectsPage,
-  Resources, SearchResults
+  AboutPage,
+  ApiPage,
+  Entity,
+  Error,
+  Home,
+  ImprintPage,
+  Ontology,
+  PrivacyPage,
+  ProjectsPage,
+  Resources,
+  SearchResults
 } from "./imports/PagesImport";
 
 function App() {
@@ -17,7 +26,7 @@ function App() {
   return (
     <EuiProvider colorMode={"light"}>
       <QueryClientProvider client={queryClient}>
-        <Router basename="/dev">
+        <Router basename="/">
           <LinkScroller>
             <Routes>
               <Route path="/" element={<Layout />}>
