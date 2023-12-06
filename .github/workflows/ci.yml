@@ -75,7 +75,7 @@ jobs:
         helmv3: 3.12.0
         command: |
           kubectl get nodes
-          helmv3 repo add semlookp-deployment https://github.com/zbmed/semlookp-deployment.git
+          helmv3 repo add semlookp-deployment https://zbmed.github.io/semlookp-deployment/
           helmv3 repo update
           helmv3 upgrade semlookp-${{ steps.generate-image-tag.outputs.imageTag }} \
           --install \
