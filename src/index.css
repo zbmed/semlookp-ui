@@ -1,0 +1,14 @@
+@font-face {
+  font-family: TabletGothicNarrow;
+  src: url("layout/fonts/TabletGothicNarrow.woff") format("woff"),
+    url("layout/fonts/TabletGothicNarrow.ttf") format("truetype");
+}
+
+.brandColor {
+  font-family: TabletGothicNarrow !important;
+  color: #413f4a;
+}
+.brandSubColor {
+  font-family: TabletGothicNarrow !important;
+  color: #d01d2c;
+}
