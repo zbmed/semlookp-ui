@@ -2,6 +2,7 @@ import React from "react";
 import { ResourcesWidget } from "@nfdi4health/semlookp-widgets";
 import { EuiPanel, EuiSpacer, EuiText } from "@elastic/eui";
 import { Helmet } from "react-helmet";
+import GlobalConfig from "../../config";
 
 export default function Resources() {
   return (
@@ -11,7 +12,7 @@ export default function Resources() {
       </EuiText>
       <EuiSpacer />
       <ResourcesWidget
-        api={"https://semanticlookup.zbmed.de/api/"}
+        api={GlobalConfig.apiUrlGateway}
         targetLink={"/"}
         parameter={"collection=nfdi4health"}
       />

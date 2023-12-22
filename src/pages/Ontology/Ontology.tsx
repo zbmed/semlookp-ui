@@ -10,12 +10,13 @@ import {
   TitleWidget
 } from "@nfdi4health/semlookp-widgets";
 import { navigateToEntity } from "../../index";
+import GlobalConfig from "../../config";
 
 
 export default function Ontology() {
   const routeParams = useParams();
   const navigate = useNavigate();
-  const API = "https://semanticlookup.zbmed.de/api/"
+  const API = GlobalConfig.apiUrlGateway
 
   return (
     <>

@@ -11,12 +11,13 @@ import {
     TitleWidget
 } from "@nfdi4health/semlookp-widgets";
 import "./Entity.css";
-import { EuiFlexGroup, EuiFlexItem, EuiPanel, EuiSpacer, EuiText } from '@elastic/eui'
+import { EuiFlexGroup, EuiFlexItem, EuiPanel, EuiSpacer, EuiText } from "@elastic/eui";
 import { Helmet } from "react-helmet";
 import { navigateToEntity } from "../../index";
+import GlobalConfig from "../../config";
 
-const API = "https://semanticlookup.zbmed.de/api/"
-const olsAPI = "https://semanticlookup.zbmed.de/ols/api/"
+const API = GlobalConfig.apiUrlGateway
+const olsAPI = GlobalConfig.apiUrlSemlookp
 
 export default function Entity() {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars

@@ -4,6 +4,7 @@ import { AutocompleteWidget, DataContentWidget } from "@nfdi4health/semlookp-wid
 import { useNavigate } from "react-router-dom";
 import EuiCustomLink from "../../router/EuiCustomLink";
 import { navigateToEntity } from "../../index";
+import GlobalConfig from "../../config";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ export default function Home() {
               </EuiFlexItem>
               <EuiFlexItem>
                 <AutocompleteWidget
-                  api={"https://semanticlookup.zbmed.de/api/"}
+                  api={GlobalConfig.apiUrlGateway}
                   placeholder={"Jump to a Term, Individual or property"}
                   selectionChangedEvent={(selectedOption) => { navigateToEntity(selectedOption, navigate);}}
                   parameter="collection=nfdi4health"
@@ -67,7 +68,7 @@ export default function Home() {
         </EuiFlexItem>
         <EuiFlexItem grow={3}>
           <DataContentWidget
-            api="https://semanticlookup.zbmed.de/api/"
+            api={GlobalConfig.apiUrlGateway}
             parameter={"collection=nfdi4health"}
           />
         </EuiFlexItem>
