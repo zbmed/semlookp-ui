@@ -10,7 +10,7 @@ export default function SearchResults() {
     <SearchResultsListWidget
       api="https://semanticlookup.zbmed.de/api/"
       query={query}
-      targetLink="https://semanticlookup.zbmed.de/dev/"
+      targetLink={"/"}
       parameter={"collection=nfdi4health"}
     />
   );
