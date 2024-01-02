@@ -1,14 +1,23 @@
 @font-face {
   font-family: TabletGothicNarrow;
-  src: url("layout/fonts/TabletGothicNarrow.woff") format("woff"),
-    url("layout/fonts/TabletGothicNarrow.ttf") format("truetype");
+  src: url("components/Layout/fonts/TabletGothicNarrow.woff") format("woff"),
+    url("components/Layout/fonts/TabletGothicNarrow.ttf") format("truetype");
 }
 
-.brandColor {
+.brandColorPreview {
   font-family: TabletGothicNarrow !important;
   color: #413f4a;
 }
-.brandSubColor {
+.brandSubColorPreview {
   font-family: TabletGothicNarrow !important;
   color: #d01d2c;
+}
+
+.brandColorSemlookp {
+  font-family: TabletGothicNarrow !important;
+  color: #989a9c;
+}
+.brandSubColorSemLookp {
+  font-family: TabletGothicNarrow !important;
+  color: #3e3f40;
 }
