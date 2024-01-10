@@ -16,7 +16,7 @@ import GlobalConfig from "../../config";
 export default function Ontology() {
   const routeParams = useParams();
   const navigate = useNavigate();
-  const API = GlobalConfig.apiUrlGateway
+  const API = GlobalConfig.apiUrlGateway;
 
   return (
     <>
@@ -24,7 +24,8 @@ export default function Ontology() {
         <EuiFlexItem grow={7}>
           <EuiPanel id="titleBox" hasShadow={true}>
             <TitleWidget api={API} entityType={"ontology"} ontologyId={routeParams.ontologyId}></TitleWidget>
-            <DescriptionWidget api={API} entityType={"ontology"} ontologyId={routeParams.ontologyId}></DescriptionWidget>
+            <DescriptionWidget api={API} entityType={"ontology"}
+                               ontologyId={routeParams.ontologyId}></DescriptionWidget>
           </EuiPanel>
         </EuiFlexItem>
         <EuiFlexItem grow={3}>
@@ -32,12 +33,14 @@ export default function Ontology() {
             <AutocompleteWidget
               api={API}
               placeholder={"Search in " + routeParams.ontologyId.toUpperCase()}
-              selectionChangedEvent={(selectedOption) => { navigateToEntity(selectedOption, navigate);}}
-              parameter={"ontology="+routeParams.ontologyId+"collection=nfdi4health"}
+              selectionChangedEvent={(selectedOption) => {
+                navigateToEntity(selectedOption, navigate);
+              }}
+              parameter={"ontology=" + routeParams.ontologyId + "collection=nfdi4health"}
               allowCustomTerms={false}
-            />
+              singleSelection={true} />
             <JsonApiWidget
-              apiQuery={API+"ontologies/"+routeParams.ontologyId}
+              apiQuery={API + "ontologies/" + routeParams.ontologyId}
               buttonText={"JSON"}
               buttonSize={"s"}
             />
@@ -49,7 +52,7 @@ export default function Ontology() {
       <EuiFlexGroup>
         <EuiFlexItem grow={7}>
           <EuiPanel id="hierarchyBox" hasShadow={true}>
-            <HierarchyWidget api={API} ontologyId={routeParams.ontologyId}/>
+            <HierarchyWidget api={API} ontologyId={routeParams.ontologyId} />
           </EuiPanel>
         </EuiFlexItem>
         <EuiFlexItem grow={3}>

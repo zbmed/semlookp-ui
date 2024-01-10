@@ -31,7 +31,7 @@ export default function Home() {
         </EuiFlexItem>
       </EuiFlexGroup>
       <EuiSpacer size="xl" />
-      
+
       <EuiFlexGroup direction={"row"} gutterSize="m" alignItems={"center"}>
         <EuiFlexItem grow={false}>
           <EuiTitle size="m">
@@ -59,7 +59,7 @@ export default function Home() {
                 }}
                 parameter="collection=nfdi4health"
                 allowCustomTerms={false}
-              />
+                singleSelection={true} />
             </EuiFlexItem>
             <EuiFlexItem>
               <EuiText size="s">Examples: <EuiCustomLink
