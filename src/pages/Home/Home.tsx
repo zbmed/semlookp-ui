@@ -1,5 +1,7 @@
 import React from "react";
 import {
+  EuiButton,
+  EuiCard,
   EuiFlexGroup,
   EuiFlexItem,
   EuiImage,
@@ -22,17 +24,88 @@ import { ReactComponent as NFDI4HEALTHLOGO } from "../../components/Layout/logos
 export default function Home() {
   const navigate = useNavigate();
 
+  const useCaseDescription = (<>
+      <EuiText>
+        <EuiLink href={"https://www.zbmed.de/en/"}> ZB MED </EuiLink>
+        preprint Viewer <br></br>
+        <EuiSpacer size="s" />
+        <EuiLink href="https://preview.zbmed.de/"><span className="brandColorPreview"
+                                                        style={{ fontSize: "x-large" }}>
+                  pre<span className="brandSubColorPreview">VIEW</span>: COVID-19
+                </span></EuiLink><br></br>
+        <EuiSpacer size="s" />
+        <i>Semantic Search to Explore COVID-19 Research Preprints</i><br></br>
+        <EuiSpacer size="s" />
+        <div style={{ textAlign: "justify" }}>
+          The search engine uses the
+          <EuiCustomLink to={"/about/api"}> SemLookP API</EuiCustomLink> and
+          <EuiLink href={"https://github.com/nfdi4health/semlookp-widgets"}> Widgets </EuiLink>
+          to display semantic information.
+        </div>
+      </EuiText>
+    </>
+  );
+
+  const semlookpWidgetsDescription = (<>
+      <EuiText>
+        <EuiFlexGroup alignItems={"center"}>
+          <EuiFlexItem grow={3}>
+            <div style={{ textAlign: "justify" }}>
+              <EuiText><i>Small GUI components to use and
+                display
+                semantic information</i></EuiText>
+            </div>
+          </EuiFlexItem>
+          <EuiFlexItem grow={1}>
+            <EuiFlexGroup justifyContent="flexEnd">
+              <EuiFlexItem grow={false}>
+                <EuiButton
+                  onClick={() => window.location.assign("https://github.com/nfdi4health/semlookp-widgets")}>Explore</EuiButton>
+              </EuiFlexItem>
+            </EuiFlexGroup>
+          </EuiFlexItem>
+        </EuiFlexGroup>
+        <EuiSpacer size="s" />
+      </EuiText>
+      <EuiSpacer size={"s"} />
+      <EuiImage
+        size="original"
+        hasShadow
+        allowFullScreen={false}
+        caption=""
+        src={widgetimage}
+        alt={"SemLookP Widgets Icons"}
+      />
+    </>
+  );
+
+  const dataContentDescription = (<>
+      <EuiFlexGroup
+        direction={"column"}
+        gutterSize={"none"}
+        justifyContent={"center"}
+        style={{ height: "100%" }}
+      >
+        <DataContentWidget
+          api={GlobalConfig.apiUrlGateway}
+          parameter={"collection=nfdi4health"}
+        />
+      </EuiFlexGroup>
+    </>
+  );
+
 
   return (
     <>
       <EuiFlexGroup justifyContent="spaceAround">
         <EuiFlexItem grow={false}>
-          <NFDI4HEALTHLOGO height="170px" width="auto" />
+          <NFDI4HEALTHLOGO height="120px" width="auto" />
         </EuiFlexItem>
       </EuiFlexGroup>
+
       <EuiSpacer size="xl" />
 
-      <EuiFlexGroup direction={"row"} gutterSize="m" alignItems={"center"}>
+      <EuiFlexGroup direction={"column"} gutterSize="m" alignItems={"center"}>
         <EuiFlexItem grow={false}>
           <EuiTitle size="m">
             <h1><EuiTextColor>Welcome to the Semantic Lookup Platform</EuiTextColor></h1>
@@ -43,6 +116,7 @@ export default function Home() {
             SEM<span className="brandSubColorSemLookp">LOOK</span>P</span>
         </EuiFlexItem>
       </EuiFlexGroup>
+
       <EuiSpacer size="l" />
 
       <EuiFlexItem>
@@ -88,91 +162,44 @@ export default function Home() {
 
         <EuiFlexGroup>
           <EuiFlexItem grow={3}>
-
-            <EuiPanel
-              grow={true}
-              hasShadow={false}
+            <EuiCard
+              // icon={icon}
+              title=""
+              description={dataContentDescription}
               style={{ backgroundColor: "#ccedf5", minHeight: 150 }}
-            >
-              <EuiFlexGroup direction={"column"} gutterSize={"none"}>
-                <DataContentWidget
-                  api={GlobalConfig.apiUrlGateway}
-                  parameter={"collection=nfdi4health"}
-                />
-              </EuiFlexGroup>
-
-            </EuiPanel>
+              display="subdued"
+            />
           </EuiFlexItem>
 
           <EuiFlexItem grow={3}>
-            <EuiPanel
-              grow={true}
-              hasShadow={false}
+            <EuiCard
+              // icon={icon}
+              title="Use Case"
+              description={useCaseDescription}
+              // onClick={() => window.location.assign("https://preview.zbmed.de/")}
               style={{ backgroundColor: "#cce4f5", minHeight: 150 }}
-            >
-              <EuiFlexGroup>
-                {" "}
-                <EuiFlexItem>
-                  <EuiTitle size="s">
-                    <h3>
-                      <EuiTextColor> Use Case </EuiTextColor>
-                    </h3>
-                  </EuiTitle>
-                </EuiFlexItem>
-              </EuiFlexGroup>
-              <EuiSpacer size="s" />
-              <EuiText>
-                <EuiLink href={"https://www.zbmed.de/en/"}> ZB MED </EuiLink>
-                preprint Viewer <br></br>
-                <EuiSpacer size="s" />
-                <EuiLink href="https://preview.zbmed.de/"><span className="brandColorPreview"
-                                                                style={{ fontSize: "x-large" }}>
-                  pre<span className="brandSubColorPreview">VIEW</span>: COVID-19
-                </span></EuiLink><br></br>
-                <EuiSpacer size="s" />
-                <i>Semantic Search to Explore COVID-19 Research Preprints.</i><br></br>
-                <EuiSpacer size="s" />
-                The search engine uses the
-                <EuiCustomLink to={"/about/api"}> SemLookP API</EuiCustomLink> and
-                <EuiLink href={"https://github.com/nfdi4health/semlookp-widgets"}> Widgets </EuiLink>
-                to display semantic information.
-              </EuiText>
-            </EuiPanel>
-
+              display="subdued"
+            />
           </EuiFlexItem>
+
           <EuiFlexItem grow={3}>
-            <EuiPanel
-              grow={true}
-              hasShadow={false}
+            <EuiCard
+              title={
+                <EuiFlexGroup justifyContent={"center"} gutterSize={"s"} alignItems={"baseline"}>
+                  <EuiFlexItem grow={false}>
+          <span className="brandColorSemlookp" style={{ fontSize: "x-large" }}>
+            SEM<span className="brandSubColorSemLookp">LOOK</span>P</span>
+                  </EuiFlexItem>
+                  <EuiFlexItem grow={false}>
+                    <EuiText><h3>Widgets</h3></EuiText>
+                  </EuiFlexItem>
+                </EuiFlexGroup>
+              }
+              description={semlookpWidgetsDescription}
+              // onClick={() => window.location.assign("https://github.com/nfdi4health/semlookp-widgets")}
               style={{ backgroundColor: "#D3DAE6", minHeight: 150 }}
-            >
-              <EuiFlexGroup>
-                {" "}
-                <EuiFlexItem>
-                  <EuiTitle size="s">
-                    <h3>
-                      <EuiTextColor> SemLookP Widgets </EuiTextColor>
-                    </h3>
-                  </EuiTitle>
-                  <EuiSpacer size="s" />
-                  <EuiText>
-                    <i>Small GUI components to use and display semantic information.</i><br></br>
-                    <EuiSpacer size="s" />
-                    <EuiImage
-                      size="original"
-                      hasShadow
-                      allowFullScreen
-                      caption=""
-                      src={widgetimage}
-                      alt={"metadata"}
-                    />
-                    The <EuiLink href={"https://github.com/nfdi4health/semlookp-widgets"}> Widgets </EuiLink> are based
-                    on the
-                    <EuiCustomLink to={"/about/api"}> SemLookP API</EuiCustomLink>.
-                  </EuiText>
-                </EuiFlexItem>
-              </EuiFlexGroup>
-            </EuiPanel>
+              display="subdued"
+            />
           </EuiFlexItem>
         </EuiFlexGroup>
 
