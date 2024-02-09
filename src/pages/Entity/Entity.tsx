@@ -101,6 +101,7 @@ export default function Entity() {
                     api={GlobalConfig.apiUrlEbi}
                     entityType={entityType}
                     iri={concatIri}
+                    ontologyId={routeParams.ontologyId}
                   />
                 </EuiFlexItem>
               </EuiFlexGroup>
