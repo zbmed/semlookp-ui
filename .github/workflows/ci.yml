@@ -27,7 +27,7 @@ jobs:
           ref_name="${head_ref:-${ref_name/main/latest}}"
           echo "::set-output name=imageTag::${ref_name#v}"
       - name: Configure npm to use GHCR for @nfdi4health scope
-        run: echo "@nfdi4health:registry=https://ghcr.io/" >> .npmrc
+        run: echo "@nfdi4health:registry=https://npm.pkg.github.com" >> .npmrc
       - name: Login to Container Registry
         uses: docker/login-action@v1
         with:
