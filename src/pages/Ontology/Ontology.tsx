@@ -17,6 +17,7 @@ export default function Ontology() {
   const routeParams = useParams();
   const navigate = useNavigate();
   const API = GlobalConfig.apiUrlGateway;
+  const OLSAPI = GlobalConfig.apiUrlSemlookpOls4
 
   return (
     <>
@@ -52,7 +53,7 @@ export default function Ontology() {
       <EuiFlexGroup>
         <EuiFlexItem grow={7}>
           <EuiPanel id="hierarchyBox" hasShadow={true}>
-            <HierarchyWidget api={API} ontologyId={routeParams.ontologyId} />
+            <HierarchyWidget api={OLSAPI} ontologyId={routeParams.ontologyId} />
           </EuiPanel>
         </EuiFlexItem>
         <EuiFlexItem grow={3}>

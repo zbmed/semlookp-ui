@@ -19,7 +19,7 @@ import GlobalConfig from "../../config";
 import "@nfdi4health/semlookp-widgets/dist/esm/index.css";
 
 const API = GlobalConfig.apiUrlGateway;
-const olsAPI = GlobalConfig.apiUrlSemlookp;
+const OLS4API = GlobalConfig.apiUrlSemlookpOls4
 
 export default function Entity() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -98,7 +98,7 @@ export default function Entity() {
                 <EuiFlexItem grow={false}>
                   <EntityRelationsWidget
                     hasTitle
-                    api={GlobalConfig.apiUrlEbi}
+                    api={OLS4API}
                     entityType={entityType}
                     iri={concatIri}
                     ontologyId={routeParams.ontologyId}
