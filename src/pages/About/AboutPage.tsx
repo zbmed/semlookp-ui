@@ -13,7 +13,7 @@ export default function AboutPage() {
             <p>The Semantic Lookup Platform aims to provide accessibility to controlled and linked semantic information
               in the health domain. It is developed and maintained by <EuiLink
                 href={"https://www.zbmed.de/en/"}> ZB MED - Information Centre for Life Sciences.</EuiLink> It emerged
-              from the BMBF-funded project <EuiLink href={"http://localhost:3000/projects"}> IDSN. </EuiLink> The
+              from the BMBF-funded project <EuiLink href={"https://www.idsn.info/de/idsn.html"}> IDSN. </EuiLink> The
               system is based on the Ontology Lookup Service (OLS), that is developed and maintained by the
               <EuiLink href={"https://www.ebi.ac.uk/about/teams/samples-phenotypes-ontologies/"}> Samples, Phenotypes
                 and Ontologies Team (SPOT) </EuiLink> at <EuiLink href={"https://www.ebi.ac.uk/"}> EMBL-EBI. </EuiLink>
