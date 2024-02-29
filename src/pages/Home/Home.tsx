@@ -36,7 +36,7 @@ export default function Home() {
         <EuiSpacer size="s" />
         <i>Semantic Search to Explore COVID-19 Research Preprints</i><br></br>
         <EuiSpacer size="s" />
-        <div style={{ textAlign: "justify" }}>
+        <div style={{ textAlign: "left" }}>
           The search engine uses the
           <EuiCustomLink to={"/about/api"}> SemLookP API</EuiCustomLink> and
           <EuiLink href={"https://github.com/nfdi4health/semlookp-widgets"}> Widgets </EuiLink>
