@@ -86,7 +86,7 @@ export default function Entity() {
             </EuiFlexItem>
             <EuiFlexItem>
               <EuiFlexGroup direction={"column"}>
-                <EuiFlexItem>
+                <EuiFlexItem grow={false}>
                   <EntityInfoWidget
                     api={API}
                     ontologyId={routeParams.ontologyId}
