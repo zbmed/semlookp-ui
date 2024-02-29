@@ -95,7 +95,7 @@ export default function Entity() {
                     entityType={entityType}
                   />
                 </EuiFlexItem>
-                <EuiFlexItem>
+                <EuiFlexItem grow={false}>
                   <EntityRelationsWidget
                     hasTitle
                     api={GlobalConfig.apiUrlEbi}
