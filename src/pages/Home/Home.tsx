@@ -50,7 +50,7 @@ export default function Home() {
       <EuiText>
         <EuiFlexGroup alignItems={"center"}>
           <EuiFlexItem grow={3}>
-            <div style={{ textAlign: "justify" }}>
+            <div style={{ textAlign: "center" }}>
               <EuiText><i>Small GUI components to use and
                 display
                 semantic information</i></EuiText>
