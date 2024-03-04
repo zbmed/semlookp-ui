@@ -51,7 +51,9 @@ export default function Home() {
         <EuiFlexGroup alignItems={"center"}>
           <EuiFlexItem grow={3}>
             <div style={{ textAlign: "center" }}>
-              <EuiText><i>Small GUI components to use and
+              <EuiText><i>Small
+                <EuiLink href={"https://github.com/nfdi4health/semlookp-widgets"}> GUI components </EuiLink>
+                to use and
                 display
                 semantic information</i></EuiText>
             </div>
@@ -60,7 +62,7 @@ export default function Home() {
             <EuiFlexGroup justifyContent="flexEnd">
               <EuiFlexItem grow={false}>
                 <EuiButton
-                  onClick={() => window.location.assign("https://github.com/nfdi4health/semlookp-widgets")}>Explore</EuiButton>
+                  onClick={() => window.location.assign("https://nfdi4health.github.io/semlookp-widgets/?path=/docs/autocomplete-widget--docs")}>Explore</EuiButton>
               </EuiFlexItem>
             </EuiFlexGroup>
           </EuiFlexItem>
