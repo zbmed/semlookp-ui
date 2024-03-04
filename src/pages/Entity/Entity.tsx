@@ -81,17 +81,14 @@ export default function Entity() {
 
         <EuiPanel>
           <EuiFlexGroup gutterSize={"m"}>
-            <EuiFlexItem grow={false}>
-              <div style={{ maxHeight: "1000px", overflow: "auto", overflowX: "auto" }}>
+            <EuiFlexItem grow={false} style={{ maxHeight: "1000px", overflow: "auto", overflowX: "auto" }}>
                 <HierarchyWidget ontologyId={routeParams.ontologyId} api={GlobalConfig.apiUrlSemlookpOls4} />
-              </div>
             </EuiFlexItem>
             <EuiSpacer size={"l"} />
             <EuiFlexItem grow={true}>
               <EuiFlexGroup direction={"column"}>
                 <EuiSpacer size={"s"} />
-                <EuiFlexItem grow={false}>
-                  <div style={{ maxHeight: "1000px", maxWidth: "500px", overflow: "auto", overflowX: "auto" }}>
+                <EuiFlexItem grow={false} style={{ maxHeight: "1000px", maxWidth: "500px", overflow: "auto", overflowX: "auto" }}>
                     <EntityInfoWidget
                       api={API}
                       ontologyId={routeParams.ontologyId}
@@ -99,11 +96,9 @@ export default function Entity() {
                       hasTitle={true}
                       entityType={entityType}
                     />
-                  </div>
                 </EuiFlexItem>
                 <EuiSpacer size={"s"} />
-                <EuiFlexItem grow={false}>
-                  <div style={{ maxHeight: "1000px", maxWidth: "500px", overflow: "auto", overflowX: "auto" }}>
+                <EuiFlexItem grow={false} style={{ maxHeight: "1000px", maxWidth: "500px", overflow: "auto", overflowX: "auto" }}>
                     <EntityRelationsWidget
                       hasTitle
                       api={OLS4API}
@@ -111,7 +106,6 @@ export default function Entity() {
                       iri={concatIri}
                       ontologyId={routeParams.ontologyId}
                     />
-                  </div>
                 </EuiFlexItem>
               </EuiFlexGroup>
             </EuiFlexItem>
