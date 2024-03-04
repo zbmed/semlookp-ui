@@ -19,7 +19,7 @@ import GlobalConfig from "../../config";
 import "@nfdi4health/semlookp-widgets/dist/esm/index.css";
 
 const API = GlobalConfig.apiUrlGateway;
-const OLS4API = GlobalConfig.apiUrlSemlookpOls4
+const OLS4API = GlobalConfig.apiUrlSemlookpOls4;
 
 export default function Entity() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -80,29 +80,38 @@ export default function Entity() {
         <EuiSpacer />
 
         <EuiPanel>
-          <EuiFlexGroup>
-            <EuiFlexItem grow={3}>
-              <HierarchyWidget ontologyId={routeParams.ontologyId} api={GlobalConfig.apiUrlSemlookpOls4} />
+          <EuiFlexGroup gutterSize={"m"}>
+            <EuiFlexItem grow={false}>
+              <div style={{ maxHeight: "1000px", overflow: "auto", overflowX: "auto" }}>
+                <HierarchyWidget ontologyId={routeParams.ontologyId} api={GlobalConfig.apiUrlSemlookpOls4} />
+              </div>
             </EuiFlexItem>
-            <EuiFlexItem>
+            <EuiSpacer size={"l"} />
+            <EuiFlexItem grow={true}>
               <EuiFlexGroup direction={"column"}>
+                <EuiSpacer size={"s"} />
                 <EuiFlexItem grow={false}>
-                  <EntityInfoWidget
-                    api={API}
-                    ontologyId={routeParams.ontologyId}
-                    iri={concatIri}
-                    hasTitle={true}
-                    entityType={entityType}
-                  />
+                  <div style={{ maxHeight: "1000px", maxWidth: "500px", overflow: "auto", overflowX: "auto" }}>
+                    <EntityInfoWidget
+                      api={API}
+                      ontologyId={routeParams.ontologyId}
+                      iri={concatIri}
+                      hasTitle={true}
+                      entityType={entityType}
+                    />
+                  </div>
                 </EuiFlexItem>
+                <EuiSpacer size={"s"} />
                 <EuiFlexItem grow={false}>
-                  <EntityRelationsWidget
-                    hasTitle
-                    api={OLS4API}
-                    entityType={entityType}
-                    iri={concatIri}
-                    ontologyId={routeParams.ontologyId}
-                  />
+                  <div style={{ maxHeight: "1000px", maxWidth: "500px", overflow: "auto", overflowX: "auto" }}>
+                    <EntityRelationsWidget
+                      hasTitle
+                      api={OLS4API}
+                      entityType={entityType}
+                      iri={concatIri}
+                      ontologyId={routeParams.ontologyId}
+                    />
+                  </div>
                 </EuiFlexItem>
               </EuiFlexGroup>
             </EuiFlexItem>
