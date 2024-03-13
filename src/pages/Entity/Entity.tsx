@@ -79,7 +79,20 @@ export default function Entity() {
         <EuiPanel>
           <EuiFlexGroup gutterSize={"m"}>
             <EuiFlexItem grow={false} style={{ maxHeight: "1000px", overflow: "auto", overflowX: "auto" }}>
-                <HierarchyWidget ontologyId={routeParams.ontologyId} api={GlobalConfig.apiUrlSemlookpOls4} />
+              <HierarchyWidget ontologyId={routeParams.ontologyId} api={GlobalConfig.apiUrlSemlookpOls4} iri={concatIri}
+                               onNavigateToOntology={(ontologyId, entityType, iri) => {
+                                 navigate(
+                                   `/ontologies/${ontologyId}/${entityType == "classes" ? "terms" : entityType}?iri=${iri
+                                   }`
+                                 );
+                               }}
+                               onNavigateToEntity={(ontologyId, entityType, iri) => {
+                                 navigate(
+                                   `/ontologies/${ontologyId}/${entityType == "classes" ? "terms" : entityType}?iri=${iri
+                                   }`
+                                 );
+                               }}
+              />
             </EuiFlexItem>
             <EuiSpacer size={"l"} />
             <EuiFlexItem grow={true}>
