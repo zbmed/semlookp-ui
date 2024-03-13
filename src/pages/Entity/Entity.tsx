@@ -1,5 +1,11 @@
 import React from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import "./Entity.css";
+import { EuiFlexGroup, EuiFlexItem, EuiPanel, EuiSpacer } from "@elastic/eui";
+import { Helmet } from "react-helmet";
+import { navigateToEntity } from "../../index";
+import GlobalConfig from "../../config";
+import "@nfdi4health/semlookp-widgets/dist/esm/index.css";
 import {
   AutocompleteWidget,
   BreadcrumbWidget,
@@ -11,12 +17,6 @@ import {
   JsonApiWidget,
   TitleWidget
 } from "@nfdi4health/semlookp-widgets";
-import "./Entity.css";
-import { EuiFlexGroup, EuiFlexItem, EuiPanel, EuiSpacer } from "@elastic/eui";
-import { Helmet } from "react-helmet";
-import { navigateToEntity } from "../../index";
-import GlobalConfig from "../../config";
-import "@nfdi4health/semlookp-widgets/dist/esm/index.css";
 
 const API = GlobalConfig.apiUrlGateway;
 const OLS4API = GlobalConfig.apiUrlSemlookpOls4;
@@ -40,13 +40,11 @@ export default function Entity() {
                 <TitleWidget
                   iri={concatIri}
                   ontologyId={routeParams.ontologyId}
-                  entityType={entityType}
                   api={API}
                 />
                 <EuiSpacer size={"s"} />
                 <BreadcrumbWidget iri={concatIri} api={API}
                                   ontologyId={routeParams.ontologyId}
-                                  entityType={entityType}
                 />
                 <EuiSpacer size={"s"} />
                 <IriWidget iri={concatIri} />
@@ -54,7 +52,6 @@ export default function Entity() {
                 <DescriptionWidget
                   iri={concatIri}
                   ontologyId={routeParams.ontologyId}
-                  entityType={entityType}
                   api={API}
                 />
                 <EuiSpacer size={"s"} />
@@ -86,26 +83,29 @@ export default function Entity() {
             </EuiFlexItem>
             <EuiSpacer size={"l"} />
             <EuiFlexItem grow={true}>
-              <EuiFlexGroup direction={"column"}>
+              <EuiFlexGroup direction={"column"}
+                            style={{ maxHeight: "2000px", maxWidth: "500px", overflow: "auto", overflowX: "auto" }}>
                 <EuiSpacer size={"s"} />
-                <EuiFlexItem grow={false} style={{ maxHeight: "1000px", maxWidth: "500px", overflow: "auto", overflowX: "auto" }}>
-                    <EntityInfoWidget
-                      api={API}
-                      ontologyId={routeParams.ontologyId}
-                      iri={concatIri}
-                      hasTitle={true}
-                      entityType={entityType}
-                    />
+                <EuiFlexItem grow={false}
+                             style={{ maxHeight: "1000px", maxWidth: "500px", overflow: "auto", overflowX: "auto" }}>
+                  <EntityInfoWidget
+                    api={API}
+                    ontologyId={routeParams.ontologyId}
+                    iri={concatIri}
+                    hasTitle={true}
+                    entityType={entityType}
+                  />
                 </EuiFlexItem>
                 <EuiSpacer size={"s"} />
-                <EuiFlexItem grow={false} style={{ maxHeight: "1000px", maxWidth: "500px", overflow: "auto", overflowX: "auto" }}>
-                    <EntityRelationsWidget
-                      hasTitle
-                      api={OLS4API}
-                      entityType={entityType}
-                      iri={concatIri}
-                      ontologyId={routeParams.ontologyId}
-                    />
+                <EuiFlexItem grow={false}
+                             style={{ maxHeight: "1000px", maxWidth: "500px", overflow: "auto", overflowX: "auto" }}>
+                  <EntityRelationsWidget
+                    hasTitle
+                    api={OLS4API}
+                    entityType={entityType}
+                    iri={concatIri}
+                    ontologyId={routeParams.ontologyId}
+                  />
                 </EuiFlexItem>
               </EuiFlexGroup>
             </EuiFlexItem>
