@@ -1,9 +1,10 @@
 import React from "react";
-import { ResourcesWidget } from "@nfdi4health/semlookp-widgets";
 import { EuiPanel, EuiSpacer, EuiText } from "@elastic/eui";
 import { Helmet } from "react-helmet";
 import GlobalConfig from "../../config";
+import { ResourcesWidget } from "@nfdi4health/semlookp-widgets";
 
+const OLS4API = GlobalConfig.apiUrlSemlookpOls4;
 export default function Resources() {
   return (
     <EuiPanel paddingSize="l">
@@ -12,7 +13,7 @@ export default function Resources() {
       </EuiText>
       <EuiSpacer />
       <ResourcesWidget
-        api={GlobalConfig.apiUrlGateway}
+        api={OLS4API}
         targetLink={"/"}
         parameter={"collection=nfdi4health"}
       />

@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import "./Entity.css";
-import { EuiFlexGroup, EuiFlexItem, EuiPanel, EuiSpacer } from "@elastic/eui";
+import { EuiAccordion, EuiFlexGroup, EuiFlexItem, EuiPanel, EuiSpacer } from "@elastic/eui";
 import { Helmet } from "react-helmet";
 import { navigateToEntity } from "../../index";
 import GlobalConfig from "../../config";
@@ -18,7 +18,6 @@ import {
   TitleWidget
 } from "@nfdi4health/semlookp-widgets";
 
-const API = GlobalConfig.apiUrlGateway;
 const OLS4API = GlobalConfig.apiUrlSemlookpOls4;
 
 export default function Entity() {
@@ -40,10 +39,10 @@ export default function Entity() {
                 <TitleWidget
                   iri={concatIri}
                   ontologyId={routeParams.ontologyId}
-                  api={API}
+                  api={OLS4API}
                 />
                 <EuiSpacer size={"s"} />
-                <BreadcrumbWidget iri={concatIri} api={API}
+                <BreadcrumbWidget iri={concatIri} api={OLS4API}
                                   ontologyId={routeParams.ontologyId}
                 />
                 <EuiSpacer size={"s"} />
@@ -52,11 +51,11 @@ export default function Entity() {
                 <DescriptionWidget
                   iri={concatIri}
                   ontologyId={routeParams.ontologyId}
-                  api={API}
+                  api={OLS4API}
                 />
                 <EuiSpacer size={"s"} />
                 <AutocompleteWidget
-                  api={GlobalConfig.apiUrlGateway}
+                  api={GlobalConfig.apiUrlSemlookpOls4}
                   placeholder={"Search in " + routeParams.ontologyId.toUpperCase()}
                   selectionChangedEvent={(selectedOption) => {
                     navigateToEntity(selectedOption, navigate);
@@ -68,7 +67,7 @@ export default function Entity() {
             </EuiFlexItem>
             <EuiFlexItem grow={1}>
               <JsonApiWidget
-                apiQuery={API + "ontologies/" + routeParams.ontologyId + "/" + routeParams.entityType + "?iri=" + concatIri.replaceAll("#", "%23").replaceAll("&", "%26")}
+                apiQuery={OLS4API + "ontologies/" + routeParams.ontologyId + "/" + routeParams.entityType + "?iri=" + concatIri.replaceAll("#", "%23").replaceAll("&", "%26")}
                 buttonText="JSON" />
             </EuiFlexItem>
           </EuiFlexGroup>
@@ -78,47 +77,54 @@ export default function Entity() {
 
         <EuiPanel>
           <EuiFlexGroup gutterSize={"m"}>
-            <EuiFlexItem grow={false} style={{ maxHeight: "1000px", overflow: "auto", overflowX: "auto" }}>
-              <HierarchyWidget ontologyId={routeParams.ontologyId} api={GlobalConfig.apiUrlSemlookpOls4} iri={concatIri}
-                               onNavigateToOntology={(ontologyId, entityType, iri) => {
-                                 navigate(
-                                   `/ontologies/${ontologyId}/${entityType == "classes" ? "terms" : entityType}?iri=${iri
-                                   }`
-                                 );
-                               }}
-                               onNavigateToEntity={(ontologyId, entityType, iri) => {
-                                 navigate(
-                                   `/ontologies/${ontologyId}/${entityType == "classes" ? "terms" : entityType}?iri=${iri
-                                   }`
-                                 );
-                               }}
+            <EuiFlexItem grow={false}>
+              <HierarchyWidget
+                ontologyId={routeParams.ontologyId}
+                api={OLS4API}
+                iri={concatIri}
+                entityType={entityType}
+                onNavigateToOntology={(ontologyId, entityType, iri) => {
+                  console.log(ontologyId, entityType, iri)
+                  navigate(
+                    `/ontologies/${ontologyId}/${entityType == "classes" ? "terms" : entityType}?iri=${iri
+                    }`
+                  );
+                }}
+                onNavigateToEntity={(ontologyId, entityType, iri) => {
+                  console.log("ontos", ontologyId, entityType, iri)
+                  navigate(
+                    `/ontologies/${ontologyId}/${entityType == "classes" ? "terms" : entityType}?iri=${iri
+                    }`
+                  );
+                }}
               />
             </EuiFlexItem>
             <EuiSpacer size={"l"} />
             <EuiFlexItem grow={true}>
-              <EuiFlexGroup direction={"column"}
-                            style={{ maxHeight: "2000px", maxWidth: "500px", overflow: "auto", overflowX: "auto" }}>
+              <EuiFlexGroup direction={"column"}>
                 <EuiSpacer size={"s"} />
-                <EuiFlexItem grow={false}
-                             style={{ maxHeight: "1000px", maxWidth: "500px", overflow: "auto", overflowX: "auto" }}>
-                  <EntityInfoWidget
-                    api={API}
-                    ontologyId={routeParams.ontologyId}
-                    iri={concatIri}
-                    hasTitle={true}
-                    entityType={entityType}
-                  />
+                <EuiFlexItem grow={false}>
+                  <EuiAccordion id={"entity info"} initialIsOpen={true}>
+                    <EntityInfoWidget
+                      api={OLS4API}
+                      ontologyId={routeParams.ontologyId}
+                      iri={concatIri}
+                      hasTitle={true}
+                      entityType={entityType}
+                    />
+                  </EuiAccordion>
                 </EuiFlexItem>
                 <EuiSpacer size={"s"} />
-                <EuiFlexItem grow={false}
-                             style={{ maxHeight: "1000px", maxWidth: "500px", overflow: "auto", overflowX: "auto" }}>
-                  <EntityRelationsWidget
-                    hasTitle
-                    api={OLS4API}
-                    entityType={entityType}
-                    iri={concatIri}
-                    ontologyId={routeParams.ontologyId}
-                  />
+                <EuiFlexItem grow={false}>
+                  <EuiAccordion id={"entity info"} initialIsOpen={true}>
+                    <EntityRelationsWidget
+                      hasTitle
+                      api={OLS4API}
+                      entityType={entityType}
+                      iri={concatIri}
+                      ontologyId={routeParams.ontologyId}
+                    />
+                  </EuiAccordion>
                 </EuiFlexItem>
               </EuiFlexGroup>
             </EuiFlexItem>
