@@ -5,7 +5,7 @@ import { EuiAccordion, EuiFlexGroup, EuiFlexItem, EuiPanel, EuiSpacer } from "@e
 import { Helmet } from "react-helmet";
 import { navigateToEntity } from "../../index";
 import GlobalConfig from "../../config";
-import "@nfdi4health/semlookp-widgets/dist/esm/index.css";
+import "@ts4nfdi/terminology-service-suite/dist/esm/index.css";
 import {
   AutocompleteWidget,
   BreadcrumbWidget,
@@ -16,7 +16,7 @@ import {
   IriWidget,
   JsonApiWidget,
   TitleWidget
-} from "@nfdi4health/semlookp-widgets";
+} from "@ts4nfdi/terminology-service-suite";
 
 const OLS4API = GlobalConfig.apiUrlSemlookpOls4;
 
@@ -86,14 +86,14 @@ export default function Entity() {
                 onNavigateToOntology={(ontologyId, entityType, iri) => {
                   console.log(ontologyId, entityType, iri)
                   navigate(
-                    `/ontologies/${ontologyId}/${entityType == "classes" ? "terms" : entityType}?iri=${iri
+                    `/ontologies/${ontologyId}/${entityType == "classes" ? "terms" : entityType}?iri=${encodeURIComponent(encodeURIComponent(iri))
                     }`
                   );
                 }}
                 onNavigateToEntity={(ontologyId, entityType, iri) => {
                   console.log("ontos", ontologyId, entityType, iri)
                   navigate(
-                    `/ontologies/${ontologyId}/${entityType == "classes" ? "terms" : entityType}?iri=${iri
+                    `/ontologies/${ontologyId}/${entityType == "classes" ? "terms" : entityType}?iri=${encodeURIComponent(encodeURIComponent(iri))
                     }`
                   );
                 }}

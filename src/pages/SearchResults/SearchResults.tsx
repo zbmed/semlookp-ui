@@ -1,5 +1,5 @@
 import React from "react";
-import { SearchResultsListWidget } from "@nfdi4health/semlookp-widgets";
+import { SearchResultsListWidget } from "@ts4nfdi/terminology-service-suite";
 import { useSearchParams } from "react-router-dom";
 import GlobalConfig from "../../config";
 
