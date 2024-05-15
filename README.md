@@ -9,7 +9,7 @@ This is the frontend scheme of the Semantic Lookup Platform [SemLookP](https://s
 - [ReactJS 17](https://reactjs.org/blog/2020/10/20/react-v17.html)
 - [TypeScript 4.5](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-5.html)
 - [Elastic UI](https://elastic.github.io/eui/#/)
-- [@nfdi4health/semlookp-widgets](https://github.com/nfdi4health/semlookp-widgets)
+- [@ts4nfdi/terminology-service-suite](https://github.com/nfdi4health/semlookp-widgets)
 - [Create React App](https://create-react-app.dev/)
 
 ## Setup 
@@ -18,7 +18,7 @@ This is the frontend scheme of the Semantic Lookup Platform [SemLookP](https://s
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 #### Authenticate to the npm package registry
-For using the @nfdi4health/semlookp-widgets you have to [authenticate](https://docs.github.com/de/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#authentifizieren-mit-einem-personal-access-token) with a personal access token or deploy token.
+For using the @ts4nfdi/terminology-service-suite you have to [authenticate](https://docs.github.com/de/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#authentifizieren-mit-einem-personal-access-token) with a personal access token or deploy token.
 For local development specify a runtime variable NPM_TOKEN with your npm authentication token.
 
 #### Local development

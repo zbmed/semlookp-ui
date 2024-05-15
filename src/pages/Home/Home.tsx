@@ -12,7 +12,7 @@ import {
   EuiTextColor,
   EuiTitle
 } from "@elastic/eui";
-import { AutocompleteWidget, DataContentWidget } from "@nfdi4health/semlookp-widgets";
+import { AutocompleteWidget, DataContentWidget } from "@ts4nfdi/terminology-service-suite";
 import { useNavigate } from "react-router-dom";
 import EuiCustomLink from "../../router/EuiCustomLink";
 import { navigateToEntity } from "../../index";
@@ -135,7 +135,8 @@ export default function Home() {
                 }}
                 parameter="collection=nfdi4health"
                 allowCustomTerms={false}
-                singleSelection={true} />
+                singleSelection={true}
+              />
             </EuiFlexItem>
             <EuiFlexItem>
               <EuiText size="s">Examples: <EuiCustomLink

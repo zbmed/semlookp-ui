@@ -2,7 +2,7 @@ import React from "react";
 import { EuiPanel, EuiSpacer, EuiText } from "@elastic/eui";
 import { Helmet } from "react-helmet";
 import GlobalConfig from "../../config";
-import { ResourcesWidget } from "@nfdi4health/semlookp-widgets";
+import { ResourcesWidget } from "@ts4nfdi/terminology-service-suite";
 
 const OLS4API = GlobalConfig.apiUrlSemlookpOls4;
 export default function Resources() {

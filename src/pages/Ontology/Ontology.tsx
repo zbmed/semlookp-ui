@@ -11,7 +11,7 @@ import {
   JsonApiWidget,
   OntologyInfoWidget,
   TitleWidget
-} from "@nfdi4health/semlookp-widgets";
+} from "@ts4nfdi/terminology-service-suite";
 
 const OLS4API = GlobalConfig.apiUrlSemlookpOls4;
 export default function Ontology() {
