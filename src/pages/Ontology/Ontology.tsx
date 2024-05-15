@@ -1,68 +1,164 @@
-import React from "react";
-import { EuiFlexGroup, EuiFlexItem, EuiPanel } from "@elastic/eui";
+import React, { useMemo, useState } from "react";
+import { EuiFlexGroup, EuiFlexItem, EuiPanel, EuiSpacer, EuiTab, EuiTabs } from "@elastic/eui";
 import { useNavigate, useParams } from "react-router-dom";
+import { navigateToEntity } from "../../index";
+import GlobalConfig from "../../config";
+import { Helmet } from "react-helmet";
 import {
   AutocompleteWidget,
   DescriptionWidget,
-  EntityInfoWidget,
   HierarchyWidget,
   JsonApiWidget,
+  OntologyInfoWidget,
   TitleWidget
 } from "@nfdi4health/semlookp-widgets";
-import { navigateToEntity } from "../../index";
-import GlobalConfig from "../../config";
 
-
+const OLS4API = GlobalConfig.apiUrlSemlookpOls4;
 export default function Ontology() {
   const routeParams = useParams();
   const navigate = useNavigate();
-  const API = GlobalConfig.apiUrlGateway
+
+  const tabs = [
+    {
+      id: "classes",
+      name: "Classes",
+      content: (
+        <HierarchyWidget
+          ontologyId={routeParams.ontologyId}
+          api={OLS4API}
+          entityType={"class"}
+          onNavigateToOntology={(ontologyId, entityType, iri) => {
+            navigate(
+              `/ontologies/${ontologyId}/${entityType == "classes" ? "terms" : entityType}?iri=${iri
+              }`
+            );
+          }}
+          onNavigateToEntity={(ontologyId, entityType, iri) => {
+            navigate(
+              `/ontologies/${ontologyId}/${entityType == "classes" ? "terms" : entityType}?iri=${iri
+              }`
+            );
+          }}
+        />)
+    },
+    {
+      id: "properties",
+      name: "Properties",
+      content: (
+        <HierarchyWidget
+          ontologyId={routeParams.ontologyId}
+          api={OLS4API}
+          entityType={"property"}
+          onNavigateToOntology={(ontologyId, entityType, iri) => {
+            navigate(
+              `/ontologies/${ontologyId}/${entityType == "classes" ? "terms" : entityType}?iri=${iri
+              }`
+            );
+          }}
+          onNavigateToEntity={(ontologyId, entityType, iri) => {
+            navigate(
+              `/ontologies/${ontologyId}/${entityType == "classes" ? "terms" : entityType}?iri=${iri
+              }`
+            );
+          }}
+        />)
+    }
+  ];
+
+  const [selectedTabId, setSelectedTabId] = useState("classes");
+  const selectedTabContent = useMemo(() => {
+    return tabs.find((obj) => obj.id === selectedTabId)?.content;
+  }, [selectedTabId]);
+
+  const onSelectedTabChanged = (id: string) => {
+    setSelectedTabId(id);
+  };
+
+  const renderTabs = () => {
+    return tabs.map((tab, index) => (
+      <EuiTab
+        key={index}
+        onClick={() => onSelectedTabChanged(tab.id)}
+        isSelected={tab.id === selectedTabId}
+      >
+        {tab.name}
+      </EuiTab>
+    ));
+  };
 
   return (
-    <>
-      <EuiFlexGroup justifyContent="spaceAround">
-        <EuiFlexItem grow={7}>
-          <EuiPanel id="titleBox" hasShadow={true}>
-            <TitleWidget api={API} entityType={"ontology"} ontologyId={routeParams.ontologyId}></TitleWidget>
-            <DescriptionWidget api={API} entityType={"ontology"} ontologyId={routeParams.ontologyId}></DescriptionWidget>
-          </EuiPanel>
-        </EuiFlexItem>
-        <EuiFlexItem grow={3}>
-          <EuiPanel id="searchBox" hasShadow={true}>
-            <AutocompleteWidget
-              api={API}
-              placeholder={"Search in " + routeParams.ontologyId.toUpperCase()}
-              selectionChangedEvent={(selectedOption) => { navigateToEntity(selectedOption, navigate);}}
-              parameter={"ontology="+routeParams.ontologyId+"collection=nfdi4health"}
-              allowCustomTerms={false}
-            />
-            <JsonApiWidget
-              apiQuery={API+"ontologies/"+routeParams.ontologyId}
-              buttonText={"JSON"}
-              buttonSize={"s"}
-            />
-            {/*TODO add download widget*/}
-          </EuiPanel>
-        </EuiFlexItem>
+    <div>
+      <EuiFlexGroup justifyContent={"spaceAround"} direction={"column"}>
+        <EuiPanel>
+          <EuiFlexGroup>
+            <EuiFlexItem grow={7}>
+              <EuiFlexItem>
+                <TitleWidget
+                  ontologyId={routeParams.ontologyId}
+                  api={OLS4API}
+                />
+                <EuiSpacer size={"s"} />
+                <DescriptionWidget
+                  ontologyId={routeParams.ontologyId}
+                  api={OLS4API}
+                />
+                <EuiSpacer size={"s"} />
+                <AutocompleteWidget
+                  api={GlobalConfig.apiUrlGateway}
+                  placeholder={"Search in " + routeParams.ontologyId.toUpperCase()}
+                  selectionChangedEvent={(selectedOption) => {
+                    navigateToEntity(selectedOption, navigate);
+                  }}
+                  parameter={"ontology=" + routeParams.ontologyId + "&collection=nfdi4health"}
+                  allowCustomTerms={false}
+                  singleSelection={true} />
+              </EuiFlexItem>
+            </EuiFlexItem>
+            <EuiFlexItem grow={1}>
+              <JsonApiWidget
+                apiQuery={OLS4API + "ontologies/" + routeParams.ontologyId}
+                buttonText="JSON" />
+            </EuiFlexItem>
+          </EuiFlexGroup>
+        </EuiPanel>
+
+        <EuiSpacer />
+
+        <EuiPanel>
+          <EuiFlexGroup gutterSize={"m"}>
+            <EuiFlexItem grow={false} style={{ maxHeight: "1000px", overflow: "auto", overflowX: "auto" }}>
+              <EuiTabs>{renderTabs()}</EuiTabs>
+              {selectedTabContent}
+            </EuiFlexItem>
+            <EuiSpacer size={"l"} />
+            <EuiFlexItem grow={true}>
+              <EuiFlexGroup direction={"column"}
+                            style={{ maxHeight: "2000px", maxWidth: "500px", overflow: "auto", overflowX: "auto" }}>
+                <EuiSpacer size={"s"} />
+                <EuiFlexItem grow={false}
+                             style={{ maxHeight: "1000px", maxWidth: "500px", overflow: "auto", overflowX: "auto" }}>
+                  <OntologyInfoWidget
+                    api={OLS4API}
+                    ontologyId={routeParams.ontologyId}
+                    hasTitle={true}
+                  />
+                </EuiFlexItem>
+              </EuiFlexGroup>
+            </EuiFlexItem>
+          </EuiFlexGroup>
+        </EuiPanel>
       </EuiFlexGroup>
 
-      <EuiFlexGroup>
-        <EuiFlexItem grow={7}>
-          <EuiPanel id="hierarchyBox" hasShadow={true}>
-            <HierarchyWidget api={API} ontologyId={routeParams.ontologyId}/>
-          </EuiPanel>
-        </EuiFlexItem>
-        <EuiFlexItem grow={3}>
-          <EuiPanel id="ontoInfoBox" hasShadow={true}>
-            <EntityInfoWidget
-              api={API}
-              ontologyId={routeParams.ontologyId}
-              hasTitle={true}
-              entityType={"ontology"}
-            />
-          </EuiPanel>
-        </EuiFlexItem>
-      </EuiFlexGroup>
-    </>
-  );
+      <Helmet>
+        <title> {routeParams.ontologyId} overview &gt; SemLookP </title>
+        <meta
+          name="description"
+          content={routeParams.ontologyId + " overview for the semantic Lookup Service - SemLookP"}
+        />
+      </Helmet>;
+    </div>
+
+
+  )
+    ;
 }

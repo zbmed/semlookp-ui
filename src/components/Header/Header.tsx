@@ -1,14 +1,14 @@
 import React from "react";
 import {
-    EuiHeader,
-    EuiHeaderLink,
-    EuiHeaderLinks,
-    EuiHeaderSection,
-    EuiHeaderSectionItem,
-    EuiIcon,
+  EuiHeader,
+  EuiHeaderLink,
+  EuiHeaderLinks,
+  EuiHeaderSection,
+  EuiHeaderSectionItem,
+  EuiIcon
 } from "@elastic/eui";
-import EuiCustomLink from '../../router/EuiCustomLink';
-import { ReactComponent as SEMLOOKPLOGO } from "../Logos/NFDI_SemLookP_Logo.svg";
+import EuiCustomLink from "../../router/EuiCustomLink";
+import { ReactComponent as SEMLOOKPLOGO } from "../../components/Layout/logos/NFDI_SemLookP_Logo.svg";
 
 export default function Header() {
   return (
