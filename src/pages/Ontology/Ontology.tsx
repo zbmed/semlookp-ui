@@ -13,7 +13,7 @@ import {
   TitleWidget
 } from "@ts4nfdi/terminology-service-suite";
 
-const OLS4API = GlobalConfig.apiUrlSemlookpOls4;
+const OLS4API = GlobalConfig.apiUrlOls4;
 export default function Ontology() {
   const routeParams = useParams();
   const navigate = useNavigate();
@@ -104,7 +104,7 @@ export default function Ontology() {
                 />
                 <EuiSpacer size={"s"} />
                 <AutocompleteWidget
-                  api={GlobalConfig.apiUrlGateway}
+                  api={GlobalConfig.apiUrlOls4}
                   placeholder={"Search in " + routeParams.ontologyId.toUpperCase()}
                   selectionChangedEvent={(selectedOption) => {
                     navigateToEntity(selectedOption, navigate);

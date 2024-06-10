@@ -18,7 +18,7 @@ import {
   TitleWidget
 } from "@ts4nfdi/terminology-service-suite";
 
-const OLS4API = GlobalConfig.apiUrlSemlookpOls4;
+const OLS4API = GlobalConfig.apiUrlOls4;
 
 export default function Entity() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -42,11 +42,15 @@ export default function Entity() {
                   api={OLS4API}
                 />
                 <EuiSpacer size={"s"} />
-                <BreadcrumbWidget iri={concatIri} api={OLS4API}
-                                  ontologyId={routeParams.ontologyId}
+                <BreadcrumbWidget
+                  iri={concatIri}
+                  api={OLS4API}
+                  ontologyId={routeParams.ontologyId}
                 />
                 <EuiSpacer size={"s"} />
-                <IriWidget iri={concatIri} />
+                <IriWidget
+                  iri={concatIri}
+                />
                 <EuiSpacer size={"s"} />
                 <DescriptionWidget
                   iri={concatIri}
@@ -55,7 +59,7 @@ export default function Entity() {
                 />
                 <EuiSpacer size={"s"} />
                 <AutocompleteWidget
-                  api={GlobalConfig.apiUrlSemlookpOls4}
+                  api={OLS4API}
                   placeholder={"Search in " + routeParams.ontologyId.toUpperCase()}
                   selectionChangedEvent={(selectedOption) => {
                     navigateToEntity(selectedOption, navigate);
@@ -64,6 +68,8 @@ export default function Entity() {
                   allowCustomTerms={false}
                   singleSelection={true} />
               </EuiFlexItem>
+            </EuiFlexItem>
+            <EuiFlexItem grow={1}>
             </EuiFlexItem>
             <EuiFlexItem grow={1}>
               <JsonApiWidget
@@ -80,7 +86,7 @@ export default function Entity() {
             <EuiFlexItem grow={false}>
               <HierarchyWidget
                 ontologyId={routeParams.ontologyId}
-                api={OLS4API}
+                api={GlobalConfig.apiUrlOls4}
                 iri={concatIri}
                 entityType={entityType}
                 onNavigateToOntology={(ontologyId, entityType, iri) => {
@@ -119,7 +125,7 @@ export default function Entity() {
                   <EuiAccordion id={"entity info"} initialIsOpen={true}>
                     <EntityRelationsWidget
                       hasTitle
-                      api={OLS4API}
+                      api={GlobalConfig.apiUrlOls4}
                       entityType={entityType}
                       iri={concatIri}
                       ontologyId={routeParams.ontologyId}

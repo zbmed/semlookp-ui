@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet";
 import GlobalConfig from "../../config";
 import { ResourcesWidget } from "@ts4nfdi/terminology-service-suite";
 
-const OLS4API = GlobalConfig.apiUrlSemlookpOls4;
+const OLS4API = GlobalConfig.apiUrlOls4;
 export default function Resources() {
   return (
     <EuiPanel paddingSize="l">
