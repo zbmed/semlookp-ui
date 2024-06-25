@@ -56,12 +56,12 @@ export default function AboutPage() {
                 Terminology Service UI
               </EuiLink>
             </p>
-            <h3>OLS documentation:</h3>
+            <h3>EMBL-EBIs OLS Help:</h3>
             <p>
               <EuiLink
-                href="https://www.ebi.ac.uk/ols/docs/index"
+                href="https://www.ebi.ac.uk/ols4/help"
                 target={"_blank"}>
-                EMBL-EBI’s documentation of the Ontology Lookup Service
+                EMBL-EBI’s help page for the Ontology Lookup Service
               </EuiLink>
             </p>
 
