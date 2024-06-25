@@ -1,16 +1,28 @@
 import React from "react";
-import { EuiFlexGroup, EuiFlexItem, EuiLink, EuiPanel, EuiText } from "@elastic/eui";
+import { EuiCard, EuiFlexGroup, EuiFlexItem, EuiLink, EuiPanel, EuiText } from "@elastic/eui";
 import EuiCustomLink from "../../router/EuiCustomLink";
 import { Helmet } from "react-helmet";
 
 export default function AboutPage() {
+  const aboutSemLookPWidgets = (<>
+      <EuiText>
+        Small software applications, called SemLookP widgets, allow the integration of extracted user interface
+        functionalities into other services, streamlining the development of user interfaces and the integration
+        and linking of semantic information.This NFDI4Health Terminology Service SemLookP is build upon those
+        widgets. For more information visit the <EuiLink
+        href={"https://ts4nfdi.github.io/terminology-service-suite/comp/latest/?path=/docs/overview--docs"}> SemLookP
+        Widget documentation</EuiLink>.
+      </EuiText>
+    </>
+  );
+
   return (
     <EuiFlexGroup justifyContent="spaceAround">
       <EuiPanel paddingSize="l">
         <EuiFlexItem grow={false}>
           <EuiText>
-            <h2>About the Semantic Lookup Platform</h2>
-            <p>The Semantic Lookup Platform aims to provide accessibility to controlled and linked semantic information
+            <h2>About the SemLookP Terminology Service</h2>
+            <p>The SemLookP Terminology Service aims to provide access to key terminologies
               in the health domain. It is developed and maintained by <EuiLink
                 href={"https://www.zbmed.de/en/"}> ZB MED - Information Centre for Life Sciences.</EuiLink> It emerged
               from the BMBF-funded project <EuiLink href={"https://www.idsn.info/de/idsn.html"}> IDSN. </EuiLink> The
@@ -19,10 +31,16 @@ export default function AboutPage() {
                 and Ontologies Team (SPOT) </EuiLink> at <EuiLink href={"https://www.ebi.ac.uk/"}> EMBL-EBI. </EuiLink>
             </p>
 
-            <p>The Terminology Service is a repository for controlled resources that aims to provide a single point of
-              access to the latest ontology and terminology versions. You can browse the resources through the website
-              as well as programmatically via the API.
-            </p>
+            <EuiFlexItem grow={3}>
+              <EuiCard
+                title="About the Terminology Service Suite"
+                description={aboutSemLookPWidgets}
+                // onClick={() => window.location.assign("https://github.com/nfdi4health/semlookp-widgets")}
+                style={{ backgroundColor: "#D3DAE6"}}
+                display="subdued"
+                textAlign={"left"}
+              />
+            </EuiFlexItem>
             <h3>API documentation:</h3>
             <p>
               {" "}
@@ -38,12 +56,12 @@ export default function AboutPage() {
                 Terminology Service UI
               </EuiLink>
             </p>
-            <h3>OLS documentation:</h3>
+            <h3>EMBL-EBIs OLS Help:</h3>
             <p>
               <EuiLink
-                href="https://www.ebi.ac.uk/ols/docs/index"
+                href="https://www.ebi.ac.uk/ols4/help"
                 target={"_blank"}>
-                EMBL-EBI’s documentation of the Ontology Lookup Service
+                EMBL-EBI’s help page for the Ontology Lookup Service
               </EuiLink>
             </p>
 

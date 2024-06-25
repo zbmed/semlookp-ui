@@ -9,10 +9,11 @@ export default function SearchResults() {
 
   return (
     <SearchResultsListWidget
-      api={GlobalConfig.apiUrlGateway}
+      api={GlobalConfig.apiUrlOls4}
       query={query}
       targetLink={"/"}
-      parameter={"collection=nfdi4health"}
+      parameter={""}
+      useLegacy={false}
     />
   );
 }
