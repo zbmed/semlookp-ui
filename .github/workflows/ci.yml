@@ -79,8 +79,8 @@ jobs:
           kubectl get nodes
           helmv3 repo add semlookp-deployment https://zbmed.github.io/semlookp-deployment/
           helmv3 repo update
-          helmv3 upgrade semlookp-${{ steps.generate-image-tag.outputs.imageTag }} \
+          helmv3 upgrade semlookp-ui-${{ steps.generate-image-tag.outputs.imageTag }} \
           --install \
           --set-json='images.frontend="ghcr.io/${{ github.repository }}:${{ github.event.pull_request.head.sha || github.sha }}"' \
-          --set-json='ingress.dns="${{ steps.generate-image-tag.outputs.imageTag }}.semlookp.qa.km.k8s.zbmed.de"'  \
+          --set-json='ingress.dns="${{ steps.generate-image-tag.outputs.imageTag }}.semlookp-ui.qa.km.k8s.zbmed.de"'  \
           semlookp-deployment/semlookp-ui
