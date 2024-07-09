@@ -64,9 +64,11 @@ export default function Entity() {
                   selectionChangedEvent={(selectedOption) => {
                     navigateToEntity(selectedOption, navigate);
                   }}
-                  parameter={"ontology=" + routeParams.ontologyId + "&collection=nfdi4health"}
+                  parameter={"ontology=" + routeParams.ontologyId + "&collection=nfdi4health&fieldList=description,label,iri,ontology_name,type,short_form"}
                   allowCustomTerms={false}
-                  singleSelection={true} />
+                  singleSelection={true}
+                  hasShortSelectedLabel={true}
+                />
               </EuiFlexItem>
             </EuiFlexItem>
             <EuiFlexItem grow={1}>

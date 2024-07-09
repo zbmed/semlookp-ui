@@ -111,9 +111,11 @@ export default function Home() {
                     selectionChangedEvent={(selectedOption) => {
                       navigateToEntity(selectedOption, navigate);
                     }}
-                    parameter="collection=nfdi4health"
+                    parameter="collection=nfdi4health&fieldList=description,label,iri,ontology_name,type,short_form"
                     allowCustomTerms={false}
                     singleSelection={true}
+                    hasShortSelectedLabel={true}
+
                   />
                 </EuiFlexItem>
                 <EuiFlexItem>
