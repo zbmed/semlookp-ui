@@ -112,7 +112,7 @@ export default function Entity() {
               <EuiFlexGroup direction={"column"}>
                 <EuiSpacer size={"s"} />
                 <EuiFlexItem grow={false}>
-                  <EuiAccordion id={"entity info"} initialIsOpen={true}>
+                  <EuiAccordion id={"entity info"} initialIsOpen={true} buttonContent={"Additional Information"}>
                     <EntityInfoWidget
                       api={OLS4API}
                       ontologyId={routeParams.ontologyId}
@@ -124,7 +124,7 @@ export default function Entity() {
                 </EuiFlexItem>
                 <EuiSpacer size={"s"} />
                 <EuiFlexItem grow={false}>
-                  <EuiAccordion id={"entity info"} initialIsOpen={true}>
+                  <EuiAccordion id={"relation info"} initialIsOpen={true} buttonContent={"Relations"}>
                     <EntityRelationsWidget
                       hasTitle
                       api={GlobalConfig.apiUrlOls4}
