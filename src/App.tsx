@@ -27,6 +27,7 @@ function App() {
     <EuiProvider colorMode={"light"}>
       <QueryClientProvider client={queryClient}>
         <Router basename="/beta">
+        <Router basename="/">
           <LinkScroller>
             <Routes>
               <Route path="/" element={<Layout />}>
