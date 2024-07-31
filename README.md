@@ -46,3 +46,13 @@ $ docker-compose --env-file dev.env build --build-arg NPM_TOKEN=${NPM_TOKEN}
 $ docker-compose --env-file dev.env up
 ```
 [Docker and private modules](https://docs.npmjs.com/docker-and-private-modules)
+
+## Funding
+
+This project is developed by the [NFDI4Health consortium](https://www.nfdi4health.de) and the Terminology Services for NFDI (TS4NFDI) project (as part of the [Base4NFDI consortium](https://base4nfdi.de/)).
+
+The NFDI4Health Consortium gratefully acknowledges the financial support of the Deutsche Forschungsgemeinschaft 
+(DFG, German Research Foundation) – project number 442326535.
+
+The project is derived from the Semantic Lookup Platform SemLookP which was also developed in part 
+by [ZB MED - Information Centre for Life Sciences](https://www.zbmed.de/en/).
