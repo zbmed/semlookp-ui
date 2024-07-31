@@ -83,4 +83,5 @@ jobs:
           --install \
           --set-json='images.frontend="ghcr.io/${{ github.repository }}:${{ github.event.pull_request.head.sha || github.sha }}"' \
           --set-json='ingress.dns="semlookp-ui.qa.km.k8s.zbmed.de"'  \
+          --set-json='ingress.path="/beta/"'  \
           semlookp-deployment/semlookp-ui
