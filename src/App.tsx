@@ -26,7 +26,6 @@ function App() {
   return (
     <EuiProvider colorMode={"light"}>
       <QueryClientProvider client={queryClient}>
-        <LangContext.Provider value={"en"}>
         <Router basename="/beta">
           <LinkScroller>
             <Routes>
