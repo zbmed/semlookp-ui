@@ -26,10 +26,10 @@ function App() {
   return (
     <EuiProvider colorMode={"light"}>
       <QueryClientProvider client={queryClient}>
-        <Router basename="/beta">
+        <Router basename="/">
           <LinkScroller>
             <Routes>
-              <Route path="/beta" element={<Layout />}>
+              <Route path="/" element={<Layout />}>
                 <Route index element={<Home />} />
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/about/api" element={<ApiPage />} />
