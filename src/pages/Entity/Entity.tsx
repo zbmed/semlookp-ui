@@ -85,7 +85,8 @@ export default function Entity() {
 
         <EuiPanel>
           <EuiFlexGroup gutterSize={"m"}>
-            <EuiFlexItem grow={false}>
+            <EuiFlexItem grow={false} style={{ maxWidth: "50%" }}>
+              <div style={{overflow: "auto"}}>
               <HierarchyWidget
                 ontologyId={routeParams.ontologyId}
                 api={GlobalConfig.apiUrlOls4}
@@ -106,6 +107,7 @@ export default function Entity() {
                   );
                 }}
               />
+                </div>
             </EuiFlexItem>
             <EuiSpacer size={"l"} />
             <EuiFlexItem grow={true}>
