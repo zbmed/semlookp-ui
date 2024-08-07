@@ -85,29 +85,28 @@ export default function Entity() {
 
         <EuiPanel>
           <EuiFlexGroup gutterSize={"m"}>
-            <EuiFlexItem grow={false} style={{ maxWidth: "50%" }}>
-              <div style={{overflow: "auto"}}>
-              <HierarchyWidget
-                ontologyId={routeParams.ontologyId}
-                api={GlobalConfig.apiUrlOls4}
-                iri={concatIri}
-                entityType={entityType}
-                onNavigateToOntology={(ontologyId, entityType, iri) => {
-                  console.log(ontologyId, entityType, iri)
-                  navigate(
-                    `/ontologies/${ontologyId}/${entityType == "classes" ? "terms" : entityType}?iri=${encodeURIComponent(encodeURIComponent(iri))
-                    }`
-                  );
-                }}
-                onNavigateToEntity={(ontologyId, entityType, iri) => {
-                  console.log("ontos", ontologyId, entityType, iri)
-                  navigate(
-                    `/ontologies/${ontologyId}/${entityType == "classes" ? "terms" : entityType}?iri=${encodeURIComponent(encodeURIComponent(iri))
-                    }`
-                  );
-                }}
-              />
-                </div>
+            <EuiFlexItem grow={false} style={{ maxWidth: "50%", minWidth: "50%" }}>
+              <div style={{ overflow: "auto" }}>
+                <HierarchyWidget
+                  apiUrl={GlobalConfig.apiUrlOls4}
+                  backendType={"ols"}
+                  iri={concatIri}
+                  entityType={entityType}
+                  ontologyId={routeParams.ontologyId}
+                  onNavigateToEntity={(ontologyId, entityType, entity) => {
+                    navigate(
+                      `/ontologies/${ontologyId}/${((entityType == "class" || entityType == "term") ? "terms" : (entityType == "property" ? "properties" : "individuals"))}?iri=${encodeURIComponent(encodeURIComponent(entity.iri))
+                      }`
+                    );
+                  }}
+                  onNavigateToOntology={(ontologyId, entityType, entity) => {
+                    navigate(
+                      `/ontologies/${ontologyId}/${((entityType == "class" || entityType == "term") ? "terms" : (entityType == "property" ? "properties" : "individuals"))}?iri=${encodeURIComponent(encodeURIComponent(entity.iri))
+                      }`
+                    );
+                  }}
+                />
+              </div>
             </EuiFlexItem>
             <EuiSpacer size={"l"} />
             <EuiFlexItem grow={true}>

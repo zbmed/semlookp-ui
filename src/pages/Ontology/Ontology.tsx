@@ -24,40 +24,66 @@ export default function Ontology() {
       name: "Classes",
       content: (
         <HierarchyWidget
-          ontologyId={routeParams.ontologyId}
-          api={OLS4API}
+          apiUrl={GlobalConfig.apiUrlOls4}
+          backendType={"ols"}
           entityType={"class"}
-          onNavigateToOntology={(ontologyId, entityType, iri) => {
+          ontologyId={routeParams.ontologyId}
+          onNavigateToEntity={(ontologyId, entityType, entity) => {
             navigate(
-              `/ontologies/${ontologyId}/${entityType == "classes" ? "terms" : entityType}?iri=${iri
+              `/ontologies/${ontologyId}/${((entityType == "class" || entityType == "term") ? "terms" : (entityType == "property" ? "properties" : "individuals"))}?iri=${encodeURIComponent(encodeURIComponent(entity.iri))
               }`
             );
           }}
-          onNavigateToEntity={(ontologyId, entityType, iri) => {
+          onNavigateToOntology={(ontologyId, entityType, entity) => {
             navigate(
-              `/ontologies/${ontologyId}/${entityType == "classes" ? "terms" : entityType}?iri=${iri
+              `/ontologies/${ontologyId}/${((entityType == "class" || entityType == "term") ? "terms" : (entityType == "property" ? "properties" : "individuals"))}?iri=${encodeURIComponent(encodeURIComponent(entity.iri))
               }`
             );
           }}
-        />)
+        />
+      )
     },
     {
       id: "properties",
       name: "Properties",
       content: (
         <HierarchyWidget
-          ontologyId={routeParams.ontologyId}
-          api={OLS4API}
+          apiUrl={GlobalConfig.apiUrlOls4}
+          backendType={"ols"}
           entityType={"property"}
-          onNavigateToOntology={(ontologyId, entityType, iri) => {
+          ontologyId={routeParams.ontologyId}
+          onNavigateToEntity={(ontologyId, entityType, entity) => {
             navigate(
-              `/ontologies/${ontologyId}/${entityType == "classes" ? "terms" : entityType}?iri=${iri
+              `/ontologies/${ontologyId}/${((entityType == "class" || entityType == "term") ? "terms" : (entityType == "property" ? "properties" : "individuals"))}?iri=${encodeURIComponent(encodeURIComponent(entity.iri))
               }`
             );
           }}
-          onNavigateToEntity={(ontologyId, entityType, iri) => {
+          onNavigateToOntology={(ontologyId, entityType, entity) => {
             navigate(
-              `/ontologies/${ontologyId}/${entityType == "classes" ? "terms" : entityType}?iri=${iri
+              `/ontologies/${ontologyId}/${((entityType == "class" || entityType == "term") ? "terms" : (entityType == "property" ? "properties" : "individuals"))}?iri=${encodeURIComponent(encodeURIComponent(entity.iri))
+              }`
+            );
+          }}
+        />)
+    },
+    {
+      id: "individuals",
+      name: "Individuals",
+      content: (
+        <HierarchyWidget
+          apiUrl={GlobalConfig.apiUrlOls4}
+          backendType={"ols"}
+          entityType={"individual"}
+          ontologyId={routeParams.ontologyId}
+          onNavigateToEntity={(ontologyId, entityType, entity) => {
+            navigate(
+              `/ontologies/${ontologyId}/${((entityType == "class" || entityType == "term") ? "terms" : (entityType == "property" ? "properties" : "individuals"))}?iri=${encodeURIComponent(encodeURIComponent(entity.iri))
+              }`
+            );
+          }}
+          onNavigateToOntology={(ontologyId, entityType, entity) => {
+            navigate(
+              `/ontologies/${ontologyId}/${((entityType == "class" || entityType == "term") ? "terms" : (entityType == "property" ? "properties" : "individuals"))}?iri=${encodeURIComponent(encodeURIComponent(entity.iri))
               }`
             );
           }}
@@ -76,13 +102,13 @@ export default function Ontology() {
 
   const renderTabs = () => {
     return tabs.map((tab, index) => (
-      <EuiTab
-        key={index}
-        onClick={() => onSelectedTabChanged(tab.id)}
-        isSelected={tab.id === selectedTabId}
-      >
-        {tab.name}
-      </EuiTab>
+        <EuiTab
+          key={index}
+          onClick={() => onSelectedTabChanged(tab.id)}
+          isSelected={tab.id === selectedTabId}
+        >
+          {tab.name}
+        </EuiTab>
     ));
   };
 
@@ -126,7 +152,7 @@ export default function Ontology() {
 
         <EuiPanel>
           <EuiFlexGroup gutterSize={"m"}>
-            <EuiFlexItem grow={false} style={{ maxHeight: "1000px", overflow: "auto", overflowX: "auto" }}>
+            <EuiFlexItem grow={false} style={{ maxWidth: "50%", minWidth: "50%", overflow: "auto" }}>
               <EuiTabs>{renderTabs()}</EuiTabs>
               {selectedTabContent}
             </EuiFlexItem>
