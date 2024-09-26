@@ -1,5 +1,4 @@
-import React from 'react';
-import { EuiLink, EuiLinkAnchorProps } from '@elastic/eui';
+import { EuiLink, EuiLinkAnchorProps } from "@elastic/eui";
 import { useHref, useNavigate } from "react-router-dom";
 
 interface EuiCustomLinkProps extends EuiLinkAnchorProps {
@@ -21,7 +20,7 @@ export default function EuiCustomLink({ to, ...props }: EuiCustomLinkProps) {
     }
 
     // If target prop is set (e.g. to "_blank"), let browser handle link.
-    if (event.target.getAttribute('target')) {
+    if (event.target.getAttribute("target")) {
       return;
     }
 

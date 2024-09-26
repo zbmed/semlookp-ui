@@ -1,4 +1,3 @@
-import React from "react";
 import { EuiPanel, EuiSpacer, EuiText } from "@elastic/eui";
 import { Helmet } from "react-helmet";
 import GlobalConfig from "../../config";
