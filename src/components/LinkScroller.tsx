@@ -10,12 +10,12 @@ export default function LinkScroller({ children }) {
       window.history.scrollRestoration = "manual";
     }
 
-    if (hash === '') {
+    if (hash === "") {
       window.scrollTo(0, 0);
-    }// else scroll to id
+    } // else scroll to id
     else {
       setTimeout(() => {
-        const id = hash.replace('#', '');
+        const id = hash.replace("#", "");
         const element = document.getElementById(id);
         if (element) {
           element.scrollIntoView();

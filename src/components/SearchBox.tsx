@@ -1,0 +1,68 @@
+import {
+  EuiFlexGroup,
+  EuiFlexItem,
+  EuiPanel,
+  EuiSpacer,
+  EuiText,
+  EuiTextColor,
+  EuiTitle,
+} from "@elastic/eui";
+import { AutocompleteWidget } from "@ts4nfdi/terminology-service-suite";
+import { global_config } from "../config";
+import { navigateToEntity } from "./utils";
+import EuiCustomLink from "./layout/util/EuiCustomLink";
+import { useNavigate } from "react-router-dom";
+import { SearchExamples } from "./SearchExamples";
+
+export const SearchBox = () => {
+  const navigate = useNavigate();
+
+  return (
+    <EuiFlexGroup gutterSize={"s"}>
+      <EuiFlexItem>
+        <EuiPanel id="searchBox" hasShadow={true}>
+          <EuiFlexGroup direction="column">
+            <EuiFlexItem>
+              <EuiTitle size={"m"}>
+                <EuiTextColor>Search</EuiTextColor>
+              </EuiTitle>
+            </EuiFlexItem>
+            <EuiFlexItem>
+              <AutocompleteWidget
+                api={global_config.api_url}
+                placeholder={"Type to search"}
+                selectionChangedEvent={(selectedOption) => {
+                  navigateToEntity(selectedOption, navigate);
+                }}
+                parameter="collection=nfdi4health&fieldList=description,label,iri,ontology_name,type,short_form"
+                allowCustomTerms={false}
+                singleSelection={true}
+                hasShortSelectedLabel={true}
+              />
+            </EuiFlexItem>
+            <EuiFlexItem>
+              <SearchExamples />
+              <EuiSpacer size="m" />
+
+              <EuiFlexGroup direction={"row"}>
+                <EuiFlexItem>
+                  <EuiText size="m">
+                    Or use the advanced{" "}
+                    <EuiCustomLink to="/search?q=*"> Search </EuiCustomLink>
+                  </EuiText>
+                </EuiFlexItem>
+                <EuiFlexItem>
+                  <EuiText size="m" textAlign="right">
+                    <EuiCustomLink to="/resources">
+                      Looking for a certain terminology?
+                    </EuiCustomLink>
+                  </EuiText>
+                </EuiFlexItem>
+              </EuiFlexGroup>
+            </EuiFlexItem>
+          </EuiFlexGroup>
+        </EuiPanel>
+      </EuiFlexItem>
+    </EuiFlexGroup>
+  );
+};

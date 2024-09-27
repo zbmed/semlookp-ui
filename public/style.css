@@ -1,0 +1,25 @@
+#conclusionPageSteps .euiStep__titleWrapper {
+  float: left;
+}
+
+#conclusionPageSteps .euiStep__content {
+  padding-top: 0;
+}
+
+#userback_button_container
+  .userback-controls
+  .userback-checkbox-container
+  .userback-checkbox,
+#userback_button_container .userback-controls input[type="text"],
+#userback_button_container .userback-controls input[type="email"],
+#userback_button_container .userback-controls textarea,
+#userback_button_container
+  .userback-controls
+  .userback-controls-attach-actions
+  btn {
+  border: 1px solid #bbb !important;
+}
+* {
+  scroll-margin-top: 60px;
+  scroll-padding-top: 60px;
+}
