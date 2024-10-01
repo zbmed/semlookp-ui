@@ -1,5 +1,5 @@
 export const global_config = {
-  api_url: "http://ols4-test.qa.km.k8s.zbmed.de/ols4/api/",
+  api_url: "http://ols4-nfdi4health.qa.km.k8s.zbmed.de/ols4/api/",
 };
 
 export const ts_specific_metadata = {
@@ -22,6 +22,5 @@ export const ts_specific_metadata = {
   },
   contact_mail_address: "semlookp-support@zbmed.de",
   contact_mail_address_mailto: "mailto:semlookp-support@zbmed.de",
-  missing_resource_box_color: "#AEE6E6",
   collection: "collection=nfdi4health",
 };

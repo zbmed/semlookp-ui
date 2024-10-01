@@ -26,24 +26,29 @@ For local development specify a runtime variable NPM_TOKEN with your npm authent
 #### Local development
 
 To start the application for the first time, install the modules with:
+
 ```
 npm install
 ```
+
 Start the development server with:
+
 ```
 npm start
 ```
+
 Accessible at [http://localhost:3000](http://localhost:3000).
 
 The page will reload when you make edits.\
 You will also see any lint errors in the console.\
 We use prettier for code formatting. Run
+
 ```
 npm run style:format
 npm run style:ceck
 ```
-to format or check all files.
 
+to format or check all files.
 
 ### Production
 

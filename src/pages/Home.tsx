@@ -1,16 +1,20 @@
-import { EuiFlexGroup, EuiFlexItem, EuiSpacer } from "@elastic/eui";
+import { EuiCard, EuiFlexGroup, EuiFlexItem, EuiSpacer } from "@elastic/eui";
 import "../index.css";
 import { Helmet } from "react-helmet";
 import { DataContentWidget } from "@ts4nfdi/terminology-service-suite";
 import { global_config, ts_specific_metadata } from "../config";
 import ProjectInformation from "../components/layout/util/ProjectInformation";
 import { ResourceMissingCallOut } from "../components/ResourceMissingCallOut";
-import { UsecaseCard1 } from "../components/UsecaseCard1";
-import { UsecaseCard2 } from "../components/UsecaseCard2";
 import { SearchBox } from "../components/SearchBox";
 import { LogoBox } from "../components/LogoBox";
+import {
+  useCase1Description,
+  useCase2Description,
+} from "../components/UseCaseDescriptions";
+import { useTheme } from "@emotion/react";
 
 export default function Home() {
+  const theme = useTheme();
   return (
     <>
       <Helmet>
@@ -40,10 +44,26 @@ export default function Home() {
 
       <EuiFlexGroup>
         <EuiFlexItem grow={3}>
-          <UsecaseCard1 />
+          <EuiCard
+            title="Use Case"
+            description={useCase1Description()}
+            style={{
+              backgroundColor: theme.color.useCaseCard1Color,
+              minHeight: 150,
+            }}
+            display="subdued"
+          />
         </EuiFlexItem>
         <EuiFlexItem grow={3}>
-          <UsecaseCard2 />
+          <EuiCard
+            title="Terminology Service Suite"
+            description={useCase2Description()}
+            style={{
+              backgroundColor: theme.color.useCaseCard2Color,
+              minHeight: 150,
+            }}
+            display="subdued"
+          />
         </EuiFlexItem>
       </EuiFlexGroup>
       <EuiSpacer size="xxl" />

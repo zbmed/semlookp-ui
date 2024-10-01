@@ -1,6 +1,10 @@
 import { EuiCallOut, EuiFlexGroup, EuiFlexItem, EuiLink } from "@elastic/eui";
 import { ts_specific_metadata } from "../config";
+import { useTheme } from "@emotion/react";
+
 export const ResourceMissingCallOut = () => {
+  const theme = useTheme();
+
   return (
     <EuiFlexGroup>
       <EuiFlexItem>
@@ -8,7 +12,7 @@ export const ResourceMissingCallOut = () => {
           title={"Missing Resource?"}
           iconType="indexOpen"
           style={{
-            backgroundColor: ts_specific_metadata.missing_resource_box_color,
+            backgroundColor: theme.color.missingResourceBoxColor,
           }}
         >
           <p>
