@@ -8,6 +8,7 @@ import {
   EuiSpacer,
   EuiTitle,
   EuiHorizontalRule,
+  EuiIcon,
 } from "@elastic/eui";
 import { Helmet } from "react-helmet";
 import { global_config } from "../config";
@@ -50,45 +51,13 @@ export default function Entity() {
           <EuiFlexGroup>
             <EuiFlexItem grow={7}>
               <EuiFlexItem>
-                <EuiTitle size={"l"}>
+                <EuiTitle size={"m"}>
                   <TitleWidget
                     iri={concatIri}
                     ontologyId={routeParams.ontologyId}
                     api={OLS4API}
                   />
                 </EuiTitle>
-                <EuiSpacer size={"s"} />
-                <BreadcrumbWidget
-                  iri={concatIri}
-                  api={OLS4API}
-                  ontologyId={routeParams.ontologyId}
-                />
-                <EuiSpacer size={"s"} />
-                <IriWidget iri={concatIri} />
-                <EuiSpacer size={"s"} />
-                <DescriptionWidget
-                  iri={concatIri}
-                  ontologyId={routeParams.ontologyId}
-                  api={OLS4API}
-                />
-                <EuiSpacer size={"s"} />
-                <AutocompleteWidget
-                  api={OLS4API}
-                  placeholder={
-                    "Search in " + routeParams.ontologyId.toUpperCase()
-                  }
-                  selectionChangedEvent={(selectedOption) => {
-                    navigateToEntity(selectedOption, navigate);
-                  }}
-                  parameter={
-                    "ontology=" +
-                    routeParams.ontologyId +
-                    "&collection=nfdi4health&fieldList=description,label,iri,ontology_name,type,short_form"
-                  }
-                  allowCustomTerms={false}
-                  singleSelection={true}
-                  hasShortSelectedLabel={true}
-                />
               </EuiFlexItem>
             </EuiFlexItem>
             <EuiFlexItem grow={1} />
@@ -104,6 +73,79 @@ export default function Entity() {
                   concatIri.replaceAll("#", "%23").replaceAll("&", "%26")
                 }
                 buttonText="JSON"
+              />
+            </EuiFlexItem>
+          </EuiFlexGroup>
+          <EuiFlexGroup>
+            <EuiFlexItem>
+              <EuiHorizontalRule />
+              <EuiFlexGroup>
+                <EuiFlexItem>
+                  <EuiTitle size={"xs"}>
+                    <span>
+                      <span>Terminology</span>
+                      <EuiIcon type="arrowRight" />
+                      <span>CURIE</span>
+                      <EuiIcon
+                        title={"CURIE = Compact uniform resource identifier"}
+                        type={"iInCircle"}
+                        size={"m"}
+                      />
+                      <span>:</span>
+                    </span>
+                  </EuiTitle>
+                  <EuiFlexItem>
+                    <BreadcrumbWidget
+                      iri={concatIri}
+                      api={OLS4API}
+                      ontologyId={routeParams.ontologyId}
+                    />
+                  </EuiFlexItem>
+                </EuiFlexItem>
+                <div
+                  style={{
+                    float: "right",
+                    marginRight: "12px",
+                  }}
+                >
+                  <EuiSpacer size={"m"} />
+                  <EuiTitle size={"xs"}>
+                    <span>Identifier/IRI:</span>
+                  </EuiTitle>
+                  <EuiFlexItem>
+                    <IriWidget iri={concatIri} />
+                  </EuiFlexItem>
+                </div>
+              </EuiFlexGroup>
+              <EuiFlexItem>
+                <EuiHorizontalRule />
+                <EuiTitle size={"xs"}>
+                  <span>Description:</span>
+                </EuiTitle>
+                <EuiSpacer size={"s"} />
+                <DescriptionWidget
+                  iri={concatIri}
+                  ontologyId={routeParams.ontologyId}
+                  api={OLS4API}
+                />
+              </EuiFlexItem>
+              <EuiSpacer size={"s"} />
+              <AutocompleteWidget
+                api={OLS4API}
+                placeholder={
+                  "Search in " + routeParams.ontologyId.toUpperCase()
+                }
+                selectionChangedEvent={(selectedOption) => {
+                  navigateToEntity(selectedOption, navigate);
+                }}
+                parameter={
+                  "ontology=" +
+                  routeParams.ontologyId +
+                  "&collection=nfdi4health&fieldList=description,label,iri,ontology_name,type,short_form"
+                }
+                allowCustomTerms={false}
+                singleSelection={true}
+                hasShortSelectedLabel={true}
               />
             </EuiFlexItem>
           </EuiFlexGroup>
