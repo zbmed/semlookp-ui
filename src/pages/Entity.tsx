@@ -6,6 +6,8 @@ import {
   EuiFlexItem,
   EuiPanel,
   EuiSpacer,
+  EuiTitle,
+  EuiHorizontalRule,
 } from "@elastic/eui";
 import { Helmet } from "react-helmet";
 import { global_config } from "../config";
@@ -48,11 +50,13 @@ export default function Entity() {
           <EuiFlexGroup>
             <EuiFlexItem grow={7}>
               <EuiFlexItem>
-                <TitleWidget
-                  iri={concatIri}
-                  ontologyId={routeParams.ontologyId}
-                  api={OLS4API}
-                />
+                <EuiTitle size={"l"}>
+                  <TitleWidget
+                    iri={concatIri}
+                    ontologyId={routeParams.ontologyId}
+                    api={OLS4API}
+                  />
+                </EuiTitle>
                 <EuiSpacer size={"s"} />
                 <BreadcrumbWidget
                   iri={concatIri}
@@ -87,7 +91,7 @@ export default function Entity() {
                 />
               </EuiFlexItem>
             </EuiFlexItem>
-            <EuiFlexItem grow={1}></EuiFlexItem>
+            <EuiFlexItem grow={1} />
             <EuiFlexItem grow={1}>
               <JsonApiWidget
                 apiQuery={
@@ -113,6 +117,10 @@ export default function Entity() {
               grow={false}
               style={{ maxWidth: "50%", minWidth: "50%" }}
             >
+              <EuiTitle size={"s"}>
+                <span>Hierarchy</span>
+              </EuiTitle>
+              <EuiHorizontalRule />
               <div style={{ overflow: "auto" }}>
                 <HierarchyWidget
                   apiUrl={global_config.api_url}
@@ -157,13 +165,19 @@ export default function Entity() {
                   <EuiAccordion
                     id={"entity info"}
                     initialIsOpen={true}
-                    buttonContent={"Additional Information"}
+                    buttonContent={
+                      <EuiTitle size="s">
+                        <span style={{ textTransform: "capitalize" }}>
+                          {entityType} Information
+                        </span>
+                      </EuiTitle>
+                    }
                   >
                     <EntityInfoWidget
                       api={OLS4API}
                       ontologyId={routeParams.ontologyId}
                       iri={concatIri}
-                      hasTitle={true}
+                      hasTitle={false}
                       entityType={entityType}
                     />
                   </EuiAccordion>
@@ -173,13 +187,19 @@ export default function Entity() {
                   <EuiAccordion
                     id={"relation info"}
                     initialIsOpen={true}
-                    buttonContent={"Relations"}
+                    buttonContent={
+                      <EuiTitle size="s">
+                        <span style={{ textTransform: "capitalize" }}>
+                          {entityType} Relations
+                        </span>
+                      </EuiTitle>
+                    }
                   >
                     <EntityRelationsWidget
-                      hasTitle
                       api={global_config.api_url}
                       entityType={entityType}
                       iri={concatIri}
+                      hasTitle={false}
                       ontologyId={routeParams.ontologyId}
                     />
                   </EuiAccordion>
