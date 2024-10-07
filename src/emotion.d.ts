@@ -8,8 +8,8 @@ declare module "@emotion/react" {
       euiBody: string;
       euiAccent: string;
       missingResourceBoxColor: string;
-      useCaseCard1Color: string;
-      useCaseCard2Color: string;
+      infoBoxColor1: string;
+      infoBoxColor2: string;
     };
   }
 }

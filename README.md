@@ -79,29 +79,25 @@ The logos for the footer should be placed at the `src/components/layout/logos/` 
 We use "@emotion/react". Themes are defined in `src/theme.ts` and in `src/emotion.d.ts`
 
 #### Git
+
 The main branch keeps the generic code base. To prevent specific files in your branch from being merged into main, use .gitattributes.
 you can configure the .gitattributes file to exclude or retain files during the merge process.
 
-1. Create or Edit .gitattributes file: In your branch, edit the .gitattributes file. 
+1. Create or Edit .gitattributes file: In your branch, edit the .gitattributes file.
 2. Specify the files to ignore during merging: In .gitattributes, for each file you want to prevent from being merged, you need to set the merge=ours attribute. This tells Git to keep the version of the file from the current branch (in this case, your branch) during a merge.
-For example:  
-`
+   For example:  
+    `
 path/to/file1.txt merge=ours
 path/to/file2.txt merge=ours`
 3. Configure the 'ours' merge driver: Now you need to tell Git what merge=ours means. This is done by configuring the merge driver in the .git/config file or globally in ~/.gitconfig.
-Add the following to your .git/config file:  
-`
-[merge "ours"]
-    name = "Keep our version"
-    driver = true
-`
+   Add the following to your .git/config file:  
+    `[merge "ours"]
+name = "Keep our version"
+driver = true`
 4. Commit the changes in your branch: After adding or editing the .gitattributes file, commit this change in your branch.
 5. Merge main into your branch.  
-`
+    `
 git merge main`
-
-
-
 
 ## Funding
 

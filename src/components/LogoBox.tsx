@@ -1,27 +1,32 @@
 import {
   EuiFlexGroup,
   EuiFlexItem,
+  EuiImage,
   EuiTextColor,
   EuiTitle,
 } from "@elastic/eui";
-import { ReactComponent as LOGO } from "./layout/logos/nfdi4health_logo.svg";
 import { ts_specific_metadata } from "../config";
+import { homepageLogo } from "../imports/ImageImport";
 
 export const LogoBox = () => {
   return (
-    <EuiFlexGroup direction={"column"} alignItems={"center"}>
-      <EuiFlexItem grow={false}>
-        <LOGO height="120px" width="auto" />
-      </EuiFlexItem>
-      <EuiFlexItem grow={false}>
-        <EuiTitle size="m">
-          <h1 style={{ fontSize: "40px" }}>
-            <EuiTextColor>
-              {ts_specific_metadata.homepage.homepage_below_logo_text}
-            </EuiTextColor>
-          </h1>
-        </EuiTitle>
-      </EuiFlexItem>
-    </EuiFlexGroup>
+    <>
+      <EuiFlexGroup direction={"column"} alignItems={"center"}>
+        <EuiFlexItem grow={false} style={{ marginBottom: "-40px" }}>
+          <EuiImage size="l" alt="homepagelogo" src={homepageLogo} />
+        </EuiFlexItem>
+        {ts_specific_metadata.homepage.show_text_below_logo && (
+          <EuiFlexItem grow={false}>
+            <EuiTitle size="m">
+              <h1 style={{ fontSize: "40px" }}>
+                <EuiTextColor>
+                  {ts_specific_metadata.homepage.text_below_logo}
+                </EuiTextColor>
+              </h1>
+            </EuiTitle>
+          </EuiFlexItem>
+        )}
+      </EuiFlexGroup>
+    </>
   );
 };

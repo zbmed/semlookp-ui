@@ -10,7 +10,7 @@ import {
 import EuiCustomLink from "./layout/util/EuiCustomLink";
 import widgetimage from "./layout/logos/projects/widgets-icons.png";
 
-export const useCase1Description = () => {
+export const infoBoxDescription1 = () => {
   return (
     <>
       <EuiText>
@@ -45,7 +45,7 @@ export const useCase1Description = () => {
   );
 };
 
-export const useCase2Description = () => {
+export const infoBoxDescription2 = () => {
   return (
     <>
       <EuiText>
@@ -89,9 +89,6 @@ export const useCase2Description = () => {
       <EuiSpacer size={"s"} />
       <EuiImage
         size="original"
-        hasShadow
-        allowFullScreen={false}
-        caption=""
         src={widgetimage}
         alt={"SemLookP Widgets Icons"}
       />

@@ -1,4 +1,4 @@
-import { EuiCard, EuiFlexGroup, EuiFlexItem, EuiSpacer } from "@elastic/eui";
+import { EuiFlexGroup, EuiFlexItem, EuiSpacer } from "@elastic/eui";
 import "../index.css";
 import { Helmet } from "react-helmet";
 import { DataContentWidget } from "@ts4nfdi/terminology-service-suite";
@@ -7,14 +7,9 @@ import ProjectInformation from "../components/layout/util/ProjectInformation";
 import { ResourceMissingCallOut } from "../components/ResourceMissingCallOut";
 import { SearchBox } from "../components/SearchBox";
 import { LogoBox } from "../components/LogoBox";
-import {
-  useCase1Description,
-  useCase2Description,
-} from "../components/UseCaseDescriptions";
-import { useTheme } from "@emotion/react";
+import { InfoBoxes } from "../components/InfoBoxes";
 
 export default function Home() {
-  const theme = useTheme();
   return (
     <>
       <Helmet>
@@ -22,53 +17,46 @@ export default function Home() {
       </Helmet>
       <EuiSpacer size="xxl" />
 
-      <LogoBox />
+      {ts_specific_metadata.homepage.show_logo && <LogoBox />}
       <EuiSpacer size="xxl" />
-      <EuiSpacer size="xxl" />
-
-      <SearchBox />
       <EuiSpacer size="xxl" />
 
       <EuiFlexGroup>
-        <EuiFlexItem grow={3}>
-          <DataContentWidget
-            api={global_config.api_url}
-            parameter={ts_specific_metadata.collection}
-          />
+        <EuiFlexItem grow={7}>
+          <SearchBox />
         </EuiFlexItem>
+        {ts_specific_metadata.homepage.show_data_content && (
+          <>
+            <EuiFlexItem grow={3}>
+              <DataContentWidget
+                api={global_config.api_url}
+                parameter={ts_specific_metadata.collection}
+              />
+            </EuiFlexItem>
+          </>
+        )}
       </EuiFlexGroup>
       <EuiSpacer size="xxl" />
 
-      <ResourceMissingCallOut />
-      <EuiSpacer size="xxl" />
+      {ts_specific_metadata.homepage.show_missing_resource_callout && (
+        <>
+          <ResourceMissingCallOut />
+          <EuiSpacer size="xxl" />
+        </>
+      )}
 
-      <EuiFlexGroup>
-        <EuiFlexItem grow={3}>
-          <EuiCard
-            title="Use Case"
-            description={useCase1Description()}
-            style={{
-              backgroundColor: theme.color.useCaseCard1Color,
-              minHeight: 150,
-            }}
-            display="subdued"
-          />
-        </EuiFlexItem>
-        <EuiFlexItem grow={3}>
-          <EuiCard
-            title="Terminology Service Suite"
-            description={useCase2Description()}
-            style={{
-              backgroundColor: theme.color.useCaseCard2Color,
-              minHeight: 150,
-            }}
-            display="subdued"
-          />
-        </EuiFlexItem>
-      </EuiFlexGroup>
-      <EuiSpacer size="xxl" />
+      {ts_specific_metadata.homepage.show_info_boxes && (
+        <>
+          <InfoBoxes />
+          <EuiSpacer size="xxl" />
+        </>
+      )}
 
-      <ProjectInformation />
+      {ts_specific_metadata.homepage.show_project_information && (
+        <>
+          <ProjectInformation />
+        </>
+      )}
     </>
   );
 }

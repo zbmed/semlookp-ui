@@ -4,8 +4,8 @@ const nfdi4healthTheme = {
   body: "#e5e5e5",
   accent: "#e3e55f",
   missingResourceBoxColor: "#AEE6E6",
-  useCaseCard1Color: "#cce4f5",
-  useCaseCard2Color: "#D3DAE6",
+  infoBoxColor1: "#cce4f5",
+  infoBoxColor2: "#D3DAE6",
 };
 
 export const theme = {
@@ -15,7 +15,7 @@ export const theme = {
     euiBody: nfdi4healthTheme.body,
     euiAccent: nfdi4healthTheme.accent,
     missingResourceBoxColor: nfdi4healthTheme.missingResourceBoxColor,
-    useCaseCard1Color: nfdi4healthTheme.useCaseCard1Color,
-    useCaseCard2Color: nfdi4healthTheme.useCaseCard2Color,
+    infoBoxColor1: nfdi4healthTheme.infoBoxColor1,
+    infoBoxColor2: nfdi4healthTheme.infoBoxColor2,
   },
 };
