@@ -5,7 +5,7 @@ import {
   EuiIcon,
 } from "@elastic/eui";
 import { Helmet } from "react-helmet";
-import { ReactComponent as SEMLOOKPLOGO } from "./layout/logos/NFDI_SemLookP_Logo.svg";
+import { ReactComponent as SEMLOOKPLOGO } from "./layout/logos/projects/NFDI_SemLookP_Logo.svg";
 import { EuiCustomHeaderLink } from "./layout/util/EuiCustomLinks";
 
 export const Header = () => {

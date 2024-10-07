@@ -4,7 +4,7 @@ import {
   EuiTextColor,
   EuiTitle,
 } from "@elastic/eui";
-import { ReactComponent as LOGO } from "../components/layout/logos/NFDI4Health_Logo_cmyk_RZ.svg";
+import { ReactComponent as LOGO } from "./layout/logos/nfdi4health_logo.svg";
 import { ts_specific_metadata } from "../config";
 
 export const LogoBox = () => {

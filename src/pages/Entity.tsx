@@ -1,5 +1,4 @@
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
-import "./Entity.css";
 import {
   EuiAccordion,
   EuiFlexGroup,

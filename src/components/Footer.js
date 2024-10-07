@@ -2,16 +2,16 @@ import {
   EuiFlexGroup,
   EuiFlexItem,
   EuiHorizontalRule,
+  EuiImage,
   EuiLink,
   EuiPanel,
   EuiSpacer,
   EuiText,
 } from "@elastic/eui";
 import { EuiNavigationLink } from "./layout/util/EuiCustomLinks";
-import { ReactComponent as DFGLOGO } from "./layout/logos/dfg_logo_schriftzug_blau_foerderung_en.svg";
-import { ReactComponent as NFDI4HEALTHLOGO } from "./layout/logos/NFDI4Health_Logo_cmyk_RZ.svg";
-import { ReactComponent as ZBMEDLOGO } from "./layout/logos/ZBMED_2017_DE.svg";
 import { ts_specific_metadata } from "../config";
+import { dfglogo, nfdi4healthlogo, zbmedlogo } from "../imports/ImageImport";
+
 export default function Footer() {
   return (
     <>
@@ -28,7 +28,9 @@ export default function Footer() {
           <EuiFlexItem grow={true}></EuiFlexItem>
           <EuiFlexItem grow={false}>
             <EuiText color="subdued" size="s">
-              <EuiLink href="mailto:semlookp-support@zbmed.de">Contact</EuiLink>{" "}
+              <EuiLink href={ts_specific_metadata.contact_mail_address_mailto}>
+                Contact
+              </EuiLink>{" "}
               | <EuiNavigationLink to="/about/api">API</EuiNavigationLink> |{" "}
               <EuiNavigationLink to="/imprint">Imprint</EuiNavigationLink> |{" "}
               <EuiNavigationLink to="/privacy">Privacy</EuiNavigationLink>
@@ -41,9 +43,9 @@ export default function Footer() {
           <EuiFlexItem grow={false}>
             {/*TODO get version and last update from API*/}
             <EuiText color="subdued" size="xs">
-              Version: {"development version"}
+              Version: {ts_specific_metadata.homepage.version}
               <p></p>
-              Last update: {"September 26, 2024"}
+              Last update: {ts_specific_metadata.homepage.last_update}
             </EuiText>
           </EuiFlexItem>
           <EuiFlexItem grow={true}></EuiFlexItem>
@@ -56,22 +58,30 @@ export default function Footer() {
           responsive={true}
         >
           <EuiFlexItem grow={false}>
-            <a href={"https://www.dfg.de"} target={"_blank"} rel="noreferrer">
-              <DFGLOGO height="110px" />
+            <a
+              href={ts_specific_metadata.homepage.footer_logo_1_url}
+              target={"_blank"}
+              rel="noreferrer"
+            >
+              <EuiImage alt={""} src={dfglogo} size={"l"} />
             </a>
           </EuiFlexItem>
           <EuiFlexItem grow={false}>
             <a
-              href={"https://www.nfdi4health.de"}
+              href={ts_specific_metadata.homepage.footer_logo_2_url}
               target={"_blank"}
               rel="noreferrer"
             >
-              <NFDI4HEALTHLOGO height="110px" />
+              <EuiImage alt={""} src={nfdi4healthlogo} size={"m"} />
             </a>
           </EuiFlexItem>
           <EuiFlexItem grow={false}>
-            <a href={"https://www.zbmed.de"} target={"_blank"} rel="noreferrer">
-              <ZBMEDLOGO height="110px" />
+            <a
+              href={ts_specific_metadata.homepage.footer_logo_3_url}
+              target={"_blank"}
+              rel="noreferrer"
+            >
+              <EuiImage alt={""} src={zbmedlogo} size={"m"} />
             </a>
           </EuiFlexItem>
         </EuiFlexGroup>
@@ -80,7 +90,7 @@ export default function Footer() {
           <EuiFlexItem grow={true}></EuiFlexItem>
           <EuiFlexItem grow={false}>
             <EuiText color="subdued" size="s">
-              {ts_specific_metadata.funding_notice}
+              {ts_specific_metadata.homepage.funding_notice}
             </EuiText>
           </EuiFlexItem>
           <EuiFlexItem grow={true}></EuiFlexItem>

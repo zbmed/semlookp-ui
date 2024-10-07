@@ -8,7 +8,7 @@ import {
   EuiText,
 } from "@elastic/eui";
 import EuiCustomLink from "./layout/util/EuiCustomLink";
-import widgetimage from "./layout/logos/widgets-icons.png";
+import widgetimage from "./layout/logos/projects/widgets-icons.png";
 
 export const useCase1Description = () => {
   return (

@@ -11,6 +11,11 @@ export const ts_specific_metadata = {
     project_information_title: "Terminology Service NFDI4Health",
     funding_notice:
       "This service is developed in the project NFDI4Health. NFDI4Health is one of the funded consortia of the National Research Data Infrastructure programme of the DFG. (Project identifier 451265285 and 442326535).",
+    last_update: "September 26, 2024",
+    version: "development version",
+    footer_logo_1_url: "https://www.dfg.de",
+    footer_logo_2_url: "https://www.nfdi4health.de",
+    footer_logo_3_url: "https://www.zbmed.de",
   },
   search: {
     search_example_text1: "diabetes",

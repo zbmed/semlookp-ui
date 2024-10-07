@@ -64,6 +64,20 @@ $ docker-compose --env-file dev.env up
 
 [Docker and private modules](https://docs.npmjs.com/docker-and-private-modules)
 
+## Hints for using the generic code base
+
+#### Metadata
+
+Metadata as funding notice, project description or contact mail address are specified in the `src/config.js`.
+
+#### Logos
+
+The logos for the footer should be placed at the `src/components/layout/logos/` folder. They are imported at `src/imports/ImageImport.tsx` and in the corresponding components.
+
+#### Theming
+
+We use "@emotion/react". Themes are defined in `src/theme.ts` and in `src/emotion.d.ts`
+
 ## Funding
 
 This project is developed by the [NFDI4Health consortium](https://www.nfdi4health.de) and the Terminology Services for NFDI (TS4NFDI) project (as part of the [Base4NFDI consortium](https://base4nfdi.de/)).

@@ -7,14 +7,14 @@ import {
   EuiSpacer,
   EuiText,
 } from "@elastic/eui";
-import { ReactComponent as DFGLOGO } from "../components/layout/logos/dfg_logo_schriftzug_blau_foerderung_en.svg";
-import { ReactComponent as BMBFLOGO } from "../components/layout/logos/BMBF_Logo.svg";
 import {
   dznelogo,
   idsnlogo,
   nfdi4health,
   scailogo,
   ukelogo,
+  dfglogo,
+  bmbflogo,
 } from "../imports/ImageImport";
 import { Helmet } from "react-helmet";
 
@@ -91,8 +91,8 @@ export default function Projects() {
                     study participants restrict the reuse of data.
                   </li>
                 </ul>
-                <EuiFlexGroup>
-                  <EuiFlexItem grow={8}>
+                <EuiFlexGroup alignItems={"center"}>
+                  <EuiFlexItem grow={2}>
                     <h3>Funding</h3>
                     <p>
                       The partners of the NFDI consortium NFDI4Health are funded
@@ -125,13 +125,13 @@ export default function Projects() {
                     </p>
                   </EuiFlexItem>
                   <EuiFlexItem>
-                    <EuiFlexItem grow={2}>
+                    <EuiFlexItem grow={false}>
                       <EuiLink
                         href={"https://www.dfg.de/en/index.jsp"}
                         target="_blank"
                         external={false}
                       >
-                        <DFGLOGO height={"50px"} />
+                        <EuiImage alt={"DFG Logo"} src={dfglogo} size={"l"} />
                       </EuiLink>
                     </EuiFlexItem>
                   </EuiFlexItem>
@@ -270,7 +270,7 @@ export default function Projects() {
                         target="_blank"
                         external={false}
                       >
-                        <BMBFLOGO height={"100px"} />
+                        <EuiImage alt={""} src={bmbflogo} size={"m"} />
                       </EuiLink>
                     </EuiFlexItem>
                   </EuiFlexGroup>
