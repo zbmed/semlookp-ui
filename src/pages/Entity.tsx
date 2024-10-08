@@ -17,7 +17,9 @@ import {
   AutocompleteWidget,
   BreadcrumbWidget,
   DescriptionWidget,
+  EntityDefinedByWidget,
   EntityInfoWidget,
+  EntityOntoListWidget,
   EntityRelationsWidget,
   HierarchyWidget,
   IriWidget,
@@ -46,25 +48,23 @@ export default function Entity() {
 
   return (
     <div>
+      <EuiSpacer />
       <EuiFlexGroup justifyContent={"spaceAround"} direction={"column"}>
         <EuiPanel>
           <EuiFlexGroup>
             <EuiFlexItem grow={7}>
-              <EuiFlexItem>
-                <EuiTitle size={"m"}>
-                  <TitleWidget
-                    iri={concatIri}
-                    ontologyId={routeParams.ontologyId}
-                    api={OLS4API}
-                  />
-                </EuiTitle>
-              </EuiFlexItem>
+              <EuiTitle size={"m"}>
+                <TitleWidget
+                  iri={concatIri}
+                  ontologyId={routeParams.ontologyId}
+                  api={global_config.api_url}
+                />
+              </EuiTitle>
             </EuiFlexItem>
-            <EuiFlexItem grow={1} />
             <EuiFlexItem grow={1}>
               <JsonApiWidget
                 apiQuery={
-                  OLS4API +
+                  global_config.api_url +
                   "ontologies/" +
                   routeParams.ontologyId +
                   "/" +
@@ -76,79 +76,102 @@ export default function Entity() {
               />
             </EuiFlexItem>
           </EuiFlexGroup>
-          <EuiFlexGroup>
-            <EuiFlexItem>
-              <EuiHorizontalRule />
-              <EuiFlexGroup>
-                <EuiFlexItem>
-                  <EuiTitle size={"xs"}>
-                    <span>
-                      <span>Terminology</span>
-                      <EuiIcon type="arrowRight" />
-                      <span>CURIE</span>
-                      <EuiIcon
-                        title={"CURIE = Compact uniform resource identifier"}
-                        type={"iInCircle"}
-                        size={"m"}
-                      />
-                      <span>:</span>
-                    </span>
-                  </EuiTitle>
-                  <EuiFlexItem>
-                    <BreadcrumbWidget
-                      iri={concatIri}
-                      api={OLS4API}
-                      ontologyId={routeParams.ontologyId}
-                    />
-                  </EuiFlexItem>
-                </EuiFlexItem>
-                <div
-                  style={{
-                    float: "right",
-                    marginRight: "12px",
-                  }}
-                >
-                  <EuiSpacer size={"m"} />
-                  <EuiTitle size={"xs"}>
-                    <span>Identifier/IRI:</span>
-                  </EuiTitle>
-                  <EuiFlexItem>
-                    <IriWidget iri={concatIri} />
-                  </EuiFlexItem>
-                </div>
-              </EuiFlexGroup>
-              <EuiFlexItem>
-                <EuiHorizontalRule />
-                <EuiTitle size={"xs"}>
-                  <span>Description:</span>
-                </EuiTitle>
-                <EuiSpacer size={"s"} />
-                <DescriptionWidget
-                  iri={concatIri}
-                  ontologyId={routeParams.ontologyId}
-                  api={OLS4API}
-                />
-              </EuiFlexItem>
-              <EuiSpacer size={"s"} />
-              <AutocompleteWidget
-                api={OLS4API}
-                placeholder={
-                  "Search in " + routeParams.ontologyId.toUpperCase()
-                }
-                selectionChangedEvent={(selectedOption) => {
-                  navigateToEntity(selectedOption, navigate);
+          <EuiHorizontalRule />
+          <EuiFlexGroup justifyContent={"spaceBetween"} alignItems={"center"}>
+            <EuiFlexItem grow={false}>
+              <EuiTitle size={"xs"}>
+                <span>
+                  <span>Terminology</span>
+                  <EuiIcon type="arrowRight" />
+                  <span>CURIE </span>
+                  <EuiIcon
+                    title={"CURIE = Compact uniform resource identifier"}
+                    type={"iInCircle"}
+                    size={"m"}
+                  />
+                  <span>:</span>
+                </span>
+              </EuiTitle>
+              <BreadcrumbWidget
+                iri={concatIri}
+                api={global_config.api_url}
+                ontologyId={routeParams.ontologyId}
+                onNavigateToOntology={(ontologyId) => {
+                  navigate(`/ontologies/${ontologyId}/`);
                 }}
-                parameter={
-                  "ontology=" +
-                  routeParams.ontologyId +
-                  "&collection=nfdi4health&fieldList=description,label,iri,ontology_name,type,short_form"
-                }
-                allowCustomTerms={false}
-                singleSelection={true}
-                hasShortSelectedLabel={true}
+              />
+              <EuiSpacer size={"m"} />
+              <EntityOntoListWidget
+                api={global_config.api_url}
+                iri={concatIri}
+                ontologyId={routeParams.ontologyId}
+                useLegacy={true}
+                onNavigateToOntology={(ontologyId, entityType, entity) => {
+                  navigate(
+                    `/ontologies/${ontologyId}/${
+                      entityType == "class" || entityType == "term"
+                        ? "terms"
+                        : entityType == "property"
+                        ? "properties"
+                        : "individuals"
+                    }?iri=${encodeURIComponent(encodeURIComponent(entity.iri))}`
+                  );
+                }}
+              />
+            </EuiFlexItem>
+            <EuiFlexItem grow={false}>
+              <EuiTitle size={"xs"}>
+                <span>Identifier/IRI:</span>
+              </EuiTitle>
+              <IriWidget iri={concatIri} copyButton={true} />
+              <EuiSpacer size={"m"} />
+              <EntityDefinedByWidget
+                api={global_config.api_url}
+                iri={concatIri}
+                ontologyId={routeParams.ontologyId}
+                useLegacy={true}
+                onNavigateToOntology={(ontologyId, entityType, entity) => {
+                  navigate(
+                    `/ontologies/${ontologyId}/${
+                      entityType == "class" || entityType == "term"
+                        ? "terms"
+                        : entityType == "property"
+                        ? "properties"
+                        : "individuals"
+                    }?iri=${encodeURIComponent(encodeURIComponent(entity.iri))}`
+                  );
+                }}
               />
             </EuiFlexItem>
           </EuiFlexGroup>
+          <EuiHorizontalRule />
+          <EuiFlexItem>
+            <EuiTitle size={"xs"}>
+              <span>Description:</span>
+            </EuiTitle>
+            <EuiSpacer size={"s"} />
+            <DescriptionWidget
+              iri={concatIri}
+              ontologyId={routeParams.ontologyId}
+              api={OLS4API}
+            />
+          </EuiFlexItem>
+          <EuiSpacer size={"s"} />
+          <AutocompleteWidget
+            api={OLS4API}
+            placeholder={"Search in " + routeParams.ontologyId.toUpperCase()}
+            selectionChangedEvent={(selectedOption) => {
+              navigateToEntity(selectedOption, navigate);
+            }}
+            parameter={
+              "ontology=" +
+              routeParams.ontologyId +
+              "&collection=nfdi4health&fieldList=description,label,iri,ontology_name,type,short_form"
+            }
+            allowCustomTerms={false}
+            singleSelection={true}
+            hasShortSelectedLabel={true}
+          />
         </EuiPanel>
 
         <EuiSpacer />
@@ -183,24 +206,14 @@ export default function Entity() {
                       )}`
                     );
                   }}
-                  onNavigateToOntology={(ontologyId, entityType, entity) => {
-                    navigate(
-                      `/ontologies/${ontologyId}/${
-                        entityType == "class" || entityType == "term"
-                          ? "terms"
-                          : entityType == "property"
-                          ? "properties"
-                          : "individuals"
-                      }?iri=${encodeURIComponent(
-                        encodeURIComponent(entity.iri)
-                      )}`
-                    );
+                  onNavigateToOntology={(ontologyId) => {
+                    navigate(`/ontologies/${ontologyId}/`);
                   }}
                 />
               </div>
             </EuiFlexItem>
             <EuiSpacer size={"l"} />
-            <EuiFlexItem grow={true}>
+            <EuiFlexItem>
               <EuiFlexGroup direction={"column"}>
                 <EuiSpacer size={"s"} />
                 <EuiFlexItem grow={false}>
