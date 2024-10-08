@@ -185,7 +185,7 @@ export default function Entity() {
               <EuiTitle size={"s"}>
                 <span>Hierarchy</span>
               </EuiTitle>
-              <EuiHorizontalRule />
+              <EuiHorizontalRule style={{ marginBottom: "0px" }} />
               <div style={{ overflow: "auto" }}>
                 <HierarchyWidget
                   apiUrl={global_config.api_url}
