@@ -1,34 +1,33 @@
 import { EuiFlexGroup, EuiFlexItem } from "@elastic/eui";
-import {
-  infoBoxDescription1,
-  infoBoxDescription2,
-} from "./InfoBoxesDescriptionsTemplate";
-import { useTheme } from "@emotion/react";
-import { InfoBox } from "./InfoBox";
-import { ts_specific_metadata } from "../config";
+import { projectType, ts_specific_metadata } from "../config";
+import { componentMap } from "./componentMap";
+import { Suspense } from "react";
 
 export const InfoBoxes = () => {
-  const theme = useTheme();
+  const projectName = projectType.projectName;
+  const projectComponents = componentMap[projectName];
+
+  if (!projectComponents) {
+    return <div>Error: Invalid project type</div>;
+  }
+
+  const InfoBoxA = componentMap[projectName]["InfoBoxA"];
+  const InfoBoxB = componentMap[projectName]["InfoBoxB"];
+
   return (
-    <EuiFlexGroup>
-      {ts_specific_metadata.info_boxes.show_info_box1 && (
-        <EuiFlexItem grow={3}>
-          <InfoBox
-            title={ts_specific_metadata.info_boxes.info_box1.title}
-            backgroundColor={theme.color.infoBoxColor1}
-            description={infoBoxDescription1()}
-          />
-        </EuiFlexItem>
-      )}
-      {ts_specific_metadata.info_boxes.show_info_box2 && (
-        <EuiFlexItem grow={3}>
-          <InfoBox
-            title={ts_specific_metadata.info_boxes.info_box2.title}
-            backgroundColor={theme.color.infoBoxColor2}
-            description={infoBoxDescription2()}
-          />
-        </EuiFlexItem>
-      )}
-    </EuiFlexGroup>
+    <Suspense fallback={<div>Loading...</div>}>
+      <EuiFlexGroup>
+        {ts_specific_metadata.info_boxes.has_info_box1 && (
+          <EuiFlexItem grow={3}>
+            <InfoBoxA />
+          </EuiFlexItem>
+        )}
+        {ts_specific_metadata.info_boxes.has_info_box2 && (
+          <EuiFlexItem grow={3}>
+            <InfoBoxB />
+          </EuiFlexItem>
+        )}
+      </EuiFlexGroup>
+    </Suspense>
   );
 };

@@ -2,14 +2,24 @@ import { EuiFlexGroup, EuiFlexItem, EuiSpacer } from "@elastic/eui";
 import "../index.css";
 import { Helmet } from "react-helmet";
 import { DataContentWidget } from "@ts4nfdi/terminology-service-suite";
-import { global_config, ts_specific_metadata } from "../config";
+import { global_config, projectType, ts_specific_metadata } from "../config";
 import ProjectInformation from "../components/layout/util/ProjectInformation";
 import { ResourceMissingCallOut } from "../components/ResourceMissingCallOut";
 import { SearchBox } from "../components/SearchBox";
-import { LogoBox } from "../components/LogoBox";
 import { InfoBoxes } from "../components/InfoBoxes";
+import { componentMap } from "../components/componentMap";
+import { Suspense } from "react";
 
 export default function Home() {
+  const projectName = projectType.projectName;
+  const projectComponents = componentMap[projectName];
+
+  if (!projectComponents) {
+    return <div>Error: Invalid project type</div>;
+  }
+
+  const LogoBox = componentMap[projectName]["LogoBox"];
+
   return (
     <>
       <Helmet>
@@ -17,7 +27,9 @@ export default function Home() {
       </Helmet>
       <EuiSpacer size="xxl" />
 
-      {ts_specific_metadata.homepage.show_logo && <LogoBox />}
+      <Suspense fallback={<div>Loading...</div>}>
+        {ts_specific_metadata.homepage.has_logo && <LogoBox />}
+      </Suspense>
       <EuiSpacer size="xxl" />
       <EuiSpacer size="xxl" />
 
@@ -25,7 +37,7 @@ export default function Home() {
         <EuiFlexItem grow={7}>
           <SearchBox />
         </EuiFlexItem>
-        {ts_specific_metadata.homepage.show_data_content && (
+        {ts_specific_metadata.homepage.has_data_content && (
           <>
             <EuiFlexItem grow={3}>
               <DataContentWidget
@@ -38,21 +50,21 @@ export default function Home() {
       </EuiFlexGroup>
       <EuiSpacer size="xxl" />
 
-      {ts_specific_metadata.homepage.show_missing_resource_callout && (
+      {ts_specific_metadata.homepage.has_missing_resource_callout && (
         <>
           <ResourceMissingCallOut />
           <EuiSpacer size="xxl" />
         </>
       )}
 
-      {ts_specific_metadata.homepage.show_info_boxes && (
+      {ts_specific_metadata.homepage.has_info_boxes && (
         <>
           <InfoBoxes />
           <EuiSpacer size="xxl" />
         </>
       )}
 
-      {ts_specific_metadata.homepage.show_project_information && (
+      {ts_specific_metadata.homepage.has_project_information && (
         <>
           <ProjectInformation />
         </>
