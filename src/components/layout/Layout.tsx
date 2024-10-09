@@ -12,7 +12,7 @@ import { Header } from "../Header";
 
 export const Layout = () => {
   return (
-    <EuiPage paddingSize="none">
+    <EuiPage style={{ backgroundColor: "#dcdee0" }} paddingSize="none">
       <EuiPageBody>
         <EuiPageContent
           hasBorder={false}

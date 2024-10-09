@@ -2,10 +2,18 @@ import { lazy } from "react";
 
 export const componentMap = {
   template: {
-    InfoBoxA: lazy(() => import("./templateComponents/InfoBoxATemplate")),
-    InfoBoxB: lazy(() => import("./templateComponents/InfoBoxBTemplate")),
-    FooterLogos: lazy(() => import("./templateComponents/FooterLogosTemplate")),
-    LogoBox: lazy(() => import("./templateComponents/LogoBoxTemplate")),
+    InfoBoxA: lazy(() =>
+      import("./defaultTemplateComponents/InfoBoxATemplate")
+    ),
+    InfoBoxB: lazy(() =>
+      import("./defaultTemplateComponents/InfoBoxBTemplate")
+    ),
+    FooterLogos: lazy(() =>
+      import("./defaultTemplateComponents/FooterLogosTemplate")
+    ),
+    LogoBox: lazy(() => import("./defaultTemplateComponents/LogoBoxTemplate")),
+    AboutPage: lazy(() => import("../pages/AboutPageDefaultTemplate")),
+    ProjectsPage: lazy(() => import("../pages/ProjectsPageDefaultTemplate")),
   },
   health: {
     InfoBoxA: lazy(() => import("./projectSpecificComponents/InfoBoxAHealth")),
@@ -14,5 +22,7 @@ export const componentMap = {
       import("./projectSpecificComponents/FooterLogosHealth")
     ),
     LogoBox: lazy(() => import("./projectSpecificComponents/LogoBoxHealth")),
+    AboutPage: lazy(() => import("../pages/AboutPageHealth")),
+    ProjectsPage: lazy(() => import("../pages/ProjectsPageHealth")),
   },
 };

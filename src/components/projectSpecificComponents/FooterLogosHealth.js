@@ -1,6 +1,6 @@
 import { EuiFlexGroup, EuiFlexItem, EuiImage } from "@elastic/eui";
-import { projectType, ts_specific_metadata } from "../../config";
-import { logoMap } from "../logoMap";
+import { global_config, ts_specific_metadata } from "../../config";
+import { imageMap } from "../imageMap";
 import { Suspense, useEffect, useState } from "react";
 
 const FooterLogosTemplate = () => {
@@ -10,8 +10,8 @@ const FooterLogosTemplate = () => {
     footerLogoC: null,
   });
 
-  const projectName = projectType.projectName;
-  const projectComponents = logoMap[projectName];
+  const projectName = global_config.projectName;
+  const projectComponents = imageMap[projectName];
 
   useEffect(() => {
     if (projectComponents) {

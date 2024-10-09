@@ -14,13 +14,13 @@ import { Helmet } from "react-helmet";
 export default function Api() {
   return (
     <div>
-      <EuiFlexGroup>
-        <EuiFlexItem grow={3}>
+      <EuiFlexGroup justifyContent={"center"}>
+        <EuiFlexItem>
           <EuiPanel hasShadow={true}>
             <EuiSideNav
               items={[
                 {
-                  name: "SemLookP - Terminology Service API",
+                  name: "Terminology Service API",
                   id: "1",
                   items: [
                     {
@@ -346,10 +346,10 @@ export default function Api() {
             />
           </EuiPanel>
         </EuiFlexItem>
-        <EuiFlexItem grow={7}>
+        <EuiFlexItem>
           <EuiPanel hasShadow={true}>
             <EuiText>
-              <h1>SemLookP - Terminology Service API Guide</h1>
+              <h1>Terminology Service API Guide</h1>
               <h2 id="overview">Overview</h2>{" "}
               <h3 id="http-verbs">HTTP verbs</h3>
               <p>This API supports the following HTTP verbs. </p>
@@ -689,30 +689,31 @@ Content-Length: 432
                 items={[
                   {
                     c1: "ontologies",
-                    c2: "Link to the ontologies in SemLookP",
+                    c2: "Link to the ontologies in the Terminology Service",
                   },
                   {
                     c1: "terms",
-                    c2: "Link to all the terms in SemLookP",
+                    c2: "Link to all the terms in the Terminology Service",
                   },
                   {
                     c1: "properties",
-                    c2: "Link to all the properties in SemLookP",
+                    c2: "Link to all the properties in the Terminology Service",
                   },
                   {
                     c1: "individuals",
-                    c2: "Link to all the individuals in SemLookP",
+                    c2: "Link to all the individuals in the Terminology Service",
                   },
                 ]}
               />
               <h3 id="ontologies">Ontologies</h3>
               <p>
-                The Ontologies resources is used to list ontologies in SemLookP
+                The Ontologies resources is used to list ontologies in the
+                Terminology Service
               </p>
               <h4 id="listing-ontologies">Listing ontologies</h4>
               <p>
-                A <EuiCode>GET</EuiCode> request will list all of the SemLookP
-                ontologies.
+                A <EuiCode>GET</EuiCode> request will list all of the
+                Terminology Service ontologies.
               </p>
               <h5 id="example-request-3">Example request</h5>
               <EuiCodeBlock
@@ -748,7 +749,7 @@ Content-Length: 432
                 items={[
                   {
                     c1: "ontology_id",
-                    c2: "The ontology id in SemLookP",
+                    c2: "The ontology id in the Terminology Service",
                   },
                 ]}
               />
@@ -875,14 +876,14 @@ Content-Length: 5202
                 items={[
                   {
                     c1: "ontology_id",
-                    c2: "The ontology id in SemLookP",
+                    c2: "The ontology id in the Terminology Service",
                   },
                 ]}
               />
               <h3 id="terms">Terms</h3>
               <p>
-                The terms resources is used to list terms (or classes) in
-                SemLookP from a particular ontology
+                The terms resources is used to list terms (or classes) in the
+                Terminology Service from a particular ontology
               </p>
               <h4 id="listing-ontology-terms">Listing ontology terms</h4>
               <EuiCodeBlock
@@ -901,7 +902,7 @@ Content-Length: 5202
                 items={[
                   {
                     c1: "ontology_id",
-                    c2: "The ontology id in SemLookP",
+                    c2: "The ontology id in the Terminology Service",
                   },
                 ]}
               />
@@ -969,7 +970,7 @@ Content-Length: 5202
                 items={[
                   {
                     c1: "ontology",
-                    c2: "The SemLookP ontology id e.g. go",
+                    c2: "The Terminology Service ontology id e.g. go",
                   },
                   {
                     c1: "iri",
@@ -1171,7 +1172,7 @@ Content-Length: 3657
                 items={[
                   {
                     c1: "ontology",
-                    c2: "The SemLookP ontology id e.g. go",
+                    c2: "The Terminology Service ontology id e.g. go",
                   },
                   {
                     c1: "id",
@@ -1270,7 +1271,7 @@ Content-Length: 3657
                 items={[
                   {
                     c1: "ontology",
-                    c2: "The SemLookP ontology id e.g. go",
+                    c2: "The Terminology Service ontology id e.g. go",
                   },
                   {
                     c1: "iri",
@@ -1297,7 +1298,7 @@ Content-Length: 3657
                 items={[
                   {
                     c1: "ontology",
-                    c2: "The SemLookP ontology id e.g. go",
+                    c2: "The Terminology Service ontology id e.g. go",
                   },
                   {
                     c1: "iri",
@@ -1534,9 +1535,10 @@ Content-Length: 3657
               <p>
                 We also provide a generic suggester endpoint. This endpoint aims
                 to provide traditional autosuggest based on all the vocabulary
-                in SemLookP (all class labels or synonyms). All results from
-                this endpoint are unique and are not coupled to any particular
-                ontology, however, searches can be restricted by ontology.
+                in the Terminology Service (all class labels or synonyms). All
+                results from this endpoint are unique and are not coupled to any
+                particular ontology, however, searches can be restricted by
+                ontology.
               </p>
               <EuiCodeBlock
                 language="http"
@@ -1573,10 +1575,10 @@ Content-Length: 3657
         </EuiFlexItem>
       </EuiFlexGroup>
       <Helmet>
-        <title> API Guide &gt; SemLookP </title>
+        <title> API Guide &gt; Terminology Service </title>
         <meta
           name="description"
-          content="API Guide for the Terminology Service - SemLookP"
+          content="API Guide for the Terminology Service"
         />
       </Helmet>
     </div>

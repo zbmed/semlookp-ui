@@ -1,52 +1,27 @@
 import {
-  EuiCard,
   EuiFlexGroup,
   EuiFlexItem,
   EuiLink,
   EuiPanel,
+  EuiSpacer,
   EuiText,
 } from "@elastic/eui";
 import EuiCustomLink from "../components/layout/util/EuiCustomLink";
 import { Helmet } from "react-helmet";
+import TerminologyServiceSuiteInfo from "../components/TerminologyServiceSuiteInfo";
 
-export default function About() {
-  const aboutSemLookPWidgets = (
-    <>
-      <EuiText>
-        Small software applications, called SemLookP widgets, allow the
-        integration of extracted user interface functionalities into other
-        services, streamlining the development of user interfaces and the
-        integration and linking of semantic information.This NFDI4Health
-        Terminology Service SemLookP is build upon those widgets. For more
-        information visit the{" "}
-        <EuiLink
-          href={
-            "https://ts4nfdi.github.io/terminology-service-suite/comp/latest/?path=/docs/overview--docs"
-          }
-        >
-          {" "}
-          SemLookP Widget documentation
-        </EuiLink>
-        .
-      </EuiText>
-    </>
-  );
-
+export default function AboutPageDefaultTemplate() {
   return (
     <EuiFlexGroup justifyContent="spaceAround">
       <EuiPanel paddingSize="l">
         <EuiFlexItem grow={false}>
           <EuiText>
-            <h2>About the SemLookP Terminology Service</h2>
+            <h2>About the Terminology Service</h2>
             <p>
               The SemLookP Terminology Service aims to provide access to key
-              terminologies in the health domain. It is developed and maintained
-              by{" "}
-              <EuiLink href={"https://www.zbmed.de/en/"}>
-                {" "}
-                ZB MED - Information Centre for Life Sciences.
-              </EuiLink>{" "}
-              It emerged from the BMBF-funded project{" "}
+              terminologies. It is developed and maintained by{" "}
+              <EuiLink href={"https://"}> Some Institution.</EuiLink> It emerged
+              from the BMBF-funded project{" "}
               <EuiLink href={"https://www.idsn.info/de/idsn.html"}>
                 {" "}
                 IDSN.{" "}
@@ -63,17 +38,6 @@ export default function About() {
               </EuiLink>{" "}
               at <EuiLink href={"https://www.ebi.ac.uk/"}> EMBL-EBI. </EuiLink>
             </p>
-
-            <EuiFlexItem grow={3}>
-              <EuiCard
-                title="About the Terminology Service Suite"
-                description={aboutSemLookPWidgets}
-                // onClick={() => window.location.assign("https://github.com/nfdi4health/semlookp-widgets")}
-                style={{ backgroundColor: "#D3DAE6" }}
-                display="subdued"
-                textAlign={"left"}
-              />
-            </EuiFlexItem>
             <h3>API documentation:</h3>
             <p>
               {" "}
@@ -111,13 +75,14 @@ export default function About() {
             </p>
           </EuiText>
         </EuiFlexItem>
+        <EuiSpacer size={"m"} />
+        <EuiFlexItem grow={3}>
+          <TerminologyServiceSuiteInfo />
+        </EuiFlexItem>
       </EuiPanel>
       <Helmet>
-        <title> About &gt; SemLookP </title>
-        <meta
-          name="description"
-          content="About the Terminology Service - SemLookP"
-        />
+        <title> About the Terminology Service</title>
+        <meta name="description" content="About the Terminology Service" />
       </Helmet>
     </EuiFlexGroup>
   );

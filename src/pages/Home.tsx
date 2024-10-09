@@ -2,7 +2,7 @@ import { EuiFlexGroup, EuiFlexItem, EuiSpacer } from "@elastic/eui";
 import "../index.css";
 import { Helmet } from "react-helmet";
 import { DataContentWidget } from "@ts4nfdi/terminology-service-suite";
-import { global_config, projectType, ts_specific_metadata } from "../config";
+import { global_config, ts_specific_metadata } from "../config";
 import ProjectInformation from "../components/layout/util/ProjectInformation";
 import { ResourceMissingCallOut } from "../components/ResourceMissingCallOut";
 import { SearchBox } from "../components/SearchBox";
@@ -11,14 +11,13 @@ import { componentMap } from "../components/componentMap";
 import { Suspense } from "react";
 
 export default function Home() {
-  const projectName = projectType.projectName;
-  const projectComponents = componentMap[projectName];
+  const projectComponents = componentMap[global_config.projectName];
 
   if (!projectComponents) {
     return <div>Error: Invalid project type</div>;
   }
 
-  const LogoBox = componentMap[projectName]["LogoBox"];
+  const LogoBox = componentMap[global_config.projectName]["LogoBox"];
 
   return (
     <>

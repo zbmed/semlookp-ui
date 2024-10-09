@@ -5,17 +5,17 @@ import {
   EuiTextColor,
   EuiTitle,
 } from "@elastic/eui";
-import { projectType, ts_specific_metadata } from "../../config";
+import { global_config, ts_specific_metadata } from "../../config";
 import { Suspense, useEffect, useState } from "react";
-import { logoMap } from "../logoMap";
+import { imageMap } from "../imageMap";
 
 const LogoBoxTemplate = () => {
   const [logos, setLogos] = useState({
     homepageLogo: null,
   });
 
-  const projectName = projectType.projectName;
-  const projectComponents = logoMap[projectName];
+  const projectName = global_config.projectName;
+  const projectComponents = imageMap[projectName];
 
   useEffect(() => {
     if (projectComponents) {

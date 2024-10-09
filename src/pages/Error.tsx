@@ -5,10 +5,10 @@ export default function Error() {
     <div>
       Error! Page not found
       <Helmet>
-        <title> Error page &gt; SemLookP </title>
+        <title> Error page Terminology Service </title>
         <meta
           name="description"
-          content="Error page of the semantic Lookup Service - SemLookP"
+          content="Error page of the Terminology Service"
         />
       </Helmet>
     </div>

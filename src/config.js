@@ -1,9 +1,6 @@
 export const global_config = {
   api_url: "http://ols4-nfdi4health.qa.km.k8s.zbmed.de/ols4/api/",
-};
-
-export const projectType = {
-  projectName: "health",
+  projectName: "template",
 };
 
 export const ts_specific_metadata = {
@@ -22,6 +19,17 @@ export const ts_specific_metadata = {
     homepage_helmet_text: " Overview - Terminology Service ",
     text_below_logo: "Terminology Service",
     project_information_title: "Terminology Service NFDI4Health",
+  },
+  header: {
+    tabs: [
+      { name: "Home", source: "/" },
+      { name: "Search", source: "/search?q=*" },
+      { name: "Resources", source: "/resources" },
+      { name: "About", source: "/about" },
+      { name: "Projects", source: "/projects" },
+      { name: "API", source: "/about/api" },
+      // { name: "Imprint", source: "/imprint" },
+    ],
   },
   footer: {
     has_links: true,

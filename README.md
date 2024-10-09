@@ -1,6 +1,6 @@
 # Terminology Service User Interface
 
-## About The Project
+## AboutPageHealth The Project
 
 This is the frontend scheme of the Terminology Service NFDI4Health.
 
@@ -66,17 +66,29 @@ $ docker-compose --env-file dev.env up
 
 ## Hints for using the generic code base
 
-#### Metadata
+The main branch represents the generic code base.
+Project specific branches can be added.
+Those specific branches should stick to the given structure to allow updates.
 
-Metadata as funding notice, project description or contact mail address are specified in the `src/config.js`.
+Following configuration files need to be adapted in a specific branch:
 
-#### Logos
+- `src/config.js` contains project specific metadata such as funding notice, project description or contact mail address
+- `src/theme.ts` contains project specific colors and shapes
 
-The logos for the footer should be placed at the `src/components/layout/logos/` folder. They are imported at `src/imports/ImageImport.tsx` and in the corresponding components.
+The `.gitattributes` files should contain any project-specific files that should NOT be merged with the main branch, e.g the `src/config.js`, deployment files or specific components.
 
-#### Theming
+### Images
 
-We use "@emotion/react". Themes are defined in `src/theme.ts` and in `src/emotion.d.ts`
+#### Local images:
+
+All images should be placed in the `src/components/layout/images/` folder.
+They are imported and mapped to generic names in `src/components/imageMap.js`.
+
+#### Remote images:
+
+Images from remote sources must be implemented directly into the code base, and therefore do not support compatibility with the main branch.
+We have therefore decided not to include images via links.
+In project specific components you are free to import images via links.
 
 #### Git
 
@@ -88,16 +100,25 @@ you can configure the .gitattributes file to exclude or retain files during the 
    For example:  
     `
 path/to/file1.txt merge=ours
-path/to/file2.txt merge=ours`
+path/to/file2.txt merge=ours`  
+    _Use your project short name (e.g. health) instead of "ours"._
 3. Configure the 'ours' merge driver: Now you need to tell Git what merge=ours means. This is done by configuring the merge driver in the .git/config file or globally in ~/.gitconfig.
    Add the following to your .git/config file:  
     `[merge "ours"]
 name = "Keep our version"
-driver = true`
+driver = true`  
+    You can either do it manually or using:  
+    `git config --global merge.ours.driver true`  
+    Check with  
+    `git config --global --list`
 4. Commit the changes in your branch: After adding or editing the .gitattributes file, commit this change in your branch.
-5. Merge main into your branch.  
-    `
-git merge main`
+5. Merge main into your branch. You should see something like this:
+
+```
+$ git merge main
+Auto-merging somefile
+Merge made by recursive.
+```
 
 ## Funding
 

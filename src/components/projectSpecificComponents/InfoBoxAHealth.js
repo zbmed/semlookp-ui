@@ -48,7 +48,7 @@ const InfoBoxAHealth = () => {
         backgroundColor: theme.color.infoBoxColor1,
         minHeight: 150,
       }}
-      display="subdued"
+      hasShadow={true}
     />
   );
 };

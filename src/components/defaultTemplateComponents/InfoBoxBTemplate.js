@@ -2,11 +2,11 @@ import {
   EuiCard,
   EuiFlexGroup,
   EuiFlexItem,
-  EuiImage,
   EuiLink,
   EuiSpacer,
   EuiText,
   EuiButton,
+  EuiImage,
 } from "@elastic/eui";
 import { global_config, ts_specific_metadata } from "../../config";
 import { useTheme } from "@emotion/react";
@@ -60,7 +60,7 @@ const description = (logo) => {
   );
 };
 
-const InfoBoxBHealth = () => {
+const InfoBoxBTemplate = () => {
   const theme = useTheme();
   const [logos, setLogos] = useState({
     logo: null,
@@ -98,4 +98,4 @@ const InfoBoxBHealth = () => {
   );
 };
 
-export default InfoBoxBHealth;
+export default InfoBoxBTemplate;

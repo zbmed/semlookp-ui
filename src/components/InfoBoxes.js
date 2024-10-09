@@ -1,10 +1,10 @@
 import { EuiFlexGroup, EuiFlexItem } from "@elastic/eui";
-import { projectType, ts_specific_metadata } from "../config";
+import { global_config, ts_specific_metadata } from "../config";
 import { componentMap } from "./componentMap";
 import { Suspense } from "react";
 
 export const InfoBoxes = () => {
-  const projectName = projectType.projectName;
+  const projectName = global_config.projectName;
   const projectComponents = componentMap[projectName];
 
   if (!projectComponents) {
