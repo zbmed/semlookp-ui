@@ -183,7 +183,9 @@ export default function Entity() {
               style={{ maxWidth: "50%", minWidth: "50%" }}
             >
               <EuiTitle size={"s"}>
-                <span>Hierarchy</span>
+                <span style={{ textTransform: "capitalize" }}>
+                  {entityType} Hierarchy
+                </span>
               </EuiTitle>
               <EuiHorizontalRule style={{ marginBottom: "0px" }} />
               <div style={{ overflow: "auto" }}>
@@ -256,6 +258,36 @@ export default function Entity() {
                       iri={concatIri}
                       hasTitle={false}
                       ontologyId={routeParams.ontologyId}
+                      onNavigateToEntity={(ontologyId, entityType, entity) => {
+                        navigate(
+                          `/ontologies/${ontologyId}/${
+                            entityType == "class" || entityType == "term"
+                              ? "terms"
+                              : entityType == "property"
+                              ? "properties"
+                              : "individuals"
+                          }?iri=${encodeURIComponent(
+                            encodeURIComponent(entity.iri)
+                          )}`
+                        );
+                      }}
+                      onNavigateToOntology={(
+                        ontologyId,
+                        entityType,
+                        entity
+                      ) => {
+                        navigate(
+                          `/ontologies/${ontologyId}/${
+                            entityType == "class" || entityType == "term"
+                              ? "terms"
+                              : entityType == "property"
+                              ? "properties"
+                              : "individuals"
+                          }?iri=${encodeURIComponent(
+                            encodeURIComponent(entity.iri)
+                          )}`
+                        );
+                      }}
                     />
                   </EuiAccordion>
                 </EuiFlexItem>
