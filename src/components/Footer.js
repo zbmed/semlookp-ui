@@ -7,10 +7,10 @@ import {
   EuiSpacer,
   EuiText,
 } from "@elastic/eui";
-import { EuiNavigationLink } from "./layout/util/EuiCustomLinks";
-import { global_config, ts_specific_metadata } from "../config";
-import { componentMap } from "./componentMap";
 import { Suspense } from "react";
+import { componentMap } from "../componentMap";
+import { global_config, ts_specific_metadata } from "../config";
+import { EuiNavigationLink } from "./layout/util/EuiCustomLinks";
 
 export default function Footer() {
   const projectName = global_config.projectName;

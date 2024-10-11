@@ -5,10 +5,10 @@ import {
   EuiPageContent,
   EuiPageContentBody,
 } from "@elastic/eui";
-import { BottomBar } from "./util/BottomBar";
 import { Outlet } from "react-router-dom";
 import Footer from "../Footer";
 import { Header } from "../Header";
+import { BottomBar } from "./util/BottomBar";
 
 export const Layout = () => {
   return (

@@ -1,7 +1,7 @@
 import { EuiCard, EuiImage, EuiLink, EuiSpacer, EuiText } from "@elastic/eui";
-import EuiCustomLink from "../layout/util/EuiCustomLink";
-import { ts_specific_metadata } from "../../config";
 import { useTheme } from "@emotion/react";
+import { ts_specific_metadata } from "../../config";
+import EuiCustomLink from "../layout/util/EuiCustomLink";
 
 const description = () => {
   return (
@@ -32,7 +32,7 @@ const description = () => {
   );
 };
 
-const InfoBoxATemplate = () => {
+const InfoBoxADefaultTemplate = () => {
   const theme = useTheme();
   return (
     <EuiCard
@@ -47,4 +47,4 @@ const InfoBoxATemplate = () => {
   );
 };
 
-export default InfoBoxATemplate;
+export default InfoBoxADefaultTemplate;

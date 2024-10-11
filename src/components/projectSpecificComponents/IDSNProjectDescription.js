@@ -7,15 +7,13 @@ import {
   EuiSpacer,
   EuiText,
 } from "@elastic/eui";
-import {
-  idsnlogo,
-  scailogo,
-  ukelogo,
-  dznelogo,
-  bmbflogo,
-} from "../../imports/ImageImport";
+import { default as bmbflogo } from "../../components/layout/images/health/BMBF_Logo.svg";
+import { default as dznelogo } from "../../components/layout/images/health/dzne_logo.png";
+import { default as idsnlogo } from "../../components/layout/images/health/LogoIDSN.png";
+import { default as scailogo } from "../../components/layout/images/health/scai.png";
+import { default as ukelogo } from "../../components/layout/images/health/uke_logo.jpg";
 
-export default function IDSNDescription() {
+export default function IDSNProjectDescription() {
   return (
     <div>
       <EuiPanel>

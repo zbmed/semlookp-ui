@@ -1,14 +1,14 @@
 import { EuiFlexGroup, EuiFlexItem, EuiSpacer } from "@elastic/eui";
-import "../index.css";
-import { Helmet } from "react-helmet";
 import { DataContentWidget } from "@ts4nfdi/terminology-service-suite";
-import { global_config, ts_specific_metadata } from "../config";
+import { Suspense } from "react";
+import { Helmet } from "react-helmet";
+import { componentMap } from "../componentMap";
+import { InfoBoxes } from "../components/InfoBoxes";
 import ProjectInformation from "../components/layout/util/ProjectInformation";
 import { ResourceMissingCallOut } from "../components/ResourceMissingCallOut";
 import { SearchBox } from "../components/SearchBox";
-import { InfoBoxes } from "../components/InfoBoxes";
-import { componentMap } from "../components/componentMap";
-import { Suspense } from "react";
+import { global_config, ts_specific_metadata } from "../config";
+import "../index.css";
 
 export default function Home() {
   const projectComponents = componentMap[global_config.projectName];
@@ -63,7 +63,7 @@ export default function Home() {
         </>
       )}
 
-      {ts_specific_metadata.homepage.has_project_information && (
+      {ts_specific_metadata.homepage.has_project_intro && (
         <>
           <ProjectInformation />
         </>

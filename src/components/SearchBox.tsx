@@ -8,11 +8,11 @@ import {
   EuiTitle,
 } from "@elastic/eui";
 import { AutocompleteWidget } from "@ts4nfdi/terminology-service-suite";
-import { global_config } from "../config";
-import { navigateToEntity } from "./utils";
-import EuiCustomLink from "./layout/util/EuiCustomLink";
 import { useNavigate } from "react-router-dom";
+import { global_config } from "../config";
+import EuiCustomLink from "./layout/util/EuiCustomLink";
 import { SearchExamples } from "./SearchExamples";
+import { navigateToEntity } from "./utils";
 
 export const SearchBox = () => {
   const navigate = useNavigate();

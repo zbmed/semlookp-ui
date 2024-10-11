@@ -1,7 +1,7 @@
 import { EuiPanel, EuiSpacer, EuiText } from "@elastic/eui";
+import { ResourcesWidget } from "@ts4nfdi/terminology-service-suite";
 import { Helmet } from "react-helmet";
 import { global_config } from "../config";
-import { ResourcesWidget } from "@ts4nfdi/terminology-service-suite";
 
 const OLS4API = global_config.api_url;
 export default function Resources() {

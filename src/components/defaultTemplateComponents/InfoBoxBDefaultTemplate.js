@@ -1,17 +1,17 @@
 import {
+  EuiButton,
   EuiCard,
   EuiFlexGroup,
   EuiFlexItem,
+  EuiImage,
   EuiLink,
   EuiSpacer,
   EuiText,
-  EuiButton,
-  EuiImage,
 } from "@elastic/eui";
-import { global_config, ts_specific_metadata } from "../../config";
 import { useTheme } from "@emotion/react";
 import { useEffect, useState } from "react";
-import { imageMap } from "../imageMap";
+import { global_config, ts_specific_metadata } from "../../config";
+import { imageMap } from "../../imageMap";
 
 const description = (logo) => {
   return (
@@ -60,7 +60,7 @@ const description = (logo) => {
   );
 };
 
-const InfoBoxBTemplate = () => {
+const InfoBoxBDefaultTemplate = () => {
   const theme = useTheme();
   const [logos, setLogos] = useState({
     logo: null,
@@ -98,4 +98,4 @@ const InfoBoxBTemplate = () => {
   );
 };
 
-export default InfoBoxBTemplate;
+export default InfoBoxBDefaultTemplate;

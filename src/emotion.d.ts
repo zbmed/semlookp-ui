@@ -1,5 +1,4 @@
 import "@emotion/react";
-import { IconSize } from "@elastic/eui/src/components/icon/icon";
 
 declare module "@emotion/react" {
   export interface Theme {

@@ -4,12 +4,12 @@ import {
   EuiHeaderSectionItem,
   EuiIcon,
 } from "@elastic/eui";
-import { Helmet } from "react-helmet";
-import { EuiCustomHeaderLink } from "./layout/util/EuiCustomLinks";
 import { useTheme } from "@emotion/react";
 import { Suspense, useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import { global_config, ts_specific_metadata } from "../config";
-import { imageMap } from "./imageMap";
+import { imageMap } from "../imageMap";
+import { EuiCustomHeaderLink } from "./layout/util/EuiCustomLinks";
 
 export const Header = () => {
   const theme = useTheme();

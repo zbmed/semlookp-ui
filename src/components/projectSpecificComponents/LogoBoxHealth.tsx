@@ -5,9 +5,9 @@ import {
   EuiTextColor,
   EuiTitle,
 } from "@elastic/eui";
-import { global_config, ts_specific_metadata } from "../../config";
 import { Suspense, useEffect, useState } from "react";
-import { imageMap } from "../imageMap";
+import { global_config, ts_specific_metadata } from "../../config";
+import { imageMap } from "../../imageMap";
 
 const LogoBoxHealth = () => {
   const [logos, setLogos] = useState({

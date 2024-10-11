@@ -1,4 +1,5 @@
 import {
+  EuiButton,
   EuiCard,
   EuiFlexGroup,
   EuiFlexItem,
@@ -6,12 +7,11 @@ import {
   EuiLink,
   EuiSpacer,
   EuiText,
-  EuiButton,
 } from "@elastic/eui";
-import { global_config, ts_specific_metadata } from "../../config";
 import { useTheme } from "@emotion/react";
 import { useEffect, useState } from "react";
-import { imageMap } from "../imageMap";
+import { global_config, ts_specific_metadata } from "../../config";
+import { imageMap } from "../../imageMap";
 
 const description = (logo) => {
   return (

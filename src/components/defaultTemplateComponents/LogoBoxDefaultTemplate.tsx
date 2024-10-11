@@ -5,11 +5,11 @@ import {
   EuiTextColor,
   EuiTitle,
 } from "@elastic/eui";
-import { global_config, ts_specific_metadata } from "../../config";
 import { Suspense, useEffect, useState } from "react";
-import { imageMap } from "../imageMap";
+import { global_config, ts_specific_metadata } from "../../config";
+import { imageMap } from "../../imageMap";
 
-const LogoBoxTemplate = () => {
+const LogoBoxDefaultTemplate = () => {
   const [logos, setLogos] = useState({
     homepageLogo: null,
   });
@@ -58,4 +58,4 @@ const LogoBoxTemplate = () => {
   );
 };
 
-export default LogoBoxTemplate;
+export default LogoBoxDefaultTemplate;

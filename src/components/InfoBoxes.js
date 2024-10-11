@@ -1,7 +1,7 @@
 import { EuiFlexGroup, EuiFlexItem } from "@elastic/eui";
-import { global_config, ts_specific_metadata } from "../config";
-import { componentMap } from "./componentMap";
 import { Suspense } from "react";
+import { componentMap } from "../componentMap";
+import { global_config, ts_specific_metadata } from "../config";
 
 export const InfoBoxes = () => {
   const projectName = global_config.projectName;

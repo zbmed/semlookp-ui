@@ -1,31 +1,20 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "@elastic/eui/dist/eui_theme_light.css";
-import LinkScroller from "./components/LinkScroller";
-import { Layout } from "./components/layout/Layout";
-import {
-  ApiPage,
-  Entity,
-  Error,
-  Home,
-  Ontology,
-  Resources,
-  SearchResults,
-} from "./imports/PagesImport";
-import StaticMarkdownPage from "./pages/static/StaticMarkdownPage";
-import { componentMap } from "./components/componentMap";
-import { global_config } from "./config";
 import { Suspense } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { default as ApiPage } from "../src/pages/Api";
+import { default as Entity } from "../src/pages/Entity";
+import { default as Error } from "../src/pages/Error";
+import { default as Home } from "../src/pages/Home";
+import { default as Ontology } from "../src/pages/Ontology";
+import { default as Resources } from "../src/pages/Resources";
+import { default as SearchResults } from "../src/pages/SearchResults";
+import { Layout } from "./components/layout/Layout";
+import LinkScroller from "./components/LinkScroller";
+import About from "./pages/About";
+import Projects from "./pages/Projects";
+import StaticMarkdownPage from "./pages/static/StaticMarkdownPage";
 
 function App() {
-  const projectComponents = componentMap[global_config.projectName];
-
-  if (!projectComponents) {
-    return <div>Error: Invalid project type</div>;
-  }
-
-  const AboutPage = componentMap[global_config.projectName]["AboutPage"];
-  const ProjectsPage = componentMap[global_config.projectName]["ProjectsPage"];
-
   return (
     <Router basename="/">
       <LinkScroller>
@@ -33,7 +22,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Layout />}>
               <Route index element={<Home />} />
-              {AboutPage && <Route path="/about" element={<AboutPage />} />}
+              <Route path="/about" element={<About />} />
               <Route path="/about/api" element={<ApiPage />} />
               <Route path="*" element={<Error />} />
               <Route path="/ontologies/:ontologyId" element={<Ontology />} />
@@ -52,9 +41,8 @@ function App() {
                   <StaticMarkdownPage file={"imprint"} title={"Imprint"} />
                 }
               />
-              {ProjectsPage && (
-                <Route path="/projects" element={<ProjectsPage />} />
-              )}
+
+              <Route path="/projects" element={<Projects />} />
               <Route path="/resources" element={<Resources />} />
               <Route path="/search" element={<SearchResults />} />
               <Route

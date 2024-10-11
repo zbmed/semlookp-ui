@@ -8,7 +8,7 @@ import {
 } from "@elastic/eui";
 import { Suspense, useEffect, useState } from "react";
 import { global_config } from "../../config";
-import { imageMap } from "../imageMap";
+import { imageMap } from "../../imageMap";
 
 export default function ProjectADescription() {
   const [logos, setLogos] = useState({

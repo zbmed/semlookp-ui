@@ -1,9 +1,9 @@
 import { EuiFlexGroup, EuiFlexItem, EuiImage } from "@elastic/eui";
-import { global_config, ts_specific_metadata } from "../../config";
-import { imageMap } from "../imageMap";
 import { Suspense, useEffect, useState } from "react";
+import { global_config, ts_specific_metadata } from "../../config";
+import { imageMap } from "../../imageMap";
 
-const FooterLogosTemplate = () => {
+const FooterLogosDefaultTemplate = () => {
   const [logos, setLogos] = useState({
     footerLogoA: null,
     footerLogoB: null,
@@ -75,4 +75,4 @@ const FooterLogosTemplate = () => {
   );
 };
 
-export default FooterLogosTemplate;
+export default FooterLogosDefaultTemplate;

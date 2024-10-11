@@ -10,8 +10,8 @@ import {
 } from "@elastic/eui";
 import { useTheme } from "@emotion/react";
 import { useEffect, useState } from "react";
-import { imageMap } from "./imageMap";
 import { global_config } from "../config";
+import { imageMap } from "../imageMap";
 
 export default function TerminologyServiceSuiteInfo() {
   const theme = useTheme();

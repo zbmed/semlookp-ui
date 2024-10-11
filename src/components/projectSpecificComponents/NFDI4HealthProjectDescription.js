@@ -6,9 +6,10 @@ import {
   EuiPanel,
   EuiText,
 } from "@elastic/eui";
-import { nfdi4health, dfglogo } from "../../imports/ImageImport";
+import { default as dfglogo } from "../../components/layout/images/health/dfg_logo.svg";
+import { default as nfdi4healthlogo } from "../../components/layout/images/health/nfdi4health.png";
 
-export default function NFDI4HealthDescription() {
+export default function NFDI4HealthProjectDescription() {
   return (
     <div>
       <EuiPanel>
@@ -27,7 +28,11 @@ export default function NFDI4HealthDescription() {
               target="_blank"
               external={false}
             >
-              <EuiImage alt={"NFDI4Health Logo"} src={nfdi4health} size={"m"} />
+              <EuiImage
+                alt={"NFDI4Health Logo"}
+                src={nfdi4healthlogo}
+                size={"m"}
+              />
             </EuiLink>
           </EuiFlexItem>
         </EuiFlexGroup>
