@@ -1,124 +1,45 @@
 import {
-  EuiCard,
   EuiFlexGroup,
   EuiFlexItem,
-  EuiLink,
   EuiPanel,
+  EuiSpacer,
   EuiText,
 } from "@elastic/eui";
-import EuiCustomLink from "../components/layout/util/EuiCustomLink";
 import { Helmet } from "react-helmet";
+import { componentMap } from "../componentMap";
+import { global_config } from "../config";
 
 export default function About() {
-  const aboutSemLookPWidgets = (
-    <>
-      <EuiText>
-        Small software applications, called SemLookP widgets, allow the
-        integration of extracted user interface functionalities into other
-        services, streamlining the development of user interfaces and the
-        integration and linking of semantic information.This NFDI4Health
-        Terminology Service SemLookP is build upon those widgets. For more
-        information visit the{" "}
-        <EuiLink
-          href={
-            "https://ts4nfdi.github.io/terminology-service-suite/comp/latest/?path=/docs/overview--docs"
-          }
-        >
-          {" "}
-          SemLookP Widget documentation
-        </EuiLink>
-        .
-      </EuiText>
-    </>
-  );
+  const projectComponents = componentMap[global_config.projectName];
 
+  if (!projectComponents) {
+    return <div>Error: Invalid project type</div>;
+  }
+
+  const About = componentMap[global_config.projectName]["About"];
   return (
-    <EuiFlexGroup justifyContent="spaceAround">
-      <EuiPanel paddingSize="l">
-        <EuiFlexItem grow={false}>
+    <div>
+      <EuiFlexGroup direction={"column"}>
+        <EuiFlexItem>
           <EuiText>
-            <h2>About the SemLookP Terminology Service</h2>
-            <p>
-              The SemLookP Terminology Service aims to provide access to key
-              terminologies in the health domain. It is developed and maintained
-              by{" "}
-              <EuiLink href={"https://www.zbmed.de/en/"}>
-                {" "}
-                ZB MED - Information Centre for Life Sciences.
-              </EuiLink>{" "}
-              It emerged from the BMBF-funded project{" "}
-              <EuiLink href={"https://www.idsn.info/de/idsn.html"}>
-                {" "}
-                IDSN.{" "}
-              </EuiLink>{" "}
-              The system is based on the Ontology Lookup Service (OLS), that is
-              developed and maintained by the
-              <EuiLink
-                href={
-                  "https://www.ebi.ac.uk/about/teams/samples-phenotypes-ontologies/"
-                }
-              >
-                {" "}
-                Samples, Phenotypes and Ontologies Team (SPOT){" "}
-              </EuiLink>{" "}
-              at <EuiLink href={"https://www.ebi.ac.uk/"}> EMBL-EBI. </EuiLink>
-            </p>
-
-            <EuiFlexItem grow={3}>
-              <EuiCard
-                title="About the Terminology Service Suite"
-                description={aboutSemLookPWidgets}
-                // onClick={() => window.location.assign("https://github.com/nfdi4health/semlookp-widgets")}
-                style={{ backgroundColor: "#D3DAE6" }}
-                display="subdued"
-                textAlign={"left"}
-              />
-            </EuiFlexItem>
-            <h3>API documentation:</h3>
-            <p>
-              {" "}
-              <EuiCustomLink to="/about/api">
-                Documentation on how to use the Terminology Service’s REST API
-              </EuiCustomLink>
-            </p>
-            <h3>Source Code:</h3>
-            <p>
-              <EuiLink
-                href="https://github.com/zbmed/semlookp-ui"
-                target={"_blank"}
-              >
-                Terminology Service UI
-              </EuiLink>
-            </p>
-            <h3>EMBL-EBIs OLS Help:</h3>
-            <p>
-              <EuiLink href="https://www.ebi.ac.uk/ols4/help" target={"_blank"}>
-                EMBL-EBI’s help page for the Ontology Lookup Service
-              </EuiLink>
-            </p>
-
-            <h3>Publications:</h3>
-            <EuiLink
-              href="https://swat4hcls.figshare.com/articles/A_Semantic_Data_Integration_Methodology_for_Translational_Neurodegenerative_Disease_Research/7339244"
-              target="_blank"
-            >
-              IDSN
-            </EuiLink>
-            <p>
-              {" "}
-              A Semantic Data Integration Methodology for Translational
-              Neurodegenerative Disease Research
-            </p>
+            <h1>About</h1>
           </EuiText>
         </EuiFlexItem>
-      </EuiPanel>
+        <EuiSpacer size={"m"} />
+
+        <EuiFlexGroup>
+          <EuiFlexItem>
+            <EuiPanel>
+              <About />
+            </EuiPanel>
+          </EuiFlexItem>
+        </EuiFlexGroup>
+      </EuiFlexGroup>
+
       <Helmet>
-        <title> About &gt; SemLookP </title>
-        <meta
-          name="description"
-          content="About the Terminology Service - SemLookP"
-        />
+        <title> About the Terminology Service</title>
+        <meta name="description" content="About the Terminology Service" />
       </Helmet>
-    </EuiFlexGroup>
+    </div>
   );
 }

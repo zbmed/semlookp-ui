@@ -1,4 +1,3 @@
-import { useMemo, useState } from "react";
 import {
   EuiFlexGroup,
   EuiFlexItem,
@@ -7,10 +6,6 @@ import {
   EuiTab,
   EuiTabs,
 } from "@elastic/eui";
-import { useNavigate, useParams } from "react-router-dom";
-import { navigateToEntity } from "../components/utils";
-import { global_config } from "../config";
-import { Helmet } from "react-helmet";
 import {
   AutocompleteWidget,
   DescriptionWidget,
@@ -19,116 +14,127 @@ import {
   OntologyInfoWidget,
   TitleWidget,
 } from "@ts4nfdi/terminology-service-suite";
+import { useMemo, useState } from "react";
+import { Helmet } from "react-helmet";
+import { useNavigate, useParams } from "react-router-dom";
+import { navigateToEntity } from "../components/utils";
+import { global_config } from "../config";
 
 const OLS4API = global_config.api_url;
 export default function Ontology() {
   const routeParams = useParams();
   const navigate = useNavigate();
 
-  const tabs = [
-    {
-      id: "classes",
-      name: "Classes",
-      content: (
-        <HierarchyWidget
-          apiUrl={global_config.api_url}
-          backendType={"ols"}
-          entityType={"class"}
-          ontologyId={routeParams.ontologyId}
-          onNavigateToEntity={(ontologyId, entityType, entity) => {
-            navigate(
-              `/ontologies/${ontologyId}/${
-                entityType == "class" || entityType == "term"
-                  ? "terms"
-                  : entityType == "property"
-                  ? "properties"
-                  : "individuals"
-              }?iri=${encodeURIComponent(encodeURIComponent(entity.iri))}`
-            );
-          }}
-          onNavigateToOntology={(ontologyId, entityType, entity) => {
-            navigate(
-              `/ontologies/${ontologyId}/${
-                entityType == "class" || entityType == "term"
-                  ? "terms"
-                  : entityType == "property"
-                  ? "properties"
-                  : "individuals"
-              }?iri=${encodeURIComponent(encodeURIComponent(entity.iri))}`
-            );
-          }}
-        />
-      ),
-    },
-    {
-      id: "properties",
-      name: "Properties",
-      content: (
-        <HierarchyWidget
-          apiUrl={global_config.api_url}
-          backendType={"ols"}
-          entityType={"property"}
-          ontologyId={routeParams.ontologyId}
-          onNavigateToEntity={(ontologyId, entityType, entity) => {
-            navigate(
-              `/ontologies/${ontologyId}/${
-                entityType == "class" || entityType == "term"
-                  ? "terms"
-                  : entityType == "property"
-                  ? "properties"
-                  : "individuals"
-              }?iri=${encodeURIComponent(encodeURIComponent(entity.iri))}`
-            );
-          }}
-          onNavigateToOntology={(ontologyId, entityType, entity) => {
-            navigate(
-              `/ontologies/${ontologyId}/${
-                entityType == "class" || entityType == "term"
-                  ? "terms"
-                  : entityType == "property"
-                  ? "properties"
-                  : "individuals"
-              }?iri=${encodeURIComponent(encodeURIComponent(entity.iri))}`
-            );
-          }}
-        />
-      ),
-    },
-    {
-      id: "individuals",
-      name: "Individuals",
-      content: (
-        <HierarchyWidget
-          apiUrl={global_config.api_url}
-          backendType={"ols"}
-          entityType={"individual"}
-          ontologyId={routeParams.ontologyId}
-          onNavigateToEntity={(ontologyId, entityType, entity) => {
-            navigate(
-              `/ontologies/${ontologyId}/${
-                entityType == "class" || entityType == "term"
-                  ? "terms"
-                  : entityType == "property"
-                  ? "properties"
-                  : "individuals"
-              }?iri=${encodeURIComponent(encodeURIComponent(entity.iri))}`
-            );
-          }}
-          onNavigateToOntology={(ontologyId, entityType, entity) => {
-            navigate(
-              `/ontologies/${ontologyId}/${
-                entityType == "class" || entityType == "term"
-                  ? "terms"
-                  : entityType == "property"
-                  ? "properties"
-                  : "individuals"
-              }?iri=${encodeURIComponent(encodeURIComponent(entity.iri))}`
-            );
-          }}
-        />
-      ),
-    },
-  ];
+  const tabs = useMemo(
+    () => [
+      {
+        id: "classes",
+        name: "Classes",
+        content: (
+          <HierarchyWidget
+            useLegacy={true}
+            apiUrl={global_config.api_url}
+            backendType={"ols"}
+            entityType={"class"}
+            ontologyId={routeParams.ontologyId}
+            onNavigateToEntity={(ontologyId, entityType, entity) => {
+              navigate(
+                `/ontologies/${ontologyId}/${
+                  entityType == "class" || entityType == "term"
+                    ? "terms"
+                    : entityType == "property"
+                    ? "properties"
+                    : "individuals"
+                }?iri=${encodeURIComponent(encodeURIComponent(entity.iri))}`
+              );
+            }}
+            onNavigateToOntology={(ontologyId, entityType, entity) => {
+              navigate(
+                `/ontologies/${ontologyId}/${
+                  entityType == "class" || entityType == "term"
+                    ? "terms"
+                    : entityType == "property"
+                    ? "properties"
+                    : "individuals"
+                }?iri=${encodeURIComponent(encodeURIComponent(entity.iri))}`
+              );
+            }}
+          />
+        ),
+      },
+      {
+        id: "properties",
+        name: "Properties",
+        content: (
+          <HierarchyWidget
+            useLegacy={true}
+            apiUrl={global_config.api_url}
+            backendType={"ols"}
+            entityType={"property"}
+            ontologyId={routeParams.ontologyId}
+            onNavigateToEntity={(ontologyId, entityType, entity) => {
+              navigate(
+                `/ontologies/${ontologyId}/${
+                  entityType == "class" || entityType == "term"
+                    ? "terms"
+                    : entityType == "property"
+                    ? "properties"
+                    : "individuals"
+                }?iri=${encodeURIComponent(encodeURIComponent(entity.iri))}`
+              );
+            }}
+            onNavigateToOntology={(ontologyId, entityType, entity) => {
+              navigate(
+                `/ontologies/${ontologyId}/${
+                  entityType == "class" || entityType == "term"
+                    ? "terms"
+                    : entityType == "property"
+                    ? "properties"
+                    : "individuals"
+                }?iri=${encodeURIComponent(encodeURIComponent(entity.iri))}`
+              );
+            }}
+          />
+        ),
+      },
+      {
+        id: "individuals",
+        name: "Individuals",
+        content: (
+          <HierarchyWidget
+            useLegacy={true}
+            apiUrl={global_config.api_url}
+            backendType={"ols"}
+            entityType={"individual"}
+            ontologyId={routeParams.ontologyId}
+            onNavigateToEntity={(ontologyId, entityType, entity) => {
+              navigate(
+                `/ontologies/${ontologyId}/${
+                  entityType == "class" || entityType == "term"
+                    ? "terms"
+                    : entityType == "property"
+                    ? "properties"
+                    : "individuals"
+                }?iri=${encodeURIComponent(encodeURIComponent(entity.iri))}`
+              );
+            }}
+            onNavigateToOntology={(ontologyId, entityType, entity) => {
+              navigate(
+                `/ontologies/${ontologyId}/${
+                  entityType == "class" || entityType == "term"
+                    ? "terms"
+                    : entityType == "property"
+                    ? "properties"
+                    : "individuals"
+                }?iri=${encodeURIComponent(encodeURIComponent(entity.iri))}`
+              );
+            }}
+          />
+        ),
+      },
+    ],
+    [routeParams.ontologyId, navigate]
+  );
 
   const [selectedTabId, setSelectedTabId] = useState("classes");
   const selectedTabContent = useMemo(() => {

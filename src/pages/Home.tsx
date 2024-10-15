@@ -1,20 +1,24 @@
-import { EuiCard, EuiFlexGroup, EuiFlexItem, EuiSpacer } from "@elastic/eui";
-import "../index.css";
-import { Helmet } from "react-helmet";
+import { EuiFlexGroup, EuiFlexItem, EuiSpacer } from "@elastic/eui";
 import { DataContentWidget } from "@ts4nfdi/terminology-service-suite";
-import { global_config, ts_specific_metadata } from "../config";
+import { Suspense } from "react";
+import { Helmet } from "react-helmet";
+import { componentMap } from "../componentMap";
+import { InfoBoxes } from "../components/InfoBoxes";
 import ProjectInformation from "../components/layout/util/ProjectInformation";
 import { ResourceMissingCallOut } from "../components/ResourceMissingCallOut";
 import { SearchBox } from "../components/SearchBox";
-import { LogoBox } from "../components/LogoBox";
-import {
-  useCase1Description,
-  useCase2Description,
-} from "../components/UseCaseDescriptions";
-import { useTheme } from "@emotion/react";
+import { global_config, ts_specific_metadata } from "../config";
+import "../index.css";
 
 export default function Home() {
-  const theme = useTheme();
+  const projectComponents = componentMap[global_config.projectName];
+
+  if (!projectComponents) {
+    return <div>Error: Invalid project type</div>;
+  }
+
+  const LogoBox = componentMap[global_config.projectName]["LogoBox"];
+
   return (
     <>
       <Helmet>
@@ -22,53 +26,48 @@ export default function Home() {
       </Helmet>
       <EuiSpacer size="xxl" />
 
-      <LogoBox />
+      <Suspense fallback={<div>Loading...</div>}>
+        {ts_specific_metadata.homepage.has_logo && <LogoBox />}
+      </Suspense>
       <EuiSpacer size="xxl" />
-      <EuiSpacer size="xxl" />
-
-      <SearchBox />
       <EuiSpacer size="xxl" />
 
       <EuiFlexGroup>
-        <EuiFlexItem grow={3}>
-          <DataContentWidget
-            api={global_config.api_url}
-            parameter={ts_specific_metadata.collection}
-          />
+        <EuiFlexItem grow={7}>
+          <SearchBox />
         </EuiFlexItem>
+        {ts_specific_metadata.homepage.has_data_content && (
+          <>
+            <EuiFlexItem grow={3}>
+              <DataContentWidget
+                api={global_config.api_url}
+                parameter={ts_specific_metadata.collection}
+              />
+            </EuiFlexItem>
+          </>
+        )}
       </EuiFlexGroup>
       <EuiSpacer size="xxl" />
 
-      <ResourceMissingCallOut />
-      <EuiSpacer size="xxl" />
+      {ts_specific_metadata.homepage.has_missing_resource_callout && (
+        <>
+          <ResourceMissingCallOut />
+          <EuiSpacer size="xxl" />
+        </>
+      )}
 
-      <EuiFlexGroup>
-        <EuiFlexItem grow={3}>
-          <EuiCard
-            title="Use Case"
-            description={useCase1Description()}
-            style={{
-              backgroundColor: theme.color.useCaseCard1Color,
-              minHeight: 150,
-            }}
-            display="subdued"
-          />
-        </EuiFlexItem>
-        <EuiFlexItem grow={3}>
-          <EuiCard
-            title="Terminology Service Suite"
-            description={useCase2Description()}
-            style={{
-              backgroundColor: theme.color.useCaseCard2Color,
-              minHeight: 150,
-            }}
-            display="subdued"
-          />
-        </EuiFlexItem>
-      </EuiFlexGroup>
-      <EuiSpacer size="xxl" />
+      {ts_specific_metadata.homepage.has_info_boxes && (
+        <>
+          <InfoBoxes />
+          <EuiSpacer size="xxl" />
+        </>
+      )}
 
-      <ProjectInformation />
+      {ts_specific_metadata.homepage.has_project_intro && (
+        <>
+          <ProjectInformation />
+        </>
+      )}
     </>
   );
 }

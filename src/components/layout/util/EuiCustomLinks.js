@@ -1,6 +1,6 @@
 import { EuiHeaderLink, EuiLink } from "@elastic/eui";
-import { useHref, useLinkClickHandler } from "react-router-dom";
 import React from "react";
+import { useHref, useLinkClickHandler } from "react-router-dom";
 
 /**
  * Wraps EuiLinks with ReactRouter Links

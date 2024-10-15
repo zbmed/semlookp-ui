@@ -1,5 +1,3 @@
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
-import "./Entity.css";
 import {
   EuiAccordion,
   EuiFlexGroup,
@@ -7,9 +5,6 @@ import {
   EuiPanel,
   EuiSpacer,
 } from "@elastic/eui";
-import { Helmet } from "react-helmet";
-import { global_config } from "../config";
-import "@ts4nfdi/terminology-service-suite/dist/esm/index.css";
 import {
   AutocompleteWidget,
   BreadcrumbWidget,
@@ -21,7 +16,11 @@ import {
   JsonApiWidget,
   TitleWidget,
 } from "@ts4nfdi/terminology-service-suite";
+import "@ts4nfdi/terminology-service-suite/dist/esm/index.css";
+import { Helmet } from "react-helmet";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { navigateToEntity } from "../components/utils";
+import { global_config } from "../config";
 
 const OLS4API = global_config.api_url;
 

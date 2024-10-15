@@ -1,6 +1,6 @@
 import { EuiFlexItem, EuiText } from "@elastic/eui";
-import EuiCustomLink from "./layout/util/EuiCustomLink";
 import { ts_specific_metadata } from "../config";
+import EuiCustomLink from "./layout/util/EuiCustomLink";
 export const SearchExamples = () => {
   return (
     <EuiFlexItem>
