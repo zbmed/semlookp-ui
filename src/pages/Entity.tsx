@@ -182,6 +182,7 @@ export default function Entity() {
               grow={false}
               style={{ maxWidth: "50%", minWidth: "50%" }}
             >
+              <EuiSpacer size={"s"} />
               <EuiTitle size={"s"}>
                 <span style={{ textTransform: "capitalize" }}>
                   {entityType} Hierarchy
