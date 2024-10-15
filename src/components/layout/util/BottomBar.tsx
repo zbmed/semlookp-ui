@@ -1,11 +1,10 @@
-import { useState } from "react";
-
 import {
   EuiBottomBar,
   EuiButtonEmpty,
   EuiFlexGroup,
   EuiFlexItem,
 } from "@elastic/eui";
+import { useState } from "react";
 import { ts_specific_metadata } from "../../../config";
 
 export const BottomBar = () => {

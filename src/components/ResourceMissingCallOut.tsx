@@ -1,6 +1,6 @@
 import { EuiCallOut, EuiFlexGroup, EuiFlexItem, EuiLink } from "@elastic/eui";
-import { ts_specific_metadata } from "../config";
 import { useTheme } from "@emotion/react";
+import { ts_specific_metadata } from "../config";
 
 export const ResourceMissingCallOut = () => {
   const theme = useTheme();
