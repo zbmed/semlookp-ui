@@ -209,8 +209,18 @@ export default function Entity() {
                       )}`
                     );
                   }}
-                  onNavigateToOntology={(ontologyId) => {
-                    navigate(`/ontologies/${ontologyId}/`);
+                  onNavigateToOntology={(ontologyId, entityType, entity) => {
+                    navigate(
+                      `/ontologies/${ontologyId}/${
+                        entityType == "class" || entityType == "term"
+                          ? "terms"
+                          : entityType == "property"
+                          ? "properties"
+                          : "individuals"
+                      }?iri=${encodeURIComponent(
+                        encodeURIComponent(entity.iri)
+                      )}`
+                    );
                   }}
                 />
               </div>
