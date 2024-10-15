@@ -2,11 +2,11 @@ import {
   EuiAccordion,
   EuiFlexGroup,
   EuiFlexItem,
+  EuiHorizontalRule,
+  EuiIcon,
   EuiPanel,
   EuiSpacer,
   EuiTitle,
-  EuiHorizontalRule,
-  EuiIcon,
 } from "@elastic/eui";
 import {
   AutocompleteWidget,
