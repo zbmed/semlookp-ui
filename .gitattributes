@@ -6,4 +6,5 @@ src/projectSpecific/* merge=ours
 src/projectSpecific/** merge=ours
 src/componentMap.js merge=ours
 src/imageMap.js merge=ours
-config.js merge=ours
+src/config.js merge=ours
+src/theme.ts merge=ours
