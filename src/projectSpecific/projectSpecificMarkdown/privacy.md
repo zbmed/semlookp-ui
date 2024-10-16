@@ -1,3 +1,4 @@
+[comment]: <> (health)
 # Datenschutzerklärung
 
 Gemäß Art. 13 Datenschutz-Grundverordnung (DSGVO) möchten wir Sie im Folgenden über den Umgang mit Ihren Daten informieren:

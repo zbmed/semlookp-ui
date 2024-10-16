@@ -1,3 +1,4 @@
+// health
 import { EuiFlexGroup, EuiFlexItem, EuiImage } from "@elastic/eui";
 import { Suspense, useEffect, useState } from "react";
 import { global_config, ts_specific_metadata } from "../../config";
