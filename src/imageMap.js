@@ -2,44 +2,59 @@ export const imageMap = {
   defaultTemplate: {
     homepageLogo: () =>
       import(
-        "./components/layout/images/defaultTemplate/badge-svgrepo-com.svg"
+        "./defaultTemplate/defaultTemplateLayout/defaultTemplateImages/badge-svgrepo-com.svg"
       ),
     footerLogoA: () =>
       import(
-        "./components/layout/images/defaultTemplate/aperture-svgrepo-com.svg"
+        "./defaultTemplate/defaultTemplateLayout/defaultTemplateImages/aperture-svgrepo-com.svg"
       ),
     footerLogoB: () =>
       import(
-        "./components/layout/images/defaultTemplate/aries-svgrepo-com.svg"
+        "./defaultTemplate/defaultTemplateLayout/defaultTemplateImages/aries-svgrepo-com.svg"
       ),
     footerLogoC: () =>
       import(
-        "./components/layout/images/defaultTemplate/aquarius-svgrepo-com.svg"
+        "./defaultTemplate/defaultTemplateLayout/defaultTemplateImages/aquarius-svgrepo-com.svg"
       ),
     headerLogo: () =>
       import(
-        "./components/layout/images/defaultTemplate/badge-svgrepo-com.svg"
+        "./defaultTemplate/defaultTemplateLayout/defaultTemplateImages/badge-svgrepo-com.svg"
       ),
     infoBoxLogoB: () =>
-      import("./components/layout/images/health/widgets-icons.png"),
-    ts4nfdiLogo: () => import("./components/layout/images/common/TS4_icon.svg"),
+      import(
+        "./projectSpecific/projectSpecificLayout/projectSpecificImages/widgets-icons.png"
+      ),
+    ts4nfdiLogo: () => import("./common/layout/images/TS4_icon.svg"),
     projectALogo: () =>
       import(
-        "./components/layout/images/defaultTemplate/address-card-svgrepo-com.svg"
+        "./defaultTemplate/defaultTemplateLayout/defaultTemplateImages/address-card-svgrepo-com.svg"
       ),
   },
   health: {
     homepageLogo: () =>
-      import("./components/layout/images/health/nfdi4health_logo.svg"),
-    footerLogoA: () => import("./components/layout/images/health/dfg_logo.svg"),
+      import(
+        "./projectSpecific/projectSpecificLayout/projectSpecificImages/nfdi4health_logo.svg"
+      ),
+    footerLogoA: () =>
+      import(
+        "./projectSpecific/projectSpecificLayout/projectSpecificImages/dfg_logo.svg"
+      ),
     footerLogoB: () =>
-      import("./components/layout/images/health/nfdi4health_logo.svg"),
+      import(
+        "./projectSpecific/projectSpecificLayout/projectSpecificImages/nfdi4health_logo.svg"
+      ),
     footerLogoC: () =>
-      import("./components/layout/images/health/zbmed_logo.svg"),
+      import(
+        "./projectSpecific/projectSpecificLayout/projectSpecificImages/zbmed_logo.svg"
+      ),
     headerLogo: () =>
-      import("./components/layout/images/health/NFDI_SemLookP_Logo.svg"),
+      import(
+        "./projectSpecific/projectSpecificLayout/projectSpecificImages/NFDI_SemLookP_Logo.svg"
+      ),
     infoBoxLogoB: () =>
-      import("./components/layout/images/health/widgets-icons.png"),
-    ts4nfdiLogo: () => import("./components/layout/images/common/TS4_icon.svg"),
+      import(
+        "./projectSpecific/projectSpecificLayout/projectSpecificImages/widgets-icons.png"
+      ),
+    ts4nfdiLogo: () => import("./common/layout/images/TS4_icon.svg"),
   },
 };

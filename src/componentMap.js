@@ -3,54 +3,68 @@ import { lazy } from "react";
 export const componentMap = {
   defaultTemplate: {
     InfoBoxA: lazy(() =>
-      import("./components/defaultTemplateComponents/InfoBoxADefaultTemplate")
+      import(
+        "./defaultTemplate/defaultTemplateComponents/InfoBoxADefaultTemplate"
+      )
     ),
     InfoBoxB: lazy(() =>
-      import("./components/defaultTemplateComponents/InfoBoxBDefaultTemplate")
+      import(
+        "./defaultTemplate/defaultTemplateComponents/InfoBoxBDefaultTemplate"
+      )
     ),
     FooterLogos: lazy(() =>
       import(
-        "./components/defaultTemplateComponents/FooterLogosDefaultTemplate"
+        "./defaultTemplate/defaultTemplateComponents/FooterLogosDefaultTemplate"
       )
     ),
     LogoBox: lazy(() =>
-      import("./components/defaultTemplateComponents/LogoBoxDefaultTemplate")
+      import(
+        "./defaultTemplate/defaultTemplateComponents/LogoBoxDefaultTemplate"
+      )
     ),
     ProjectADescription: lazy(() =>
-      import("./components/projectSpecificComponents/IDSNProjectDescription")
+      import(
+        "./projectSpecific/projectSpecificComponents/IDSNProjectDescription"
+      )
     ),
     ProjectBDescription: lazy(() =>
-      import("./components/projectSpecificComponents/IDSNProjectDescription")
+      import(
+        "./projectSpecific/projectSpecificComponents/IDSNProjectDescription"
+      )
     ),
     About: lazy(() =>
       import(
-        "./components/defaultTemplateComponents/AboutDescriptionDefaultTemplate"
+        "./defaultTemplate/defaultTemplateComponents/AboutDescriptionDefaultTemplate"
       )
     ),
   },
   health: {
     InfoBoxA: lazy(() =>
-      import("./components/projectSpecificComponents/InfoBoxAHealth")
+      import("./projectSpecific/projectSpecificComponents/InfoBoxAHealth")
     ),
     InfoBoxB: lazy(() =>
-      import("./components/projectSpecificComponents/InfoBoxBHealth")
+      import("./projectSpecific/projectSpecificComponents/InfoBoxBHealth")
     ),
     FooterLogos: lazy(() =>
-      import("./components/projectSpecificComponents/FooterLogosHealth")
+      import("./projectSpecific/projectSpecificComponents/FooterLogosHealth")
     ),
     LogoBox: lazy(() =>
-      import("./components/projectSpecificComponents/LogoBoxHealth")
+      import("./projectSpecific/projectSpecificComponents/LogoBoxHealth")
     ),
     ProjectADescription: lazy(() =>
       import(
-        "./components/projectSpecificComponents/NFDI4HealthProjectDescription"
+        "./projectSpecific/projectSpecificComponents/NFDI4HealthProjectDescription"
       )
     ),
     ProjectBDescription: lazy(() =>
-      import("./components/projectSpecificComponents/IDSNProjectDescription")
+      import(
+        "./projectSpecific/projectSpecificComponents/IDSNProjectDescription"
+      )
     ),
     About: lazy(() =>
-      import("./components/projectSpecificComponents/AboutDescriptionHealth")
+      import(
+        "./projectSpecific/projectSpecificComponents/AboutDescriptionHealth"
+      )
     ),
   },
 };

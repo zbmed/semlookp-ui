@@ -1,6 +1,6 @@
 export const global_config = {
   api_url: "https://www.ebi.ac.uk/ols4/api/",
-  projectName: "defaultTemplate",
+  projectName: "health",
 };
 
 export const ts_specific_metadata = {
@@ -19,7 +19,10 @@ export const ts_specific_metadata = {
     homepage_helmet_text: " Overview - Terminology Service ",
     text_below_logo: "Terminology Service",
     project_intro_title: "Terminology Service NFDI4Health",
-    project_intro_markdown_file: "projectintro",
+    project_intro_markdown_file:
+      "projectSpecific/projectSpecificMarkdown/projectintro",
+    imprint_markdown_file: "projectSpecific/projectSpecificMarkdown/imprint",
+    privacy_markdown_file: "projectSpecific/projectSpecificMarkdown/privacy",
   },
   header: {
     tabs: [

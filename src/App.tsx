@@ -1,18 +1,19 @@
 import "@elastic/eui/dist/eui_theme_light.css";
 import { Suspense } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { default as ApiPage } from "../src/pages/Api";
-import { default as Entity } from "../src/pages/Entity";
-import { default as Error } from "../src/pages/Error";
-import { default as Home } from "../src/pages/Home";
-import { default as Ontology } from "../src/pages/Ontology";
-import { default as Resources } from "../src/pages/Resources";
-import { default as SearchResults } from "../src/pages/SearchResults";
-import { Layout } from "./components/layout/Layout";
-import LinkScroller from "./components/LinkScroller";
-import About from "./pages/About";
-import Projects from "./pages/Projects";
-import StaticMarkdownPage from "./pages/static/StaticMarkdownPage";
+import LinkScroller from "./common/components/LinkScroller";
+import { Layout } from "./common/layout/Layout";
+import About from "./common/pages/About";
+import { default as ApiPage } from "./common/pages/Api";
+import { default as Entity } from "./common/pages/Entity";
+import { default as Error } from "./common/pages/Error";
+import { default as Home } from "./common/pages/Home";
+import { default as Ontology } from "./common/pages/Ontology";
+import Projects from "./common/pages/Projects";
+import { default as Resources } from "./common/pages/Resources";
+import { default as SearchResults } from "./common/pages/SearchResults";
+import StaticMarkdownPage from "./common/pages/static/StaticMarkdownPage";
+import { ts_specific_metadata } from "./config";
 
 function App() {
   return (
@@ -30,7 +31,7 @@ function App() {
                 path="/privacy"
                 element={
                   <StaticMarkdownPage
-                    file={"privacy"}
+                    file={ts_specific_metadata.homepage.privacy_markdown_file}
                     title={"Privacy Policy"}
                   />
                 }
@@ -38,7 +39,10 @@ function App() {
               <Route
                 path="/imprint"
                 element={
-                  <StaticMarkdownPage file={"imprint"} title={"Imprint"} />
+                  <StaticMarkdownPage
+                    file={ts_specific_metadata.homepage.imprint_markdown_file}
+                    title={"Imprint"}
+                  />
                 }
               />
 

@@ -1,7 +1,7 @@
 @font-face {
   font-family: TabletGothicNarrow;
-  src: url("components/layout/fonts/TabletGothicNarrow.woff") format("woff"),
-    url("components/layout/fonts/TabletGothicNarrow.ttf") format("truetype");
+  src: url("common/layout/fonts/TabletGothicNarrow.woff") format("woff"),
+    url("common/layout/fonts/TabletGothicNarrow.ttf") format("truetype");
 }
 
 .brandColorPreview {

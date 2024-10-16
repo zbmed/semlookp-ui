@@ -1,6 +1,6 @@
 import { global_config } from "./config";
 
-const templateTheme = {
+const defaultTemplateTheme = {
   primary: "#005e88",
   warning: "#e3e55f",
   body: "#e5e5e5",
@@ -19,9 +19,9 @@ const healthTheme = {
   warning: "#e3e55f",
   body: "#e5e5e5",
   accent: "#e3e55f",
-  missingResourceBoxColor: "#AEE6E6",
-  infoBoxColor1: "#cce4f5",
-  infoBoxColor2: "#D3DAE6",
+  missingResourceBoxColor: "#d1e1e8",
+  infoBoxColor1: "#ffffff",
+  infoBoxColor2: "#a2d3e8",
   headerBorderTop: "#2DAADE",
   headerBackground: "#ffffff",
   headerLogoSize: "original",
@@ -29,11 +29,11 @@ const healthTheme = {
 };
 
 const themes = {
-  template: templateTheme,
+  template: defaultTemplateTheme,
   health: healthTheme,
 };
 
-const selectedTheme = themes[global_config.projectName] || templateTheme;
+const selectedTheme = themes[global_config.projectName] || defaultTemplateTheme;
 
 export const theme = {
   color: {
