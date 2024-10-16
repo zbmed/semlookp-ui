@@ -2,7 +2,10 @@
 
 ## About
 
-The following represents the frontend scheme for a terminology service. This repository provides a generic code base from which a specialised terminology service for a given project or domain can be created. It is recommended that users possess a basic knowledge of coding and of the React framework. Should assistance be required in setting up a project-specific terminology service instance, please feel free to contact one of the developers.
+The following represents the frontend scheme for a terminology service.
+This repository provides a generic code base from which a specialised terminology service for a given project or domain can be created.
+It is recommended that users possess a basic knowledge of coding and of the React framework.
+Should assistance be required in setting up a project-specific terminology service branch, please feel free to contact one of the developers.
 
 ## Built With
 
@@ -80,24 +83,29 @@ The main branch represents the generic code base.
 Project specific branches can be added.
 Those specific branches should stick to the given structure to allow updates.
 
-Following configuration files need to be adapted in a specific branch:
+Create a new branch from main. Following configuration files need to be adapted in this specific branch:
 
 - `src/config.js` contains project specific metadata such as funding notice, project description or contact mail address
 - `src/theme.ts` contains project specific colors and shapes
 - `src/componentMap.js` defines component mappings of specific components to common names
-- `src/componentMap.js` defines image maps of specific images to common names
+- `src/imageMap.js` defines image maps of specific images to common names
 
-The `.gitattributes` files should contain any project-specific files that should NOT be merged with the main branch, e.g the `src/config.js`, deployment files or specific components.
+Add a project specific directory, e.g. `src/projectSpecific` with project specific components and markdown files. Copy the default template components and markdown files and modify them according to your needs.
+Add a label (your project name as a comment) on top of each project specific file. This will allow Git Attributes to keep the project specific files while merging with the main branch ([see Merging the main branch to stay up to date](#Merging the main branch to stay up to date)).
+Keep the defaultTemplate directory for merging with the main branch. Updates (bug fixes and new features) will be integrated via these default template files and are the basis for the project specific files.
+
+Currently the idea is to minimize the implementation effort by only updating the generic code base via the template files and manually updating the project specific files based on the changes. We are currently testing this approach in practice and are open to other strategies.
 
 ### Images
 
-The images directory must be manually excluded from the merge with the main branch.
+Create the local image directory `src/projectSpecificImages`. It's included in `.gitignore` and will not be merged.
+Define image maps in `src/imageMap.js`.
 
 Images from remote sources must be implemented directly into the code base, and therefore do not support compatibility with the main branch.
 We have therefore decided not to include images via links in the generic code base.
 In project specific components you are free to import images via links.
 
-#### Merging the main branch to stay up to date
+### Merging the main branch to stay up to date
 
 The main branch keeps the generic code base. Bug fixes and new features will be integrated into main. To prevent specific files in your branch to be overwritten by main during merge, use `.gitattributes`.
 You can configure the `.gitattributes` file to exclude or retain files during the merge process.
@@ -147,6 +155,10 @@ Merge made by recursive.
 ```
 
 6. Take a look at the project structure and your files and make sure everything went to plan.
+
+### Merging a project specific branch into main
+
+If a new feature was developed in a project specific branch, it can be merged into the main branch. WIP
 
 ## Funding
 

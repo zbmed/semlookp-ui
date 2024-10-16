@@ -2,6 +2,7 @@ import {
   EuiFlexGroup,
   EuiFlexItem,
   EuiImage,
+  EuiSpacer,
   EuiTextColor,
   EuiTitle,
 } from "@elastic/eui";
@@ -41,6 +42,7 @@ const LogoBoxDefaultTemplate = () => {
           <EuiFlexItem grow={false} style={{ marginBottom: "-10px" }}>
             <EuiImage size="s" alt="homepagelogo" src={logos.homepageLogo} />
           </EuiFlexItem>
+          <EuiSpacer size={"m"} />
           {ts_specific_metadata.homepage.has_text_below_logo && (
             <EuiFlexItem grow={false}>
               <EuiTitle size="m">
