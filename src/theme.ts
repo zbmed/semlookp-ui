@@ -1,3 +1,4 @@
+// defaultTemplate
 import { global_config } from "./config";
 
 const defaultTemplateTheme = {
@@ -14,23 +15,8 @@ const defaultTemplateTheme = {
   headerLogoWidth: "120px",
 };
 
-const healthTheme = {
-  primary: "#005e88",
-  warning: "#e3e55f",
-  body: "#e5e5e5",
-  accent: "#e3e55f",
-  missingResourceBoxColor: "#d1e1e8",
-  infoBoxColor1: "#ffffff",
-  infoBoxColor2: "#a2d3e8",
-  headerBorderTop: "#2DAADE",
-  headerBackground: "#ffffff",
-  headerLogoSize: "original",
-  headerLogoWidth: "120px",
-};
-
 const themes = {
   template: defaultTemplateTheme,
-  health: healthTheme,
 };
 
 const selectedTheme = themes[global_config.projectName] || defaultTemplateTheme;
