@@ -9,7 +9,7 @@ This is the frontend scheme of the Terminology Service NFDI4Health.
 - [ReactJS 17](https://reactjs.org/blog/2020/10/20/react-v17.html)
 - [TypeScript 4.5](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-5.html)
 - [Elastic UI](https://elastic.github.io/eui/#/)
-- [@ts4nfdi/terminology-service-suite](https://github.com/nfdi4health/semlookp-widgets)
+- [@ts4nfdi/terminology-service-suite](https://github.com/ts4nfdi/terminology-service-suite)
 - [Create React App](https://create-react-app.dev/)
 
 ## Setup
