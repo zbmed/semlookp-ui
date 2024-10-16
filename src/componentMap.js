@@ -1,3 +1,4 @@
+// health
 import { lazy } from "react";
 
 export const componentMap = {

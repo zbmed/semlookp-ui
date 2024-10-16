@@ -1,3 +1,4 @@
+// health
 export const imageMap = {
   defaultTemplate: {
     homepageLogo: () =>
