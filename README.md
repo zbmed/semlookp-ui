@@ -1,8 +1,8 @@
 # Terminology Service User Interface
 
-## AboutPageHealth The Project
+## About
 
-This is the frontend scheme of the Terminology Service NFDI4Health.
+The following represents the frontend scheme for a terminology service. This repository provides a generic code base from which a specialised terminology service for a given project or domain can be created. It is recommended that users possess a basic knowledge of coding and of the React framework. Should assistance be required in setting up a project-specific terminology service instance, please feel free to contact one of the developers.
 
 ## Built With
 
@@ -21,7 +21,17 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 #### Authenticate to the npm package registry
 
 For using the @ts4nfdi/terminology-service-suite you have to [authenticate](https://docs.github.com/de/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#authentifizieren-mit-einem-personal-access-token) with a personal access token or deploy token.
-For local development specify a runtime variable NPM_TOKEN with your npm authentication token.
+For local development specify a runtime variable NPM_TOKEN with your npm authentication token
+
+OR
+
+add the following two lines to your local npm configuration `~/.npmrc`. Replace `TOKEN` with your personal access
+token (classic).
+
+```
+@ts4nfdi:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=TOKEN
+```
 
 #### Local development
 
@@ -65,7 +75,6 @@ $ docker-compose --env-file dev.env up
 [Docker and private modules](https://docs.npmjs.com/docker-and-private-modules)
 
 ## Hints for using the generic code base
-
 The main branch represents the generic code base.
 Project specific branches can be added.
 Those specific branches should stick to the given structure to allow updates.
@@ -74,28 +83,21 @@ Following configuration files need to be adapted in a specific branch:
 
 - `src/config.js` contains project specific metadata such as funding notice, project description or contact mail address
 - `src/theme.ts` contains project specific colors and shapes
+- `src/componentMap.js` defines component mappings of specific components to common names
+- `src/componentMap.js` defines image maps of specific images to common names
 
 The `.gitattributes` files should contain any project-specific files that should NOT be merged with the main branch, e.g the `src/config.js`, deployment files or specific components.
 
 ### Images
-
-#### Local images:
-
-All images should be placed in the `src/components/layout/images/` folder.
-They are imported and mapped to generic names in `src/components/imageMap.js`.
-
-#### Remote images:
-
 Images from remote sources must be implemented directly into the code base, and therefore do not support compatibility with the main branch.
-We have therefore decided not to include images via links.
+We have therefore decided not to include images via links in the generic code base.
 In project specific components you are free to import images via links.
 
 #### Git
+The main branch keeps the generic code base. To prevent specific files in your branch from being merged into main, use `.gitattributes`.
+you can configure the `.gitattributes` file to exclude or retain files during the merge process.
 
-The main branch keeps the generic code base. To prevent specific files in your branch from being merged into main, use .gitattributes.
-you can configure the .gitattributes file to exclude or retain files during the merge process.
-
-1. Create or Edit .gitattributes file: In your branch, edit the .gitattributes file.
+1. Edit `.gitattributes` file: In your project specific branch, edit the .gitattributes file.
 2. Specify the files to ignore during merging: In .gitattributes, for each file you want to prevent from being merged, you need to set the merge=ours attribute. This tells Git to keep the version of the file from the current branch (in this case, your branch) during a merge.
    For example:  
     `
