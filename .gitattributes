@@ -1,6 +1,6 @@
-.github/workflows/ci.yml merge=health
-.github/workflows/deployment_production.yml merge=health
-src/projectSpecific merge=health
-config.js merge=health
-componentMap.js merge=health
-imageMap.js merge=health
+.github/workflows/ci.yml merge=custom_project_merge
+.github/workflows/deployment_production.yml merge=custom_project_merge
+src/projectSpecific merge=custom_project_merge
+src/componentMap.js merge=custom_project_merge
+src/imageMap.js merge=custom_project_merge
+config.js merge=custom_project_merge
