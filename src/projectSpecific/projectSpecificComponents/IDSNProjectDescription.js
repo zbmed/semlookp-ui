@@ -8,11 +8,11 @@ import {
   EuiSpacer,
   EuiText,
 } from "@elastic/eui";
-import { default as bmbflogo } from "../projectSpecificLayout/projectSpecificImages/BMBF_Logo.svg";
-import { default as dznelogo } from "../projectSpecificLayout/projectSpecificImages/dzne_logo.png";
-import { default as idsnlogo } from "../projectSpecificLayout/projectSpecificImages/LogoIDSN.png";
-import { default as scailogo } from "../projectSpecificLayout/projectSpecificImages/scai.png";
-import { default as ukelogo } from "../projectSpecificLayout/projectSpecificImages/uke_logo.jpg";
+import { default as bmbflogo } from "../../projectSpecificImages/BMBF_Logo.svg";
+import { default as dznelogo } from "../../projectSpecificImages/dzne_logo.png";
+import { default as idsnlogo } from "../../projectSpecificImages/LogoIDSN.png";
+import { default as scailogo } from "../../projectSpecificImages/scai.png";
+import { default as ukelogo } from "../../projectSpecificImages/uke_logo.jpg";
 
 export default function IDSNProjectDescription() {
   return (

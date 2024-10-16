@@ -75,6 +75,7 @@ $ docker-compose --env-file dev.env up
 [Docker and private modules](https://docs.npmjs.com/docker-and-private-modules)
 
 ## Hints for using the generic code base
+
 The main branch represents the generic code base.
 Project specific branches can be added.
 Those specific branches should stick to the given structure to allow updates.
@@ -89,6 +90,7 @@ Following configuration files need to be adapted in a specific branch:
 The `.gitattributes` files should contain any project-specific files that should NOT be merged with the main branch, e.g the `src/config.js`, deployment files or specific components.
 
 ### Images
+
 The images directory must be manually excluded from the merge with the main branch.
 
 Images from remote sources must be implemented directly into the code base, and therefore do not support compatibility with the main branch.
@@ -96,42 +98,54 @@ We have therefore decided not to include images via links in the generic code ba
 In project specific components you are free to import images via links.
 
 #### Merging the main branch to stay up to date
+
 The main branch keeps the generic code base. Bug fixes and new features will be integrated into main. To prevent specific files in your branch to be overwritten by main during merge, use `.gitattributes`.
 You can configure the `.gitattributes` file to exclude or retain files during the merge process.
 
 1. Edit the `.gitattributes` file in your project specific branch. Minimal required configuration:
+
 ```
 .gitattributes merge=ours
 ```
+
 2. _Specify the files to be ignored during merging:_ In .gitattributes, for each file you want to prevent from being merged, you need to set the merge=ours attribute. This tells Git to keep the version of the file from the current branch (in this case, your branch) during a merge.
-   For example:  
+   For example:
+
 ```
 path/to/file1.txt merge=ours
 path/to/file2.txt merge=ours
 ```
+
 3. _Configure the 'ours' merge driver:_ Now you need to tell Git what merge=ours means. This is done by configuring the merge driver in the .git/config file or globally in ~/.gitconfig.
-Add the following to your .git/config file:  
+   Add the following to your .git/config file:
+
 ```
 [merge "ours"]
 driver = true
 ```
-by running:  
+
+by running:
+
 ```
 git config  merge.ours.driver true
 ```
-Check config with  
+
+Check config with
+
 ```
 git config --list
 ```
+
 4. _Commit the changes in your branch:_ After adding or editing the .gitattributes file, commit this change in your branch.
 5. IMPORTANT NOTE: Git Attributes only works for conflicting files. Hence, add your project name on top of the project specific files to trigger the merge conflict.
-5. Merge main into your branch. You should see something like this:
+6. Merge main into your branch. You should see something like this:
 
 ```
 $ git merge main
 Auto-merging somefile
 Merge made by recursive.
 ```
+
 6. Take a look at the project structure and your files and make sure everything went to plan.
 
 ## Funding

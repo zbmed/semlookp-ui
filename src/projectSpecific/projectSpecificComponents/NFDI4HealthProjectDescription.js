@@ -7,8 +7,8 @@ import {
   EuiPanel,
   EuiText,
 } from "@elastic/eui";
-import { default as dfglogo } from "../projectSpecificLayout/projectSpecificImages/dfg_logo.svg";
-import { default as nfdi4healthlogo } from "../projectSpecificLayout/projectSpecificImages/nfdi4health.png";
+import { default as dfglogo } from "../../projectSpecificImages/dfg_logo.svg";
+import { default as nfdi4healthlogo } from "../../projectSpecificImages/nfdi4health.png";
 
 export default function NFDI4HealthProjectDescription() {
   return (
