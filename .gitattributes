@@ -1,3 +1,4 @@
+.gitattributes merge=ours
 .github/workflows/ci.yml merge=ours
 .github/workflows/deployment_production.yml merge=ours
 src/projectSpecific/ merge=ours
