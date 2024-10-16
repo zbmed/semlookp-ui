@@ -41,8 +41,7 @@ export const ts_specific_metadata = {
     has_funding_notice: true,
     has_version_update_info: true,
     has_logos: true,
-    funding_notice:
-      "This is the funding notice.",
+    funding_notice: "This is the funding notice.",
     last_update: "October, 2024",
     version: "development version",
     footer_logo_A_url: "https://www.google.de",

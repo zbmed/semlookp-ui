@@ -21,10 +21,7 @@ export const imageMap = {
       import(
         "./defaultTemplate/defaultTemplateLayout/defaultTemplateImages/badge-svgrepo-com.svg"
       ),
-    infoBoxLogoB: () =>
-      import(
-        "./common/layout/images/projectSpecificImages/health/widgets-icons.png"
-      ),
+    infoBoxLogoB: () => import("./common/layout/images/widgets-icons.png"),
     ts4nfdiLogo: () => import("./common/layout/images/TS4_icon.svg"),
     projectALogo: () =>
       import(

@@ -24,14 +24,10 @@ export const componentMap = {
       )
     ),
     ProjectADescription: lazy(() =>
-      import(
-        "./projectSpecific/projectSpecificComponents/IDSNProjectDescription"
-      )
+      import("./defaultTemplate/defaultTemplateComponents/ProjectADescription")
     ),
     ProjectBDescription: lazy(() =>
-      import(
-        "./projectSpecific/projectSpecificComponents/IDSNProjectDescription"
-      )
+      import("./defaultTemplate/defaultTemplateComponents/ProjectADescription")
     ),
     About: lazy(() =>
       import(
