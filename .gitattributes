@@ -1,6 +1,8 @@
-.github/workflows/ci.yml merge=custom_project_merge
-.github/workflows/deployment_production.yml merge=custom_project_merge
-src/projectSpecific merge=custom_project_merge
-src/componentMap.js merge=custom_project_merge
-src/imageMap.js merge=custom_project_merge
-config.js merge=custom_project_merge
+.github/workflows/ci.yml merge=ours
+.github/workflows/deployment_production.yml merge=ours
+src/projectSpecific/ merge=ours
+src/projectSpecific/* merge=ours
+src/projectSpecific/** merge=ours
+src/componentMap.js merge=ours
+src/imageMap.js merge=ours
+config.js merge=ours
