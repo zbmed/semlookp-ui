@@ -98,7 +98,7 @@ Currently the idea is to minimize the implementation effort by only updating the
 
 ### Images
 
-Create the local image directory `src/projectSpecificImages`. It's included in `.gitignore` and will not be merged.
+Create the local image directory `src/projectSpecificImages`. It's included in `.gitignore`.
 Define image maps in `src/imageMap.js`.
 
 Images from remote sources must be implemented directly into the code base, and therefore do not support compatibility with the main branch.
@@ -109,6 +109,8 @@ In project specific components you are free to import images via links.
 
 The main branch keeps the generic code base. Bug fixes and new features will be integrated into main. To prevent specific files in your branch to be overwritten by main during merge, use `.gitattributes`.
 You can configure the `.gitattributes` file to exclude or retain files during the merge process.
+
+IMPORTANT NOTE: Git Attributes only works locally. Merging the main branch into a specific branch via pull request on GitHub may result in files being overwritten.
 
 1. Edit the `.gitattributes` file in your project specific branch. Minimal required configuration:
 
@@ -158,7 +160,8 @@ Merge made by recursive.
 
 ### Merging a project specific branch into main
 
-If a new feature was developed in a project specific branch, it can be merged into the main branch. WIP
+Merging a project specific branch into the main branch isn't possible.
+New features should be developed in the main branch.
 
 ## Funding
 
