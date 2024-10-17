@@ -1,3 +1,4 @@
+[comment]: <> (health)
 # Terminology Service User Interface
 
 ## About
