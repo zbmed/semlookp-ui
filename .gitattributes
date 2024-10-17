@@ -9,3 +9,4 @@ src/componentMap.js merge=ours
 src/imageMap.js merge=ours
 src/config.js merge=ours
 src/theme.ts merge=ours
+README.md merge=ours
