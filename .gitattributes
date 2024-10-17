@@ -1,1 +1,11 @@
 .gitattributes merge=ours
+.github/workflows/ci.yml merge=ours
+.github/workflows/deployment_production.yml merge=ours
+src/projectSpecific/ merge=ours
+src/projectSpecific/* merge=ours
+src/projectSpecific/** merge=ours
+src/componentMap.js merge=ours
+src/imageMap.js merge=ours
+src/config.js merge=ours
+src/theme.ts merge=ours
+README.md merge=ours
