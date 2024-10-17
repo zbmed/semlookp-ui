@@ -51,7 +51,6 @@ export default function AboutDescriptionDefaultTemplate() {
         IDSN
       </EuiLink>
       <p>
-        {" "}
         A Semantic Data Integration Methodology for Translational
         Neurodegenerative Disease Research
       </p>
