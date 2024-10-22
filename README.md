@@ -85,31 +85,33 @@ Those specific branches should stick to the given structure to allow updates.
 
 To create a project specific branch, follow these steps:
 
-1) Create a new branch from main. 
+1. Create a new branch from main.
+
 ```
 git checkout main
 git pull
 git checkout -b name-of-your-new-branch
 ```
-2) Following configuration files need to be adapted in this specific branch:
+
+2. Following configuration files need to be adapted in this specific branch:
 
 - `src/config.js` contains project specific metadata such as funding notice, project description or contact mail address
 - `src/theme.ts` contains project specific colors and shapes
 - `src/componentMap.js` defines component mappings of specific components to common names
 - `src/imageMap.js` defines image maps of specific images to common names
 
-2) Add a project specific directory, e.g. `src/projectSpecific` with project specific components and markdown files. Copy the default template components and markdown files and modify them according to your needs.
-Add a label (your project name as a comment) on top of each project specific file. This will allow Git Attributes to keep the project specific files while merging with the main branch ([see Merging the main branch to stay up to date](#Merging the main branch to stay up to date)).
-Keep the defaultTemplate directory for merging with the main branch. Updates (bug fixes and new features) will be integrated via these default template files and are the basis for the project specific files.
+2. Add a project specific directory, e.g. `src/projectSpecific` with project specific components and markdown files. Copy the default template components and markdown files and modify them according to your needs.
+   Add a label (your project name as a comment) on top of each project specific file. This will allow Git Attributes to keep the project specific files while merging with the main branch ([see Merging the main branch to stay up to date](#Merging the main branch to stay up to date)).
+   Keep the defaultTemplate directory for merging with the main branch. Updates (bug fixes and new features) will be integrated via these default template files and are the basis for the project specific files.
 
 Currently the idea is to minimize the implementation effort by only updating the generic code base via the template files and manually updating the project specific files based on the changes. We are currently testing this approach in practice and are open to other strategies.
 
-3) Create the local image directory `src/projectSpecificImages`. It's included in `.gitignore`.
-Define image maps in `src/imageMap.js`.
+3. Create the local image directory `src/projectSpecificImages`. It's included in `.gitignore`.
+   Define image maps in `src/imageMap.js`.
 
    Images from remote sources must be implemented directly into the code base, and therefore do not support compatibility with the main branch.
-We have therefore decided not to include images via links in the generic code base.
-In project specific components you are free to import images via links.
+   We have therefore decided not to include images via links in the generic code base.
+   In project specific components you are free to import images via links.
 
 ### Merging the main branch to stay up to date
 

@@ -1,7 +1,7 @@
-// defaultTemplate
+// berd
 export const global_config = {
   api_url: "https://www.ebi.ac.uk/ols4/api/",
-  projectName: "defaultTemplate",
+  projectName: "berd",
 };
 
 export const ts_specific_metadata = {
@@ -14,7 +14,7 @@ export const ts_specific_metadata = {
     has_logo: true,
     has_text_below_logo: true,
     has_data_content: true,
-    has_missing_resource_callout: true,
+    has_missing_resource_callout: false,
     has_project_intro: true,
     has_info_boxes: true,
     homepage_helmet_text: " Overview - Terminology Service ",
@@ -31,7 +31,7 @@ export const ts_specific_metadata = {
       { name: "Search", source: "/search?q=*" },
       { name: "Resources", source: "/resources" },
       { name: "About", source: "/about" },
-      { name: "Projects", source: "/projects" },
+      // { name: "Projects", source: "/projects" },
       { name: "API", source: "/about/api" },
       // { name: "Imprint", source: "/imprint" },
     ],
@@ -52,7 +52,7 @@ export const ts_specific_metadata = {
     has_info_box1: true,
     has_info_box2: true,
     info_box1: {
-      title: "Use Case",
+      title: "BERD@NFDI",
     },
     info_box2: {
       title: "Terminology Service Suite",

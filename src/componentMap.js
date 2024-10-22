@@ -1,38 +1,28 @@
-// defaultTemplate
+// berd
 import { lazy } from "react";
 
 export const componentMap = {
-  defaultTemplate: {
+  berd: {
     InfoBoxA: lazy(() =>
-      import(
-        "./defaultTemplate/defaultTemplateComponents/InfoBoxADefaultTemplate"
-      )
+      import("./projectSpecific/projectSpecificComponents/InfoBoxABerd")
     ),
     InfoBoxB: lazy(() =>
-      import(
-        "./defaultTemplate/defaultTemplateComponents/InfoBoxBDefaultTemplate"
-      )
+      import("./projectSpecific/projectSpecificComponents/InfoBoxBBerd")
     ),
     FooterLogos: lazy(() =>
-      import(
-        "./defaultTemplate/defaultTemplateComponents/FooterLogosDefaultTemplate"
-      )
+      import("./projectSpecific/projectSpecificComponents/FooterLogosBerd")
     ),
     LogoBox: lazy(() =>
-      import(
-        "./defaultTemplate/defaultTemplateComponents/LogoBoxDefaultTemplate"
-      )
+      import("./projectSpecific/projectSpecificComponents/LogoBoxBerd")
     ),
     ProjectADescription: lazy(() =>
-      import("./defaultTemplate/defaultTemplateComponents/ProjectADescription")
+      import("./projectSpecific/projectSpecificComponents/ProjectADescription")
     ),
     ProjectBDescription: lazy(() =>
-      import("./defaultTemplate/defaultTemplateComponents/ProjectADescription")
+      import("./projectSpecific/projectSpecificComponents/ProjectADescription")
     ),
     About: lazy(() =>
-      import(
-        "./defaultTemplate/defaultTemplateComponents/AboutDescriptionDefaultTemplate"
-      )
+      import("./projectSpecific/projectSpecificComponents/AboutDescriptionBerd")
     ),
   },
 };

@@ -1,4 +1,4 @@
-// defaultTemplate
+// berd
 import { global_config } from "./config";
 
 const defaultTemplateTheme = {
@@ -15,8 +15,23 @@ const defaultTemplateTheme = {
   headerLogoWidth: "120px",
 };
 
+const berdTheme = {
+  primary: "#538961",
+  warning: "#e3e55f",
+  body: "#a1b0a4",
+  accent: "#e3e55f",
+  missingResourceBoxColor: "#ccc8c8",
+  infoBoxColor1: "#86af96",
+  infoBoxColor2: "#c4c4c4",
+  headerBorderTop: "#244c2c",
+  headerBackground: "#ffffff",
+  headerLogoSize: "xxl", // "original" | "s" | "m" | "l" | "xl" | "xxl";
+  headerLogoWidth: "120px",
+};
+
 const themes = {
   template: defaultTemplateTheme,
+  berd: berdTheme,
 };
 
 const selectedTheme = themes[global_config.projectName] || defaultTemplateTheme;
