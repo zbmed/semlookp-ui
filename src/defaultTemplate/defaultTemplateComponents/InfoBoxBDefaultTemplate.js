@@ -40,6 +40,7 @@ const description = (logo) => {
             <EuiFlexGroup justifyContent="flexEnd">
               <EuiFlexItem grow={false}>
                 <EuiButton
+                  style={{ backgroundColor: "#000000", color: "#ffffff" }}
                   onClick={() =>
                     window.location.assign(
                       "https://ts4nfdi.github.io/terminology-service-suite/comp/latest"

@@ -1,9 +1,11 @@
 import { EuiCard, EuiImage, EuiLink, EuiSpacer, EuiText } from "@elastic/eui";
 import { useTheme } from "@emotion/react";
+import { useEffect, useState } from "react";
 import EuiCustomLink from "../../common/layout/util/EuiCustomLink";
-import { ts_specific_metadata } from "../../config";
+import { global_config, ts_specific_metadata } from "../../config";
+import { imageMap } from "../../imageMap";
 
-const description = () => {
+const description = (logo) => {
   return (
     <>
       <EuiText>
@@ -11,11 +13,7 @@ const description = () => {
         Service <br></br>
         <EuiSpacer size="s" />
         <EuiLink href="https://google.com">
-          <EuiImage
-            size="s"
-            alt="Placeholder"
-            src="https://www.svgrepo.com/download/488322/picture.svg"
-          />
+          <EuiImage size="s" src={logo} alt={"InfoBoxALogo"} />
         </EuiLink>
         <br></br>
         <EuiSpacer size="s" />
@@ -34,10 +32,33 @@ const description = () => {
 
 const InfoBoxADefaultTemplate = () => {
   const theme = useTheme();
+  const [logos, setLogos] = useState({
+    logo: null,
+  });
+
+  const projectComponents = imageMap[global_config.projectName];
+
+  useEffect(() => {
+    if (projectComponents) {
+      const loadLogos = async () => {
+        const logo = await projectComponents.infoBoxLogoA();
+
+        setLogos({
+          logo: logo.default,
+        });
+      };
+
+      loadLogos();
+    }
+  }, [projectComponents]);
+
+  if (!projectComponents) {
+    return <div>Error: Invalid project type</div>;
+  }
   return (
     <EuiCard
       title={ts_specific_metadata.info_boxes.info_box1.title}
-      description={description()}
+      description={description(logos.logo)}
       style={{
         backgroundColor: theme.color.infoBoxColor1,
         minHeight: 150,
