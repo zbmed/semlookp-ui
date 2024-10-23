@@ -25,7 +25,7 @@ jobs:
           head_ref: "${{ github.head_ref }}"
         run: |
           head_ref="${head_ref/\//-}"
-          ref_name="${head_ref:-${github.ref_name}}"
+          ref_name="${head_ref:-${ref_name}}"
           combined_tag="${ref_name}-${GITHUB_SHA}"
           echo "::set-output name=imageTag::${combined_tag#v}"
       - name: Configure npm to use registry for @ts4nfdi scope
