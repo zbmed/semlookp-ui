@@ -1,56 +1,38 @@
+// defaultTemplate
 import { lazy } from "react";
 
 export const componentMap = {
   defaultTemplate: {
     InfoBoxA: lazy(() =>
-      import("./components/defaultTemplateComponents/InfoBoxADefaultTemplate")
+      import(
+        "./defaultTemplate/defaultTemplateComponents/InfoBoxADefaultTemplate"
+      )
     ),
     InfoBoxB: lazy(() =>
-      import("./components/defaultTemplateComponents/InfoBoxBDefaultTemplate")
+      import(
+        "./defaultTemplate/defaultTemplateComponents/InfoBoxBDefaultTemplate"
+      )
     ),
     FooterLogos: lazy(() =>
       import(
-        "./components/defaultTemplateComponents/FooterLogosDefaultTemplate"
+        "./defaultTemplate/defaultTemplateComponents/FooterLogosDefaultTemplate"
       )
     ),
     LogoBox: lazy(() =>
-      import("./components/defaultTemplateComponents/LogoBoxDefaultTemplate")
+      import(
+        "./defaultTemplate/defaultTemplateComponents/LogoBoxDefaultTemplate"
+      )
     ),
     ProjectADescription: lazy(() =>
-      import("./components/projectSpecificComponents/IDSNProjectDescription")
+      import("./defaultTemplate/defaultTemplateComponents/ProjectADescription")
     ),
     ProjectBDescription: lazy(() =>
-      import("./components/projectSpecificComponents/IDSNProjectDescription")
+      import("./defaultTemplate/defaultTemplateComponents/ProjectADescription")
     ),
     About: lazy(() =>
       import(
-        "./components/defaultTemplateComponents/AboutDescriptionDefaultTemplate"
+        "./defaultTemplate/defaultTemplateComponents/AboutDescriptionDefaultTemplate"
       )
-    ),
-  },
-  health: {
-    InfoBoxA: lazy(() =>
-      import("./components/projectSpecificComponents/InfoBoxAHealth")
-    ),
-    InfoBoxB: lazy(() =>
-      import("./components/projectSpecificComponents/InfoBoxBHealth")
-    ),
-    FooterLogos: lazy(() =>
-      import("./components/projectSpecificComponents/FooterLogosHealth")
-    ),
-    LogoBox: lazy(() =>
-      import("./components/projectSpecificComponents/LogoBoxHealth")
-    ),
-    ProjectADescription: lazy(() =>
-      import(
-        "./components/projectSpecificComponents/NFDI4HealthProjectDescription"
-      )
-    ),
-    ProjectBDescription: lazy(() =>
-      import("./components/projectSpecificComponents/IDSNProjectDescription")
-    ),
-    About: lazy(() =>
-      import("./components/projectSpecificComponents/AboutDescriptionHealth")
     ),
   },
 };

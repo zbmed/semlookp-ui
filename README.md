@@ -1,8 +1,11 @@
 # Terminology Service User Interface
 
-## AboutPageHealth The Project
+## About
 
-This is the frontend scheme of the Terminology Service NFDI4Health.
+The following represents the frontend scheme for a terminology service.
+This repository provides a generic code base from which a specialised terminology service for a given project or domain can be created.
+It is recommended that users possess a basic knowledge of coding and of the React framework.
+Should assistance be required in setting up a project-specific terminology service branch, please feel free to contact one of the developers.
 
 ## Built With
 
@@ -21,7 +24,17 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 #### Authenticate to the npm package registry
 
 For using the @ts4nfdi/terminology-service-suite you have to [authenticate](https://docs.github.com/de/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#authentifizieren-mit-einem-personal-access-token) with a personal access token or deploy token.
-For local development specify a runtime variable NPM_TOKEN with your npm authentication token.
+For local development specify a runtime variable NPM_TOKEN with your npm authentication token
+
+OR
+
+add the following two lines to your local npm configuration `~/.npmrc`. Replace `TOKEN` with your personal access
+token (classic).
+
+```
+@ts4nfdi:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=TOKEN
+```
 
 #### Local development
 
@@ -70,55 +83,99 @@ The main branch represents the generic code base.
 Project specific branches can be added.
 Those specific branches should stick to the given structure to allow updates.
 
-Following configuration files need to be adapted in a specific branch:
+To create a project specific branch, follow these steps:
+
+1. Create a new branch from main.
+
+```
+git checkout main
+git pull
+git checkout -b name-of-your-new-branch
+```
+
+2. Copy `src/defaultTemplate` folder and rename it to `src/projectSpecific`.
+   Delete the `src/projectSpecific/defaultTemplateLayout` directory.
+   Rename `src/defaultTemplate/defaultTemplateComponents` and `src/defaultTemplate/defaultTemplateMarkdown` to
+   `src/projectSpecific/projectSpecificComponents` and `src/projectSpecific/projectSpecificMarkdown`
+   Keep the defaultTemplate directory for merging with the main branch. Updates (bug fixes and new features) will be integrated via these default template files and are the basis for the project specific files.
+
+3. Rename and modify the files in the projectSpecific directory according to your needs. Change the names in the componentMap.js.
+
+4. Following configuration files need to be adapted in this specific branch:
 
 - `src/config.js` contains project specific metadata such as funding notice, project description or contact mail address
 - `src/theme.ts` contains project specific colors and shapes
+- `src/componentMap.js` defines component mappings of specific components to common names
+- `src/imageMap.js` defines image maps of specific images to common names
 
-The `.gitattributes` files should contain any project-specific files that should NOT be merged with the main branch, e.g the `src/config.js`, deployment files or specific components.
+Replace _// defaultTemplate_ at the beginning of each of these four files with your project name to make Git Attributes work.
 
-### Images
+5. Create the local image directory `src/projectSpecificImages`. It's included in `.gitignore`.
+   Define image maps in `src/imageMap.js`.
 
-#### Local images:
+   Images from remote sources must be implemented directly into the code base, and therefore do not support compatibility with the main branch.
+   We have therefore decided not to include images via links in the generic code base.
+   In project specific components you are free to import images via links.
 
-All images should be placed in the `src/components/layout/images/` folder.
-They are imported and mapped to generic names in `src/components/imageMap.js`.
+6. Optional: adapt CI
 
-#### Remote images:
+### Merging the main branch to stay up to date
 
-Images from remote sources must be implemented directly into the code base, and therefore do not support compatibility with the main branch.
-We have therefore decided not to include images via links.
-In project specific components you are free to import images via links.
+The main branch keeps the generic code base. Bug fixes and new features will be integrated into main. To prevent specific files in your branch to be overwritten by main during merge, use `.gitattributes`.
+You can configure the `.gitattributes` file to exclude or retain files during the merge process.
 
-#### Git
+IMPORTANT NOTE: Git Attributes only works locally. Merging the main branch into a specific branch via pull request on GitHub may result in files being overwritten.
 
-The main branch keeps the generic code base. To prevent specific files in your branch from being merged into main, use .gitattributes.
-you can configure the .gitattributes file to exclude or retain files during the merge process.
+1. Edit the `.gitattributes` file in your project specific branch. Minimal required configuration:
 
-1. Create or Edit .gitattributes file: In your branch, edit the .gitattributes file.
-2. Specify the files to ignore during merging: In .gitattributes, for each file you want to prevent from being merged, you need to set the merge=ours attribute. This tells Git to keep the version of the file from the current branch (in this case, your branch) during a merge.
-   For example:  
-    `
+```
+.gitattributes merge=ours
+```
+
+2. _Specify the files to be ignored during merging:_ In .gitattributes, for each file you want to prevent from being merged, you need to set the merge=ours attribute. This tells Git to keep the version of the file from the current branch (in this case, your branch) during a merge.
+   For example:
+
+```
 path/to/file1.txt merge=ours
-path/to/file2.txt merge=ours`  
-    _Use your project short name (e.g. health) instead of "ours"._
-3. Configure the 'ours' merge driver: Now you need to tell Git what merge=ours means. This is done by configuring the merge driver in the .git/config file or globally in ~/.gitconfig.
-   Add the following to your .git/config file:  
-    `[merge "ours"]
-name = "Keep our version"
-driver = true`  
-    You can either do it manually or using:  
-    `git config --global merge.ours.driver true`  
-    Check with  
-    `git config --global --list`
-4. Commit the changes in your branch: After adding or editing the .gitattributes file, commit this change in your branch.
-5. Merge main into your branch. You should see something like this:
+path/to/file2.txt merge=ours
+```
+
+3. _Configure the 'ours' merge driver:_ Now you need to tell Git what merge=ours means. This is done by configuring the merge driver in the .git/config file or globally in ~/.gitconfig.
+   Add the following to your .git/config file:
+
+```
+[merge "ours"]
+driver = true
+```
+
+by running:
+
+```
+git config  merge.ours.driver true
+```
+
+Check config with
+
+```
+git config --list
+```
+
+4. _Commit the changes in your branch:_ After adding or editing the .gitattributes file, commit this change in your branch.
+5. IMPORTANT NOTE: Git Attributes only works for conflicting files. Hence, add your project name on top of the project specific files to trigger the merge conflict.
+6. Merge main into your branch. You should see something like this:
 
 ```
 $ git merge main
 Auto-merging somefile
 Merge made by recursive.
 ```
+
+6. Take a look at the project structure and your files and make sure everything went to plan.
+
+### Merging a project specific branch into main
+
+Merging a project specific branch into the main branch isn't possible.
+New features should be developed in the main branch.
 
 ## Funding
 
