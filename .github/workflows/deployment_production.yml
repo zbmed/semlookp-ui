@@ -2,9 +2,6 @@
 name: Deployment to production
 concurrency: production
 on:
-  push:
-    branches: [ "health" ]
-    tags: [ "*" ]
   workflow_dispatch:
     inputs:
       tags:
@@ -35,7 +32,7 @@ jobs:
             helmv3 upgrade semlookp-ui \
             --install \
             --set-json='images.frontend="ghcr.io/${{ github.repository }}:${{ github.event.pull_request.head.sha || github.sha }}"' \
-            --set-json='ingress.dns="$semlookp-ui.prod.km.k8s.zbmed.de"'  \
+            --set-json='ingress.dns="semlookp-ui.prod.km.k8s.zbmed.de"'  \
             --set-json='ingress.enableSSL="true"'  \
             --set-json='ingress.certIssuer="letsencrypt-prod"'  \
             semlookp-deployment/semlookp-ui
