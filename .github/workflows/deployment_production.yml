@@ -4,10 +4,10 @@ concurrency: production
 on:
   workflow_dispatch:
     inputs:
-      tags:
-        description: "Do you really want to update the production instance"
-        required: false
-        type: boolean
+      image_name:
+        description: "Name of the Docker image"
+        required: true
+        type: string
 env:
   KUBECONFIG: .kube/config
   KUBECONFIG_FILE: ${{ secrets.KUBECONFIG_PROD }}
