@@ -2,6 +2,9 @@
 name: Deployment to production
 concurrency: production
 on:
+  push:
+    branches: [ "health" ]
+    tags: [ "*" ]
   workflow_dispatch:
     inputs:
       tags:
