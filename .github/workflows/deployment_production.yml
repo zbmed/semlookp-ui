@@ -8,10 +8,6 @@ on:
         description: "Do you really want to update the production instance"
         required: false
         type: boolean
-      image_sha:
-        description: "Image SHA ID, Optional "
-        type: string
-        required: false
 env:
   KUBECONFIG: .kube/config
   KUBECONFIG_FILE: ${{ secrets.KUBECONFIG_PROD }}
