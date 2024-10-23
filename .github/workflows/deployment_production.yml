@@ -11,6 +11,7 @@ on:
 env:
   KUBECONFIG: .kube/config
   KUBECONFIG_FILE: ${{ secrets.KUBECONFIG_PROD }}
+  IMAGE_NAME: ${{ github.event.inputs.image_name }}
 jobs:
   deployment:
     runs-on: ubuntu-latest
@@ -27,7 +28,7 @@ jobs:
             helmv3 repo update
             helmv3 upgrade semlookp-ui \
             --install \
-            --set-json='images.frontend="ghcr.io/${{ github.repository }}:${{ github.event.pull_request.head.sha || github.sha }}"' \
+            --set-json='images.frontend="${{ env.IMAGE_NAME }}"' \
             --set-json='ingress.dns="semlookp-ui.prod.km.k8s.zbmed.de"'  \
             --set-json='ingress.enableSSL="true"'  \
             --set-json='ingress.certIssuer="letsencrypt-prod"'  \
