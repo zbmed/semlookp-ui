@@ -30,6 +30,7 @@ jobs:
             --install \
             --set-json='images.frontend="${{ env.IMAGE_NAME }}"' \
             --set-json='ingress.dns="semlookp-ui.prod.km.k8s.zbmed.de"'  \
+            --set-json='ingress.path="/"'  \
             --set-json='ingress.enableSSL="true"'  \
             --set-json='ingress.certIssuer="letsencrypt-prod"'  \
             semlookp-deployment/semlookp-ui
