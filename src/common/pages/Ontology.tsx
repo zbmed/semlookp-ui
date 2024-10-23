@@ -5,6 +5,7 @@ import {
   EuiSpacer,
   EuiTab,
   EuiTabs,
+  EuiTitle,
 } from "@elastic/eui";
 import {
   AutocompleteWidget,
@@ -32,7 +33,7 @@ export default function Ontology() {
         name: "Classes",
         content: (
           <HierarchyWidget
-            useLegacy={true}
+            useLegacy={false}
             apiUrl={global_config.api_url}
             backendType={"ols"}
             entityType={"class"}
@@ -67,7 +68,7 @@ export default function Ontology() {
         name: "Properties",
         content: (
           <HierarchyWidget
-            useLegacy={true}
+            useLegacy={false}
             apiUrl={global_config.api_url}
             backendType={"ols"}
             entityType={"property"}
@@ -102,7 +103,7 @@ export default function Ontology() {
         name: "Individuals",
         content: (
           <HierarchyWidget
-            useLegacy={true}
+            useLegacy={false}
             apiUrl={global_config.api_url}
             backendType={"ols"}
             entityType={"individual"}
@@ -164,10 +165,16 @@ export default function Ontology() {
           <EuiFlexGroup>
             <EuiFlexItem grow={7}>
               <EuiFlexItem>
-                <TitleWidget
-                  ontologyId={routeParams.ontologyId}
-                  api={OLS4API}
-                />
+                <EuiTitle size={"m"}>
+                  <TitleWidget
+                    ontologyId={routeParams.ontologyId}
+                    api={OLS4API}
+                  />
+                </EuiTitle>
+                <EuiSpacer size={"s"} />
+                <EuiTitle size={"xs"}>
+                  <span>Description:</span>
+                </EuiTitle>
                 <EuiSpacer size={"s"} />
                 <DescriptionWidget
                   ontologyId={routeParams.ontologyId}
