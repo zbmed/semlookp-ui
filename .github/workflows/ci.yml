@@ -60,7 +60,7 @@ jobs:
           tags: |
             ghcr.io/${{ github.repository }}:${{ steps.generate-image-tag.outputs.imageTag }}
             ghcr.io/${{ github.repository }}:${{ github.event.pull_request.head.sha || github.sha }}
-  deploy_main:
+  deploy_berd:
     needs: build
     if: github.ref == 'refs/heads/berd'
     runs-on: ubuntu-latest
