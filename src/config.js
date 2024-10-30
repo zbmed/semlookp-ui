@@ -19,7 +19,7 @@ export const ts_specific_metadata = {
     has_info_boxes: true,
     homepage_helmet_text: " Overview - Terminology Service ",
     text_below_logo: "Terminology Service",
-    project_intro_title: "Terminology Service Template",
+    project_intro_title: "Terminology Service",
     project_intro_markdown_file:
       "defaultTemplate/defaultTemplateMarkdown/projectintro",
     imprint_markdown_file: "defaultTemplate/defaultTemplateMarkdown/imprint",
