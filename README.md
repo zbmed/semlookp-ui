@@ -24,12 +24,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 #### Authenticate to the npm package registry
 
 For using the @ts4nfdi/terminology-service-suite you have to [authenticate](https://docs.github.com/de/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#authentifizieren-mit-einem-personal-access-token) with a personal access token or deploy token.
-For local development specify a runtime variable NPM_TOKEN with your npm authentication token
-
-OR
-
-add the following two lines to your local npm configuration `~/.npmrc`. Replace `TOKEN` with your personal access
-token (classic).
+Create a file in the project root directory named `.npmrc` and add the following two lines. Replace `TOKEN` with your
+[personal access token (classic)](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic).
 
 ```
 @ts4nfdi:registry=https://npm.pkg.github.com
@@ -63,7 +59,7 @@ npm run style:ceck
 
 to format or check all files.
 
-### Production
+### Production (WIP)
 
 Create production build for all services:  
 Uncomment `build: ./` in `docker-compose.yaml`  
@@ -108,16 +104,22 @@ git checkout -b name-of-your-new-branch
 - `src/componentMap.js` defines component mappings of specific components to common names
 - `src/imageMap.js` defines image maps of specific images to common names
 
-Replace _// defaultTemplate_ at the beginning of each of these four files with your project name to make Git Attributes work.
+a) Replace _// defaultTemplate_ at the beginning of each of these four files with your project name to make Git Attributes work.
+b) Rename the components in `src/projectSpecific/projectSpecificComponents` and adapt the paths in `src/componentMap.js` accordingly
 
-5. Create the local image directory `src/projectSpecificImages`. It's included in `.gitignore`.
+5. Create the local image directory `src/projectSpecificImages`.
    Define image maps in `src/imageMap.js`.
 
    Images from remote sources must be implemented directly into the code base, and therefore do not support compatibility with the main branch.
    We have therefore decided not to include images via links in the generic code base.
    In project specific components you are free to import images via links.
 
-6. Optional: adapt CI
+6. Adapt or remove CI script
+7. Run
+
+```
+npm run style:format
+```
 
 ### Merging the main branch to stay up to date
 
