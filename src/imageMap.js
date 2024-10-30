@@ -1,6 +1,6 @@
-// defaultTemplate
+// plasmamds
 export const imageMap = {
-  defaultTemplate: {
+  plasmamds: {
     homepageLogo: () =>
       import(
         "./defaultTemplate/defaultTemplateLayout/defaultTemplateImages/badge-svgrepo-com.svg"

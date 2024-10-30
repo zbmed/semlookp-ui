@@ -1,37 +1,37 @@
-// defaultTemplate
+// plasmamds
 import { lazy } from "react";
 
 export const componentMap = {
-  defaultTemplate: {
+  plasmamds: {
     InfoBoxA: lazy(() =>
       import(
-        "./defaultTemplate/defaultTemplateComponents/InfoBoxADefaultTemplate"
+        "./projectSpecific/projectSpecificComponents/InfoBoxADefaultTemplate"
       )
     ),
     InfoBoxB: lazy(() =>
       import(
-        "./defaultTemplate/defaultTemplateComponents/InfoBoxBDefaultTemplate"
+        "./projectSpecific/projectSpecificComponents/InfoBoxBDefaultTemplate"
       )
     ),
     FooterLogos: lazy(() =>
       import(
-        "./defaultTemplate/defaultTemplateComponents/FooterLogosDefaultTemplate"
+        "./projectSpecific/projectSpecificComponents/FooterLogosDefaultTemplate"
       )
     ),
     LogoBox: lazy(() =>
       import(
-        "./defaultTemplate/defaultTemplateComponents/LogoBoxDefaultTemplate"
+        "./projectSpecific/projectSpecificComponents/LogoBoxDefaultTemplate"
       )
     ),
     ProjectADescription: lazy(() =>
-      import("./defaultTemplate/defaultTemplateComponents/ProjectADescription")
+      import("./projectSpecific/projectSpecificComponents/ProjectADescription")
     ),
     ProjectBDescription: lazy(() =>
-      import("./defaultTemplate/defaultTemplateComponents/ProjectADescription")
+      import("./projectSpecific/projectSpecificComponents/ProjectADescription")
     ),
     About: lazy(() =>
       import(
-        "./defaultTemplate/defaultTemplateComponents/AboutDescriptionDefaultTemplate"
+        "./projectSpecific/projectSpecificComponents/AboutDescriptionDefaultTemplate"
       )
     ),
   },
