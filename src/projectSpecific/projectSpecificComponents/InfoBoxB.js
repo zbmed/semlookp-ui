@@ -61,7 +61,7 @@ const description = (logo) => {
   );
 };
 
-const InfoBoxBDefaultTemplate = () => {
+const InfoBoxB = () => {
   const theme = useTheme();
   const [logos, setLogos] = useState({
     logo: null,
@@ -99,4 +99,4 @@ const InfoBoxBDefaultTemplate = () => {
   );
 };
 
-export default InfoBoxBDefaultTemplate;
+export default InfoBoxB;

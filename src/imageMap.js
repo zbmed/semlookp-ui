@@ -2,9 +2,7 @@
 export const imageMap = {
   plasmamds: {
     homepageLogo: () =>
-      import(
-        "./defaultTemplate/defaultTemplateLayout/defaultTemplateImages/badge-svgrepo-com.svg"
-      ),
+      import("./projectSpecificImages/plasma-mds-full-logo.png"),
     footerLogoA: () =>
       import(
         "./defaultTemplate/defaultTemplateLayout/defaultTemplateImages/aperture-svgrepo-com.svg"
@@ -17,14 +15,9 @@ export const imageMap = {
       import(
         "./defaultTemplate/defaultTemplateLayout/defaultTemplateImages/aquarius-svgrepo-com.svg"
       ),
-    headerLogo: () =>
-      import(
-        "./defaultTemplate/defaultTemplateLayout/defaultTemplateImages/badge-svgrepo-com.svg"
-      ),
+    headerLogo: () => import("./projectSpecificImages/plasma-mds-logo.png"),
     infoBoxLogoA: () =>
-      import(
-        "./defaultTemplate/defaultTemplateLayout/defaultTemplateImages/aquarius-svgrepo-com.svg"
-      ),
+      import("./projectSpecificImages/plasma-mds-full-logo.png"),
     infoBoxLogoB: () => import("./common/layout/images/widgets-icons.png"),
     ts4nfdiLogo: () => import("./common/layout/images/TS4_icon.svg"),
     projectALogo: () =>

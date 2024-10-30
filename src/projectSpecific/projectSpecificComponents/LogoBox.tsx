@@ -10,7 +10,7 @@ import { Suspense, useEffect, useState } from "react";
 import { global_config, ts_specific_metadata } from "../../config";
 import { imageMap } from "../../imageMap";
 
-const LogoBoxDefaultTemplate = () => {
+const LogoBox = () => {
   const [logos, setLogos] = useState({
     homepageLogo: null,
   });
@@ -40,7 +40,7 @@ const LogoBoxDefaultTemplate = () => {
       <Suspense fallback={<div>Loading...</div>}>
         <EuiFlexGroup direction={"column"} alignItems={"center"}>
           <EuiFlexItem grow={false} style={{ marginBottom: "-10px" }}>
-            <EuiImage size="s" alt="homepagelogo" src={logos.homepageLogo} />
+            <EuiImage size="xl" alt="homepagelogo" src={logos.homepageLogo} />
           </EuiFlexItem>
           <EuiSpacer size={"m"} />
           {ts_specific_metadata.homepage.has_text_below_logo && (
@@ -60,4 +60,4 @@ const LogoBoxDefaultTemplate = () => {
   );
 };
 
-export default LogoBoxDefaultTemplate;
+export default LogoBox;

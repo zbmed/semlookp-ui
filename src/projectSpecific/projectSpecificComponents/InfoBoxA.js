@@ -1,7 +1,6 @@
-import { EuiCard, EuiImage, EuiLink, EuiSpacer, EuiText } from "@elastic/eui";
+import { EuiCard, EuiLink, EuiSpacer, EuiText } from "@elastic/eui";
 import { useTheme } from "@emotion/react";
 import { useEffect, useState } from "react";
-import EuiCustomLink from "../../common/layout/util/EuiCustomLink";
 import { global_config, ts_specific_metadata } from "../../config";
 import { imageMap } from "../../imageMap";
 
@@ -9,28 +8,35 @@ const description = (logo) => {
   return (
     <>
       <EuiText>
-        <EuiLink href={"https://google.com"}> Some Institutions </EuiLink>
-        Service <br></br>
-        <EuiSpacer size="s" />
-        <EuiLink href="https://google.com">
-          <EuiImage size="s" src={logo} alt={"InfoBoxALogo"} />
-        </EuiLink>
-        <br></br>
-        <EuiSpacer size="s" />
-        <i>Short service description</i>
+        {/*<EuiLink href="https://google.com">*/}
+        {/*  <EuiImage size="m" src={logo} alt={"InfoBoxALogo"} />*/}
+        {/*</EuiLink>*/}
+        {/*<br></br>*/}
+        {/*<EuiSpacer size="s" />*/}
+        <i>Research data management for low-temperature plasma science</i>
         <br></br>
         <EuiSpacer size="s" />
         <div style={{ textAlign: "center" }}>
-          Long service description with
-          <EuiCustomLink to={"/about/api"}> internal Links</EuiCustomLink> or
-          <EuiLink href={"https://google.com"}> external Links </EuiLink>
+          With the development of the plasma metadata schema
+          <EuiLink href={"https://www.go-fair.org/fair-principles/"}>
+            {" "}
+            Plasma-MDS{" "}
+          </EuiLink>
+          , the low-temperature plasma (LTP) community initiated developments
+          towards structured research data management (RDM) and measures to
+          implement the
+          <EuiLink href={"https://www.go-fair.org/fair-principles/"}>
+            {" "}
+            FAIR data principles{" "}
+          </EuiLink>
+          in the scientific community.
         </div>
       </EuiText>
     </>
   );
 };
 
-const InfoBoxADefaultTemplate = () => {
+const InfoBoxA = () => {
   const theme = useTheme();
   const [logos, setLogos] = useState({
     logo: null,
@@ -68,4 +74,4 @@ const InfoBoxADefaultTemplate = () => {
   );
 };
 
-export default InfoBoxADefaultTemplate;
+export default InfoBoxA;

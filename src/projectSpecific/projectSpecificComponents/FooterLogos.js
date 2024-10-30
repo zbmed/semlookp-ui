@@ -3,7 +3,7 @@ import { Suspense, useEffect, useState } from "react";
 import { global_config, ts_specific_metadata } from "../../config";
 import { imageMap } from "../../imageMap";
 
-const FooterLogosDefaultTemplate = () => {
+const FooterLogos = () => {
   const [logos, setLogos] = useState({
     footerLogoA: null,
     footerLogoB: null,
@@ -75,4 +75,4 @@ const FooterLogosDefaultTemplate = () => {
   );
 };
 
-export default FooterLogosDefaultTemplate;
+export default FooterLogos;

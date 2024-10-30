@@ -16,13 +16,13 @@ const defaultTemplateTheme = {
 };
 
 const plasmamdsTheme = {
-  primary: "#005e88",
+  primary: "#022556",
   warning: "#e3e55f",
   body: "#e5e5e5",
   accent: "#e3e55f",
   missingResourceBoxColor: "#ccc8c8",
-  infoBoxColor1: "#b0aeae",
-  infoBoxColor2: "#e8e6e6",
+  infoBoxColor1: "#8193ac",
+  infoBoxColor2: "#c4ccd8",
   headerBorderTop: "#000000",
   headerBackground: "#ffffff",
   headerLogoSize: "l", // "original" | "s" | "m" | "l" | "xl" | "xxl";

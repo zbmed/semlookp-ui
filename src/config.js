@@ -7,25 +7,26 @@ export const global_config = {
 export const ts_specific_metadata = {
   active_dev_banner_text:
     " This software is currently under active development. Therefore, please forgive any errors that occur. We would be very pleased if you could report any errors to semlookp-support@zbmed.de.",
-  contact_mail_address: "example@example.de",
-  contact_mail_address_mailto: "mailto:example@example.de",
-  collection: "collection=nfdi4health",
+  contact_mail_address: "example@example.de", // use semlookp-support@zbmed.de if you have none
+  contact_mail_address_mailto: "mailto:example@example.de", // the "mailto" URI is needed to produce a hyperlink that will allow users to send an email on click
+  collection: "", // not important now, will be relevant in the future for the widgets that are using the TS4NFDI Gateway
   homepage: {
     has_logo: true,
     has_text_below_logo: true,
     has_data_content: true,
-    has_missing_resource_callout: true,
+    has_missing_resource_callout: false,
     has_project_intro: true,
     has_info_boxes: true,
     homepage_helmet_text: " Overview - Terminology Service ",
     text_below_logo: "Terminology Service",
-    project_intro_title: "Terminology Service Template",
+    project_intro_title: "Terminology Service Plasma-MDS",
     project_intro_markdown_file:
-      "defaultTemplate/defaultTemplateMarkdown/projectintro",
-    imprint_markdown_file: "defaultTemplate/defaultTemplateMarkdown/imprint",
-    privacy_markdown_file: "defaultTemplate/defaultTemplateMarkdown/privacy",
+      "projectSpecific/projectSpecificMarkdown/projectintro",
+    imprint_markdown_file: "projectSpecific/projectSpecificMarkdown/imprint",
+    privacy_markdown_file: "projectSpecific/projectSpecificMarkdown/privacy",
   },
   header: {
+    // to remove links, just remove or uncomment
     tabs: [
       { name: "Home", source: "/" },
       { name: "Search", source: "/search?q=*" },
@@ -52,7 +53,7 @@ export const ts_specific_metadata = {
     has_info_box1: true,
     has_info_box2: true,
     info_box1: {
-      title: "Use Case",
+      title: "Plasma-MDS",
     },
     info_box2: {
       title: "Terminology Service Suite",

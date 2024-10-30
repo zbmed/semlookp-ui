@@ -1,7 +1,7 @@
 import { EuiLink, EuiText } from "@elastic/eui";
 import EuiCustomLink from "../../common/layout/util/EuiCustomLink";
 
-export default function AboutDescriptionDefaultTemplate() {
+export default function AboutDescription() {
   return (
     <EuiText>
       <h2>About the Terminology Service</h2>
