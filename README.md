@@ -110,7 +110,8 @@ b) Rename the components in `src/projectSpecific/projectSpecificComponents` and 
    In project specific components you are free to import images via links.
 
 6. Adapt or remove CI script
-7. Run
+7. Change favicon in `public/index.html`
+8. Run
 
 ```
 npm run style:format
