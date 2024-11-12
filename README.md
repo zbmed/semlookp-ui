@@ -7,6 +7,10 @@ This repository provides a generic code base from which a specialised terminolog
 It is recommended that users possess a basic knowledge of coding and of the React framework.
 Should assistance be required in setting up a project-specific terminology service branch, please feel free to contact one of the developers.
 
+This is the first version of a shared frontend codebase and is under active development. 
+So please forgive any errors that occur.
+We would be grateful if you could report any bugs.
+
 ## Built With
 
 - [ReactJS 17](https://reactjs.org/blog/2020/10/20/react-v17.html)
@@ -32,24 +36,29 @@ Create a file in the project root directory named `.npmrc` and add the following
 //npm.pkg.github.com/:_authToken=TOKEN
 ```
 
+#### Docker
+To run the Docker container, do:
+
+```shell
+npm install
+npm run build
+docker build -t semlookp-ui .
+docker run --name semlookp-ui -p 8080:80 semlookp-ui
+```
+
 #### Local development
 
-To start the application for the first time, install the modules with:
+To start the application for the first time, install the modules and start the development server:
 
-```
+```shell
 npm install
-```
-
-Start the development server with:
-
-```
 npm start
 ```
 
-Accessible at [http://localhost:3000](http://localhost:3000).
+Accessible at: [http://localhost:3000](http://localhost:3000).
 
 The page will reload when you make edits.\
-You will also see any lint errors in the console.\
+
 We use prettier for code formatting. Run
 
 ```
@@ -59,23 +68,9 @@ npm run style:ceck
 
 to format or check all files.
 
-### Production (WIP)
-
-Create production build for all services:  
-Uncomment `build: ./` in `docker-compose.yaml`  
-Set an environment variable with your NPM_TOKEN.  
-Run the following to build the Docker image with the current NPM_TOKEN environment variable.
-
-```
-$ docker-compose --env-file dev.env build --build-arg NPM_TOKEN=${NPM_TOKEN}
-$ docker-compose --env-file dev.env up
-```
-
-[Docker and private modules](https://docs.npmjs.com/docker-and-private-modules)
-
 ## Hints for using the generic code base
 
-The main branch represents the generic code base.
+The main branch represents the generic codebase.
 Project specific branches can be added.
 Those specific branches should stick to the given structure to allow updates.
 
@@ -186,5 +181,5 @@ This project is developed by the [NFDI4Health consortium](https://www.nfdi4healt
 The NFDI4Health Consortium gratefully acknowledges the financial support of the Deutsche Forschungsgemeinschaft
 (DFG, German Research Foundation) – project number 442326535.
 
-The project is derived from the Semantic Lookup Platform SemLookP which was also developed in part
+The project is derived from the Semantic Lookup Platform SemLookP which was also developed
 by [ZB MED - Information Centre for Life Sciences](https://www.zbmed.de/en/).
