@@ -29,7 +29,7 @@ jobs:
             helmv3 upgrade semlookp-ui-berd \
             --install \
             --set-json='images.frontend="${{ env.IMAGE_NAME }}"' \
-            --set-json='ingress.dns="semlookp-ui-berd.prod.km.k8s.zbmed.de"'  \
+            --set-json='ingress.dns="ts.berd-nfdi.de"'  \
             --set-json='ingress.path="/"'  \
             --set-json='ingress.enableSSL="true"'  \
             --set-json='ingress.certIssuer="letsencrypt-prod"'  \
