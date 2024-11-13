@@ -1,6 +1,8 @@
 import {
+  EuiAccordion,
   EuiFlexGroup,
   EuiFlexItem,
+  EuiHorizontalRule,
   EuiPanel,
   EuiSpacer,
   EuiTab,
@@ -160,108 +162,113 @@ export default function Ontology() {
 
   return (
     <div>
+      <EuiSpacer />
       <EuiFlexGroup justifyContent={"spaceAround"} direction={"column"}>
         <EuiPanel>
           <EuiFlexGroup>
             <EuiFlexItem grow={7}>
-              <EuiFlexItem>
-                <EuiTitle size={"m"}>
-                  <TitleWidget
-                    ontologyId={routeParams.ontologyId}
-                    api={OLS4API}
-                  />
-                </EuiTitle>
-                <EuiSpacer size={"s"} />
-                <EuiTitle size={"xs"}>
-                  <span>Description:</span>
-                </EuiTitle>
-                <EuiSpacer size={"s"} />
-                <DescriptionWidget
+              <EuiTitle size={"m"}>
+                <TitleWidget
                   ontologyId={routeParams.ontologyId}
-                  api={OLS4API}
-                />
-                <EuiSpacer size={"s"} />
-                <AutocompleteWidget
                   api={global_config.api_url}
-                  placeholder={
-                    "Search in " + routeParams.ontologyId.toUpperCase()
-                  }
-                  selectionChangedEvent={(selectedOption) => {
-                    navigateToEntity(selectedOption, navigate);
-                  }}
-                  parameter={
-                    "ontology=" +
-                    routeParams.ontologyId +
-                    "&collection=nfdi4health"
-                  }
-                  allowCustomTerms={false}
-                  singleSelection={true}
                 />
-              </EuiFlexItem>
+              </EuiTitle>
             </EuiFlexItem>
             <EuiFlexItem grow={1}>
               <JsonApiWidget
-                apiQuery={OLS4API + "ontologies/" + routeParams.ontologyId}
+                apiQuery={
+                  global_config.api_url +
+                  "ontologies/" +
+                  routeParams.ontologyId +
+                  "/"
+                }
                 buttonText="JSON"
               />
             </EuiFlexItem>
           </EuiFlexGroup>
+          <EuiHorizontalRule />
+          <EuiFlexItem>
+            <EuiTitle size={"xs"}>
+              <span>Description:</span>
+            </EuiTitle>
+            <EuiSpacer size={"s"} />
+            <DescriptionWidget
+              ontologyId={routeParams.ontologyId}
+              api={OLS4API}
+            />
+          </EuiFlexItem>
+          <EuiSpacer size={"s"} />
+          <AutocompleteWidget
+            api={OLS4API}
+            placeholder={"Search in " + routeParams.ontologyId.toUpperCase()}
+            selectionChangedEvent={(selectedOption) => {
+              navigateToEntity(selectedOption, navigate);
+            }}
+            parameter={
+              "ontology=" +
+              routeParams.ontologyId +
+              "&collection=nfdi4health&fieldList=description,label,iri,ontology_name,type,short_form"
+            }
+            allowCustomTerms={false}
+            singleSelection={true}
+            hasShortSelectedLabel={true}
+          />
         </EuiPanel>
-
         <EuiSpacer />
-
         <EuiPanel>
           <EuiFlexGroup gutterSize={"m"}>
             <EuiFlexItem
               grow={false}
-              style={{ maxWidth: "50%", minWidth: "50%", overflow: "auto" }}
+              style={{ maxWidth: "50%", minWidth: "50%" }}
             >
-              <EuiTabs>{renderTabs()}</EuiTabs>
-              {selectedTabContent}
+              <EuiSpacer size={"s"} />
+              <EuiTitle size={"s"}>
+                <span style={{ textTransform: "capitalize" }}>Hierarchy</span>
+              </EuiTitle>
+              <EuiHorizontalRule style={{ marginBottom: "0px" }} />
+              <EuiSpacer size={"s"} />
+              <div style={{ overflow: "auto" }}>
+                <EuiFlexItem>
+                  <EuiTabs expand={true}>{renderTabs()}</EuiTabs>
+                  {selectedTabContent}
+                </EuiFlexItem>
+              </div>
             </EuiFlexItem>
             <EuiSpacer size={"l"} />
-            <EuiFlexItem grow={true}>
-              <EuiFlexGroup
-                direction={"column"}
-                style={{
-                  maxHeight: "2000px",
-                  maxWidth: "500px",
-                  overflow: "auto",
-                  overflowX: "auto",
-                }}
-              >
+            <EuiFlexItem>
+              <EuiFlexGroup direction={"column"}>
                 <EuiSpacer size={"s"} />
-                <EuiFlexItem
-                  grow={false}
-                  style={{
-                    maxHeight: "1000px",
-                    maxWidth: "500px",
-                    overflow: "auto",
-                    overflowX: "auto",
-                  }}
-                >
-                  <OntologyInfoWidget
-                    api={OLS4API}
-                    ontologyId={routeParams.ontologyId}
-                    hasTitle={true}
-                  />
+                <EuiFlexItem grow={false}>
+                  <EuiAccordion
+                    id={"relation info"}
+                    initialIsOpen={true}
+                    buttonContent={
+                      <EuiTitle size="s">
+                        <span style={{ textTransform: "capitalize" }}>
+                          Ontology Information
+                        </span>
+                      </EuiTitle>
+                    }
+                  >
+                    <OntologyInfoWidget
+                      api={OLS4API}
+                      ontologyId={routeParams.ontologyId}
+                      hasTitle={false}
+                    />
+                  </EuiAccordion>
                 </EuiFlexItem>
+                <EuiSpacer size={"s"} />
+                <EuiFlexItem grow={false}></EuiFlexItem>
               </EuiFlexGroup>
             </EuiFlexItem>
           </EuiFlexGroup>
         </EuiPanel>
       </EuiFlexGroup>
+
       <Helmet>
-        <title> {routeParams.ontologyId} overview &gt; SemLookP </title>
-        <meta
-          name="description"
-          content={
-            routeParams.ontologyId +
-            " overview for the semantic Lookup Service - SemLookP"
-          }
-        />
+        <title> Ontology overview &gt; SemLookP </title>
+        <meta name="description" content={Ontology + " overview"} />
       </Helmet>
-      ;
     </div>
   );
 }
