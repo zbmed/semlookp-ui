@@ -16,14 +16,14 @@ const defaultTemplateTheme = {
 };
 
 const berdTheme = {
-  primary: "#538961",
+  primary: "#254c2c",
   warning: "#e3e55f",
   body: "#a1b0a4",
   accent: "#e3e55f",
   missingResourceBoxColor: "#ccc8c8",
-  infoBoxColor1: "#86af96",
-  infoBoxColor2: "#c4c4c4",
-  headerBorderTop: "#244c2c",
+  infoBoxColor1: "#8cc4a4",
+  infoBoxColor2: "#ced7d0",
+  headerBorderTop: "#254c2c",
   headerBackground: "#ffffff",
   headerLogoSize: "xxl", // "original" | "s" | "m" | "l" | "xl" | "xxl";
   headerLogoWidth: "120px",

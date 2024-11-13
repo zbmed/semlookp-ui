@@ -3,7 +3,7 @@ export const imageMap = {
   berd: {
     homepageLogo: () =>
       import(
-        "./projectSpecificImages/cropped-Logo_BERD-NFDI_Schutzraum-weiss_gruen-schwarz_500px.png"
+        "./projectSpecificImages/Logo_BERD-NFDI_einzeilig_transparent_gruen-schwarz.svg"
       ),
     footerLogoA: () =>
       import(
@@ -17,10 +17,13 @@ export const imageMap = {
       import(
         "./defaultTemplate/defaultTemplateLayout/defaultTemplateImages/aquarius-svgrepo-com.svg"
       ),
-    headerLogo: () => import("./projectSpecificImages/berdlogo.png"),
+    headerLogo: () =>
+      import(
+        "./projectSpecificImages/Logo_BERD-NFDI_Symbol_transparent_gruen-schwarz.svg"
+      ),
     infoBoxLogoA: () =>
       import(
-        "./projectSpecificImages/cropped-Logo_BERD-NFDI_Schutzraum-weiss_gruen-schwarz_500px.png"
+        "./projectSpecificImages/Logo_BERD-NFDI_einzeilig_transparent_gruen-schwarz.svg"
       ),
     infoBoxLogoB: () => import("./common/layout/images/widgets-icons.png"),
     ts4nfdiLogo: () => import("./common/layout/images/TS4_icon.svg"),
