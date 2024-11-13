@@ -3,6 +3,7 @@ import {
   EuiCard,
   EuiFlexGroup,
   EuiFlexItem,
+  EuiImage,
   EuiLink,
   EuiSpacer,
   EuiText,
@@ -16,19 +17,31 @@ const description = (logo) => {
   return (
     <>
       <EuiText>
-        <EuiSpacer size={"m"} />
-        <EuiFlexGroup>
+        <EuiSpacer size={"s"} />
+        <EuiFlexGroup alignItems={"center"} justifyContent={"center"}>
           <EuiFlexItem grow={8}>
-            <EuiFlexGroup direction={"column"}>
+            <EuiFlexGroup direction={"column"} alignItems={"center"}>
               <EuiFlexItem>
-                <div style={{ textAlign: "center" }}>
-                  <EuiLink href={"https://www.berd-nfdi.de/"}>
-                    {" "}
-                    BERD@NFDI{" "}
-                  </EuiLink>
-                  is a Central Resource for Unstructured Data Related to
-                  Business, Economics, and similar Social Sciences.
-                </div>
+                <EuiFlexGroup
+                  alignItems={"center"}
+                  justifyContent={"spaceEvenly"}
+                >
+                  <EuiFlexItem grow={10}>
+                    <div style={{ textAlign: "center" }}>
+                      <EuiLink href={"https://www.berd-nfdi.de/"}>
+                        {" "}
+                        BERD@NFDI{" "}
+                      </EuiLink>
+                      is a Central Resource for Unstructured Data Related to
+                      Business, Economics, and similar Social Sciences.
+                    </div>
+                  </EuiFlexItem>
+                  <EuiFlexItem grow={3}>
+                    <EuiLink href={"https://www.berd-nfdi.de/"}>
+                      <EuiImage size="s" src={logo} alt={"BERD"} />
+                    </EuiLink>
+                  </EuiFlexItem>
+                </EuiFlexGroup>
               </EuiFlexItem>
               <EuiFlexItem grow={false}>
                 <div>
