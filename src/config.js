@@ -41,7 +41,8 @@ export const ts_specific_metadata = {
     has_funding_notice: true,
     has_version_update_info: true,
     has_logos: true,
-    funding_notice: "This work has been funded by the Deutsche Forschungsgemeinschaft (DFG, German Research Foundation) as part of BERD@NFDI (grant number 460037581) and TS4NFDI (via Base4NFDI, grant number 521453681).",
+    funding_notice:
+      "This work has been funded by the Deutsche Forschungsgemeinschaft (DFG, German Research Foundation) as part of BERD@NFDI (grant number 460037581) and TS4NFDI (via Base4NFDI, grant number 521453681).",
     last_update: "November, 2024",
     version: "development version",
     footer_logo_A_url: "https://www.google.de",
@@ -59,12 +60,12 @@ export const ts_specific_metadata = {
     },
   },
   search: {
-    search_example_text1: "diabetes",
-    search_example_link1: "/search?q=diabetes",
-    search_example_text2: "GO:0098743",
-    search_example_link2: "/search?q=GO:0098743",
-    search_example_text3: "http://snomed.info/id/423701002",
-    search_example_link3: "/search?q=http://snomed.info/id/423701002",
+    search_example_text1: "collection",
+    search_example_link1: "/search?q=collection",
+    search_example_text2: "OMRSE:00000023",
+    search_example_link2: "/search?q=OMRSE:00000023",
+    search_example_text3: "http://schema.org/BusinessEntityType",
+    search_example_link3: "/search?q=http://schema.org/BusinessEntityType",
   },
   projects: {
     cards: [{ name: "ProjectADescription" }, { name: "ProjectBDescription" }],
