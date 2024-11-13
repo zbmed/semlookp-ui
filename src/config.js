@@ -1,6 +1,6 @@
 // defaultTemplate
 export const global_config = {
-  api_url: "https://www.ebi.ac.uk/ols4/api/",
+  api_url: process.env.REACT_APP_API_URL,
   projectName: "defaultTemplate",
 };
 

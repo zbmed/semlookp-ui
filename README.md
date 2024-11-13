@@ -7,7 +7,7 @@ This repository provides a generic code base from which a specialised terminolog
 It is recommended that users possess a basic knowledge of coding and of the React framework.
 Should assistance be required in setting up a project-specific terminology service branch, please feel free to contact one of the developers.
 
-This is the first version of a shared frontend codebase and is under active development. 
+This is the first version of a shared frontend codebase and is under active development.
 So please forgive any errors that occur.
 We would be grateful if you could report any bugs.
 
@@ -37,6 +37,7 @@ Create a file in the project root directory named `.npmrc` and add the following
 ```
 
 #### Docker
+
 To run the Docker container, do:
 
 ```shell
