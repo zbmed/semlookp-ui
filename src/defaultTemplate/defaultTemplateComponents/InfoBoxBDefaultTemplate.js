@@ -22,41 +22,34 @@ const description = (logo) => {
             <div style={{ textAlign: "center" }}>
               <EuiText>
                 <i>
-                  Small
-                  <EuiLink
-                    href={
-                      "https://github.com/ts4nfdi/terminology-service-suite"
-                    }
-                  >
-                    {" "}
-                    GUI components{" "}
-                  </EuiLink>
-                  to use and display semantic information
+                  Small user interface components to use and display semantic
+                  information
                 </i>
               </EuiText>
             </div>
-          </EuiFlexItem>
-          <EuiFlexItem grow={1}>
-            <EuiFlexGroup justifyContent="flexEnd">
-              <EuiFlexItem grow={false}>
-                <EuiButton
-                  style={{ backgroundColor: "#000000", color: "#ffffff" }}
-                  onClick={() =>
-                    window.location.assign(
-                      "https://ts4nfdi.github.io/terminology-service-suite/comp/latest"
-                    )
-                  }
-                >
-                  Explore
-                </EuiButton>
-              </EuiFlexItem>
-            </EuiFlexGroup>
           </EuiFlexItem>
         </EuiFlexGroup>
         <EuiSpacer size="s" />
       </EuiText>
       <EuiSpacer size={"s"} />
-      <EuiImage size="original" src={logo} alt={"SemLookP Widgets Icons"} />
+      <EuiLink href={"https://github.com/ts4nfdi/terminology-service-suite"}>
+        <EuiImage size="original" src={logo} alt={"SemLookP Widgets Icons"} />
+      </EuiLink>
+      <EuiSpacer size={"m"} />
+      <EuiFlexItem>
+        <div>
+          <EuiButton
+            style={{ backgroundColor: "#000000", color: "#ffffff" }}
+            onClick={() =>
+              window.location.assign(
+                "https://ts4nfdi.github.io/terminology-service-suite/comp/latest"
+              )
+            }
+          >
+            Explore the TSS
+          </EuiButton>
+        </div>
+      </EuiFlexItem>
     </>
   );
 };
