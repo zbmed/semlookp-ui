@@ -250,11 +250,19 @@ export default function Ontology() {
                       </EuiTitle>
                     }
                   >
-                    <OntologyInfoWidget
-                      api={OLS4API}
-                      ontologyId={routeParams.ontologyId}
-                      hasTitle={false}
-                    />
+                    <div
+                      style={{
+                        overflow: "auto",
+                        wordWrap: "break-word",
+                        overflowWrap: "anywhere",
+                      }}
+                    >
+                      <OntologyInfoWidget
+                        api={OLS4API}
+                        ontologyId={routeParams.ontologyId}
+                        hasTitle={false}
+                      />
+                    </div>
                   </EuiAccordion>
                 </EuiFlexItem>
                 <EuiSpacer size={"s"} />
