@@ -240,13 +240,21 @@ export default function Entity() {
                       </EuiTitle>
                     }
                   >
-                    <EntityInfoWidget
-                      api={OLS4API}
-                      ontologyId={routeParams.ontologyId}
-                      iri={concatIri}
-                      hasTitle={false}
-                      entityType={entityType}
-                    />
+                    <div
+                      style={{
+                        overflow: "auto",
+                        wordWrap: "break-word",
+                        overflowWrap: "anywhere",
+                      }}
+                    >
+                      <EntityInfoWidget
+                        api={OLS4API}
+                        ontologyId={routeParams.ontologyId}
+                        iri={concatIri}
+                        hasTitle={false}
+                        entityType={entityType}
+                      />
+                    </div>
                   </EuiAccordion>
                 </EuiFlexItem>
                 <EuiSpacer size={"s"} />
