@@ -60,12 +60,12 @@ export const ts_specific_metadata = {
     },
   },
   search: {
-    search_example_text1: "collection",
-    search_example_link1: "/search?q=collection",
-    search_example_text2: "OMRSE:00000023",
-    search_example_link2: "/search?q=OMRSE:00000023",
-    search_example_text3: "http://schema.org/BusinessEntityType",
-    search_example_link3: "/search?q=http://schema.org/BusinessEntityType",
+    search_example_text1: "person",
+    search_example_link1: "/search?q=person",
+    search_example_text2: "SCHEMA:ORGANIZATION",
+    search_example_link2: "/search?q=SCHEMA:ORGANIZATION",
+    search_example_text3: "location",
+    search_example_link3: "/search?q=location",
   },
   projects: {
     cards: [{ name: "ProjectADescription" }, { name: "ProjectBDescription" }],
