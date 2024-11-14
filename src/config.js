@@ -7,9 +7,9 @@ export const global_config = {
 export const ts_specific_metadata = {
   active_dev_banner_text:
     " This software is currently under active development. Therefore, please forgive any errors that occur. We would be very pleased if you could report any errors to semlookp-support@zbmed.de.",
-  contact_mail_address: "example@example.de",
-  contact_mail_address_mailto: "mailto:example@example.de",
-  collection: "collection=nfdi4health",
+  contact_mail_address: "example@example.de", // use semlookp-support@zbmed.de if you have none
+  contact_mail_address_mailto: "mailto:example@example.de", // the "mailto" URI is needed to produce a hyperlink that will allow users to send an email on click
+  collection: "collection=nfdi4health", // not important now, will be relevant in the future for the widgets that are using the TS4NFDI Gateway
   homepage: {
     has_logo: true,
     has_text_below_logo: true,
@@ -26,6 +26,7 @@ export const ts_specific_metadata = {
     privacy_markdown_file: "defaultTemplate/defaultTemplateMarkdown/privacy",
   },
   header: {
+    // to remove links, just remove or uncomment
     tabs: [
       { name: "Home", source: "/" },
       { name: "Search", source: "/search?q=*" },

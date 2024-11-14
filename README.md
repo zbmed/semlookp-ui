@@ -7,6 +7,10 @@ This repository provides a generic code base from which a specialised terminolog
 It is recommended that users possess a basic knowledge of coding and of the React framework.
 Should assistance be required in setting up a project-specific terminology service branch, please feel free to contact one of the developers.
 
+This is the first version of a shared frontend codebase and is under active development.
+So please forgive any errors that occur.
+We would be grateful if you could report any bugs.
+
 ## Built With
 
 - [ReactJS 17](https://reactjs.org/blog/2020/10/20/react-v17.html)
@@ -24,36 +28,38 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 #### Authenticate to the npm package registry
 
 For using the @ts4nfdi/terminology-service-suite you have to [authenticate](https://docs.github.com/de/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#authentifizieren-mit-einem-personal-access-token) with a personal access token or deploy token.
-For local development specify a runtime variable NPM_TOKEN with your npm authentication token
-
-OR
-
-add the following two lines to your local npm configuration `~/.npmrc`. Replace `TOKEN` with your personal access
-token (classic).
+Create a file in the project root directory named `.npmrc` and add the following two lines. Replace `TOKEN` with your
+[personal access token (classic)](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic).
 
 ```
 @ts4nfdi:registry=https://npm.pkg.github.com
 //npm.pkg.github.com/:_authToken=TOKEN
 ```
 
+#### Docker
+
+To run the Docker container, do:
+
+```shell
+npm install
+npm run build
+docker build -t semlookp-ui .
+docker run --name semlookp-ui -p 8080:80 semlookp-ui
+```
+
 #### Local development
 
-To start the application for the first time, install the modules with:
+To start the application for the first time, install the modules and start the development server:
 
-```
+```shell
 npm install
-```
-
-Start the development server with:
-
-```
 npm start
 ```
 
-Accessible at [http://localhost:3000](http://localhost:3000).
+Accessible at: [http://localhost:3000](http://localhost:3000).
 
 The page will reload when you make edits.\
-You will also see any lint errors in the console.\
+
 We use prettier for code formatting. Run
 
 ```
@@ -63,23 +69,9 @@ npm run style:ceck
 
 to format or check all files.
 
-### Production
-
-Create production build for all services:  
-Uncomment `build: ./` in `docker-compose.yaml`  
-Set an environment variable with your NPM_TOKEN.  
-Run the following to build the Docker image with the current NPM_TOKEN environment variable.
-
-```
-$ docker-compose --env-file dev.env build --build-arg NPM_TOKEN=${NPM_TOKEN}
-$ docker-compose --env-file dev.env up
-```
-
-[Docker and private modules](https://docs.npmjs.com/docker-and-private-modules)
-
 ## Hints for using the generic code base
 
-The main branch represents the generic code base.
+The main branch represents the generic codebase.
 Project specific branches can be added.
 Those specific branches should stick to the given structure to allow updates.
 
@@ -108,16 +100,23 @@ git checkout -b name-of-your-new-branch
 - `src/componentMap.js` defines component mappings of specific components to common names
 - `src/imageMap.js` defines image maps of specific images to common names
 
-Replace _// defaultTemplate_ at the beginning of each of these four files with your project name to make Git Attributes work.
+a) Replace _// defaultTemplate_ at the beginning of each of these four files with your project name to make Git Attributes work.
+b) Rename the components in `src/projectSpecific/projectSpecificComponents` and adapt the paths in `src/componentMap.js` accordingly
 
-5. Create the local image directory `src/projectSpecificImages`. It's included in `.gitignore`.
+5. Create the local image directory `src/projectSpecificImages`.
    Define image maps in `src/imageMap.js`.
 
    Images from remote sources must be implemented directly into the code base, and therefore do not support compatibility with the main branch.
    We have therefore decided not to include images via links in the generic code base.
    In project specific components you are free to import images via links.
 
-6. Optional: adapt CI
+6. Adapt or remove CI script
+7. Change favicon in `public/index.html`
+8. Run
+
+```
+npm run style:format
+```
 
 ### Merging the main branch to stay up to date
 
@@ -184,5 +183,5 @@ This project is developed by the [NFDI4Health consortium](https://www.nfdi4healt
 The NFDI4Health Consortium gratefully acknowledges the financial support of the Deutsche Forschungsgemeinschaft
 (DFG, German Research Foundation) – project number 442326535.
 
-The project is derived from the Semantic Lookup Platform SemLookP which was also developed in part
+The project is derived from the Semantic Lookup Platform SemLookP which was also developed
 by [ZB MED - Information Centre for Life Sciences](https://www.zbmed.de/en/).
