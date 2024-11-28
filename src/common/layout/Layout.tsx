@@ -2,8 +2,7 @@ import {
   EuiErrorBoundary,
   EuiPage,
   EuiPageBody,
-  EuiPageContent,
-  EuiPageContentBody,
+  EuiPageSection,
 } from "@elastic/eui";
 import { Outlet } from "react-router-dom";
 import Footer from "../components/Footer";
@@ -14,22 +13,16 @@ export const Layout = () => {
   return (
     <EuiPage style={{ backgroundColor: "#F5F5F5" }} paddingSize="none">
       <EuiPageBody>
-        <EuiPageContent
-          hasBorder={false}
-          hasShadow={false}
-          paddingSize="none"
-          color="transparent"
-          borderRadius="none"
-        >
+        <EuiPageSection paddingSize="none" color="transparent">
           <Header />
-          <EuiPageContentBody restrictWidth style={{ marginTop: "80px" }}>
+          <EuiPageSection restrictWidth style={{ marginTop: "80px" }}>
             <EuiErrorBoundary>
               <Outlet />
             </EuiErrorBoundary>
             <BottomBar />
             <Footer />
-          </EuiPageContentBody>
-        </EuiPageContent>
+          </EuiPageSection>
+        </EuiPageSection>
       </EuiPageBody>
     </EuiPage>
   );
