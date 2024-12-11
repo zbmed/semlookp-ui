@@ -90,4 +90,6 @@ jobs:
             --set-json='images.frontend="ghcr.io/${{ github.repository }}:${{ github.event.pull_request.head.sha || github.sha }}"' \
             --set-json='ingress.dns="semlookp-ui-berd.qa.km.k8s.zbmed.de"'  \
             --set-json='ingress.path="/"'  \
+            --set-json='auth.enabled="true"'  \
+            --set-json='auth.secretName="berd-auth"'  \
             semlookp-deployment/semlookp-ui
