@@ -1,4 +1,3 @@
-import "@elastic/eui/dist/eui_theme_light.css";
 import { Suspense } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import LinkScroller from "./common/components/LinkScroller";
@@ -26,7 +25,10 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/about/api" element={<ApiPage />} />
               <Route path="*" element={<Error />} />
-              <Route path="/ontologies/:ontologyId" element={<Ontology />} />
+              <Route
+                path="/ontologies/:ontologyId/:tabId?"
+                element={<Ontology />}
+              />
               <Route
                 path="/privacy"
                 element={

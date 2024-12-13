@@ -1,4 +1,4 @@
-import { EuiPanel, EuiSpacer, EuiText } from "@elastic/eui";
+import { EuiButton, EuiPanel, EuiSpacer, EuiText } from "@elastic/eui";
 import { ResourcesWidget } from "@ts4nfdi/terminology-service-suite";
 import { Helmet } from "react-helmet";
 import { global_config } from "../../config";
@@ -14,7 +14,39 @@ export default function Resources() {
       <ResourcesWidget
         api={OLS4API}
         targetLink={"/"}
-        parameter={"collection=nfdi4health"}
+        parameter={""}
+        actions={[
+          {
+            render: (item) => (
+              <EuiButton
+                href={`/ontologies/${item.ontologyId}/classes-hierarchy`}
+                size={"s"}
+              >
+                Show classes
+              </EuiButton>
+            ),
+          },
+          {
+            render: (item) => (
+              <EuiButton
+                href={`/ontologies/${item.ontologyId}/properties-hierarchy`}
+                size={"s"}
+              >
+                Show properties
+              </EuiButton>
+            ),
+          },
+          {
+            render: (item) => (
+              <EuiButton
+                href={`/ontologies/${item.ontologyId}/individuals-hierarchy`}
+                size={"s"}
+              >
+                Show individuals
+              </EuiButton>
+            ),
+          },
+        ]}
       />
       <Helmet>
         <title> Resources &gt; SemLookP </title>
