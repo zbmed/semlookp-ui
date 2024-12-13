@@ -1,6 +1,6 @@
 // berd
 export const global_config = {
-  api_url: "https://ols4-berd.prod.km.k8s.zbmed.de/ols4/api/",
+  api_url: "https://ts.berd-nfdi.de/ols4/api/",
   projectName: "berd",
 };
 
