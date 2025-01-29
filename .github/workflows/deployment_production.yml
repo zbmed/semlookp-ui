@@ -33,6 +33,6 @@ jobs:
             --set-json='ingress.path="/"'  \
             --set-json='ingress.enableSSL="true"'  \
             --set-json='ingress.certIssuer="letsencrypt-prod"'  \
-            --set-json='auth.enabled="true"'  \
+            --set-json='auth.enabled="false"'  \
             --set-json='auth.secretName="berd-auth-prod"'  \
             semlookp-deployment/semlookp-ui
