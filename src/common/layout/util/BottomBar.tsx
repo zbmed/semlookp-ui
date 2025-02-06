@@ -5,7 +5,7 @@ import {
   EuiFlexItem,
 } from "@elastic/eui";
 import { useState } from "react";
-import { ts_specific_metadata } from "../../../config";
+// import { ts_specific_metadata } from "../../../config";
 
 export const BottomBar = () => {
   const [toggleIdSelected, setToggleIdSelected] = useState(true);
@@ -14,9 +14,9 @@ export const BottomBar = () => {
       {toggleIdSelected && (
         <EuiBottomBar>
           <EuiFlexGroup justifyContent="flexEnd">
-            <EuiFlexItem>
+            {/*            <EuiFlexItem>
               {ts_specific_metadata.active_dev_banner_text}
-            </EuiFlexItem>
+            </EuiFlexItem>*/}
             <EuiFlexItem grow={false}>
               <EuiButtonEmpty
                 onClick={() => setToggleIdSelected(!toggleIdSelected)}
