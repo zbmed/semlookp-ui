@@ -15,7 +15,6 @@ export default function Resources() {
       <EuiSpacer />
       <ResourcesWidget
         api={OLS4API}
-        targetLink={"/"}
         onNavigate={(ontologyId) => {
           navigate(`/ontologies/${ontologyId}/tab/`);
         }}
