@@ -11,3 +11,5 @@ src/config.js merge=ours
 src/theme.ts merge=ours
 README.md merge=ours
 public/index.html merge=ours
+deployment/nginx.conf merge=ours
+deployment/nginx-server.conf merge=ours
