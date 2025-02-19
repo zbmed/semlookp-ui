@@ -17,9 +17,9 @@ import {
   OntologyInfoWidget,
   TitleWidget,
 } from "@ts4nfdi/terminology-service-suite";
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { Helmet } from "react-helmet";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { global_config } from "../../config";
 import { navigateToEntity } from "../components/utils";
 
@@ -27,11 +27,12 @@ const OLS4API = global_config.api_url;
 export default function Ontology() {
   const routeParams = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const tabs = useMemo(
     () => [
       {
-        id: "classes",
+        id: "classes-hierarchy",
         name: "Classes",
         content: (
           <HierarchyWidget
@@ -66,7 +67,7 @@ export default function Ontology() {
         ),
       },
       {
-        id: "properties",
+        id: "properties-hierarchy",
         name: "Properties",
         content: (
           <HierarchyWidget
@@ -101,7 +102,7 @@ export default function Ontology() {
         ),
       },
       {
-        id: "individuals",
+        id: "individuals-hierarchy",
         name: "Individuals",
         content: (
           <HierarchyWidget
@@ -139,21 +140,25 @@ export default function Ontology() {
     [routeParams.ontologyId, navigate]
   );
 
-  const [selectedTabId, setSelectedTabId] = useState("classes");
-  const selectedTabContent = useMemo(() => {
-    return tabs.find((obj) => obj.id === selectedTabId)?.content;
-  }, [selectedTabId, tabs]);
+  const currentTabId =
+    location.pathname.split("/").pop() || "classes-hierarchy";
 
   const onSelectedTabChanged = (id: string) => {
-    setSelectedTabId(id);
+    if (id !== currentTabId) {
+      navigate(`/ontologies/${routeParams.ontologyId}/tab/${id}`);
+    }
   };
+
+  const selectedTabContent = useMemo(() => {
+    return tabs.find((tab) => tab.id === currentTabId)?.content;
+  }, [currentTabId, tabs]);
 
   const renderTabs = () => {
     return tabs.map((tab, index) => (
       <EuiTab
         key={index}
         onClick={() => onSelectedTabChanged(tab.id)}
-        isSelected={tab.id === selectedTabId}
+        isSelected={tab.id === currentTabId}
       >
         {tab.name}
       </EuiTab>

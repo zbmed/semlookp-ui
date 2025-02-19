@@ -1,10 +1,12 @@
-import { EuiPanel, EuiSpacer, EuiText } from "@elastic/eui";
+import { EuiButton, EuiPanel, EuiSpacer, EuiText } from "@elastic/eui";
 import { ResourcesWidget } from "@ts4nfdi/terminology-service-suite";
 import { Helmet } from "react-helmet";
+import { useNavigate } from "react-router-dom";
 import { global_config } from "../../config";
 
 const OLS4API = global_config.api_url;
 export default function Resources() {
+  const navigate = useNavigate();
   return (
     <EuiPanel paddingSize="l">
       <EuiText>
@@ -14,7 +16,42 @@ export default function Resources() {
       <ResourcesWidget
         api={OLS4API}
         targetLink={"/"}
-        parameter={"collection=nfdi4health"}
+        onNavigate={(ontologyId) => {
+          navigate(`/ontologies/${ontologyId}/tab/`);
+        }}
+        parameter={""}
+        actions={[
+          {
+            render: (item) => (
+              <EuiButton
+                href={`/ontologies/${item.ontologyId}/tab/classes-hierarchy`}
+                size={"s"}
+              >
+                Show classes
+              </EuiButton>
+            ),
+          },
+          {
+            render: (item) => (
+              <EuiButton
+                href={`/ontologies/${item.ontologyId}/tab/properties-hierarchy`}
+                size={"s"}
+              >
+                Show properties
+              </EuiButton>
+            ),
+          },
+          {
+            render: (item) => (
+              <EuiButton
+                href={`/ontologies/${item.ontologyId}/tab/individuals-hierarchy`}
+                size={"s"}
+              >
+                Show individuals
+              </EuiButton>
+            ),
+          },
+        ]}
       />
       <Helmet>
         <title> Resources &gt; SemLookP </title>

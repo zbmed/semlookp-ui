@@ -26,7 +26,6 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/about/api" element={<ApiPage />} />
               <Route path="*" element={<Error />} />
-              <Route path="/ontologies/:ontologyId" element={<Ontology />} />
               <Route
                 path="/privacy"
                 element={
@@ -45,13 +44,16 @@ function App() {
                   />
                 }
               />
-
               <Route path="/projects" element={<Projects />} />
               <Route path="/resources" element={<Resources />} />
               <Route path="/search" element={<SearchResults />} />
               <Route
                 path="/ontologies/:ontologyId/:entityType"
                 element={<Entity />}
+              />
+              <Route
+                path="/ontologies/:ontologyId/tab/:tabId?"
+                element={<Ontology />}
               />
             </Route>
           </Routes>
