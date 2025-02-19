@@ -20,7 +20,6 @@ export const BottomBar = () => {
             <EuiFlexItem grow={false}>
               <EuiButtonEmpty
                 onClick={() => setToggleIdSelected(!toggleIdSelected)}
-                color="ghost"
                 size="s"
                 iconType="cross"
               >
