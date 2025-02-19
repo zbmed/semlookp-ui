@@ -145,7 +145,7 @@ export default function Ontology() {
 
   const onSelectedTabChanged = (id: string) => {
     if (id !== currentTabId) {
-      navigate(`/ontologies/${routeParams.ontologyId}/${id}`);
+      navigate(`/ontologies/${routeParams.ontologyId}/tab/${id}`);
     }
   };
 
