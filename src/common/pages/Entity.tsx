@@ -122,7 +122,7 @@ export default function Entity() {
               <EuiTitle size={"xs"}>
                 <span>Identifier/IRI:</span>
               </EuiTitle>
-              <IriWidget iri={concatIri} copyButton={true} />
+              <IriWidget iri={concatIri} copyButton={"left"} />
               <EuiSpacer size={"m"} />
               <EntityDefinedByWidget
                 api={global_config.api_url}
