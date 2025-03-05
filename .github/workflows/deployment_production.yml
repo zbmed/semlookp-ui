@@ -29,6 +29,7 @@ jobs:
             helmv3 upgrade semlookp-ui \
             --install \
             --set-json='images.frontend="${{ env.IMAGE_NAME }}"' \
+            --set-json='frontend.imagePullSecret="semlookpui-dockerconfigjson-github-com"' \
             --set-json='ingress.dns="semanticlookup.zbmed.de"'  \
             --set-json='ingress.path="/"'  \
             --set-json='ingress.enableSSL="true"'  \
