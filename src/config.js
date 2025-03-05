@@ -1,6 +1,6 @@
 // health
 export const global_config = {
-  api_url: "https://ols4-nfdi4health.prod.km.k8s.zbmed.de/ols4/api/",
+  api_url: "https://semanticlookup.zbmed.de/ols/api/",
   projectName: "health",
 };
 
