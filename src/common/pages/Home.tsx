@@ -1,4 +1,10 @@
-import { EuiFlexGroup, EuiFlexItem, EuiSpacer } from "@elastic/eui";
+import {
+  EuiCallOut,
+  EuiFlexGroup,
+  EuiFlexItem,
+  EuiLink,
+  EuiSpacer,
+} from "@elastic/eui";
 import { DataContentWidget } from "@ts4nfdi/terminology-service-suite";
 import { Suspense } from "react";
 import { Helmet } from "react-helmet";
@@ -25,6 +31,21 @@ export default function Home() {
         <title>{ts_specific_metadata.homepage.homepage_helmet_text}</title>
       </Helmet>
       <EuiSpacer size="xxl" />
+
+      <EuiCallOut
+        title={"Welcome to the new terminology service user interface!"}
+      >
+        <p>
+          The old user interface is still available at{" "}
+          <EuiLink href={"https://ols3-semanticlookup.zbmed.de/"}>
+            https://ols3-semanticlookup.zbmed.de/
+          </EuiLink>{" "}
+          and the OLS3 API can be accessed at{" "}
+          <EuiLink href={"https://ols3-semanticlookup.zbmed.de/ols/api"}>
+            https://ols3-semanticlookup.zbmed.de/ols/api.
+          </EuiLink>
+        </p>
+      </EuiCallOut>
 
       <Suspense fallback={<div>Loading...</div>}>
         {ts_specific_metadata.homepage.has_logo && <LogoBox />}
