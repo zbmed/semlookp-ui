@@ -26,24 +26,30 @@ import { Helmet } from "react-helmet";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { global_config } from "../../config";
 import { navigateToEntity } from "../components/utils";
+import { buildIri } from "../util/util";
 
 const OLS4API = global_config.api_url;
 
 export default function Entity() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [searchParam, setSearchParams] = useSearchParams(); // read the query string in the URL for the current location
-  const concatIri = decodeURIComponent(
-    decodeURIComponent(searchParam.get("iri"))
-  );
+  const [searchParam, setSearchParams] = useSearchParams();
   const routeParams = useParams();
   const navigate = useNavigate();
+
+  const ontologyId = routeParams.ontologyId;
   const entityType =
     routeParams.entityType == "terms"
       ? "term"
       : routeParams.entityType == "properties"
       ? "property"
       : "individual";
+
   const entityTitle = entityType[0].toUpperCase() + entityType.slice(1);
+
+  const iriParam = searchParam.get("iri");
+  const shortForm = searchParam.get("short_form");
+
+  const concatIri = buildIri(iriParam, shortForm, ontologyId);
 
   return (
     <div>
