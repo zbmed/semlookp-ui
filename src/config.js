@@ -1,6 +1,6 @@
 // defaultTemplate
 export const global_config = {
-  api_url: "https://www.ebi.ac.uk/ols4/api/",
+  api_url: "https://semanticlookup.zbmed.de/api/",
   projectName: "defaultTemplate",
 };
 
@@ -43,7 +43,7 @@ export const ts_specific_metadata = {
     has_version_update_info: true,
     has_logos: true,
     funding_notice: "This is the funding notice.",
-    last_update: "October, 2024",
+    last_update: "June, 2025",
     version: "development version",
     footer_logo_A_url: "https://www.google.de",
     footer_logo_B_url: "https://www.google.de",
