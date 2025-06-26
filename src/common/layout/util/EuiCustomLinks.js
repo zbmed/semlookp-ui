@@ -1,5 +1,6 @@
 import { EuiHeaderLink, EuiLink } from "@elastic/eui";
-import React from "react";
+import PropTypes from "prop-types";
+import { forwardRef } from "react";
 import { useHref, useLinkClickHandler } from "react-router-dom";
 
 /**
@@ -10,7 +11,7 @@ import { useHref, useLinkClickHandler } from "react-router-dom";
  * @returns {JSX.Element}
  * @constructor
  */
-export const EuiNavigationLink = React.forwardRef(
+export const EuiNavigationLink = forwardRef(
   ({ onClick, replace = false, state, target, to, children, ...rest }, ref) => {
     const href = useHref(to);
     const handleClick = useLinkClickHandler(to, {
@@ -38,7 +39,16 @@ export const EuiNavigationLink = React.forwardRef(
   }
 );
 
-export const EuiCustomHeaderLink = React.forwardRef(
+EuiNavigationLink.propTypes = {
+  onClick: PropTypes.func,
+  replace: PropTypes.bool,
+  state: PropTypes.any,
+  target: PropTypes.string,
+  to: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
+  children: PropTypes.node.isRequired,
+};
+
+export const EuiCustomHeaderLink = forwardRef(
   ({ onClick, replace = false, state, target, to, children, ...rest }, ref) => {
     const href = useHref(to);
     const handleClick = useLinkClickHandler(to, {
@@ -64,3 +74,12 @@ export const EuiCustomHeaderLink = React.forwardRef(
     );
   }
 );
+
+EuiCustomHeaderLink.propTypes = {
+  onClick: PropTypes.func,
+  replace: PropTypes.bool,
+  state: PropTypes.any,
+  target: PropTypes.string,
+  to: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
+  children: PropTypes.node.isRequired,
+};

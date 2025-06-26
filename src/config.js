@@ -43,7 +43,7 @@ export const ts_specific_metadata = {
     has_logos: true,
     funding_notice:
       "This work has been funded by the Deutsche Forschungsgemeinschaft (DFG, German Research Foundation) as part of BERD@NFDI (grant number 460037581) and TS4NFDI (via Base4NFDI, grant number 521453681).",
-    last_update: "November, 2024",
+    last_update: "June, 2025",
     version: "development version",
     footer_logo_A_url: "https://www.google.de",
     footer_logo_B_url: "https://www.google.de",
