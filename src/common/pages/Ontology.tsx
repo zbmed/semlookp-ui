@@ -17,7 +17,7 @@ import {
   OntologyInfoWidget,
   TitleWidget,
 } from "@ts4nfdi/terminology-service-suite";
-import { useMemo } from "react";
+import { useCallback, useMemo } from "react";
 import { Helmet } from "react-helmet";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { global_config } from "../../config";
@@ -29,29 +29,35 @@ export default function Ontology() {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const navigateToEntityHierarchy = (ontologyId, entityType, entity) => {
-    navigate(
-      `/ontologies/${ontologyId}/${
-        entityType == "class" || entityType == "term"
-          ? "terms"
-          : entityType == "property"
-          ? "properties"
-          : "individuals"
-      }?iri=${encodeURIComponent(encodeURIComponent(entity.iri))}`
-    );
-  };
+  const navigateToEntityHierarchy = useCallback(
+    (ontologyId, entityType, entity) => {
+      navigate(
+        `/ontologies/${ontologyId}/${
+          entityType == "class" || entityType == "term"
+            ? "terms"
+            : entityType == "property"
+            ? "properties"
+            : "individuals"
+        }?iri=${encodeURIComponent(encodeURIComponent(entity.iri))}`
+      );
+    },
+    [navigate]
+  );
 
-  const navigateToOntologyHierarchy = (ontologyId, entityType, entity) => {
-    navigate(
-      `/ontologies/${ontologyId}/${
-        entityType == "class" || entityType == "term"
-          ? "terms"
-          : entityType == "property"
-          ? "properties"
-          : "individuals"
-      }?iri=${encodeURIComponent(encodeURIComponent(entity.iri))}`
-    );
-  };
+  const navigateToOntologyHierarchy = useCallback(
+    (ontologyId, entityType, entity) => {
+      navigate(
+        `/ontologies/${ontologyId}/${
+          entityType == "class" || entityType == "term"
+            ? "terms"
+            : entityType == "property"
+            ? "properties"
+            : "individuals"
+        }?iri=${encodeURIComponent(encodeURIComponent(entity.iri))}`
+      );
+    },
+    [navigate]
+  );
 
   const tabs = useMemo(
     () => [
@@ -101,7 +107,11 @@ export default function Ontology() {
         ),
       },
     ],
-    [routeParams.ontologyId, navigate]
+    [
+      routeParams.ontologyId,
+      navigateToEntityHierarchy,
+      navigateToOntologyHierarchy,
+    ]
   );
 
   const currentTabId = searchParams.get("hierarchy") || "classes-hierarchy";
