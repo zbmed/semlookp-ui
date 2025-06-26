@@ -28,8 +28,6 @@ jobs:
           ref_name="${head_ref:-${ref_name}}"
           combined_tag="${ref_name}-${GITHUB_SHA}"
           echo "::set-output name=imageTag::${combined_tag#v}"
-      - name: Configure npm to use registry for @ts4nfdi scope
-        run: echo "@ts4nfdi:registry=https://npm.pkg.github.com" >> .npmrc
       - name: Login to Container Registry
         uses: docker/login-action@v1
         with:
@@ -39,10 +37,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: "16.x"
-          registry-url: "https://npm.pkg.github.com/"
       - run: npm install
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.SEMLOOKP_WIDGETS_TOKEN }}
         working-directory: .
       - run: npm run style:format
         env:
