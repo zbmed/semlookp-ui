@@ -1,4 +1,5 @@
 import { EuiLink, EuiLinkAnchorProps } from "@elastic/eui";
+import React from "react";
 import { useHref, useNavigate } from "react-router-dom";
 
 interface EuiCustomLinkProps extends EuiLinkAnchorProps {
@@ -6,14 +7,14 @@ interface EuiCustomLinkProps extends EuiLinkAnchorProps {
 }
 
 // Most of the content of this files are from https://github.com/elastic/eui/pull/1976.
-const isModifiedEvent = (event: any) =>
+const isModifiedEvent = (event: React.MouseEvent) =>
   !!(event.metaKey || event.altKey || event.ctrlKey || event.shiftKey);
 
-const isLeftClickEvent = (event: any) => event.button === 0;
+const isLeftClickEvent = (event: React.MouseEvent) => event.button === 0;
 
 export default function EuiCustomLink({ to, ...props }: EuiCustomLinkProps) {
   const navigate = useNavigate();
-
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function onClick(event: any) {
     if (event.defaultPrevented) {
       return;

@@ -50,10 +50,7 @@ function App() {
                 path="/ontologies/:ontologyId/:entityType"
                 element={<Entity />}
               />
-              <Route
-                path="/ontologies/:ontologyId/tab/:tabId?"
-                element={<Ontology />}
-              />
+              <Route path="/ontologies/:ontologyId" element={<Ontology />} />
             </Route>
           </Routes>
         </Suspense>

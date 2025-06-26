@@ -96,7 +96,9 @@ export default function Entity() {
                 api={global_config.api_url}
                 ontologyId={routeParams.ontologyId}
                 onNavigateToOntology={(ontologyId) => {
-                  navigate(`/ontologies/${ontologyId}/tab/classes-hierarchy`);
+                  navigate(
+                    `/ontologies/${ontologyId}/?hierarchy=classes-hierarchy`
+                  );
                 }}
               />
               <EuiSpacer size={"m"} />

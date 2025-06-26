@@ -53,8 +53,6 @@ export default function Footer() {
             <EuiFlexItem grow={false}>
               {/*TODO get version and last update from API*/}
               <EuiText color="subdued" size="xs">
-                Version: {ts_specific_metadata.footer.version}
-                <p></p>
                 Last update: {ts_specific_metadata.footer.last_update}
               </EuiText>
             </EuiFlexItem>

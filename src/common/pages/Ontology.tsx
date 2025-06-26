@@ -17,9 +17,9 @@ import {
   OntologyInfoWidget,
   TitleWidget,
 } from "@ts4nfdi/terminology-service-suite";
-import { useMemo } from "react";
+import { useCallback, useMemo } from "react";
 import { Helmet } from "react-helmet";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { global_config } from "../../config";
 import { navigateToEntity } from "../components/utils";
 
@@ -27,7 +27,37 @@ const OLS4API = global_config.api_url;
 export default function Ontology() {
   const routeParams = useParams();
   const navigate = useNavigate();
-  const location = useLocation();
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const navigateToEntityHierarchy = useCallback(
+    (ontologyId, entityType, entity) => {
+      navigate(
+        `/ontologies/${ontologyId}/${
+          entityType == "class" || entityType == "term"
+            ? "terms"
+            : entityType == "property"
+            ? "properties"
+            : "individuals"
+        }?iri=${encodeURIComponent(encodeURIComponent(entity.iri))}`
+      );
+    },
+    [navigate]
+  );
+
+  const navigateToOntologyHierarchy = useCallback(
+    (ontologyId, entityType, entity) => {
+      navigate(
+        `/ontologies/${ontologyId}/${
+          entityType == "class" || entityType == "term"
+            ? "terms"
+            : entityType == "property"
+            ? "properties"
+            : "individuals"
+        }?iri=${encodeURIComponent(encodeURIComponent(entity.iri))}`
+      );
+    },
+    [navigate]
+  );
 
   const tabs = useMemo(
     () => [
@@ -41,28 +71,8 @@ export default function Ontology() {
             backendType={"ols"}
             entityType={"class"}
             ontologyId={routeParams.ontologyId}
-            onNavigateToEntity={(ontologyId, entityType, entity) => {
-              navigate(
-                `/ontologies/${ontologyId}/${
-                  entityType == "class" || entityType == "term"
-                    ? "terms"
-                    : entityType == "property"
-                    ? "properties"
-                    : "individuals"
-                }?iri=${encodeURIComponent(encodeURIComponent(entity.iri))}`
-              );
-            }}
-            onNavigateToOntology={(ontologyId, entityType, entity) => {
-              navigate(
-                `/ontologies/${ontologyId}/${
-                  entityType == "class" || entityType == "term"
-                    ? "terms"
-                    : entityType == "property"
-                    ? "properties"
-                    : "individuals"
-                }?iri=${encodeURIComponent(encodeURIComponent(entity.iri))}`
-              );
-            }}
+            onNavigateToEntity={navigateToEntityHierarchy}
+            onNavigateToOntology={navigateToOntologyHierarchy}
           />
         ),
       },
@@ -76,28 +86,8 @@ export default function Ontology() {
             backendType={"ols"}
             entityType={"property"}
             ontologyId={routeParams.ontologyId}
-            onNavigateToEntity={(ontologyId, entityType, entity) => {
-              navigate(
-                `/ontologies/${ontologyId}/${
-                  entityType == "class" || entityType == "term"
-                    ? "terms"
-                    : entityType == "property"
-                    ? "properties"
-                    : "individuals"
-                }?iri=${encodeURIComponent(encodeURIComponent(entity.iri))}`
-              );
-            }}
-            onNavigateToOntology={(ontologyId, entityType, entity) => {
-              navigate(
-                `/ontologies/${ontologyId}/${
-                  entityType == "class" || entityType == "term"
-                    ? "terms"
-                    : entityType == "property"
-                    ? "properties"
-                    : "individuals"
-                }?iri=${encodeURIComponent(encodeURIComponent(entity.iri))}`
-              );
-            }}
+            onNavigateToEntity={navigateToEntityHierarchy}
+            onNavigateToOntology={navigateToOntologyHierarchy}
           />
         ),
       },
@@ -111,41 +101,26 @@ export default function Ontology() {
             backendType={"ols"}
             entityType={"individual"}
             ontologyId={routeParams.ontologyId}
-            onNavigateToEntity={(ontologyId, entityType, entity) => {
-              navigate(
-                `/ontologies/${ontologyId}/${
-                  entityType == "class" || entityType == "term"
-                    ? "terms"
-                    : entityType == "property"
-                    ? "properties"
-                    : "individuals"
-                }?iri=${encodeURIComponent(encodeURIComponent(entity.iri))}`
-              );
-            }}
-            onNavigateToOntology={(ontologyId, entityType, entity) => {
-              navigate(
-                `/ontologies/${ontologyId}/${
-                  entityType == "class" || entityType == "term"
-                    ? "terms"
-                    : entityType == "property"
-                    ? "properties"
-                    : "individuals"
-                }?iri=${encodeURIComponent(encodeURIComponent(entity.iri))}`
-              );
-            }}
+            onNavigateToEntity={navigateToEntityHierarchy}
+            onNavigateToOntology={navigateToOntologyHierarchy}
           />
         ),
       },
     ],
-    [routeParams.ontologyId, navigate]
+    [
+      routeParams.ontologyId,
+      navigateToEntityHierarchy,
+      navigateToOntologyHierarchy,
+    ]
   );
 
-  const currentTabId =
-    location.pathname.split("/").pop() || "classes-hierarchy";
+  const currentTabId = searchParams.get("hierarchy") || "classes-hierarchy";
 
   const onSelectedTabChanged = (id: string) => {
     if (id !== currentTabId) {
-      navigate(`/ontologies/${routeParams.ontologyId}/tab/${id}`);
+      const newParams = new URLSearchParams(searchParams);
+      newParams.set("hierarchy", id);
+      setSearchParams(newParams);
     }
   };
 
