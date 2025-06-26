@@ -13,3 +13,4 @@ README.md merge=ours
 public/index.html merge=ours
 deployment/nginx.conf merge=ours
 deployment/nginx-server.conf merge=ours
+* text=auto eol=lf
