@@ -139,18 +139,30 @@ path/to/file1.txt merge=ours
 path/to/file2.txt merge=ours
 ```
 
+Some common files are per default in .gitattributes, because some specified branches use their own implementation. If you still want to get the original files (only for these files that are in .gitattributes already, e.g. src/common/pages/Home.tsx) from the main branch, you must use the custom merge rule:
+
+```
+path/to/file1.txt merge=custom
+path/to/file2.txt merge=custom
+```
+
+
 3. _Configure the 'ours' merge driver:_ Now you need to tell Git what merge=ours means. This is done by configuring the merge driver in the .git/config file or globally in ~/.gitconfig.
    Add the following to your .git/config file:
 
 ```
 [merge "ours"]
 driver = true
+
+[merge "custom"]
+driver = ./theirs-merge-driver.sh %0 %A %B
 ```
 
 by running:
 
 ```
-git config  merge.ours.driver true
+git config merge.ours.driver true
+git config merge.custom.driver './theirs-merge-driver.sh %0 %A %B'
 ```
 
 Check config with
