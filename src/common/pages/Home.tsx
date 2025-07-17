@@ -1,6 +1,6 @@
 import { EuiFlexGroup, EuiFlexItem, EuiSpacer } from "@elastic/eui";
 import { DataContentWidget } from "@ts4nfdi/terminology-service-suite";
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { componentMap } from "../../componentMap";
 import { global_config, ts_specific_metadata } from "../../config";
@@ -9,6 +9,7 @@ import { InfoBoxes } from "../components/InfoBoxes";
 import { ResourceMissingCallOut } from "../components/ResourceMissingCallOut";
 import { SearchBox } from "../components/SearchBox";
 import ProjectInformation from "../layout/util/ProjectInformation";
+import { useMatomo } from "@datapunt/matomo-tracker-react";
 
 export default function Home() {
   const { trackPageView } = useMatomo();
