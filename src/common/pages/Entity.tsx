@@ -26,10 +26,17 @@ import { Helmet } from "react-helmet";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { global_config } from "../../config";
 import { navigateToEntity } from "../components/utils";
+import { useEffect } from "react";
+import { useMatomo } from "@datapunt/matomo-tracker-react";
 
 const OLS4API = global_config.api_url;
 
 export default function Entity() {
+  const { trackPageView } = useMatomo();
+
+  useEffect(() => {
+    trackPageView({});
+  }, []);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParam, setSearchParams] = useSearchParams(); // read the query string in the URL for the current location
   const concatIri = decodeURIComponent(

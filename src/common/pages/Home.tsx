@@ -11,6 +11,11 @@ import { SearchBox } from "../components/SearchBox";
 import ProjectInformation from "../layout/util/ProjectInformation";
 
 export default function Home() {
+  const { trackPageView } = useMatomo();
+
+  useEffect(() => {
+    trackPageView({});
+  }, []);
   const projectComponents = componentMap[global_config.projectName];
 
   if (!projectComponents) {

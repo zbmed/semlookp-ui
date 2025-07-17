@@ -17,17 +17,23 @@ import {
   OntologyInfoWidget,
   TitleWidget,
 } from "@ts4nfdi/terminology-service-suite";
-import { useCallback, useMemo } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 import { Helmet } from "react-helmet";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { global_config } from "../../config";
 import { navigateToEntity } from "../components/utils";
+import { useMatomo } from "@datapunt/matomo-tracker-react";
 
 const OLS4API = global_config.api_url;
 export default function Ontology() {
   const routeParams = useParams();
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
+  const { trackPageView } = useMatomo();
+
+  useEffect(() => {
+    trackPageView({});
+  }, []);
 
   const navigateToEntityHierarchy = useCallback(
     (ontologyId, entityType, entity) => {
