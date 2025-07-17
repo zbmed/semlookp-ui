@@ -1,3 +1,4 @@
+import { useMatomo } from "@datapunt/matomo-tracker-react";
 import {
   EuiAccordion,
   EuiFlexGroup,
@@ -22,7 +23,6 @@ import { Helmet } from "react-helmet";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { global_config } from "../../config";
 import { navigateToEntity } from "../components/utils";
-import { useMatomo } from "@datapunt/matomo-tracker-react";
 
 const OLS4API = global_config.api_url;
 export default function Ontology() {
@@ -33,6 +33,7 @@ export default function Ontology() {
 
   useEffect(() => {
     trackPageView({});
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const navigateToEntityHierarchy = useCallback(

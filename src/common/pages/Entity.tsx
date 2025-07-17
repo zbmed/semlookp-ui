@@ -1,3 +1,4 @@
+import { useMatomo } from "@datapunt/matomo-tracker-react";
 import {
   EuiAccordion,
   EuiFlexGroup,
@@ -22,12 +23,11 @@ import {
   TitleWidget,
 } from "@ts4nfdi/terminology-service-suite";
 import "@ts4nfdi/terminology-service-suite/dist/esm/index.css";
+import { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { global_config } from "../../config";
 import { navigateToEntity } from "../components/utils";
-import { useEffect } from "react";
-import { useMatomo } from "@datapunt/matomo-tracker-react";
 
 const OLS4API = global_config.api_url;
 
@@ -36,6 +36,7 @@ export default function Entity() {
 
   useEffect(() => {
     trackPageView({});
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParam, setSearchParams] = useSearchParams(); // read the query string in the URL for the current location

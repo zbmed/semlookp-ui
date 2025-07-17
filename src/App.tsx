@@ -1,4 +1,5 @@
-// main
+// health
+import { createInstance, MatomoProvider } from "@datapunt/matomo-tracker-react";
 import { Suspense } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import LinkScroller from "./common/components/LinkScroller";
@@ -13,10 +14,22 @@ import Projects from "./common/pages/Projects";
 import { default as Resources } from "./common/pages/Resources";
 import { default as SearchResults } from "./common/pages/SearchResults";
 import StaticMarkdownPage from "./common/pages/static/StaticMarkdownPage";
-import { ts_specific_metadata } from "./config";
+import { global_config, ts_specific_metadata } from "./config";
+
+const shouldUseMatomo = global_config.projectname === "health";
+
+const instance = shouldUseMatomo
+  ? createInstance({
+      urlBase: "https://matomo.zbmed.de/",
+      trackerUrl: "https://matomo.zbmed.de/matomo.php", // optional, default value: `${urlBase}matomo.php`
+      srcUrl: "https://matomo.zbmed.de/matomo.js", // optional, default value: `${urlBase}matomo.js`
+      siteId: 16,
+      linkTracking: false, // Important!
+    })
+  : null;
 
 function App() {
-  return (
+  const app = (
     <Router basename="/">
       <LinkScroller>
         <Suspense fallback={<div>Loading...</div>}>
@@ -57,6 +70,11 @@ function App() {
         </Suspense>
       </LinkScroller>
     </Router>
+  );
+  return shouldUseMatomo ? (
+    <MatomoProvider value={instance}>{app}</MatomoProvider>
+  ) : (
+    app
   );
 }
 

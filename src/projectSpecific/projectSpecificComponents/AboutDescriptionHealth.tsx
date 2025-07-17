@@ -1,16 +1,23 @@
+// health
 import { EuiLink, EuiText } from "@elastic/eui";
 import EuiCustomLink from "../../common/layout/util/EuiCustomLink";
 
-export default function AboutDescriptionDefaultTemplate() {
+export default function AboutDescriptionHealth() {
   return (
     <EuiText>
       <h2>About the Terminology Service</h2>
       <p>
         The SemLookP Terminology Service aims to provide access to key
-        terminologies. It is developed and maintained by{" "}
-        <EuiLink href={"https://"}> Some Institution.</EuiLink> It emerged from
-        the BMBF-funded project{" "}
-        <EuiLink href={"https://www.idsn.info/de/idsn.html"}> IDSN. </EuiLink>{" "}
+        terminologies in the health domain. It is developed and maintained by{" "}
+        <EuiLink href={"https://www.zbmed.de/en/"}>
+          {" "}
+          ZB MED - Information Centre for Life Sciences.
+        </EuiLink>{" "}
+        It emerged from the BMBF-funded project{" "}
+        <EuiLink href={"https://www.idsn.info/de/idsn.html"}>
+          {" "}
+          IDSN.{" "}
+        </EuiLink>{" "}
         The system is based on the Ontology Lookup Service (OLS), that is
         developed and maintained by the
         <EuiLink
@@ -51,6 +58,7 @@ export default function AboutDescriptionDefaultTemplate() {
         IDSN
       </EuiLink>
       <p>
+        {" "}
         A Semantic Data Integration Methodology for Translational
         Neurodegenerative Disease Research
       </p>

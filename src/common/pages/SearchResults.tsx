@@ -1,8 +1,8 @@
+import { useMatomo } from "@datapunt/matomo-tracker-react";
 import { SearchResultsListWidget } from "@ts4nfdi/terminology-service-suite";
+import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { global_config } from "../../config";
-import { useEffect } from "react";
-import { useMatomo } from "@datapunt/matomo-tracker-react";
 
 export default function SearchResults() {
   const [searchParams] = useSearchParams();
@@ -11,6 +11,7 @@ export default function SearchResults() {
 
   useEffect(() => {
     trackPageView({});
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

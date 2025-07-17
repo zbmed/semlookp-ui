@@ -1,3 +1,4 @@
+import { useMatomo } from "@datapunt/matomo-tracker-react";
 import { EuiFlexGroup, EuiFlexItem, EuiSpacer } from "@elastic/eui";
 import { DataContentWidget } from "@ts4nfdi/terminology-service-suite";
 import { Suspense, useEffect } from "react";
@@ -9,13 +10,13 @@ import { InfoBoxes } from "../components/InfoBoxes";
 import { ResourceMissingCallOut } from "../components/ResourceMissingCallOut";
 import { SearchBox } from "../components/SearchBox";
 import ProjectInformation from "../layout/util/ProjectInformation";
-import { useMatomo } from "@datapunt/matomo-tracker-react";
 
 export default function Home() {
   const { trackPageView } = useMatomo();
 
   useEffect(() => {
     trackPageView({});
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const projectComponents = componentMap[global_config.projectName];
 

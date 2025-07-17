@@ -1,4 +1,4 @@
-// defaultTemplate
+// health
 import { lazy } from "react";
 
 export const componentMap = {
@@ -24,14 +24,47 @@ export const componentMap = {
       )
     ),
     ProjectADescription: lazy(() =>
-      import("./defaultTemplate/defaultTemplateComponents/ProjectADescription")
+      import(
+        "./projectSpecific/projectSpecificComponents/IDSNProjectDescription"
+      )
     ),
     ProjectBDescription: lazy(() =>
-      import("./defaultTemplate/defaultTemplateComponents/ProjectADescription")
+      import(
+        "./projectSpecific/projectSpecificComponents/IDSNProjectDescription"
+      )
     ),
     About: lazy(() =>
       import(
         "./defaultTemplate/defaultTemplateComponents/AboutDescriptionDefaultTemplate"
+      )
+    ),
+  },
+  health: {
+    InfoBoxA: lazy(() =>
+      import("./projectSpecific/projectSpecificComponents/InfoBoxAHealth")
+    ),
+    InfoBoxB: lazy(() =>
+      import("./projectSpecific/projectSpecificComponents/InfoBoxBHealth")
+    ),
+    FooterLogos: lazy(() =>
+      import("./projectSpecific/projectSpecificComponents/FooterLogosHealth")
+    ),
+    LogoBox: lazy(() =>
+      import("./projectSpecific/projectSpecificComponents/LogoBoxHealth")
+    ),
+    ProjectADescription: lazy(() =>
+      import(
+        "./projectSpecific/projectSpecificComponents/NFDI4HealthProjectDescription"
+      )
+    ),
+    ProjectBDescription: lazy(() =>
+      import(
+        "./projectSpecific/projectSpecificComponents/IDSNProjectDescription"
+      )
+    ),
+    About: lazy(() =>
+      import(
+        "./projectSpecific/projectSpecificComponents/AboutDescriptionHealth"
       )
     ),
   },

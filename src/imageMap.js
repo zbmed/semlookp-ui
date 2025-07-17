@@ -1,4 +1,4 @@
-// defaultTemplate
+// health
 export const imageMap = {
   defaultTemplate: {
     homepageLogo: () =>
@@ -21,15 +21,20 @@ export const imageMap = {
       import(
         "./defaultTemplate/defaultTemplateLayout/defaultTemplateImages/badge-svgrepo-com.svg"
       ),
-    infoBoxLogoA: () =>
-      import(
-        "./defaultTemplate/defaultTemplateLayout/defaultTemplateImages/aquarius-svgrepo-com.svg"
-      ),
     infoBoxLogoB: () => import("./common/layout/images/widgets-icons.png"),
     ts4nfdiLogo: () => import("./common/layout/images/TS4_icon.svg"),
     projectALogo: () =>
       import(
         "./defaultTemplate/defaultTemplateLayout/defaultTemplateImages/address-card-svgrepo-com.svg"
       ),
+  },
+  health: {
+    homepageLogo: () => import("./projectSpecificImages/nfdi4health_logo.svg"),
+    footerLogoA: () => import("./projectSpecificImages/dfg_logo.svg"),
+    footerLogoB: () => import("./projectSpecificImages/nfdi4health_logo.svg"),
+    footerLogoC: () => import("./projectSpecificImages/zbmed_logo.svg"),
+    headerLogo: () => import("./projectSpecificImages/NFDI_SemLookP_Logo.svg"),
+    infoBoxLogoB: () => import("./projectSpecificImages/widgets-icons.png"),
+    ts4nfdiLogo: () => import("./common/layout/images/TS4_icon.svg"),
   },
 };

@@ -1,15 +1,15 @@
-// defaultTemplate
+// health
 export const global_config = {
-  api_url: "https://semanticlookup.zbmed.de/api/",
-  projectName: "defaultTemplate",
+  api_url: "https://semanticlookup.zbmed.de/ols/api/",
+  projectName: "health",
 };
 
 export const ts_specific_metadata = {
   active_dev_banner_text:
     " This software is currently under active development. Therefore, please forgive any errors that occur. We would be very pleased if you could report any errors to semlookp-support@zbmed.de.",
-  contact_mail_address: "example@example.de", // use semlookp-support@zbmed.de if you have none
-  contact_mail_address_mailto: "mailto:example@example.de", // the "mailto" URI is needed to produce a hyperlink that will allow users to send an email on click
-  collection: "collection=nfdi4health", // not important now, will be relevant in the future for the widgets that are using the TS4NFDI Gateway
+  contact_mail_address: "semlookp-support@zbmed.de",
+  contact_mail_address_mailto: "mailto:semlookp-support@zbmed.de",
+  collection: "collection=nfdi4health",
   homepage: {
     has_logo: true,
     has_text_below_logo: true,
@@ -19,14 +19,13 @@ export const ts_specific_metadata = {
     has_info_boxes: true,
     homepage_helmet_text: " Overview - Terminology Service ",
     text_below_logo: "Terminology Service",
-    project_intro_title: "Terminology Service Template",
+    project_intro_title: "Terminology Service NFDI4Health",
     project_intro_markdown_file:
-      "defaultTemplate/defaultTemplateMarkdown/projectintro",
-    imprint_markdown_file: "defaultTemplate/defaultTemplateMarkdown/imprint",
-    privacy_markdown_file: "defaultTemplate/defaultTemplateMarkdown/privacy",
+      "projectSpecific/projectSpecificMarkdown/projectintro",
+    imprint_markdown_file: "projectSpecific/projectSpecificMarkdown/imprint",
+    privacy_markdown_file: "projectSpecific/projectSpecificMarkdown/privacy",
   },
   header: {
-    // to remove links, just remove or uncomment
     tabs: [
       { name: "Home", source: "/" },
       { name: "Search", source: "/search?q=*" },
@@ -42,12 +41,13 @@ export const ts_specific_metadata = {
     has_funding_notice: true,
     has_version_update_info: true,
     has_logos: true,
-    funding_notice: "This is the funding notice.",
-    last_update: "June, 2025",
+    funding_notice:
+      "This service is developed in the project NFDI4Health. NFDI4Health is one of the funded consortia of the National Research Data Infrastructure programme of the DFG. (Project identifier 451265285 and 442326535).",
+    last_update: "June 26, 2025",
     version: "development version",
-    footer_logo_A_url: "https://www.google.de",
-    footer_logo_B_url: "https://www.google.de",
-    footer_logo_C_url: "https://www.google.de",
+    footer_logo_A_url: "https://www.dfg.de",
+    footer_logo_B_url: "https://www.nfdi4health.de",
+    footer_logo_C_url: "https://www.zbmed.de",
   },
   info_boxes: {
     has_info_box1: true,
