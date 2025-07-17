@@ -1,3 +1,4 @@
+// main
 import { EuiFlexGroup, EuiFlexItem, EuiSpacer } from "@elastic/eui";
 import { DataContentWidget } from "@ts4nfdi/terminology-service-suite";
 import { Suspense } from "react";
