@@ -20,9 +20,9 @@ const shouldUseMatomo = global_config.projectname === "health";
 
 const instance = shouldUseMatomo
   ? createInstance({
-      urlBase: "https://matomo.zbmed.de/",
-      trackerUrl: "https://matomo.zbmed.de/matomo.php", // optional, default value: `${urlBase}matomo.php`
-      srcUrl: "https://matomo.zbmed.de/matomo.js", // optional, default value: `${urlBase}matomo.js`
+      urlBase: "https://books.publisso.de/matomo/",
+      trackerUrl: "https://books.publisso.de/matomo/matomo.php", // optional, default value: `${urlBase}matomo.php`
+      srcUrl: "https://books.publisso.de/matomo/matomo.js", // optional, default value: `${urlBase}matomo.js`
       siteId: 16,
       linkTracking: false, // Important!
     })
