@@ -7,8 +7,8 @@ export const global_config = {
 export const ts_specific_metadata = {
   active_dev_banner_text:
     " This software is currently under active development. Therefore, please forgive any errors that occur. We would be very pleased if you could report any errors to semlookp-support@zbmed.de.",
-  contact_mail_address: "example@example.de",
-  contact_mail_address_mailto: "mailto:example@example.de",
+  contact_mail_address: "info[at]berd-nfdi.de",
+  contact_mail_address_mailto: "mailto:info[at]berd-nfdi.de",
   collection: "collection=nfdi4health",
   homepage: {
     has_logo: true,
