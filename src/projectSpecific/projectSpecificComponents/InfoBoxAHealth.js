@@ -25,9 +25,7 @@ const description = () => {
           The search engine uses the
           <EuiCustomLink to={"/about/api"}> SemLookP API</EuiCustomLink> and
           <EuiLink
-            href={
-              "https://ts4nfdi.github.io/terminology-service-suite/comp/latest/"
-            }
+            href={"https://terminology.services.base4nfdi.de/tss/comp/latest/"}
           >
             {" "}
             Terminology Service Suite{" "}

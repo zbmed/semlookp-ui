@@ -52,7 +52,7 @@ export default function TerminologyServiceSuiteInfo() {
             build upon those widgets. For more information visit the{" "}
             <EuiLink
               href={
-                "https://ts4nfdi.github.io/terminology-service-suite/comp/latest/?path=/docs/overview--docs"
+                "https://terminology.services.base4nfdi.de/tss/comp/latest/?path=/docs/overview--docs"
               }
             >
               {" "}
