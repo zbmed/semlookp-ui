@@ -1,6 +1,6 @@
 // health
 export const global_config = {
-  api_url: "http://ols4-health-test.qa.km.k8s.zbmed.de/ols4/api/",
+  api_url: "https://semanticlookup.zbmed.de/ols/api/",
   projectName: "health",
 };
 
@@ -43,7 +43,7 @@ export const ts_specific_metadata = {
     has_logos: true,
     funding_notice:
       "This service is developed in the project NFDI4Health. NFDI4Health is one of the funded consortia of the National Research Data Infrastructure programme of the DFG. (Project identifier 451265285 and 442326535).",
-    last_update: "September 26, 2024",
+    last_update: "June 26, 2025",
     version: "development version",
     footer_logo_A_url: "https://www.dfg.de",
     footer_logo_B_url: "https://www.nfdi4health.de",

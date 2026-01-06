@@ -40,7 +40,8 @@
     "prefer-const": "warn",
     "@typescript-eslint/no-empty-function": ["warn"],
     "react/display-name": "off",
-    "unused-imports/no-unused-imports": "error"
+    "unused-imports/no-unused-imports": "error",
+    "import/no-named-as-default-member": "off"
   },
   "settings": {
     "import/parsers": {
@@ -49,6 +50,9 @@
     "import/resolver": {
       "typescript": {
         "alwaysTryTypes": true
+      },
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx", ".css"]
       }
     },
     "react": {

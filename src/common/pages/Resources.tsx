@@ -16,14 +16,14 @@ export default function Resources() {
       <ResourcesWidget
         api={OLS4API}
         onNavigate={(ontologyId) => {
-          navigate(`/ontologies/${ontologyId}/tab/`);
+          navigate(`/ontologies/${ontologyId}/`);
         }}
         parameter={""}
         actions={[
           {
             render: (item) => (
               <EuiButton
-                href={`/ontologies/${item.ontologyId}/tab/classes-hierarchy`}
+                href={`/ontologies/${item.ontologyId}/?hierarchy=classes-hierarchy`}
                 size={"s"}
               >
                 Show classes
@@ -33,7 +33,7 @@ export default function Resources() {
           {
             render: (item) => (
               <EuiButton
-                href={`/ontologies/${item.ontologyId}/tab/properties-hierarchy`}
+                href={`/ontologies/${item.ontologyId}/?hierarchy=properties-hierarchy`}
                 size={"s"}
               >
                 Show properties
@@ -43,7 +43,7 @@ export default function Resources() {
           {
             render: (item) => (
               <EuiButton
-                href={`/ontologies/${item.ontologyId}/tab/individuals-hierarchy`}
+                href={`/ontologies/${item.ontologyId}/?hierarchy=individuals-hierarchy`}
                 size={"s"}
               >
                 Show individuals
