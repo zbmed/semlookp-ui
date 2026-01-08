@@ -1,6 +1,7 @@
 // health
 import {
   EuiButton,
+  EuiFlexGroup,
   EuiLink,
   EuiModal,
   EuiModalBody,
@@ -28,7 +29,7 @@ export default function TrackingConsentFormComponent({
         style={{ textAlign: "left" }}
       >
         <EuiModalHeader>
-          <EuiModalHeaderTitle>
+          <EuiModalHeaderTitle size={"s"}>
             Before you use NFDI4Health Terminology Service
           </EuiModalHeaderTitle>
         </EuiModalHeader>
@@ -37,8 +38,7 @@ export default function TrackingConsentFormComponent({
           <EuiText>
             <p>
               We use cookies and tracking technologies to improve your
-              experience on our website. By clicking <b>“Accept”</b>, you agree
-              to our use of tracking for analytics and performance purposes.
+              experience on our website. These help us:
             </p>
             <ul>
               <li>Understand how the app is used</li>
@@ -57,12 +57,14 @@ export default function TrackingConsentFormComponent({
         </EuiModalBody>
 
         <EuiModalFooter>
-          <EuiButton color="danger" onClick={() => onConsentChange("declined")}>
-            Decline
-          </EuiButton>
-          <EuiButton fill onClick={() => onConsentChange("accepted")}>
-            Accept
-          </EuiButton>
+          <EuiFlexGroup justifyContent="spaceBetween">
+            <EuiButton fill onClick={() => onConsentChange("accepted")}>
+              Accept
+            </EuiButton>
+            <EuiButton color="text" onClick={() => onConsentChange("declined")}>
+              Decline
+            </EuiButton>
+          </EuiFlexGroup>
         </EuiModalFooter>
       </EuiModal>
     </EuiOverlayMask>
