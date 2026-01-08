@@ -14,6 +14,7 @@ export default function Resources() {
       </EuiText>
       <EuiSpacer />
       <ResourcesWidget
+        useLegacy={false}
         api={OLS4API}
         onNavigate={(ontologyId) => {
           navigate(`/ontologies/${ontologyId}/`);
