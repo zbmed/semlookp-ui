@@ -22,7 +22,6 @@ import {
   JsonApiWidget,
   TitleWidget,
 } from "@ts4nfdi/terminology-service-suite";
-import "@ts4nfdi/terminology-service-suite/dist/esm/index.css";
 import { Helmet } from "react-helmet";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { global_config } from "../../config";
