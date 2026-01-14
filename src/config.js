@@ -2,13 +2,13 @@
 export const global_config = {
   api_url: "https://semanticlookup.zbmed.de/ols/api/",
   projectName: "health",
-  matomo_tracking: false,
-  show_consent_form: false,
+  matomo_tracking: true,
+  show_consent_form: true,
 };
 
 export const matomo_config = {
   tracker_url: "https://books.publisso.de/matomo/matomo.php",
-  site_id: 16,
+  site_id: "16",
 };
 
 export const ts_specific_metadata = {

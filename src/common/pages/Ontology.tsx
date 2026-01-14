@@ -1,4 +1,4 @@
-import { useMatomo } from "@datapunt/matomo-tracker-react";
+// main
 import {
   EuiAccordion,
   EuiFlexGroup,
@@ -18,7 +18,7 @@ import {
   OntologyInfoWidget,
   TitleWidget,
 } from "@ts4nfdi/terminology-service-suite";
-import { useCallback, useEffect, useMemo } from "react";
+import { useCallback, useMemo } from "react";
 import { Helmet } from "react-helmet";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { global_config } from "../../config";
@@ -29,12 +29,6 @@ export default function Ontology() {
   const routeParams = useParams();
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
-  const { trackPageView } = useMatomo();
-
-  useEffect(() => {
-    trackPageView({});
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const navigateToEntityHierarchy = useCallback(
     (ontologyId, entityType, entity) => {
