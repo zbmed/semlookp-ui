@@ -1,5 +1,6 @@
 import {
   EuiButton,
+  EuiFlexGroup,
   EuiModal,
   EuiModalBody,
   EuiModalFooter,
@@ -51,12 +52,14 @@ export default function TrackingConsentFormComponent({
         </EuiModalBody>
 
         <EuiModalFooter>
-          <EuiButton color="danger" onClick={() => onConsentChange("declined")}>
-            Decline
-          </EuiButton>
-          <EuiButton fill onClick={() => onConsentChange("accepted")}>
-            Accept
-          </EuiButton>
+          <EuiFlexGroup justifyContent={"spaceBetween"}>
+            <EuiButton fill onClick={() => onConsentChange("accepted")}>
+              Accept
+            </EuiButton>
+            <EuiButton color="text" onClick={() => onConsentChange("declined")}>
+              Decline
+            </EuiButton>
+          </EuiFlexGroup>
         </EuiModalFooter>
       </EuiModal>
     </EuiOverlayMask>

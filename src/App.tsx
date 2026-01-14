@@ -19,17 +19,19 @@ import StaticMarkdownPage from "./common/pages/static/StaticMarkdownPage";
 import { global_config, matomo_config, ts_specific_metadata } from "./config";
 
 function App() {
-  const [consent, setConsent] = useState<string | null>(
-    global_config.show_consent_form ? null : "declined"
-  );
+  const [consent, setConsent] = useState<string | null>("loading");
 
   useEffect(() => {
+    if (!global_config.show_consent_form) {
+      setConsent("declined");
+      return;
+    }
     if (!global_config.show_consent_form) return;
     const storedConsent = localStorage.getItem(CONSENT_KEY) as
       | "accepted"
       | "declined"
       | null;
-    if (storedConsent) setConsent(storedConsent);
+    setConsent(storedConsent ?? null);
   }, []);
 
   const handleConsentChange = (choice: "accepted" | "declined") => {
@@ -41,54 +43,52 @@ function App() {
     global_config.matomo_tracking && consent === "accepted";
 
   const appRoutes = (
-    <Router basename="/">
-      <LinkScroller>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/about/api" element={<ApiPage />} />
-              <Route path="*" element={<Error />} />
-              <Route
-                path="/privacy"
-                element={
-                  <StaticMarkdownPage
-                    file={ts_specific_metadata.homepage.privacy_markdown_file}
-                    title={"Privacy Policy"}
-                  />
-                }
-              />
-              <Route
-                path="/imprint"
-                element={
-                  <StaticMarkdownPage
-                    file={ts_specific_metadata.homepage.imprint_markdown_file}
-                    title={"Imprint"}
-                  />
-                }
-              />
-              <Route path="/projects" element={<Projects />} />
-              <Route path="/resources" element={<Resources />} />
-              <Route path="/search" element={<SearchResults />} />
-              <Route
-                path="/ontologies/:ontologyId/:entityType"
-                element={<Entity />}
-              />
-              <Route path="/ontologies/:ontologyId" element={<Ontology />} />
-            </Route>
-          </Routes>
-        </Suspense>
-      </LinkScroller>
-    </Router>
+    <LinkScroller>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/about/api" element={<ApiPage />} />
+            <Route path="*" element={<Error />} />
+            <Route
+              path="/privacy"
+              element={
+                <StaticMarkdownPage
+                  file={ts_specific_metadata.homepage.privacy_markdown_file}
+                  title={"Privacy Policy"}
+                />
+              }
+            />
+            <Route
+              path="/imprint"
+              element={
+                <StaticMarkdownPage
+                  file={ts_specific_metadata.homepage.imprint_markdown_file}
+                  title={"Imprint"}
+                />
+              }
+            />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/resources" element={<Resources />} />
+            <Route path="/search" element={<SearchResults />} />
+            <Route
+              path="/ontologies/:ontologyId/:entityType"
+              element={<Entity />}
+            />
+            <Route path="/ontologies/:ontologyId" element={<Ontology />} />
+          </Route>
+        </Routes>
+      </Suspense>
+    </LinkScroller>
   );
   return (
-    <>
-      {global_config.show_consent_form && consent === null && (
+    <Router basename="/">
+      {consent === null && (
         <TrackingConsentFormComponent onConsentChange={handleConsentChange} />
       )}
 
-      {trackingEnabled ? (
+      {trackingEnabled && consent === "accepted" ? (
         <MatomoProvider
           siteId={matomo_config.site_id}
           trackerUrl={matomo_config.tracker_url}
@@ -99,7 +99,7 @@ function App() {
       ) : (
         appRoutes
       )}
-    </>
+    </Router>
   );
 }
 
