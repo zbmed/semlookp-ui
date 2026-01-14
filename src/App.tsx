@@ -1,7 +1,10 @@
-// main
-import { Suspense } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import LinkScroller from "./common/components/LinkScroller";
+import { MatomoProvider } from "./common/components/MatomoProvider";
+import TrackingConsentFormComponent, {
+  CONSENT_KEY,
+} from "./common/components/TrackingConsent";
 import { Layout } from "./common/layout/Layout";
 import About from "./common/pages/About";
 import { default as ApiPage } from "./common/pages/Api";
@@ -13,10 +16,31 @@ import Projects from "./common/pages/Projects";
 import { default as Resources } from "./common/pages/Resources";
 import { default as SearchResults } from "./common/pages/SearchResults";
 import StaticMarkdownPage from "./common/pages/static/StaticMarkdownPage";
-import { ts_specific_metadata } from "./config";
+import { global_config, matomo_config, ts_specific_metadata } from "./config";
 
 function App() {
-  return (
+  const [consent, setConsent] = useState<string | null>(
+    global_config.show_consent_form ? null : "declined"
+  );
+
+  useEffect(() => {
+    if (!global_config.show_consent_form) return;
+    const storedConsent = localStorage.getItem(CONSENT_KEY) as
+      | "accepted"
+      | "declined"
+      | null;
+    if (storedConsent) setConsent(storedConsent);
+  }, []);
+
+  const handleConsentChange = (choice: "accepted" | "declined") => {
+    localStorage.setItem(CONSENT_KEY, choice);
+    setConsent(choice);
+  };
+
+  const trackingEnabled =
+    global_config.matomo_tracking && consent === "accepted";
+
+  const appRoutes = (
     <Router basename="/">
       <LinkScroller>
         <Suspense fallback={<div>Loading...</div>}>
@@ -57,6 +81,25 @@ function App() {
         </Suspense>
       </LinkScroller>
     </Router>
+  );
+  return (
+    <>
+      {global_config.show_consent_form && consent === null && (
+        <TrackingConsentFormComponent onConsentChange={handleConsentChange} />
+      )}
+
+      {trackingEnabled ? (
+        <MatomoProvider
+          siteId={matomo_config.site_id}
+          trackerUrl={matomo_config.tracker_url}
+          enabled={true}
+        >
+          {appRoutes}
+        </MatomoProvider>
+      ) : (
+        appRoutes
+      )}
+    </>
   );
 }
 

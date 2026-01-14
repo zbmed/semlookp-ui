@@ -146,7 +146,6 @@ path/to/file1.txt merge=custom
 path/to/file2.txt merge=custom
 ```
 
-
 3. _Configure the 'ours' merge driver:_ Now you need to tell Git what merge=ours means. This is done by configuring the merge driver in the .git/config file or globally in ~/.gitconfig.
    Add the following to your .git/config file:
 
