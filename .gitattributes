@@ -14,8 +14,3 @@ public/index.html merge=ours
 deployment/nginx.conf merge=ours
 deployment/nginx-server.conf merge=ours
 * text=auto eol=lf
-src/App.tsx merge=ours
-src/common/pages/Entity.tsx merge=ours
-src/common/pages/Home.tsx merge=ours
-src/common/pages/Ontology.tsx merge=ours
-src/common/pages/SearchResults.tsx merge=ours

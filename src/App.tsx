@@ -1,4 +1,3 @@
-// health
 import { createInstance, MatomoProvider } from "@datapunt/matomo-tracker-react";
 import { Suspense, useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
