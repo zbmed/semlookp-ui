@@ -7,7 +7,7 @@ export const global_config = {
 };
 
 export const matomo_config = {
-  tracker_url: "https://books.publisso.de/matomo/matomo.php",
+  tracker_url: "https://matomo.zbmed.de/js/container_nSrpUXZZ.js",
   site_id: "16",
 };
 

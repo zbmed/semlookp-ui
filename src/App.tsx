@@ -1,7 +1,7 @@
 import { Suspense, useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import LinkScroller from "./common/components/LinkScroller";
-import { MatomoProvider } from "./common/components/MatomoProvider";
+import { MatomoTagManager } from "./common/components/MatomoTagManager";
 import TrackingConsentFormComponent, {
   CONSENT_KEY,
 } from "./common/components/TrackingConsent";
@@ -19,17 +19,19 @@ import StaticMarkdownPage from "./common/pages/static/StaticMarkdownPage";
 import { global_config, matomo_config, ts_specific_metadata } from "./config";
 
 function App() {
-  const [consent, setConsent] = useState<string | null>(
-    global_config.show_consent_form ? null : "declined"
-  );
+  const [consent, setConsent] = useState<string | null>("loading");
 
   useEffect(() => {
+    if (!global_config.show_consent_form) {
+      setConsent("declined");
+      return;
+    }
     if (!global_config.show_consent_form) return;
     const storedConsent = localStorage.getItem(CONSENT_KEY) as
       | "accepted"
       | "declined"
       | null;
-    if (storedConsent) setConsent(storedConsent);
+    setConsent(storedConsent ?? null);
   }, []);
 
   const handleConsentChange = (choice: "accepted" | "declined") => {
@@ -82,18 +84,17 @@ function App() {
   );
   return (
     <Router basename="/">
-      {global_config.show_consent_form && consent === null && (
+      {consent === null && (
         <TrackingConsentFormComponent onConsentChange={handleConsentChange} />
       )}
 
-      {trackingEnabled ? (
-        <MatomoProvider
-          siteId={matomo_config.site_id}
-          trackerUrl={matomo_config.tracker_url}
+      {trackingEnabled && consent === "accepted" ? (
+        <MatomoTagManager
+          containerUrl={matomo_config.tracker_url}
           enabled={true}
         >
           {appRoutes}
-        </MatomoProvider>
+        </MatomoTagManager>
       ) : (
         appRoutes
       )}
