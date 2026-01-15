@@ -13,7 +13,7 @@ We would be grateful if you could report any bugs.
 
 ## Built With
 
-- [ReactJS 17](https://reactjs.org/blog/2020/10/20/react-v17.html)
+- ReactJS 18
 - [TypeScript 4.5](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-5.html)
 - [Elastic UI](https://elastic.github.io/eui/#/)
 - [@ts4nfdi/terminology-service-suite](https://github.com/ts4nfdi/terminology-service-suite)
@@ -24,17 +24,6 @@ We would be grateful if you could report any bugs.
 ### Development
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-#### Authenticate to the npm package registry
-
-For using the @ts4nfdi/terminology-service-suite you have to [authenticate](https://docs.github.com/de/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#authentifizieren-mit-einem-personal-access-token) with a personal access token or deploy token.
-Create a file in the project root directory named `.npmrc` and add the following two lines. Replace `TOKEN` with your
-[personal access token (classic)](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic).
-
-```
-@ts4nfdi:registry=https://npm.pkg.github.com
-//npm.pkg.github.com/:_authToken=TOKEN
-```
 
 #### Docker
 

@@ -56,7 +56,7 @@ export const Header = () => {
           <EuiHeaderSectionItem border="right">
             <EuiCustomHeaderLink color="text" to="/" isActive={false}>
               <EuiIcon
-                type={logos.logo}
+                type={logos.logo ?? ""}
                 title="Header Logo"
                 size={theme.shape.headerLogoSize}
                 width={theme.shape.headerLogoWidth}
