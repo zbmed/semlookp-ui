@@ -1,7 +1,7 @@
 import { Suspense, useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import LinkScroller from "./common/components/LinkScroller";
-import { MatomoProvider } from "./common/components/MatomoProvider";
+import { MatomoTagManager } from "./common/components/MatomoTagManager";
 import TrackingConsentFormComponent, {
   CONSENT_KEY,
 } from "./common/components/TrackingConsent";
@@ -89,13 +89,12 @@ function App() {
       )}
 
       {trackingEnabled && consent === "accepted" ? (
-        <MatomoProvider
-          siteId={matomo_config.site_id}
-          trackerUrl={matomo_config.tracker_url}
+        <MatomoTagManager
+          containerUrl={matomo_config.tracker_url}
           enabled={true}
         >
           {appRoutes}
-        </MatomoProvider>
+        </MatomoTagManager>
       ) : (
         appRoutes
       )}
