@@ -34,4 +34,4 @@ jobs:
             --set-json='ingress.path="/"'  \
             --set-json='ingress.enableSSL="true"'  \
             --set-json='ingress.certIssuer="letsencrypt-prod"'  \
-            semlookp-deployment/semlookp-ui-berd
+            semlookp-deployment/zbmed-ts-berd
