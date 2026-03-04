@@ -86,4 +86,4 @@ jobs:
             --set-json='images.ui="ghcr.io/${{ github.repository }}:${{ github.event.pull_request.head.sha || github.sha }}"' \
             --set-json='ingress.dns="ts-dev.berd-nfdi.de"'  \
             --set-json='ingress.path="/"'  \
-            semlookp-deployment/semlookp-ui
+            semlookp-deployment/semlookp-ui-berd
