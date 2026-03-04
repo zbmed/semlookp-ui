@@ -26,12 +26,12 @@ jobs:
           command: |
             helmv3 repo add semlookp-deployment https://zbmed.github.io/semlookp-deployment/
             helmv3 repo update
-            helmv3 upgrade semlookp-ui \
+            helmv3 upgrade zbmed-ts-health \
             --install \
-            --set-json='images.frontend="${{ env.IMAGE_NAME }}"' \
-            --set-json='frontend.imagePullSecret="semlookpui-dockerconfigjson-github-com"' \
+            --namespace='zbmed-ts-health' \
+            --set-json='images.ui="${{ env.IMAGE_NAME }}"' \
             --set-json='ingress.dns="semanticlookup.zbmed.de"'  \
             --set-json='ingress.path="/"'  \
             --set-json='ingress.enableSSL="true"'  \
             --set-json='ingress.certIssuer="letsencrypt-prod"'  \
-            semlookp-deployment/semlookp-ui
+            semlookp-deployment/semlookp-ui-health
