@@ -26,9 +26,10 @@ jobs:
           command: |
             helmv3 repo add semlookp-deployment https://zbmed.github.io/semlookp-deployment/
             helmv3 repo update
-            helmv3 upgrade semlookp-ui-berd \
+            helmv3 upgrade zbmed-ts-berd \
             --install \
-            --set-json='images.frontend="${{ env.IMAGE_NAME }}"' \
+            --namespace='zbmed-ts-berd' \
+            --set-json='images.ui="${{ env.IMAGE_NAME }}"' \
             --set-json='ingress.dns="ts.berd-nfdi.de"'  \
             --set-json='ingress.path="/"'  \
             --set-json='ingress.enableSSL="true"'  \

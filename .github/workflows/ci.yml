@@ -80,9 +80,10 @@ jobs:
             kubectl get nodes
             helmv3 repo add semlookp-deployment https://zbmed.github.io/semlookp-deployment/
             helmv3 repo update
-            helmv3 upgrade semlookp-ui-berd \
+            helmv3 upgrade zbmed-ts-berd \
             --install \
-            --set-json='images.frontend="ghcr.io/${{ github.repository }}:${{ github.event.pull_request.head.sha || github.sha }}"' \
+            --namespace='zbmed-ts-berd' \
+            --set-json='images.ui="ghcr.io/${{ github.repository }}:${{ github.event.pull_request.head.sha || github.sha }}"' \
             --set-json='ingress.dns="ts-dev.berd-nfdi.de"'  \
             --set-json='ingress.path="/"'  \
             semlookp-deployment/semlookp-ui
