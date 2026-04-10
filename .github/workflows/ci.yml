@@ -2,9 +2,9 @@
 name: Continuous Integration
 
 on:
-  pull_request: { branches: ["main"] }
+  pull_request: { branches: ["main-test"] }
   push:
-    branches: ["main"]
+    branches: ["main-test"]
     tags: ["*"]
 env:
   KUBECONFIG: .kube/config
@@ -81,10 +81,10 @@ jobs:
             kubectl get nodes
             helmv3 repo add semlookp-deployment https://zbmed.github.io/semlookp-deployment/
             helmv3 repo update
-            helmv3 upgrade zbmed-ts-main \
+            helmv3 upgrade zbmed-ts-main-test \
             --install \
             --namespace='zbmed-ts-health' \
             --set-json='images.ui="ghcr.io/${{ github.repository }}:${{ github.event.pull_request.head.sha || github.sha }}"' \
-            --set-json='ingress.dns="semlookp-ui-main.qa.km.k8s.zbmed.de"'  \
+            --set-json='ingress.dns="semlookp-ui-main-test.qa.km.k8s.zbmed.de"'  \
             --set-json='ingress.path="/"'  \
             semlookp-deployment/semlookp-ui

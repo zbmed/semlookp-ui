@@ -1,6 +1,6 @@
 // defaultTemplate
 export const global_config = {
-  api_url: "https://semanticlookup.zbmed.de/api/",
+  api_url: "http://ols4-health-test.qa.km.k8s.zbmed.de/olstest/api/",
   projectName: "defaultTemplate",
   matomo_tracking: false,
   show_consent_form: false,
