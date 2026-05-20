@@ -101,7 +101,8 @@ export default function IDSNProjectDescription() {
                     external={false}
                   >
                     {" "}
-                    German Federal Ministry of Education and Research (BMBF){" "}
+                    German Federal Ministry of Education and Research
+                    (BMBF){" "}
                   </EuiLink>
                   as part of the program
                   <EuiLink

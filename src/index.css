@@ -1,6 +1,7 @@
 @font-face {
   font-family: TabletGothicNarrow;
-  src: url("common/layout/fonts/TabletGothicNarrow.woff") format("woff"),
+  src:
+    url("common/layout/fonts/TabletGothicNarrow.woff") format("woff"),
     url("common/layout/fonts/TabletGothicNarrow.ttf") format("truetype");
 }
 

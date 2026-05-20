@@ -6,6 +6,12 @@ interface MatomoTagManagerProps {
   children?: ReactNode;
 }
 
+declare global {
+  interface Window {
+    _mtm: Array<Record<string, unknown>>;
+  }
+}
+
 export const MatomoTagManager: React.FC<MatomoTagManagerProps> = ({
   containerUrl,
   enabled,
@@ -14,7 +20,7 @@ export const MatomoTagManager: React.FC<MatomoTagManagerProps> = ({
   useEffect(() => {
     if (!enabled) return; // don't load MTM if disabled
 
-    const _mtm = ((window as any)._mtm = (window as any)._mtm || []);
+    const _mtm = (window._mtm = window._mtm || []);
     _mtm.push({
       "mtm.startTime": new Date().getTime(),
       event: "mtm.Start",

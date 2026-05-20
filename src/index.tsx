@@ -8,27 +8,24 @@ import { theme } from "./theme";
 
 const rootElement = document.getElementById("root") as HTMLElement;
 const queryClient = new QueryClient();
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const root = createRoot(rootElement!);
 
 root.render(
-  <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <EuiProvider
-        colorMode={"light"}
-        modify={{
-          colors: {
-            LIGHT: {
-              primary: theme.color.euiPrimary,
-              accent: theme.color.euiAccent,
-            },
+  <ThemeProvider theme={theme}>
+    <EuiProvider
+      colorMode={"light"}
+      modify={{
+        colors: {
+          LIGHT: {
+            primary: theme.color.euiPrimary,
+            accent: theme.color.euiAccent,
           },
-        }}
-      >
-        <QueryClientProvider client={queryClient}>
-          <App />
-        </QueryClientProvider>
-      </EuiProvider>
-    </ThemeProvider>
-  </React.StrictMode>
+        },
+      }}
+    >
+      <QueryClientProvider client={queryClient}>
+        <App />
+      </QueryClientProvider>
+    </EuiProvider>
+  </ThemeProvider>,
 );
