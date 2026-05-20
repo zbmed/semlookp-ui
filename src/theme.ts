@@ -1,4 +1,4 @@
-// defaultTemplate
+// fairagro
 import { global_config } from "./config";
 
 const defaultTemplateTheme = {
@@ -11,7 +11,7 @@ const defaultTemplateTheme = {
   infoBoxColor2: "#e8e6e6",
   headerBorderTop: "#000000",
   headerBackground: "#ffffff",
-  headerLogoSize: "l", // "original" | "s" | "m" | "l" | "xl" | "xxl";
+  headerLogoSize: "xl", // "original" | "s" | "m" | "l" | "xl" | "xxl";
   headerLogoWidth: "120px",
 };
 

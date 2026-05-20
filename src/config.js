@@ -1,7 +1,7 @@
-// defaultTemplate
+// fairagro
 export const global_config = {
   api_url: "https://semanticlookup.zbmed.de/api/",
-  projectName: "defaultTemplate",
+  projectName: "fairagro",
   matomo_tracking: false,
   show_consent_form: false,
 };
