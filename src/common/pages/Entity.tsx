@@ -33,7 +33,7 @@ export default function Entity() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParam, setSearchParams] = useSearchParams(); // read the query string in the URL for the current location
   const concatIri = decodeURIComponent(
-    decodeURIComponent(searchParam.get("iri"))
+    decodeURIComponent(searchParam.get("iri")),
   );
   const routeParams = useParams();
   const navigate = useNavigate();
@@ -41,8 +41,8 @@ export default function Entity() {
     routeParams.entityType == "terms"
       ? "term"
       : routeParams.entityType == "properties"
-      ? "property"
-      : "individual";
+        ? "property"
+        : "individual";
   const entityTitle = entityType[0].toUpperCase() + entityType.slice(1);
 
   return (
@@ -85,7 +85,7 @@ export default function Entity() {
                   <span>CURIE </span>
                   <EuiIcon
                     title={"CURIE = Compact uniform resource identifier"}
-                    type={"iInCircle"}
+                    type={"info"}
                     size={"m"}
                   />
                   <span>:</span>
@@ -97,7 +97,7 @@ export default function Entity() {
                 ontologyId={routeParams.ontologyId}
                 onNavigateToOntology={(ontologyId) => {
                   navigate(
-                    `/ontologies/${ontologyId}/?hierarchy=classes-hierarchy`
+                    `/ontologies/${ontologyId}/?hierarchy=classes-hierarchy`,
                   );
                 }}
               />
@@ -113,9 +113,9 @@ export default function Entity() {
                       entityType == "class" || entityType == "term"
                         ? "terms"
                         : entityType == "property"
-                        ? "properties"
-                        : "individuals"
-                    }?iri=${encodeURIComponent(encodeURIComponent(entity.iri))}`
+                          ? "properties"
+                          : "individuals"
+                    }?iri=${encodeURIComponent(encodeURIComponent(entity.iri))}`,
                   );
                 }}
               />
@@ -137,9 +137,9 @@ export default function Entity() {
                       entityType == "class" || entityType == "term"
                         ? "terms"
                         : entityType == "property"
-                        ? "properties"
-                        : "individuals"
-                    }?iri=${encodeURIComponent(encodeURIComponent(entity.iri))}`
+                          ? "properties"
+                          : "individuals"
+                    }?iri=${encodeURIComponent(encodeURIComponent(entity.iri))}`,
                   );
                 }}
               />
@@ -203,11 +203,11 @@ export default function Entity() {
                         entityType == "class" || entityType == "term"
                           ? "terms"
                           : entityType == "property"
-                          ? "properties"
-                          : "individuals"
+                            ? "properties"
+                            : "individuals"
                       }?iri=${encodeURIComponent(
-                        encodeURIComponent(entity.iri)
-                      )}`
+                        encodeURIComponent(entity.iri),
+                      )}`,
                     );
                   }}
                   onNavigateToOntology={(ontologyId, entityType, entity) => {
@@ -216,11 +216,11 @@ export default function Entity() {
                         entityType == "class" || entityType == "term"
                           ? "terms"
                           : entityType == "property"
-                          ? "properties"
-                          : "individuals"
+                            ? "properties"
+                            : "individuals"
                       }?iri=${encodeURIComponent(
-                        encodeURIComponent(entity.iri)
-                      )}`
+                        encodeURIComponent(entity.iri),
+                      )}`,
                     );
                   }}
                 />
@@ -284,28 +284,28 @@ export default function Entity() {
                             entityType == "class" || entityType == "term"
                               ? "terms"
                               : entityType == "property"
-                              ? "properties"
-                              : "individuals"
+                                ? "properties"
+                                : "individuals"
                           }?iri=${encodeURIComponent(
-                            encodeURIComponent(entity.iri)
-                          )}`
+                            encodeURIComponent(entity.iri),
+                          )}`,
                         );
                       }}
                       onNavigateToOntology={(
                         ontologyId,
                         entityType,
-                        entity
+                        entity,
                       ) => {
                         navigate(
                           `/ontologies/${ontologyId}/${
                             entityType == "class" || entityType == "term"
                               ? "terms"
                               : entityType == "property"
-                              ? "properties"
-                              : "individuals"
+                                ? "properties"
+                                : "individuals"
                           }?iri=${encodeURIComponent(
-                            encodeURIComponent(entity.iri)
-                          )}`
+                            encodeURIComponent(entity.iri),
+                          )}`,
                         );
                       }}
                     />
