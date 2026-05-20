@@ -36,7 +36,7 @@ export const EuiNavigationLink = forwardRef(
         {children}
       </EuiLink>
     );
-  }
+  },
 );
 
 EuiNavigationLink.propTypes = {
@@ -72,7 +72,7 @@ export const EuiCustomHeaderLink = forwardRef(
         {children}
       </EuiHeaderLink>
     );
-  }
+  },
 );
 
 EuiCustomHeaderLink.propTypes = {

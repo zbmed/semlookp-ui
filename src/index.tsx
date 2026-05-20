@@ -8,7 +8,6 @@ import { theme } from "./theme";
 
 const rootElement = document.getElementById("root") as HTMLElement;
 const queryClient = new QueryClient();
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const root = createRoot(rootElement!);
 
 root.render(
@@ -30,5 +29,5 @@ root.render(
         </QueryClientProvider>
       </EuiProvider>
     </ThemeProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );

@@ -42,7 +42,7 @@ const description = (logo) => {
             style={{ backgroundColor: "#000000", color: "#ffffff" }}
             onClick={() =>
               window.location.assign(
-                "https://ts4nfdi.github.io/terminology-service-suite/comp/latest"
+                "https://ts4nfdi.github.io/terminology-service-suite/comp/latest",
               )
             }
           >
