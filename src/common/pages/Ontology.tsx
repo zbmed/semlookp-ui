@@ -1,3 +1,4 @@
+// main
 import {
   EuiAccordion,
   EuiFlexGroup,
@@ -36,12 +37,12 @@ export default function Ontology() {
           entityType == "class" || entityType == "term"
             ? "terms"
             : entityType == "property"
-            ? "properties"
-            : "individuals"
-        }?iri=${encodeURIComponent(encodeURIComponent(entity.iri))}`
+              ? "properties"
+              : "individuals"
+        }?iri=${encodeURIComponent(encodeURIComponent(entity.iri))}`,
       );
     },
-    [navigate]
+    [navigate],
   );
 
   const navigateToOntologyHierarchy = useCallback(
@@ -51,12 +52,12 @@ export default function Ontology() {
           entityType == "class" || entityType == "term"
             ? "terms"
             : entityType == "property"
-            ? "properties"
-            : "individuals"
-        }?iri=${encodeURIComponent(encodeURIComponent(entity.iri))}`
+              ? "properties"
+              : "individuals"
+        }?iri=${encodeURIComponent(encodeURIComponent(entity.iri))}`,
       );
     },
-    [navigate]
+    [navigate],
   );
 
   const tabs = useMemo(
@@ -111,7 +112,7 @@ export default function Ontology() {
       routeParams.ontologyId,
       navigateToEntityHierarchy,
       navigateToOntologyHierarchy,
-    ]
+    ],
   );
 
   const currentTabId = searchParams.get("hierarchy") || "classes-hierarchy";

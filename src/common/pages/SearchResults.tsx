@@ -1,3 +1,4 @@
+// main
 import { SearchResultsListWidget } from "@ts4nfdi/terminology-service-suite";
 import { useSearchParams } from "react-router-dom";
 import { global_config } from "../../config";

@@ -2,6 +2,13 @@
 export const global_config = {
   api_url: "https://ts.berd-nfdi.de/ols4/api/",
   projectName: "berd",
+  matomo_tracking: false,
+  show_consent_form: false,
+};
+
+export const matomo_config = {
+  tracker_url: "",
+  site_id: "1",
 };
 
 export const ts_specific_metadata = {

@@ -1,6 +1,10 @@
-import { Suspense } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import LinkScroller from "./common/components/LinkScroller";
+import { MatomoTagManager } from "./common/components/MatomoTagManager";
+import TrackingConsentFormComponent, {
+  CONSENT_KEY,
+} from "./common/components/TrackingConsent";
 import { Layout } from "./common/layout/Layout";
 import About from "./common/pages/About";
 import { default as ApiPage } from "./common/pages/Api";
@@ -12,49 +16,88 @@ import Projects from "./common/pages/Projects";
 import { default as Resources } from "./common/pages/Resources";
 import { default as SearchResults } from "./common/pages/SearchResults";
 import StaticMarkdownPage from "./common/pages/static/StaticMarkdownPage";
-import { ts_specific_metadata } from "./config";
+import { global_config, matomo_config, ts_specific_metadata } from "./config";
 
 function App() {
+  const [consent, setConsent] = useState<string | null>("loading");
+
+  useEffect(() => {
+    if (!global_config.show_consent_form) {
+      setConsent("declined");
+      return;
+    }
+    if (!global_config.show_consent_form) return;
+    const storedConsent = localStorage.getItem(CONSENT_KEY) as
+      | "accepted"
+      | "declined"
+      | null;
+    setConsent(storedConsent ?? null);
+  }, []);
+
+  const handleConsentChange = (choice: "accepted" | "declined") => {
+    localStorage.setItem(CONSENT_KEY, choice);
+    setConsent(choice);
+  };
+
+  const trackingEnabled =
+    global_config.matomo_tracking && consent === "accepted";
+
+  const appRoutes = (
+    <LinkScroller>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/about/api" element={<ApiPage />} />
+            <Route path="*" element={<Error />} />
+            <Route
+              path="/privacy"
+              element={
+                <StaticMarkdownPage
+                  file={ts_specific_metadata.homepage.privacy_markdown_file}
+                  title={"Privacy Policy"}
+                />
+              }
+            />
+            <Route
+              path="/imprint"
+              element={
+                <StaticMarkdownPage
+                  file={ts_specific_metadata.homepage.imprint_markdown_file}
+                  title={"Imprint"}
+                />
+              }
+            />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/resources" element={<Resources />} />
+            <Route path="/search" element={<SearchResults />} />
+            <Route
+              path="/ontologies/:ontologyId/:entityType"
+              element={<Entity />}
+            />
+            <Route path="/ontologies/:ontologyId" element={<Ontology />} />
+          </Route>
+        </Routes>
+      </Suspense>
+    </LinkScroller>
+  );
   return (
     <Router basename="/">
-      <LinkScroller>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/about/api" element={<ApiPage />} />
-              <Route path="*" element={<Error />} />
-              <Route
-                path="/privacy"
-                element={
-                  <StaticMarkdownPage
-                    file={ts_specific_metadata.homepage.privacy_markdown_file}
-                    title={"Privacy Policy"}
-                  />
-                }
-              />
-              <Route
-                path="/imprint"
-                element={
-                  <StaticMarkdownPage
-                    file={ts_specific_metadata.homepage.imprint_markdown_file}
-                    title={"Imprint"}
-                  />
-                }
-              />
-              <Route path="/projects" element={<Projects />} />
-              <Route path="/resources" element={<Resources />} />
-              <Route path="/search" element={<SearchResults />} />
-              <Route
-                path="/ontologies/:ontologyId/:entityType"
-                element={<Entity />}
-              />
-              <Route path="/ontologies/:ontologyId" element={<Ontology />} />
-            </Route>
-          </Routes>
-        </Suspense>
-      </LinkScroller>
+      {consent === null && (
+        <TrackingConsentFormComponent onConsentChange={handleConsentChange} />
+      )}
+
+      {trackingEnabled && consent === "accepted" ? (
+        <MatomoTagManager
+          containerUrl={matomo_config.tracker_url}
+          enabled={true}
+        >
+          {appRoutes}
+        </MatomoTagManager>
+      ) : (
+        appRoutes
+      )}
     </Router>
   );
 }

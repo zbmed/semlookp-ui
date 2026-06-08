@@ -25,7 +25,7 @@ jobs:
           head_ref: "${{ github.head_ref }}"
         run: |
           head_ref="${head_ref/\//-}"
-          ref_name="${head_ref:-${ref_name/main/latest}}"
+          ref_name="${head_ref:-berd}"
           combined_tag="${ref_name}-${GITHUB_SHA}"
           echo "::set-output name=imageTag::${combined_tag#v}"
       - name: Login to Container Registry
@@ -36,7 +36,7 @@ jobs:
           password: ${{ secrets.SEMLOOKP_WIDGETS_TOKEN }}
       - uses: actions/setup-node@v3
         with:
-          node-version: "16.x"
+          node-version: "22.x"
       - run: npm install
         working-directory: .
       - run: npm run style:format
@@ -67,8 +67,9 @@ jobs:
           head_ref: "${{ github.head_ref }}"
         run: |
           head_ref="${head_ref/\//-}"
-          ref_name="${head_ref:-${ref_name/berd/latest}}"
-          echo "::set-output name=imageTag::${ref_name#v}"
+          ref_name="${head_ref:-berd}"
+          combined_tag="${ref_name}-${GITHUB_SHA}"
+          echo "::set-output name=imageTag::${combined_tag#v}"
       - uses: actions/checkout@v2
       - run: |
           mkdir -p .kube

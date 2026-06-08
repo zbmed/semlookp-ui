@@ -12,11 +12,11 @@ export function navigateToEntity(
     ontology_name?: string;
     type?: string;
   }[],
-  navigate: NavigateFunction
+  navigate: NavigateFunction,
 ) {
   if (selectedOption[0]) {
     const targetIri = encodeURIComponent(
-      encodeURIComponent(selectedOption[0].iri)
+      encodeURIComponent(selectedOption[0].iri),
     );
     // '#' and '&' have to be URI-escaped because the iri gets passed as query search parameter in the URL
     if (selectedOption[0].type === "class") {

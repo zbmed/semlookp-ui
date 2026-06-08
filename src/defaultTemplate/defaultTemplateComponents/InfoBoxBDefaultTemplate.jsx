@@ -42,7 +42,7 @@ const description = (logo) => {
             style={{ backgroundColor: "#000000", color: "#ffffff" }}
             onClick={() =>
               window.location.assign(
-                "https://ts4nfdi.github.io/terminology-service-suite/comp/latest"
+                "https://ts4nfdi.github.io/terminology-service-suite/comp/latest",
               )
             }
           >
@@ -54,7 +54,7 @@ const description = (logo) => {
   );
 };
 
-const InfoBoxBBerd = () => {
+const InfoBoxBDefaultTemplate = () => {
   const theme = useTheme();
   const [logos, setLogos] = useState({
     logo: null,
@@ -92,4 +92,4 @@ const InfoBoxBBerd = () => {
   );
 };
 
-export default InfoBoxBBerd;
+export default InfoBoxBDefaultTemplate;

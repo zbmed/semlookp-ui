@@ -25,7 +25,7 @@ const berdTheme = {
   infoBoxColor2: "#ced7d0",
   headerBorderTop: "#254c2c",
   headerBackground: "#ffffff",
-  headerLogoSize: "xxl", // "original" | "s" | "m" | "l" | "xl" | "xxl";
+  headerLogoSize: "xl", // "original" | "s" | "m" | "l" | "xl" | "xxl";
   headerLogoWidth: "120px",
 };
 
