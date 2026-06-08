@@ -7,23 +7,22 @@ This repository provides a generic code base from which a specialised terminolog
 It is recommended that users possess a basic knowledge of coding and of the React framework.
 Should assistance be required in setting up a project-specific terminology service branch, please feel free to contact one of the developers.
 
-This is the first version of a shared frontend codebase and is under active development.
+This is the first version of a shared frontend codebase and it is under active development.
 So please forgive any errors that occur.
 We would be grateful if you could report any bugs.
 
 ## Built With
 
 - ReactJS 18
-- [TypeScript 4.5](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-5.html)
+- TypeScript
 - [Elastic UI](https://elastic.github.io/eui/#/)
 - [@ts4nfdi/terminology-service-suite](https://github.com/ts4nfdi/terminology-service-suite)
-- [Create React App](https://create-react-app.dev/)
+- Vite
 
 ## Setup
 
 ### Development
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 #### Docker
 
@@ -47,7 +46,7 @@ npm start
 
 Accessible at: [http://localhost:3000](http://localhost:3000).
 
-The page will reload when you make edits.\
+The page will reload when you make edits.
 
 We use prettier for code formatting. Run
 
@@ -66,6 +65,8 @@ Those specific branches should stick to the given structure to allow updates.
 
 To create a project specific branch, follow these steps:
 
+HINT: Have a look into already existing project specific branches, e.g. "health"
+
 1. Create a new branch from main.
 
 ```
@@ -74,23 +75,24 @@ git pull
 git checkout -b name-of-your-new-branch
 ```
 
-2. Copy `src/defaultTemplate` folder and rename it to `src/projectSpecific`.
-   Delete the `src/projectSpecific/defaultTemplateLayout` directory.
-   Rename `src/defaultTemplate/defaultTemplateComponents` and `src/defaultTemplate/defaultTemplateMarkdown` to
+2. Copy and rename some files:
+   - Copy `src/defaultTemplate` folder and rename it to `src/projectSpecific`.
+   - Delete the `src/projectSpecific/defaultTemplateLayout` directory.
+   - Rename `src/defaultTemplate/defaultTemplateComponents` and `src/defaultTemplate/defaultTemplateMarkdown` to
    `src/projectSpecific/projectSpecificComponents` and `src/projectSpecific/projectSpecificMarkdown`
-   Keep the defaultTemplate directory for merging with the main branch. Updates (bug fixes and new features) will be integrated via these default template files and are the basis for the project specific files.
+   - Keep the defaultTemplate directory for merging with the main branch. Updates (bug fixes and new features) will be integrated via these default template files and are the basis for the project specific files.
 
 3. Rename and modify the files in the projectSpecific directory according to your needs. Change the names in the componentMap.js.
 
-4. Following configuration files need to be adapted in this specific branch:
+4. Following configuration files need to be adapted in the specific branch:
 
 - `src/config.js` contains project specific metadata such as funding notice, project description or contact mail address
 - `src/theme.ts` contains project specific colors and shapes
 - `src/componentMap.js` defines component mappings of specific components to common names
 - `src/imageMap.js` defines image maps of specific images to common names
 
-a) Replace _// defaultTemplate_ at the beginning of each of these four files with your project name to make Git Attributes work.
-b) Rename the components in `src/projectSpecific/projectSpecificComponents` and adapt the paths in `src/componentMap.js` accordingly
+a) Replace _// defaultTemplate_ at the beginning of each of these four files with your project name to make Git Attributes work.  
+b) Rename the components in `src/projectSpecific/projectSpecificComponents` and add a section in `src/componentMap.js` titled with your project name
 
 5. Create the local image directory `src/projectSpecificImages`.
    Define image maps in `src/imageMap.js`.
