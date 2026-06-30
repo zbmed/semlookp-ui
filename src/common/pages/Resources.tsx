@@ -2,7 +2,7 @@ import { EuiButton, EuiPanel, EuiSpacer, EuiText } from "@elastic/eui";
 import { ResourcesWidget } from "@ts4nfdi/terminology-service-suite";
 import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
-import { global_config } from "../../config";
+import { global_config, ts_specific_metadata } from "../../config";
 
 const OLS4API = global_config.api_url;
 export default function Resources() {
@@ -18,7 +18,7 @@ export default function Resources() {
         onNavigate={(ontologyId) => {
           navigate(`/ontologies/${ontologyId}/`);
         }}
-        parameter={""}
+        parameter={"collectionId=" + ts_specific_metadata.collection}
         actions={[
           {
             render: (item) => (
