@@ -1,7 +1,7 @@
 // main
 import { SearchResultsListWidget } from "@ts4nfdi/terminology-service-suite";
 import { useSearchParams } from "react-router-dom";
-import { global_config } from "../../config";
+import { global_config, ts_specific_metadata } from "../../config";
 
 export default function SearchResults() {
   const [searchParams] = useSearchParams();
@@ -12,8 +12,8 @@ export default function SearchResults() {
       api={global_config.api_url}
       query={query}
       targetLink={"/"}
-      parameter={""}
       useLegacy={false}
+      parameter={"collectionId=" + ts_specific_metadata.collection}
     />
   );
 }

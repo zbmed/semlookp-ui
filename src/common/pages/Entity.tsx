@@ -24,7 +24,7 @@ import {
 } from "@ts4nfdi/terminology-service-suite";
 import { Helmet } from "react-helmet";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
-import { global_config } from "../../config";
+import { global_config, ts_specific_metadata } from "../../config";
 import { navigateToEntity } from "../components/utils";
 
 const OLS4API = global_config.api_url;
@@ -57,6 +57,7 @@ export default function Entity() {
                   iri={concatIri}
                   ontologyId={routeParams.ontologyId}
                   api={global_config.api_url}
+                  parameter={"collectionId=" + ts_specific_metadata.collection}
                 />
               </EuiTitle>
             </EuiFlexItem>
@@ -100,6 +101,7 @@ export default function Entity() {
                     `/ontologies/${ontologyId}/?hierarchy=classes-hierarchy`,
                   );
                 }}
+                parameter={"collectionId=" + ts_specific_metadata.collection}
               />
               <EuiSpacer size={"m"} />
               <EntityOntoListWidget
@@ -118,6 +120,7 @@ export default function Entity() {
                     }?iri=${encodeURIComponent(encodeURIComponent(entity.iri))}`,
                   );
                 }}
+                parameter={"collectionId=" + ts_specific_metadata.collection}
               />
             </EuiFlexItem>
             <EuiFlexItem grow={false}>
@@ -142,6 +145,7 @@ export default function Entity() {
                     }?iri=${encodeURIComponent(encodeURIComponent(entity.iri))}`,
                   );
                 }}
+                parameter={"collectionId=" + ts_specific_metadata.collection}
               />
             </EuiFlexItem>
           </EuiFlexGroup>
@@ -155,6 +159,7 @@ export default function Entity() {
               iri={concatIri}
               ontologyId={routeParams.ontologyId}
               api={OLS4API}
+              parameter={"collectionId=" + ts_specific_metadata.collection}
             />
           </EuiFlexItem>
           <EuiSpacer size={"s"} />
@@ -167,7 +172,9 @@ export default function Entity() {
             parameter={
               "ontology=" +
               routeParams.ontologyId +
-              "&collection=nfdi4health&fieldList=description,label,iri,ontology_name,type,short_form"
+              "&collectionId=" +
+              ts_specific_metadata.collection +
+              "&fieldList=description,label,iri,ontology_name,type,short_form"
             }
             allowCustomTerms={false}
             singleSelection={true}
@@ -255,6 +262,9 @@ export default function Entity() {
                         iri={concatIri}
                         hasTitle={false}
                         entityType={entityType}
+                        parameter={
+                          "collectionId=" + ts_specific_metadata.collection
+                        }
                       />
                     </div>
                   </EuiAccordion>
@@ -308,6 +318,9 @@ export default function Entity() {
                           )}`,
                         );
                       }}
+                      parameter={
+                        "collectionId=" + ts_specific_metadata.collection
+                      }
                     />
                   </EuiAccordion>
                 </EuiFlexItem>

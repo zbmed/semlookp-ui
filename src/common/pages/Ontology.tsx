@@ -21,7 +21,7 @@ import {
 import { useCallback, useMemo } from "react";
 import { Helmet } from "react-helmet";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
-import { global_config } from "../../config";
+import { global_config, ts_specific_metadata } from "../../config";
 import { navigateToEntity } from "../components/utils";
 
 const OLS4API = global_config.api_url;
@@ -152,6 +152,7 @@ export default function Ontology() {
                 <TitleWidget
                   ontologyId={routeParams.ontologyId}
                   api={global_config.api_url}
+                  parameter={"collectionId=" + ts_specific_metadata.collection}
                 />
               </EuiTitle>
             </EuiFlexItem>
@@ -176,6 +177,7 @@ export default function Ontology() {
             <DescriptionWidget
               ontologyId={routeParams.ontologyId}
               api={OLS4API}
+              parameter={"collectionId=" + ts_specific_metadata.collection}
             />
           </EuiFlexItem>
           <EuiSpacer size={"s"} />
@@ -188,7 +190,9 @@ export default function Ontology() {
             parameter={
               "ontology=" +
               routeParams.ontologyId +
-              "&collection=nfdi4health&fieldList=description,label,iri,ontology_name,type,short_form"
+              "&collectionId=" +
+              ts_specific_metadata.collection +
+              "&fieldList=description,label,iri,ontology_name,type,short_form"
             }
             allowCustomTerms={false}
             singleSelection={true}
@@ -242,6 +246,9 @@ export default function Ontology() {
                         api={OLS4API}
                         ontologyId={routeParams.ontologyId}
                         hasTitle={false}
+                        parameter={
+                          "collectionId=" + ts_specific_metadata.collection
+                        }
                       />
                     </div>
                   </EuiAccordion>
