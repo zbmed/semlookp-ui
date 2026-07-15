@@ -15,8 +15,23 @@ const defaultTemplateTheme = {
   headerLogoWidth: "120px",
 };
 
+const fairagroTheme = {
+  primary: "#006c5b", // not working anymore in EUI package >97
+  warning: "#e3e55f", // not working anymore in EUI package >97
+  body: "#006c5b", // not working anymore in EUI package >97
+  accent: "#e3e55f", // not working anymore in EUI package >97
+  missingResourceBoxColor: "#ccc8c8",
+  infoBoxColor1: "#b0aeae",
+  infoBoxColor2: "#e8e6e6",
+  headerBorderTop: "#000000",
+  headerBackground: "#ffffff",
+  headerLogoSize: "xl", // "original" | "s" | "m" | "l" | "xl" | "xxl";
+  headerLogoWidth: "120px",
+};
+
 const themes = {
   template: defaultTemplateTheme,
+  fairagro: fairagroTheme,
 };
 
 const selectedTheme = themes[global_config.projectName] || defaultTemplateTheme;

@@ -22,3 +22,7 @@
   font-family: TabletGothicNarrow !important;
   color: #3e3f40;
 }
+.euiLink,
+.euiLink:visited {
+  color: #006c5b !important;
+}
