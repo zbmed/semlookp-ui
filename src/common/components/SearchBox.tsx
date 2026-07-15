@@ -9,7 +9,7 @@ import {
 } from "@elastic/eui";
 import { AutocompleteWidget } from "@ts4nfdi/terminology-service-suite";
 import { useNavigate } from "react-router-dom";
-import { global_config } from "../../config";
+import { global_config, ts_specific_metadata } from "../../config";
 import EuiCustomLink from "../layout/util/EuiCustomLink";
 import { SearchExamples } from "./SearchExamples";
 import { navigateToEntity } from "./utils";
@@ -34,7 +34,11 @@ export const SearchBox = () => {
                 selectionChangedEvent={(selectedOption) => {
                   navigateToEntity(selectedOption, navigate);
                 }}
-                parameter="collection=nfdi4health&fieldList=description,label,iri,ontology_name,type,short_form"
+                parameter={
+                  "collectionId=" +
+                  ts_specific_metadata.collection +
+                  "&fieldList=description,label,iri,ontology_name,type,short_form"
+                }
                 allowCustomTerms={false}
                 singleSelection={true}
                 hasShortSelectedLabel={true}

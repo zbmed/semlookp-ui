@@ -23,7 +23,6 @@ We would be grateful if you could report any bugs.
 
 ### Development
 
-
 #### Docker
 
 To run the Docker container, do:
@@ -79,7 +78,7 @@ git checkout -b name-of-your-new-branch
    - Copy `src/defaultTemplate` folder and rename it to `src/projectSpecific`.
    - Delete the `src/projectSpecific/defaultTemplateLayout` directory.
    - Rename `src/defaultTemplate/defaultTemplateComponents` and `src/defaultTemplate/defaultTemplateMarkdown` to
-   `src/projectSpecific/projectSpecificComponents` and `src/projectSpecific/projectSpecificMarkdown`
+     `src/projectSpecific/projectSpecificComponents` and `src/projectSpecific/projectSpecificMarkdown`
    - Keep the defaultTemplate directory for merging with the main branch. Updates (bug fixes and new features) will be integrated via these default template files and are the basis for the project specific files.
 
 3. Rename and modify the files in the projectSpecific directory according to your needs. Change the names in the componentMap.js.
