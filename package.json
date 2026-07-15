@@ -8,7 +8,7 @@
     "@elastic/eui-theme-borealis": "^6.2.0",
     "@emotion/css": "^11.13.5",
     "@emotion/react": "^11.13.5",
-    "@ts4nfdi/terminology-service-suite": "^6.12.2",
+    "@ts4nfdi/terminology-service-suite": "^6.16.0",
     "axios": "1.16.0",
     "moment": "^2.29.3",
     "prop-types": "^15.8.1",
