@@ -1,6 +1,6 @@
 // fairagro
 export const global_config = {
-  api_url: "https://semanticlookup.zbmed.de/api/",
+  api_url: "https://terminology.services.base4nfdi.de/api-gateway/ols/api/",
   projectName: "fairagro",
   matomo_tracking: false,
   show_consent_form: false,
@@ -14,10 +14,10 @@ export const matomo_config = {
 export const ts_specific_metadata = {
   active_dev_banner_text:
     " This software is currently under active development. Therefore, please forgive any errors that occur. We would be very pleased if you could report any errors to semlookp-support@zbmed.de.",
-  contact_mail_address: "example@example.de", // use semlookp-support@zbmed.de if you have none
+  contact_mail_address: " https://fairagro.net/helpdesk/", // use semlookp-support@zbmed.de if you have none
   contact_mail_address_mailto: "mailto:example@example.de", // the "mailto" URI is needed to produce a hyperlink that will allow users to send an email on click
   collection:
-    "8135bed6-b2bd-4a6e-902e-bbec1f4ae91a", // if using the TS4NFDI Gateway, specify a collection here (uuid), otherwise leave empty
+    "ff5491d1-d0a9-481e-ac90-0fad065fa097", // if using the TS4NFDI Gateway, specify a collection here (uuid), otherwise leave empty
   homepage: {
     has_logo: true,
     has_text_below_logo: true,
@@ -51,7 +51,7 @@ export const ts_specific_metadata = {
     has_version_update_info: true,
     has_logos: true,
     funding_notice: "This is the funding notice.",
-    last_update: "June, 2025",
+    last_update: "July, 2026",
     version: "development version",
     footer_logo_A_url: "https://www.google.de",
     footer_logo_B_url: "https://www.google.de",
@@ -68,12 +68,12 @@ export const ts_specific_metadata = {
     },
   },
   search: {
-    search_example_text1: "diabetes",
-    search_example_link1: "/search?q=diabetes",
-    search_example_text2: "GO:0098743",
-    search_example_link2: "/search?q=GO:0098743",
-    search_example_text3: "http://snomed.info/id/423701002",
-    search_example_link3: "/search?q=http://snomed.info/id/423701002",
+    search_example_text1: "milk",
+    search_example_link1: "/search?q=milk",
+    search_example_text2: "ENVO_00005800",
+    search_example_link2: "/search?q=ENVO_00005800",
+    search_example_text3: "http://purl.obolibrary.org/obo/ENVO_01000240",
+    search_example_link3: "/search?q=http://purl.obolibrary.org/obo/ENVO_01000240",
   },
   projects: {
     cards: [{ name: "ProjectADescription" }, { name: "ProjectBDescription" }],
