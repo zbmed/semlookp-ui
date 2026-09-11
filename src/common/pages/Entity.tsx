@@ -30,7 +30,6 @@ import { navigateToEntity } from "../components/utils";
 import { getOntoportalApiKey } from "../components/apiKeys";
 import { useEffect, useState } from "react";
 
-const OLS4API = global_config.api_url;
 
 export default function Entity() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -188,7 +187,7 @@ export default function Entity() {
             <DescriptionWidget
               iri={concatIri}
               ontologyId={routeParams.ontologyId}
-              api={OLS4API}
+              api={global_config.api_url}
               parameter={ts_specific_metadata.collection}
               useLegacy={false}
               thingType={entityType}
@@ -196,7 +195,7 @@ export default function Entity() {
           </EuiFlexItem>
           <EuiSpacer size={"s"} />
           <AutocompleteWidget
-            api={OLS4API}
+            api={global_config.api_url}
             placeholder={"Search in " + routeParams.ontologyId.toUpperCase()}
             selectionChangedEvent={(selectedOption) => {
               const normalized = selectedOption.map((option) => ({
