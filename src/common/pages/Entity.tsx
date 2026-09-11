@@ -199,7 +199,11 @@ export default function Entity() {
             api={OLS4API}
             placeholder={"Search in " + routeParams.ontologyId.toUpperCase()}
             selectionChangedEvent={(selectedOption) => {
-              navigateToEntity(selectedOption, navigate);
+              const normalized = selectedOption.map((option) => ({
+                ...option,
+                label: option.label ?? option.iri ?? "",
+              }));
+              navigateToEntity(normalized, navigate);
             }}
             parameter={
               "ontology=" +

@@ -32,7 +32,11 @@ export const SearchBox = () => {
                 api={global_config.api_url}
                 placeholder={"Type to search"}
                 selectionChangedEvent={(selectedOption) => {
-                  navigateToEntity(selectedOption, navigate);
+                  const normalized = selectedOption.map((option) => ({
+                    ...option,
+                    label: option.label ?? option.iri ?? "",
+                  }));
+                  navigateToEntity(normalized, navigate);
                 }}
                 parameter={
                   ts_specific_metadata.collection +
