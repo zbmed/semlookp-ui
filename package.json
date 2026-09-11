@@ -8,7 +8,7 @@
     "@elastic/eui-theme-borealis": "^6.2.0",
     "@emotion/css": "^11.13.5",
     "@emotion/react": "^11.13.5",
-    "@ts4nfdi/terminology-service-suite": "^7.1.0",
+    "@ts4nfdi/terminology-service-suite": "^7.4.2",
     "axios": "1.16.0",
     "moment": "^2.29.3",
     "prop-types": "^15.8.1",
@@ -17,8 +17,7 @@
     "react-helmet": "^6.1.0",
     "react-markdown": "^8.0.5",
     "react-query": "^3.39.2",
-    "react-router-dom": "^6.3.0",
-    "ts-loader": "^9.3.0"
+    "react-router-dom": "^6.3.0"
   },
   "type": "module",
   "scripts": {
@@ -43,9 +42,7 @@
     ]
   },
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@eslint/js": "^9.39.4",
-    "@types/jest": "^27.0.1",
     "@types/node": "^20.19.39",
     "@types/react": "^18.3.27",
     "@types/react-dom": "^18.3.7",
@@ -58,12 +55,10 @@
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-unused-imports": "^4.4.1",
-    "json-loader": "^0.5.7",
     "prettier": "^3.8.3",
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.59.2",
     "vite": "^8.0.10",
-    "vite-plugin-eslint": "^1.8.1",
-    "web-vitals": "^2.1.0"
+    "vite-plugin-eslint": "^1.8.1"
   }
 }

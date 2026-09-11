@@ -1,6 +1,6 @@
 // defaultTemplate
 export const global_config = {
-  api_url: "https://semanticlookup.zbmed.de/api/",
+  api_url: "https://terminology.services.base4nfdi.de/api-gateway/ols/api/",
   projectName: "defaultTemplate",
   matomo_tracking: false,
   show_consent_form: false,
@@ -16,8 +16,7 @@ export const ts_specific_metadata = {
     " This software is currently under active development. Therefore, please forgive any errors that occur. We would be very pleased if you could report any errors to semlookp-support@zbmed.de.",
   contact_mail_address: "example@example.de", // use semlookp-support@zbmed.de if you have none
   contact_mail_address_mailto: "mailto:example@example.de", // the "mailto" URI is needed to produce a hyperlink that will allow users to send an email on click
-  collection:
-    "8135bed6-b2bd-4a6e-902e-bbec1f4ae91a", // if using the TS4NFDI Gateway, specify a collection here (uuid), otherwise leave empty
+  collection: "collectionId=ff5491d1-d0a9-481e-ac90-0fad065fa097", // if using the TS4NFDI Gateway, specify a collection here (uuid), otherwise leave empty
   homepage: {
     has_logo: true,
     has_text_below_logo: true,
@@ -68,12 +67,12 @@ export const ts_specific_metadata = {
     },
   },
   search: {
-    search_example_text1: "diabetes",
-    search_example_link1: "/search?q=diabetes",
-    search_example_text2: "GO:0098743",
-    search_example_link2: "/search?q=GO:0098743",
-    search_example_text3: "http://snomed.info/id/423701002",
-    search_example_link3: "/search?q=http://snomed.info/id/423701002",
+    search_example_text1: "milk",
+    search_example_link1: "/search?q=milk",
+    search_example_text2: "planet",
+    search_example_link2: "/search?q=planet",
+    search_example_text3: "derives from",
+    search_example_link3: "/search?q=derives from",
   },
   projects: {
     cards: [{ name: "ProjectADescription" }, { name: "ProjectBDescription" }],

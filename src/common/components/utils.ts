@@ -19,7 +19,10 @@ export function navigateToEntity(
       encodeURIComponent(selectedOption[0].iri),
     );
     // '#' and '&' have to be URI-escaped because the iri gets passed as query search parameter in the URL
-    if (selectedOption[0].type === "class" || selectedOption[0].type === "skos:Concept") {
+    if (
+      selectedOption[0].type === "class" ||
+      selectedOption[0].type === "skos:Concept"
+    ) {
       // Not checking if "term" should be right here because the api only uses class. However, this comment might be useful if related bugs should be detected later
       navigate({
         pathname: "/ontologies/" + selectedOption[0].ontology_name + "/terms",

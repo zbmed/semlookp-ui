@@ -28,9 +28,7 @@ function App() {
     }
     if (!global_config.show_consent_form) return;
     const storedConsent = localStorage.getItem(CONSENT_KEY) as
-      | "accepted"
-      | "declined"
-      | null;
+      "accepted" | "declined" | null;
     setConsent(storedConsent ?? null);
   }, []);
 
