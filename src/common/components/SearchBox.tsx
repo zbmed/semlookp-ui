@@ -35,7 +35,6 @@ export const SearchBox = () => {
                   navigateToEntity(selectedOption, navigate);
                 }}
                 parameter={
-                  "collectionId=" +
                   ts_specific_metadata.collection +
                   "&fieldList=description,label,iri,ontology_name,type,short_form"
                 }

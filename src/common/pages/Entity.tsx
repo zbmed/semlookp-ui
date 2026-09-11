@@ -101,7 +101,7 @@ export default function Entity() {
                     `/ontologies/${ontologyId}/?hierarchy=classes-hierarchy`,
                   );
                 }}
-                parameter={"collectionId=" + ts_specific_metadata.collection}
+                parameter={ts_specific_metadata.collection}
               />
               <EuiSpacer size={"m"} />
               <EntityOntoListWidget
@@ -120,7 +120,7 @@ export default function Entity() {
                     }?iri=${encodeURIComponent(encodeURIComponent(entity.iri))}`,
                   );
                 }}
-                parameter={"collectionId=" + ts_specific_metadata.collection}
+                parameter={ts_specific_metadata.collection}
               />
             </EuiFlexItem>
             <EuiFlexItem grow={false}>
@@ -145,7 +145,7 @@ export default function Entity() {
                     }?iri=${encodeURIComponent(encodeURIComponent(entity.iri))}`,
                   );
                 }}
-                parameter={"collectionId=" + ts_specific_metadata.collection}
+                parameter={ts_specific_metadata.collection}
               />
             </EuiFlexItem>
           </EuiFlexGroup>
@@ -172,7 +172,7 @@ export default function Entity() {
             parameter={
               "ontology=" +
               routeParams.ontologyId +
-              "&collectionId=" +
+              "&" +
               ts_specific_metadata.collection +
               "&fieldList=description,label,iri,ontology_name,type,short_form"
             }
@@ -262,9 +262,8 @@ export default function Entity() {
                         iri={concatIri}
                         hasTitle={false}
                         entityType={entityType}
-                        parameter={
-                          "collectionId=" + ts_specific_metadata.collection
-                        }
+                        parameter={ts_specific_metadata.collection}
+                        useLegacy={false}
                       />
                     </div>
                   </EuiAccordion>
@@ -318,9 +317,7 @@ export default function Entity() {
                           )}`,
                         );
                       }}
-                      parameter={
-                        "collectionId=" + ts_specific_metadata.collection
-                      }
+                      parameter={ts_specific_metadata.collection}
                     />
                   </EuiAccordion>
                 </EuiFlexItem>

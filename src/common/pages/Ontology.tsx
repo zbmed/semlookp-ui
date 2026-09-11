@@ -152,7 +152,7 @@ export default function Ontology() {
                 <TitleWidget
                   ontologyId={routeParams.ontologyId}
                   api={global_config.api_url}
-                  parameter={"collectionId=" + ts_specific_metadata.collection}
+                  parameter={ts_specific_metadata.collection}
                 />
               </EuiTitle>
             </EuiFlexItem>
@@ -177,7 +177,7 @@ export default function Ontology() {
             <DescriptionWidget
               ontologyId={routeParams.ontologyId}
               api={OLS4API}
-              parameter={"collectionId=" + ts_specific_metadata.collection}
+              parameter={ts_specific_metadata.collection}
             />
           </EuiFlexItem>
           <EuiSpacer size={"s"} />
@@ -190,7 +190,7 @@ export default function Ontology() {
             parameter={
               "ontology=" +
               routeParams.ontologyId +
-              "&collectionId=" +
+              "&" +
               ts_specific_metadata.collection +
               "&fieldList=description,label,iri,ontology_name,type,short_form"
             }
@@ -246,9 +246,7 @@ export default function Ontology() {
                         api={OLS4API}
                         ontologyId={routeParams.ontologyId}
                         hasTitle={false}
-                        parameter={
-                          "collectionId=" + ts_specific_metadata.collection
-                        }
+                        parameter={ts_specific_metadata.collection}
                       />
                     </div>
                   </EuiAccordion>

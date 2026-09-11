@@ -18,7 +18,7 @@ export default function Resources() {
         onNavigate={(ontologyId) => {
           navigate(`/ontologies/${ontologyId}/`);
         }}
-        parameter={"collectionId=" + ts_specific_metadata.collection}
+        parameter={ts_specific_metadata.collection}
         actions={[
           {
             render: (item) => (
