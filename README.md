@@ -56,6 +56,32 @@ npm run style:ceck
 
 to format or check all files.
 
+#### API keys for OntoPortal providers
+
+Widgets querying an OntoPortal-based providers (currently the `HierarchyWidget` on the entity page) need the API key of
+the respective instance. The keys are injected into the bundle at build time, in CI from the repository secrets of the
+same name:
+
+| Provider API URL                    | Environment variable / secret |
+| ----------------------------------- | ----------------------------- |
+| https://data.agroportal.eu          | `AGROPORTAL_API_KEY`          |
+| https://data.earthportal.eu         | `EARTHPORTAL_API_KEY`         |
+| https://data.biodivportal.gfbio.org | `BIODIVPORTAL_API_KEY`        |
+| https://data.ecoportal.lifewatch.eu | `ECOPORTAL_API_KEY`           |
+| https://data.lovportal.lirmm.fr     | `LOVPORTAL_API_KEY`           |
+| https://data.bioontology.org        | `BIOPORTAL_API_KEY`           |
+
+For local development, put the keys you need into an (unversioned) `.env` file in the project root:
+
+```
+AGROPORTAL_API_KEY=...
+BIOPORTAL_API_KEY=...
+```
+
+The mapping lives in `vite.config.js`, the lookup at runtime in `src/common/components/apiKeys.ts`. A backend without a
+configured key gets an empty key, so its requests will be rejected. Note that keys injected this way are part of the
+JavaScript bundle and therefore readable by anyone using the deployed site.
+
 ## Hints for using the generic code base
 
 The main branch represents the generic codebase.

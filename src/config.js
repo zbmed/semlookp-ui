@@ -1,6 +1,6 @@
 // defaultTemplate
 export const global_config = {
-  api_url: "https://semanticlookup.zbmed.de/api/",
+  api_url: "https://terminology.services.base4nfdi.de/api-gateway/ols/api/",
   projectName: "defaultTemplate",
   matomo_tracking: false,
   show_consent_form: false,
@@ -67,12 +67,12 @@ export const ts_specific_metadata = {
     },
   },
   search: {
-    search_example_text1: "diabetes",
-    search_example_link1: "/search?q=diabetes",
-    search_example_text2: "GO:0098743",
-    search_example_link2: "/search?q=GO:0098743",
-    search_example_text3: "http://snomed.info/id/423701002",
-    search_example_link3: "/search?q=http://snomed.info/id/423701002",
+    search_example_text1: "milk",
+    search_example_link1: "/search?q=milk",
+    search_example_text2: "planet",
+    search_example_link2: "/search?q=planet",
+    search_example_text3: "derives from",
+    search_example_link3: "/search?q=derives from",
   },
   projects: {
     cards: [{ name: "ProjectADescription" }, { name: "ProjectBDescription" }],

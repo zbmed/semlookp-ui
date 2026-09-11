@@ -36,7 +36,7 @@ jobs:
           password: ${{ secrets.SEMLOOKP_WIDGETS_TOKEN }}
       - uses: actions/setup-node@v3
         with:
-          node-version: "22.x"
+          node-version: "24.x"
       - run: npm install
         working-directory: .
       - run: npm run style:format
@@ -46,6 +46,12 @@ jobs:
       - run: npm run build
         env:
           CI: false
+          AGROPORTAL_API_KEY: ${{ secrets.AGROPORTAL_API_KEY }}
+          EARTHPORTAL_API_KEY: ${{ secrets.EARTHPORTAL_API_KEY }}
+          BIODIVPORTAL_API_KEY: ${{ secrets.BIODIVPORTAL_API_KEY }}
+          ECOPORTAL_API_KEY: ${{ secrets.ECOPORTAL_API_KEY }}
+          LOVPORTAL_API_KEY: ${{ secrets.LOVPORTAL_API_KEY }}
+          BIOPORTAL_API_KEY: ${{ secrets.BIOPORTAL_API_KEY }}
         working-directory: .
       - name: Build and Push Frontend
         uses: docker/build-push-action@v2
