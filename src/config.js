@@ -16,8 +16,7 @@ export const ts_specific_metadata = {
     " This software is currently under active development. Therefore, please forgive any errors that occur. We would be very pleased if you could report any errors to semlookp-support@zbmed.de.",
   contact_mail_address: " https://fairagro.net/helpdesk/", // use semlookp-support@zbmed.de if you have none
   contact_mail_address_mailto: "mailto:example@example.de", // the "mailto" URI is needed to produce a hyperlink that will allow users to send an email on click
-  collection:
-    "ff5491d1-d0a9-481e-ac90-0fad065fa097", // if using the TS4NFDI Gateway, specify a collection here (uuid), otherwise leave empty
+  collection: "collectionId=ff5491d1-d0a9-481e-ac90-0fad065fa097", // if using the TS4NFDI Gateway, specify a collection here (uuid), otherwise leave empty
   homepage: {
     has_logo: true,
     has_text_below_logo: true,
@@ -70,10 +69,10 @@ export const ts_specific_metadata = {
   search: {
     search_example_text1: "milk",
     search_example_link1: "/search?q=milk",
-    search_example_text2: "ENVO_00005800",
-    search_example_link2: "/search?q=ENVO_00005800",
-    search_example_text3: "http://purl.obolibrary.org/obo/ENVO_01000240",
-    search_example_link3: "/search?q=http://purl.obolibrary.org/obo/ENVO_01000240",
+    search_example_text2: "planet",
+    search_example_link2: "/search?q=planet",
+    search_example_text3: "derives from",
+    search_example_link3: "/search?q=derives from",
   },
   projects: {
     cards: [{ name: "ProjectADescription" }, { name: "ProjectBDescription" }],

@@ -13,7 +13,7 @@ export default function SearchResults() {
       query={query}
       targetLink={"/"}
       useLegacy={false}
-      parameter={"collectionId=" + ts_specific_metadata.collection}
+      parameter={ts_specific_metadata.collection}
     />
   );
 }

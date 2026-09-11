@@ -24,7 +24,6 @@ import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { global_config, ts_specific_metadata } from "../../config";
 import { navigateToEntity } from "../components/utils";
 
-const OLS4API = global_config.api_url;
 export default function Ontology() {
   const routeParams = useParams();
   const navigate = useNavigate();
@@ -152,7 +151,7 @@ export default function Ontology() {
                 <TitleWidget
                   ontologyId={routeParams.ontologyId}
                   api={global_config.api_url}
-                  parameter={"collectionId=" + ts_specific_metadata.collection}
+                  parameter={ts_specific_metadata.collection}
                 />
               </EuiTitle>
             </EuiFlexItem>
@@ -176,21 +175,25 @@ export default function Ontology() {
             <EuiSpacer size={"s"} />
             <DescriptionWidget
               ontologyId={routeParams.ontologyId}
-              api={OLS4API}
-              parameter={"collectionId=" + ts_specific_metadata.collection}
+              api={global_config.api_url}
+              parameter={ts_specific_metadata.collection}
             />
           </EuiFlexItem>
           <EuiSpacer size={"s"} />
           <AutocompleteWidget
-            api={OLS4API}
+            api={global_config.api_url}
             placeholder={"Search in " + routeParams.ontologyId.toUpperCase()}
             selectionChangedEvent={(selectedOption) => {
-              navigateToEntity(selectedOption, navigate);
+              const normalized = selectedOption.map((option) => ({
+                ...option,
+                label: option.label ?? option.iri ?? "",
+              }));
+              navigateToEntity(normalized, navigate);
             }}
             parameter={
               "ontology=" +
               routeParams.ontologyId +
-              "&collectionId=" +
+              "&" +
               ts_specific_metadata.collection +
               "&fieldList=description,label,iri,ontology_name,type,short_form"
             }
@@ -243,12 +246,10 @@ export default function Ontology() {
                       }}
                     >
                       <OntologyInfoWidget
-                        api={OLS4API}
+                        api={global_config.api_url}
                         ontologyId={routeParams.ontologyId}
                         hasTitle={false}
-                        parameter={
-                          "collectionId=" + ts_specific_metadata.collection
-                        }
+                        parameter={ts_specific_metadata.collection}
                       />
                     </div>
                   </EuiAccordion>

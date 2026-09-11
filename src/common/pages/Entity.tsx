@@ -21,13 +21,15 @@ import {
   IriWidget,
   JsonApiWidget,
   TitleWidget,
+  useEntityProvider,
 } from "@ts4nfdi/terminology-service-suite";
 import { Helmet } from "react-helmet";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { global_config, ts_specific_metadata } from "../../config";
 import { navigateToEntity } from "../components/utils";
+import { getOntoportalApiKey } from "../components/apiKeys";
+import { useEffect, useState } from "react";
 
-const OLS4API = global_config.api_url;
 
 export default function Entity() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -37,6 +39,27 @@ export default function Entity() {
   );
   const routeParams = useParams();
   const navigate = useNavigate();
+
+  const { provider } = useEntityProvider({
+    ontologyId: routeParams.ontologyId,
+    iri: concatIri,
+  });
+
+  const [backendType, setBackendType] = useState<string>("ols");
+  const [apiUrl, setApiUrl] = useState<string>("");
+  const [apiKey, setApiKey] = useState<string>("");
+
+  useEffect(() => {
+    if (provider?.type) {
+      setBackendType(provider.type);
+    }
+    if (provider?.api) {
+      setApiUrl(provider.api);
+      if (provider.type === "ontoportal")
+        setApiKey(getOntoportalApiKey(provider.api));
+    }
+  }, [provider]);
+
   const entityType =
     routeParams.entityType == "terms"
       ? "term"
@@ -57,7 +80,10 @@ export default function Entity() {
                   iri={concatIri}
                   ontologyId={routeParams.ontologyId}
                   api={global_config.api_url}
-                  parameter={"collectionId=" + ts_specific_metadata.collection}
+                  parameter={ts_specific_metadata.collection}
+                  useLegacy={false}
+                  thingType={entityType}
+                  defaultValue={"No title available"}
                 />
               </EuiTitle>
             </EuiFlexItem>
@@ -93,6 +119,7 @@ export default function Entity() {
                 </span>
               </EuiTitle>
               <BreadcrumbWidget
+                entityType={entityType}
                 iri={concatIri}
                 api={global_config.api_url}
                 ontologyId={routeParams.ontologyId}
@@ -101,14 +128,15 @@ export default function Entity() {
                     `/ontologies/${ontologyId}/?hierarchy=classes-hierarchy`,
                   );
                 }}
-                parameter={"collectionId=" + ts_specific_metadata.collection}
+                parameter={ts_specific_metadata.collection}
               />
               <EuiSpacer size={"m"} />
               <EntityOntoListWidget
+                entityType={entityType}
                 api={global_config.api_url}
                 iri={concatIri}
                 ontologyId={routeParams.ontologyId}
-                useLegacy={true}
+                useLegacy={false}
                 onNavigateToOntology={(ontologyId, entityType, entity) => {
                   navigate(
                     `/ontologies/${ontologyId}/${
@@ -120,7 +148,7 @@ export default function Entity() {
                     }?iri=${encodeURIComponent(encodeURIComponent(entity.iri))}`,
                   );
                 }}
-                parameter={"collectionId=" + ts_specific_metadata.collection}
+                parameter={ts_specific_metadata.collection}
               />
             </EuiFlexItem>
             <EuiFlexItem grow={false}>
@@ -130,10 +158,11 @@ export default function Entity() {
               <IriWidget iri={concatIri} copyButton={"left"} />
               <EuiSpacer size={"m"} />
               <EntityDefinedByWidget
+                entityType={entityType}
                 api={global_config.api_url}
                 iri={concatIri}
                 ontologyId={routeParams.ontologyId}
-                useLegacy={true}
+                useLegacy={false}
                 onNavigateToOntology={(ontologyId, entityType, entity) => {
                   navigate(
                     `/ontologies/${ontologyId}/${
@@ -145,7 +174,7 @@ export default function Entity() {
                     }?iri=${encodeURIComponent(encodeURIComponent(entity.iri))}`,
                   );
                 }}
-                parameter={"collectionId=" + ts_specific_metadata.collection}
+                parameter={ts_specific_metadata.collection}
               />
             </EuiFlexItem>
           </EuiFlexGroup>
@@ -158,21 +187,27 @@ export default function Entity() {
             <DescriptionWidget
               iri={concatIri}
               ontologyId={routeParams.ontologyId}
-              api={OLS4API}
-              parameter={"collectionId=" + ts_specific_metadata.collection}
+              api={global_config.api_url}
+              parameter={ts_specific_metadata.collection}
+              useLegacy={false}
+              thingType={entityType}
             />
           </EuiFlexItem>
           <EuiSpacer size={"s"} />
           <AutocompleteWidget
-            api={OLS4API}
+            api={global_config.api_url}
             placeholder={"Search in " + routeParams.ontologyId.toUpperCase()}
             selectionChangedEvent={(selectedOption) => {
-              navigateToEntity(selectedOption, navigate);
+              const normalized = selectedOption.map((option) => ({
+                ...option,
+                label: option.label ?? option.iri ?? "",
+              }));
+              navigateToEntity(normalized, navigate);
             }}
             parameter={
               "ontology=" +
               routeParams.ontologyId +
-              "&collectionId=" +
+              "&" +
               ts_specific_metadata.collection +
               "&fieldList=description,label,iri,ontology_name,type,short_form"
             }
@@ -198,39 +233,42 @@ export default function Entity() {
               </EuiTitle>
               <EuiHorizontalRule style={{ marginBottom: "0px" }} />
               <div style={{ overflow: "auto" }}>
-                <HierarchyWidget
-                  apiUrl={global_config.api_url}
-                  backendType={"ols"}
-                  iri={concatIri}
-                  entityType={entityType}
-                  ontologyId={routeParams.ontologyId}
-                  onNavigateToEntity={(ontologyId, entityType, entity) => {
-                    navigate(
-                      `/ontologies/${ontologyId}/${
-                        entityType == "class" || entityType == "term"
-                          ? "terms"
-                          : entityType == "property"
-                            ? "properties"
-                            : "individuals"
-                      }?iri=${encodeURIComponent(
-                        encodeURIComponent(entity.iri),
-                      )}`,
-                    );
-                  }}
-                  onNavigateToOntology={(ontologyId, entityType, entity) => {
-                    navigate(
-                      `/ontologies/${ontologyId}/${
-                        entityType == "class" || entityType == "term"
-                          ? "terms"
-                          : entityType == "property"
-                            ? "properties"
-                            : "individuals"
-                      }?iri=${encodeURIComponent(
-                        encodeURIComponent(entity.iri),
-                      )}`,
-                    );
-                  }}
-                />
+                {apiUrl && backendType && concatIri && (
+                  <HierarchyWidget
+                    apiUrl={apiUrl}
+                    apiKey={apiKey}
+                    backendType={backendType}
+                    iri={concatIri}
+                    entityType={entityType}
+                    ontologyId={routeParams.ontologyId}
+                    onNavigateToEntity={(ontologyId, entityType, entity) => {
+                      navigate(
+                        `/ontologies/${ontologyId}/${
+                          entityType == "class" || entityType == "term"
+                            ? "terms"
+                            : entityType == "property"
+                              ? "properties"
+                              : "individuals"
+                        }?iri=${encodeURIComponent(
+                          encodeURIComponent(entity.iri),
+                        )}`,
+                      );
+                    }}
+                    onNavigateToOntology={(ontologyId, entityType, entity) => {
+                      navigate(
+                        `/ontologies/${ontologyId}/${
+                          entityType == "class" || entityType == "term"
+                            ? "terms"
+                            : entityType == "property"
+                              ? "properties"
+                              : "individuals"
+                        }?iri=${encodeURIComponent(
+                          encodeURIComponent(entity.iri),
+                        )}`,
+                      );
+                    }}
+                  />
+                )}
               </div>
             </EuiFlexItem>
             <EuiSpacer size={"l"} />
@@ -257,14 +295,13 @@ export default function Entity() {
                       }}
                     >
                       <EntityInfoWidget
-                        api={OLS4API}
+                        api={global_config.api_url}
                         ontologyId={routeParams.ontologyId}
                         iri={concatIri}
                         hasTitle={false}
                         entityType={entityType}
-                        parameter={
-                          "collectionId=" + ts_specific_metadata.collection
-                        }
+                        parameter={ts_specific_metadata.collection}
+                        useLegacy={false}
                       />
                     </div>
                   </EuiAccordion>
@@ -318,9 +355,7 @@ export default function Entity() {
                           )}`,
                         );
                       }}
-                      parameter={
-                        "collectionId=" + ts_specific_metadata.collection
-                      }
+                      parameter={ts_specific_metadata.collection}
                     />
                   </EuiAccordion>
                 </EuiFlexItem>

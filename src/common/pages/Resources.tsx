@@ -4,7 +4,6 @@ import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
 import { global_config, ts_specific_metadata } from "../../config";
 
-const OLS4API = global_config.api_url;
 export default function Resources() {
   const navigate = useNavigate();
   return (
@@ -14,11 +13,11 @@ export default function Resources() {
       </EuiText>
       <EuiSpacer />
       <ResourcesWidget
-        api={OLS4API}
+        api={global_config.api_url}
         onNavigate={(ontologyId) => {
           navigate(`/ontologies/${ontologyId}/`);
         }}
-        parameter={"collectionId=" + ts_specific_metadata.collection}
+        parameter={ts_specific_metadata.collection}
         actions={[
           {
             render: (item) => (
