@@ -24,7 +24,6 @@ import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { global_config, ts_specific_metadata } from "../../config";
 import { navigateToEntity } from "../components/utils";
 
-const OLS4API = global_config.api_url;
 export default function Ontology() {
   const routeParams = useParams();
   const navigate = useNavigate();
@@ -176,13 +175,13 @@ export default function Ontology() {
             <EuiSpacer size={"s"} />
             <DescriptionWidget
               ontologyId={routeParams.ontologyId}
-              api={OLS4API}
+              api={global_config.api_url}
               parameter={ts_specific_metadata.collection}
             />
           </EuiFlexItem>
           <EuiSpacer size={"s"} />
           <AutocompleteWidget
-            api={OLS4API}
+            api={global_config.api_url}
             placeholder={"Search in " + routeParams.ontologyId.toUpperCase()}
             selectionChangedEvent={(selectedOption) => {
               const normalized = selectedOption.map((option) => ({
@@ -247,7 +246,7 @@ export default function Ontology() {
                       }}
                     >
                       <OntologyInfoWidget
-                        api={OLS4API}
+                        api={global_config.api_url}
                         ontologyId={routeParams.ontologyId}
                         hasTitle={false}
                         parameter={ts_specific_metadata.collection}
