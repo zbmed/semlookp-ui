@@ -35,7 +35,7 @@ export const componentMap = {
   fairagro: {
     InfoBoxA: lazy(
       () =>
-        import("./projectSpecific/projectSpecificComponents/InfoBoxADefaultTemplate"),
+        import("./projectSpecific/projectSpecificComponents/InfoBoxAFairAgro"),
     ),
     InfoBoxB: lazy(
       () =>
@@ -59,7 +59,7 @@ export const componentMap = {
     ),
     About: lazy(
       () =>
-        import("./projectSpecific/projectSpecificComponents/AboutDescriptionDefaultTemplate"),
+        import("./projectSpecific/projectSpecificComponents/AboutDescriptionFairAgro"),
     ),
   },
 };
