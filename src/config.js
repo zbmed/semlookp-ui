@@ -14,8 +14,8 @@ export const matomo_config = {
 export const ts_specific_metadata = {
   active_dev_banner_text:
     " This software is currently under active development. Therefore, please forgive any errors that occur. We would be very pleased if you could report any errors to semlookp-support@zbmed.de.",
-  contact_mail_address: " https://fairagro.net/helpdesk/", // use semlookp-support@zbmed.de if you have none
-  contact_mail_address_mailto: "dataservice@fairagro.net", // the "mailto" URI is needed to produce a hyperlink that will allow users to send an email on click
+  contact_mail_address: " dataservice@fairagro.net", // use semlookp-support@zbmed.de if you have none
+  contact_mail_address_mailto: "mailto:dataservice@fairagro.net", // the "mailto" URI is needed to produce a hyperlink that will allow users to send an email on click
   collection: "collectionId=ff5491d1-d0a9-481e-ac90-0fad065fa097", // if using the TS4NFDI Gateway, specify a collection here (uuid), otherwise leave empty
   homepage: {
     has_logo: true,
@@ -29,7 +29,7 @@ export const ts_specific_metadata = {
     // project_intro_title: "Terminology Service Template",
     project_intro_markdown_file:
       "defaultTemplate/defaultTemplateMarkdown/projectintro",
-    imprint_markdown_file: "projectSpecific/projectSpecificMarkdown/imprint",
+    imprint_markdown_file: "projectSpecific/projectSpecificMarkdown/imprint.md",
     privacy_markdown_file: "defaultTemplate/defaultTemplateMarkdown/privacy",
   },
   header: {
