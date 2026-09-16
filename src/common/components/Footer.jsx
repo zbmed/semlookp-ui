@@ -42,11 +42,8 @@ export default function Footer() {
                 >
                   Contact
                 </EuiLink>{" "}
-                |{" "}
-                <EuiLink href="https://www.zbmed.de/en/legal-notice">
-                  Imprint
-                </EuiLink>{" "}
-                | <EuiNavigationLink to="/privacy">Privacy</EuiNavigationLink>
+                | <EuiNavigationLink to="/imprint">Imprint</EuiNavigationLink> |{" "}
+                <EuiNavigationLink to="/privacy">Privacy</EuiNavigationLink>
               </EuiText>
             </EuiFlexItem>
           </EuiFlexGroup>

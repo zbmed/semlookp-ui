@@ -9,42 +9,28 @@ const description = (logo) => {
   return (
     <>
       <EuiText>
-        <EuiLink href={"https://www.fairagro.net/"}> FAIRagro's </EuiLink>
-        Search Hub <br></br>
+        <EuiLink href={"https://google.com"}> Some Institutions </EuiLink>
+        Service <br></br>
         <EuiSpacer size="s" />
-        <EuiLink href="https://search-hub.fairagro.net/">
+        <EuiLink href="https://google.com">
           <EuiImage size="s" src={logo} alt={"InfoBoxALogo"} />
         </EuiLink>
         <br></br>
         <EuiSpacer size="s" />
-        <i>
-          Central portal to discover agrosystem-related datasets and research
-          data repositories.{" "}
-        </i>
+        <i>Short service description</i>
         <br></br>
         <EuiSpacer size="s" />
         <div style={{ textAlign: "center" }}>
-          The FAIRagro Search Hub's{" "}
-          <EuiLink href={"https://datasets.search-hub.fairagro.net/"}>
-            {" "}
-            Dataset Finder{" "}
-          </EuiLink>{" "}
-          uses the
-          <EuiCustomLink to={"/about/api"}> SemLookP API</EuiCustomLink> and
-          <EuiLink
-            href={"https://terminology.services.base4nfdi.de/tss/comp/latest/"}
-          >
-            {" "}
-            Terminology Service Suite{" "}
-          </EuiLink>
-          to make semantic concepts searchable.
+          Long service description with
+          <EuiCustomLink to={"/about/api"}> internal Links</EuiCustomLink> or
+          <EuiLink href={"https://google.com"}> external Links </EuiLink>
         </div>
       </EuiText>
     </>
   );
 };
 
-const InfoBoxAFairAgro = () => {
+const InfoBoxADefaultTemplate = () => {
   const theme = useTheme();
   const [logos, setLogos] = useState({
     logo: null,
@@ -55,7 +41,7 @@ const InfoBoxAFairAgro = () => {
   useEffect(() => {
     if (projectComponents) {
       const loadLogos = async () => {
-        const logo = await projectComponents.projectALogo();
+        const logo = await projectComponents.infoBoxLogoA();
 
         setLogos({
           logo: logo.default,
@@ -82,4 +68,4 @@ const InfoBoxAFairAgro = () => {
   );
 };
 
-export default InfoBoxAFairAgro;
+export default InfoBoxADefaultTemplate;

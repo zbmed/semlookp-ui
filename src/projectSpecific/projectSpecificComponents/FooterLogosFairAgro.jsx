@@ -45,7 +45,7 @@ const FooterLogosFairAgro = () => {
       >
         <EuiFlexItem grow={false}>
           <a
-            href={ts_specific_metadata.footer.footer_logo_A_url}
+            href={ts_specific_metadata.homepage.footer_logo_A_url}
             target={"_blank"}
             rel="noreferrer"
           >
@@ -54,7 +54,7 @@ const FooterLogosFairAgro = () => {
         </EuiFlexItem>
         <EuiFlexItem grow={false}>
           <a
-            href={ts_specific_metadata.footer.footer_logo_B_url}
+            href={ts_specific_metadata.homepage.footer_logo_B_url}
             target={"_blank"}
             rel="noreferrer"
           >
@@ -63,7 +63,7 @@ const FooterLogosFairAgro = () => {
         </EuiFlexItem>
         <EuiFlexItem grow={false}>
           <a
-            href={ts_specific_metadata.footer.footer_logo_C_url}
+            href={ts_specific_metadata.homepage.footer_logo_C_url}
             target={"_blank"}
             rel="noreferrer"
           >

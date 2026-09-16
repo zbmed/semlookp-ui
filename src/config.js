@@ -15,7 +15,7 @@ export const ts_specific_metadata = {
   active_dev_banner_text:
     " This software is currently under active development. Therefore, please forgive any errors that occur. We would be very pleased if you could report any errors to semlookp-support@zbmed.de.",
   contact_mail_address: " https://fairagro.net/helpdesk/", // use semlookp-support@zbmed.de if you have none
-  contact_mail_address_mailto: "mailto:dataservice@fairagro.net", // the "mailto" URI is needed to produce a hyperlink that will allow users to send an email on click
+  contact_mail_address_mailto: "mailto:example@example.de", // the "mailto" URI is needed to produce a hyperlink that will allow users to send an email on click
   collection: "collectionId=ff5491d1-d0a9-481e-ac90-0fad065fa097", // if using the TS4NFDI Gateway, specify a collection here (uuid), otherwise leave empty
   homepage: {
     has_logo: true,
@@ -49,13 +49,12 @@ export const ts_specific_metadata = {
     has_funding_notice: true,
     has_version_update_info: true,
     has_logos: true,
-    funding_notice:
-      "This service is developed in the project FAIRagro. FAIRagro is one of the funded consortia of the National Research Data Infrastructure programme of the DFG. (Project number 501899475).",
+    funding_notice: "This is the funding notice.",
     last_update: "July, 2026",
     version: "development version",
-    footer_logo_A_url: "https://www.dfg.de/",
-    footer_logo_B_url: "https://www.fairagro.net/",
-    footer_logo_C_url: "https://www.zbmed.de/",
+    footer_logo_A_url: "https://www.google.de",
+    footer_logo_B_url: "https://www.google.de",
+    footer_logo_C_url: "https://www.google.de",
   },
   info_boxes: {
     has_info_box1: true,
@@ -68,12 +67,12 @@ export const ts_specific_metadata = {
     },
   },
   search: {
-    search_example_text1: "maize",
-    search_example_link1: "/search?q=maize",
-    search_example_text2: "leaf length",
-    search_example_link2: "/search?q=leaf length",
-    search_example_text3: "soil ph",
-    search_example_link3: "/search?q=soil ph",
+    search_example_text1: "milk",
+    search_example_link1: "/search?q=milk",
+    search_example_text2: "planet",
+    search_example_link2: "/search?q=planet",
+    search_example_text3: "derives from",
+    search_example_link3: "/search?q=derives from",
   },
   projects: {
     cards: [{ name: "ProjectADescription" }, { name: "ProjectBDescription" }],
