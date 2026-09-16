@@ -29,7 +29,7 @@ export const ts_specific_metadata = {
     project_intro_title: "Terminology Service Template",
     project_intro_markdown_file:
       "defaultTemplate/defaultTemplateMarkdown/projectintro",
-    imprint_markdown_file: "defaultTemplate/defaultTemplateMarkdown/imprint",
+    imprint_markdown_file: "projectSpecific/projectSpecificMarkdown/imprint",
     privacy_markdown_file: "defaultTemplate/defaultTemplateMarkdown/privacy",
   },
   header: {

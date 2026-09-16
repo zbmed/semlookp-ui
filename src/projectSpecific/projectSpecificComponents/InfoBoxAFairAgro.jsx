@@ -12,7 +12,7 @@ const description = (logo) => {
         <EuiLink href={"https://www.fairagro.net/"}> FAIRagro's </EuiLink>
         Search Hub <br></br>
         <EuiSpacer size="s" />
-        <EuiLink href="https://google.com">
+        <EuiLink href="https://search-hub.fairagro.net/">
           <EuiImage size="s" src={logo} alt={"InfoBoxALogo"} />
         </EuiLink>
         <br></br>
