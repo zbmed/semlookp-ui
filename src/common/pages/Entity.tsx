@@ -43,6 +43,7 @@ export default function Entity() {
   const { provider } = useEntityProvider({
     ontologyId: routeParams.ontologyId,
     iri: concatIri,
+    parameter: ts_specific_metadata.collection,
   });
 
   const [backendType, setBackendType] = useState<string>("ols");
