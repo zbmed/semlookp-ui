@@ -30,7 +30,6 @@ import { navigateToEntity } from "../components/utils";
 import { getOntoportalApiKey } from "../components/apiKeys";
 import { useEffect, useState } from "react";
 
-
 export default function Entity() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParam, setSearchParams] = useSearchParams(); // read the query string in the URL for the current location

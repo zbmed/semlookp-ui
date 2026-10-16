@@ -71,7 +71,6 @@ same name:
 | https://data.earthportal.eu         | `EARTHPORTAL_API_KEY`         |
 | https://data.lovportal.lirmm.fr     | `LOVPORTAL_API_KEY`           |
 
-
 For local development, put the keys you need into an (unversioned) `.env` file in the project root:
 
 ```

@@ -33,3 +33,14 @@ export const componentMap = {
     ),
   },
 };
+
+const markdownMap = import.meta.glob(
+  "./{defaultTemplate,projectSpecific}/*Markdown/*.md",
+  { query: "?raw", import: "default" },
+);
+
+// accepts config paths with or without ".md" suffix
+export const loadMarkdown = (file) => {
+  const loader = markdownMap[`./${file.replace(/\.md$/, "")}.md`];
+  return loader ? loader() : Promise.resolve("");
+};
