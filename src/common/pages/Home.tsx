@@ -42,7 +42,9 @@ export default function Home() {
             <EuiFlexItem grow={3}>
               <DataContentWidget
                 api={global_config.api_url}
-                parameter={ts_specific_metadata.collection}
+                collectionId={ts_specific_metadata.collection.slice(
+                  ts_specific_metadata.collection.indexOf("=") + 1,
+                )}
               />
             </EuiFlexItem>
           </>
