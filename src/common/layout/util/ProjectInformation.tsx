@@ -9,18 +9,13 @@ import {
 import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { ts_specific_metadata } from "../../../config";
+import { loadMarkdown } from "../../../componentMap";
 export default () => {
   const [getTermsAndConditions, setTermsAndConditions] = useState<string>("");
 
   useEffect(() => {
     const file = ts_specific_metadata.homepage.project_intro_markdown_file;
-    const grabTermsAndConditions = async (): Promise<void> => {
-      const termsAndConditionsFile = await import(`../../../${file}.md`);
-      await fetch(termsAndConditionsFile.default)
-        .then((res) => res.text())
-        .then((text) => setTermsAndConditions(text));
-    };
-    grabTermsAndConditions();
+    loadMarkdown(file).then((text) => setTermsAndConditions(text));
   }, []);
   return (
     <>
