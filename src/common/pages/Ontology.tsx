@@ -1,4 +1,3 @@
-// main
 import {
   EuiAccordion,
   EuiFlexGroup,
@@ -17,186 +16,147 @@ import {
   JsonApiWidget,
   OntologyInfoWidget,
   TitleWidget,
+  useEntityProvider,
 } from "@ts4nfdi/terminology-service-suite";
 import { useCallback, useMemo } from "react";
 import { Helmet } from "react-helmet";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { global_config, ts_specific_metadata } from "../../config";
+import { getOntoportalApiKey } from "../components/apiKeys";
 import { navigateToEntity } from "../components/utils";
 
+const HIERARCHY_TABS = [
+  { id: "classes-hierarchy", name: "Classes", entityType: "class" },
+  { id: "properties-hierarchy", name: "Properties", entityType: "property" },
+  {
+    id: "individuals-hierarchy",
+    name: "Individuals",
+    entityType: "individual",
+  },
+] as const;
+
+const DEFAULT_TAB_ID = HIERARCHY_TABS[0].id;
+
+const ROUTE_SEGMENT: Record<string, string> = {
+  class: "terms",
+  term: "terms",
+  property: "properties",
+};
+
+const CAPITALIZE_STYLE = { textTransform: "capitalize" } as const;
+const HIERARCHY_COLUMN_STYLE = { maxWidth: "50%", minWidth: "50%" } as const;
+const INFO_WRAPPER_STYLE = {
+  overflow: "auto",
+  wordWrap: "break-word",
+  overflowWrap: "anywhere",
+} as const;
+const SCROLL_STYLE = { overflow: "auto" } as const;
+const RULE_STYLE = { marginBottom: "0px" } as const;
+
 export default function Ontology() {
-  const routeParams = useParams();
+  const { ontologyId = "" } = useParams();
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
 
+  const { provider } = useEntityProvider({
+    ontologyId,
+    parameter: ts_specific_metadata.collection,
+  });
+
+  const backendType: string = provider?.type ?? "ols";
+  const apiUrl: string = provider?.api ?? "";
+  const apiKey: string = useMemo(
+    () =>
+      provider?.type === "ontoportal" && provider.api
+        ? getOntoportalApiKey(provider.api)
+        : "",
+    [provider?.type, provider?.api],
+  );
+
   const navigateToEntityHierarchy = useCallback(
-    (ontologyId, entityType, entity) => {
+    (ontId: string, entityType: string, entity: { iri: string }) => {
+      const segment = ROUTE_SEGMENT[entityType] ?? "individuals";
       navigate(
-        `/ontologies/${ontologyId}/${
-          entityType == "class" || entityType == "term"
-            ? "terms"
-            : entityType == "property"
-              ? "properties"
-              : "individuals"
-        }?iri=${encodeURIComponent(encodeURIComponent(entity.iri))}`,
+        `/ontologies/${ontId}/${segment}?iri=${encodeURIComponent(
+          encodeURIComponent(entity.iri),
+        )}`,
       );
     },
     [navigate],
   );
 
-  const navigateToOntologyHierarchy = useCallback(
-    (ontologyId, entityType, entity) => {
-      navigate(
-        `/ontologies/${ontologyId}/${
-          entityType == "class" || entityType == "term"
-            ? "terms"
-            : entityType == "property"
-              ? "properties"
-              : "individuals"
-        }?iri=${encodeURIComponent(encodeURIComponent(entity.iri))}`,
-      );
-    },
-    [navigate],
-  );
+  const requestedTabId = searchParams.get("hierarchy");
+  const currentTab =
+    HIERARCHY_TABS.find((tab) => tab.id === requestedTabId) ??
+    HIERARCHY_TABS[0];
+  const currentTabId = currentTab.id;
 
-  const tabs = useMemo(
-    () => [
-      {
-        id: "classes-hierarchy",
-        name: "Classes",
-        content: (
-          <HierarchyWidget
-            useLegacy={false}
-            apiUrl={global_config.api_url}
-            backendType={"ols"}
-            entityType={"class"}
-            ontologyId={routeParams.ontologyId}
-            onNavigateToEntity={navigateToEntityHierarchy}
-            onNavigateToOntology={navigateToOntologyHierarchy}
-          />
-        ),
-      },
-      {
-        id: "properties-hierarchy",
-        name: "Properties",
-        content: (
-          <HierarchyWidget
-            useLegacy={false}
-            apiUrl={global_config.api_url}
-            backendType={"ols"}
-            entityType={"property"}
-            ontologyId={routeParams.ontologyId}
-            onNavigateToEntity={navigateToEntityHierarchy}
-            onNavigateToOntology={navigateToOntologyHierarchy}
-          />
-        ),
-      },
-      {
-        id: "individuals-hierarchy",
-        name: "Individuals",
-        content: (
-          <HierarchyWidget
-            useLegacy={false}
-            apiUrl={global_config.api_url}
-            backendType={"ols"}
-            entityType={"individual"}
-            ontologyId={routeParams.ontologyId}
-            onNavigateToEntity={navigateToEntityHierarchy}
-            onNavigateToOntology={navigateToOntologyHierarchy}
-          />
-        ),
-      },
-    ],
-    [
-      routeParams.ontologyId,
-      navigateToEntityHierarchy,
-      navigateToOntologyHierarchy,
-    ],
-  );
-
-  const currentTabId = searchParams.get("hierarchy") || "classes-hierarchy";
-
-  const onSelectedTabChanged = (id: string) => {
-    if (id !== currentTabId) {
+  const onSelectedTabChanged = useCallback(
+    (id: string) => {
+      if (id === currentTabId) return;
       const newParams = new URLSearchParams(searchParams);
       newParams.set("hierarchy", id);
       setSearchParams(newParams);
-    }
-  };
+    },
+    [currentTabId, searchParams, setSearchParams],
+  );
 
-  const selectedTabContent = useMemo(() => {
-    return tabs.find((tab) => tab.id === currentTabId)?.content;
-  }, [currentTabId, tabs]);
+  const onSelect = useCallback(
+    (selectedOption: any[]) => {
+      const normalized = selectedOption.map((option) => ({
+        ...option,
+        label: option.label ?? option.iri ?? "",
+      }));
+      navigateToEntity(normalized, navigate);
+    },
+    [navigate],
+  );
 
-  const renderTabs = () => {
-    return tabs.map((tab, index) => (
-      <EuiTab
-        key={index}
-        onClick={() => onSelectedTabChanged(tab.id)}
-        isSelected={tab.id === currentTabId}
-      >
-        {tab.name}
-      </EuiTab>
-    ));
-  };
+  const selectParameter = useMemo(
+    () =>
+      `ontology=${ontologyId}&${ts_specific_metadata.collection}&fieldList=description,label,iri,ontology_name,type,short_form`,
+    [ontologyId],
+  );
+
+  const ontologyApiQuery = `${global_config.api_url}ontologies/${ontologyId}/`;
 
   return (
     <div>
       <EuiSpacer />
-      <EuiFlexGroup justifyContent={"spaceAround"} direction={"column"}>
+      <EuiFlexGroup justifyContent="spaceAround" direction="column">
         <EuiPanel>
           <EuiFlexGroup>
             <EuiFlexItem grow={7}>
-              <EuiTitle size={"m"}>
+              <EuiTitle size="m">
                 <TitleWidget
-                  ontologyId={routeParams.ontologyId}
+                  ontologyId={ontologyId}
                   api={global_config.api_url}
                   parameter={ts_specific_metadata.collection}
                 />
               </EuiTitle>
             </EuiFlexItem>
             <EuiFlexItem grow={1}>
-              <JsonApiWidget
-                apiQuery={
-                  global_config.api_url +
-                  "ontologies/" +
-                  routeParams.ontologyId +
-                  "/"
-                }
-                buttonText="JSON"
-              />
+              <JsonApiWidget apiQuery={ontologyApiQuery} buttonText="JSON" />
             </EuiFlexItem>
           </EuiFlexGroup>
           <EuiHorizontalRule />
           <EuiFlexItem>
-            <EuiTitle size={"xs"}>
+            <EuiTitle size="xs">
               <span>Description:</span>
             </EuiTitle>
-            <EuiSpacer size={"s"} />
+            <EuiSpacer size="s" />
             <DescriptionWidget
-              ontologyId={routeParams.ontologyId}
+              ontologyId={ontologyId}
               api={global_config.api_url}
               parameter={ts_specific_metadata.collection}
             />
           </EuiFlexItem>
-          <EuiSpacer size={"s"} />
+          <EuiSpacer size="s" />
           <AutocompleteWidget
             api={global_config.api_url}
-            placeholder={"Search in " + routeParams.ontologyId.toUpperCase()}
-            selectionChangedEvent={(selectedOption) => {
-              const normalized = selectedOption.map((option) => ({
-                ...option,
-                label: option.label ?? option.iri ?? "",
-              }));
-              navigateToEntity(normalized, navigate);
-            }}
-            parameter={
-              "ontology=" +
-              routeParams.ontologyId +
-              "&" +
-              ts_specific_metadata.collection +
-              "&fieldList=description,label,iri,ontology_name,type,short_form"
-            }
+            placeholder={`Search in ${ontologyId.toUpperCase()}`}
+            selectionChangedEvent={onSelect}
+            parameter={selectParameter}
             allowCustomTerms={false}
             singleSelection={true}
             hasShortSelectedLabel={true}
@@ -204,58 +164,69 @@ export default function Ontology() {
         </EuiPanel>
         <EuiSpacer />
         <EuiPanel>
-          <EuiFlexGroup gutterSize={"m"}>
-            <EuiFlexItem
-              grow={false}
-              style={{ maxWidth: "50%", minWidth: "50%" }}
-            >
-              <EuiSpacer size={"s"} />
-              <EuiTitle size={"s"}>
-                <span style={{ textTransform: "capitalize" }}>Hierarchy</span>
+          <EuiFlexGroup gutterSize="m">
+            <EuiFlexItem grow={false} style={HIERARCHY_COLUMN_STYLE}>
+              <EuiSpacer size="s" />
+              <EuiTitle size="s">
+                <span style={CAPITALIZE_STYLE}>Hierarchy</span>
               </EuiTitle>
-              <EuiHorizontalRule style={{ marginBottom: "0px" }} />
-              <EuiSpacer size={"s"} />
-              <div style={{ overflow: "auto" }}>
+              <EuiHorizontalRule style={RULE_STYLE} />
+              <EuiSpacer size="s" />
+              <div style={SCROLL_STYLE}>
                 <EuiFlexItem>
-                  <EuiTabs expand={true}>{renderTabs()}</EuiTabs>
-                  {selectedTabContent}
+                  <EuiTabs expand={true}>
+                    {HIERARCHY_TABS.map((tab) => (
+                      <EuiTab
+                        key={tab.id}
+                        onClick={() => onSelectedTabChanged(tab.id)}
+                        isSelected={tab.id === currentTabId}
+                      >
+                        {tab.name}
+                      </EuiTab>
+                    ))}
+                  </EuiTabs>
+                  {apiUrl && backendType && (
+                    <HierarchyWidget
+                      key={currentTab.id}
+                      useLegacy={false}
+                      apiUrl={apiUrl}
+                      apiKey={apiKey}
+                      backendType={backendType}
+                      entityType={currentTab.entityType}
+                      ontologyId={ontologyId}
+                      onNavigateToEntity={navigateToEntityHierarchy}
+                      onNavigateToOntology={navigateToEntityHierarchy}
+                    />
+                  )}
                 </EuiFlexItem>
               </div>
             </EuiFlexItem>
-            <EuiSpacer size={"l"} />
+            <EuiSpacer size="l" />
             <EuiFlexItem>
-              <EuiFlexGroup direction={"column"}>
-                <EuiSpacer size={"s"} />
+              <EuiFlexGroup direction="column">
                 <EuiFlexItem grow={false}>
+                  <EuiSpacer size="s" />
                   <EuiAccordion
-                    id={"relation info"}
+                    id="ontology-info"
                     initialIsOpen={true}
                     buttonContent={
                       <EuiTitle size="s">
-                        <span style={{ textTransform: "capitalize" }}>
+                        <span style={CAPITALIZE_STYLE}>
                           Ontology Information
                         </span>
                       </EuiTitle>
                     }
                   >
-                    <div
-                      style={{
-                        overflow: "auto",
-                        wordWrap: "break-word",
-                        overflowWrap: "anywhere",
-                      }}
-                    >
+                    <div style={INFO_WRAPPER_STYLE}>
                       <OntologyInfoWidget
                         api={global_config.api_url}
-                        ontologyId={routeParams.ontologyId}
+                        ontologyId={ontologyId}
                         hasTitle={false}
                         parameter={ts_specific_metadata.collection}
                       />
                     </div>
                   </EuiAccordion>
                 </EuiFlexItem>
-                <EuiSpacer size={"s"} />
-                <EuiFlexItem grow={false}></EuiFlexItem>
               </EuiFlexGroup>
             </EuiFlexItem>
           </EuiFlexGroup>
@@ -263,8 +234,8 @@ export default function Ontology() {
       </EuiFlexGroup>
 
       <Helmet>
-        <title> Ontology overview &gt; SemLookP </title>
-        <meta name="description" content={Ontology + " overview"} />
+        <title>Ontology overview &gt; SemLookP</title>
+        <meta name="description" content={`${ontologyId} overview`} />
       </Helmet>
     </div>
   );
