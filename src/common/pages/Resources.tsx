@@ -18,6 +18,7 @@ export default function Resources() {
           navigate(`/ontologies/${ontologyId}/`);
         }}
         parameter={ts_specific_metadata.collection}
+        useLegacy={false}
         actions={[
           {
             render: (item) => (

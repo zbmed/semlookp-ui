@@ -17,6 +17,7 @@ import {
   OntologyInfoWidget,
   TitleWidget,
   useEntityProvider,
+  EntityProviderWidget,
 } from "@ts4nfdi/terminology-service-suite";
 import { useCallback, useMemo } from "react";
 import { Helmet } from "react-helmet";
@@ -140,17 +141,31 @@ export default function Ontology() {
             </EuiFlexItem>
           </EuiFlexGroup>
           <EuiHorizontalRule />
-          <EuiFlexItem>
-            <EuiTitle size="xs">
-              <span>Description:</span>
-            </EuiTitle>
-            <EuiSpacer size="s" />
-            <DescriptionWidget
-              ontologyId={ontologyId}
-              api={global_config.api_url}
-              parameter={ts_specific_metadata.collection}
-            />
-          </EuiFlexItem>
+          <EuiFlexGroup gutterSize="l">
+            <EuiFlexItem grow={7}>
+              <EuiTitle size="xs">
+                <span>Description:</span>
+              </EuiTitle>
+              <EuiSpacer size="s" />
+              <DescriptionWidget
+                ontologyId={ontologyId}
+                api={global_config.api_url}
+                parameter={ts_specific_metadata.collection}
+              />
+            </EuiFlexItem>
+            <EuiFlexItem grow={3}>
+              <EuiTitle size="xs">
+                <span>Provider information:</span>
+              </EuiTitle>
+              <EuiSpacer size="s" />
+              <EntityProviderWidget
+                ontologyId={ontologyId}
+                api={global_config.api_url}
+                parameter={ts_specific_metadata.collection}
+                showRaw={false}
+              />
+            </EuiFlexItem>
+          </EuiFlexGroup>
           <EuiSpacer size="s" />
           <AutocompleteWidget
             api={global_config.api_url}
