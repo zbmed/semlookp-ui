@@ -43,6 +43,10 @@ export default function Home() {
               <DataContentWidget
                 api={global_config.api_url}
                 parameter={ts_specific_metadata.collection}
+                collectionId={ts_specific_metadata.collection.replace(
+                  /^collectionId=/,
+                  "",
+                )}
               />
             </EuiFlexItem>
           </>
